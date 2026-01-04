@@ -1,0 +1,45 @@
+import * as z from "zod/v3";
+import { TypesCreditGrantCadence } from "./typescreditgrantcadence.js";
+import { TypesCreditGrantExpiryDurationUnit } from "./typescreditgrantexpirydurationunit.js";
+import { TypesCreditGrantExpiryType } from "./typescreditgrantexpirytype.js";
+import { TypesCreditGrantPeriod } from "./typescreditgrantperiod.js";
+import { TypesCreditGrantScope } from "./typescreditgrantscope.js";
+export type DtoCreateCreditGrantRequest = {
+    cadence: TypesCreditGrantCadence;
+    credits: string;
+    expirationDuration?: number | undefined;
+    expirationDurationUnit?: TypesCreditGrantExpiryDurationUnit | undefined;
+    expirationType?: TypesCreditGrantExpiryType | undefined;
+    metadata?: {
+        [k: string]: string;
+    } | undefined;
+    name: string;
+    period?: TypesCreditGrantPeriod | undefined;
+    periodCount?: number | undefined;
+    planId?: string | undefined;
+    priority?: number | undefined;
+    scope: TypesCreditGrantScope;
+    subscriptionId?: string | undefined;
+};
+/** @internal */
+export type DtoCreateCreditGrantRequest$Outbound = {
+    cadence: string;
+    credits: string;
+    expiration_duration?: number | undefined;
+    expiration_duration_unit?: string | undefined;
+    expiration_type?: string | undefined;
+    metadata?: {
+        [k: string]: string;
+    } | undefined;
+    name: string;
+    period?: string | undefined;
+    period_count?: number | undefined;
+    plan_id?: string | undefined;
+    priority?: number | undefined;
+    scope: string;
+    subscription_id?: string | undefined;
+};
+/** @internal */
+export declare const DtoCreateCreditGrantRequest$outboundSchema: z.ZodType<DtoCreateCreditGrantRequest$Outbound, z.ZodTypeDef, DtoCreateCreditGrantRequest>;
+export declare function dtoCreateCreditGrantRequestToJSON(dtoCreateCreditGrantRequest: DtoCreateCreditGrantRequest): string;
+//# sourceMappingURL=dtocreatecreditgrantrequest.d.ts.map
