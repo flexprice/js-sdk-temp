@@ -31,8 +31,8 @@ export declare function serverURLFromOptions(options: SDKOptions): URL | null;
 export declare const SDK_METADATA: {
     readonly language: "typescript";
     readonly openapiDocVersion: "1.0";
-    readonly sdkVersion: "2.0.0";
+    readonly sdkVersion: "2.0.1";
     readonly genVersion: "2.788.15";
-    readonly userAgent: "speakeasy-sdk/typescript 2.0.0 2.788.15 1.0 flexprice-sdk-test";
+    readonly userAgent: "speakeasy-sdk/typescript 2.0.1 2.788.15 1.0 flexprice-sdk-test";
 };
 //# sourceMappingURL=config.d.ts.map
