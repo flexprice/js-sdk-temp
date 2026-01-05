@@ -30,6 +30,7 @@ export type DtoUpdatePriceRequest = {
   amount?: string | undefined;
   billingModel?: TypesBillingModel | undefined;
   description?: string | undefined;
+  displayName?: string | undefined;
   effectiveFrom?: string | undefined;
   /**
    * GroupID is the id of the group to update the price in
@@ -56,6 +57,7 @@ export type DtoUpdatePriceRequest$Outbound = {
   amount?: string | undefined;
   billing_model?: string | undefined;
   description?: string | undefined;
+  display_name?: string | undefined;
   effective_from?: string | undefined;
   group_id?: string | undefined;
   lookup_key?: string | undefined;
@@ -74,6 +76,7 @@ export const DtoUpdatePriceRequest$outboundSchema: z.ZodType<
   amount: z.string().optional(),
   billingModel: TypesBillingModel$outboundSchema.optional(),
   description: z.string().optional(),
+  displayName: z.string().optional(),
   effectiveFrom: z.string().optional(),
   groupId: z.string().optional(),
   lookupKey: z.string().optional(),
@@ -84,6 +87,7 @@ export const DtoUpdatePriceRequest$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     billingModel: "billing_model",
+    displayName: "display_name",
     effectiveFrom: "effective_from",
     groupId: "group_id",
     lookupKey: "lookup_key",

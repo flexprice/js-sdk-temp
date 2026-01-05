@@ -7,6 +7,7 @@ import { Costs } from "./costs.js";
 import { Coupons } from "./coupons.js";
 import { CreditGrants } from "./creditgrants.js";
 import { CreditNotes } from "./creditnotes.js";
+import { CustomerDashboard } from "./customerdashboard.js";
 import { Customers } from "./customers.js";
 import { Entitlements } from "./entitlements.js";
 import { EntityIntegrationMappings } from "./entityintegrationmappings.js";
@@ -50,6 +51,8 @@ export declare class FlexPrice extends ClientSDK {
     get creditGrants(): CreditGrants;
     private _creditNotes?;
     get creditNotes(): CreditNotes;
+    private _customerDashboard?;
+    get customerDashboard(): CustomerDashboard;
     private _customers?;
     get customers(): Customers;
     private _wallets?;

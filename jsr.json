@@ -2,7 +2,7 @@
 
 {
   "name": "flexprice-sdk-test",
-  "version": "2.0.2",
+  "version": "1.0.48",
   "exports": {
     ".": "./src/index.ts",    
     "./models/errors": "./src/models/errors/index.ts",    

@@ -13,6 +13,7 @@ const costs_js_1 = require("./costs.js");
 const coupons_js_1 = require("./coupons.js");
 const creditgrants_js_1 = require("./creditgrants.js");
 const creditnotes_js_1 = require("./creditnotes.js");
+const customerdashboard_js_1 = require("./customerdashboard.js");
 const customers_js_1 = require("./customers.js");
 const entitlements_js_1 = require("./entitlements.js");
 const entityintegrationmappings_js_1 = require("./entityintegrationmappings.js");
@@ -64,6 +65,9 @@ class FlexPrice extends sdks_js_1.ClientSDK {
     }
     get creditNotes() {
         return (this._creditNotes ?? (this._creditNotes = new creditnotes_js_1.CreditNotes(this._options)));
+    }
+    get customerDashboard() {
+        return (this._customerDashboard ?? (this._customerDashboard = new customerdashboard_js_1.CustomerDashboard(this._options)));
     }
     get customers() {
         return (this._customers ?? (this._customers = new customers_js_1.Customers(this._options)));

@@ -42,7 +42,7 @@ const z = __importStar(require("zod/v3"));
 const primitives_js_1 = require("../../lib/primitives.js");
 /** @internal */
 exports.Security$outboundSchema = z.object({
-    apiKeyAuth: z.string(),
+    apiKeyAuth: z.string().optional(),
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
         apiKeyAuth: "ApiKeyAuth",

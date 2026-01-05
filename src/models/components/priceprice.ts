@@ -67,7 +67,7 @@ export type PricePrice = {
   /**
    * ConversionRate is the conversion rate of the price unit to the fiat currency
    */
-  conversionRate?: number | undefined;
+  conversionRate?: string | undefined;
   createdAt?: string | undefined;
   createdBy?: string | undefined;
   /**
@@ -139,7 +139,7 @@ export type PricePrice = {
   /**
    * PriceUnitAmount is the amount of the price unit
    */
-  priceUnitAmount?: number | undefined;
+  priceUnitAmount?: string | undefined;
   /**
    * PriceUnitID is the id of the price unit (for CUSTOM type)
    */
@@ -181,7 +181,7 @@ export const PricePrice$inboundSchema: z.ZodType<
   billing_model: TypesBillingModel$inboundSchema.optional(),
   billing_period: TypesBillingPeriod$inboundSchema.optional(),
   billing_period_count: z.number().int().optional(),
-  conversion_rate: z.number().optional(),
+  conversion_rate: z.string().optional(),
   created_at: z.string().optional(),
   created_by: z.string().optional(),
   currency: z.string().optional(),
@@ -202,7 +202,7 @@ export const PricePrice$inboundSchema: z.ZodType<
   min_quantity: z.string().optional(),
   parent_price_id: z.string().optional(),
   price_unit: z.string().optional(),
-  price_unit_amount: z.number().optional(),
+  price_unit_amount: z.string().optional(),
   price_unit_id: z.string().optional(),
   price_unit_tiers: z.array(PricePriceTier$inboundSchema).optional(),
   price_unit_type: TypesPriceUnitType$inboundSchema.optional(),

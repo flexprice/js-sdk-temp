@@ -30,7 +30,7 @@ export type PricePrice = {
     /**
      * ConversionRate is the conversion rate of the price unit to the fiat currency
      */
-    conversionRate?: number | undefined;
+    conversionRate?: string | undefined;
     createdAt?: string | undefined;
     createdBy?: string | undefined;
     /**
@@ -104,7 +104,7 @@ export type PricePrice = {
     /**
      * PriceUnitAmount is the amount of the price unit
      */
-    priceUnitAmount?: number | undefined;
+    priceUnitAmount?: string | undefined;
     /**
      * PriceUnitID is the id of the price unit (for CUSTOM type)
      */

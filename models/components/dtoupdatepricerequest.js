@@ -49,6 +49,7 @@ exports.DtoUpdatePriceRequest$outboundSchema = z.object({
     amount: z.string().optional(),
     billingModel: typesbillingmodel_js_1.TypesBillingModel$outboundSchema.optional(),
     description: z.string().optional(),
+    displayName: z.string().optional(),
     effectiveFrom: z.string().optional(),
     groupId: z.string().optional(),
     lookupKey: z.string().optional(),
@@ -59,6 +60,7 @@ exports.DtoUpdatePriceRequest$outboundSchema = z.object({
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
         billingModel: "billing_model",
+        displayName: "display_name",
         effectiveFrom: "effective_from",
         groupId: "group_id",
         lookupKey: "lookup_key",

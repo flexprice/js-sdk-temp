@@ -498,6 +498,49 @@ async function run() {
 run();
 
 ```
+
+### Per-Operation Security Schemes
+
+Some operations in this SDK require the security scheme to be specified at the request level. For example:
+```typescript
+import { FlexPrice } from "flexprice-sdk-test";
+
+const flexPrice = new FlexPrice({
+  serverURL: "https://api.example.com",
+});
+
+async function run() {
+  const result = await flexPrice.customerDashboard
+    .postCustomerDashboardAnalytics({
+      bearerAuth: "<YOUR_API_KEY_HERE>",
+    }, {
+      endTime: "2024-01-31T23:59:59Z",
+      expand: [
+        "price",
+        "meter",
+        "feature",
+      ],
+      featureIds: [
+        "feat_123",
+        "feat_456",
+      ],
+      groupBy: [
+        "source",
+        "feature_id",
+      ],
+      sources: [
+        "api",
+        "web",
+      ],
+      startTime: "2024-01-01T00:00:00Z",
+    });
+
+  console.log(result);
+}
+
+run();
+
+```
 <!-- End Authentication [security] -->
 
 <!-- Start Available Resources and Operations [operations] -->
@@ -568,6 +611,21 @@ run();
 * [putCreditgrantsId](docs/sdks/creditgrants/README.md#putcreditgrantsid) - Update a credit grant
 * [deleteCreditgrantsId](docs/sdks/creditgrants/README.md#deletecreditgrantsid) - Delete a credit grant
 * [getPlansIdCreditgrants](docs/sdks/creditgrants/README.md#getplansidcreditgrants) - Get plan credit grants
+
+### [CustomerDashboard](docs/sdks/customerdashboard/README.md)
+
+* [getCustomerDashboardExternalId](docs/sdks/customerdashboard/README.md#getcustomerdashboardexternalid) - Create a customer dashboard session
+* [postCustomerDashboardAnalytics](docs/sdks/customerdashboard/README.md#postcustomerdashboardanalytics) - Get customer analytics
+* [postCustomerDashboardCostAnalytics](docs/sdks/customerdashboard/README.md#postcustomerdashboardcostanalytics) - Get customer cost analytics
+* [getCustomerDashboardInfo](docs/sdks/customerdashboard/README.md#getcustomerdashboardinfo) - Get customer information
+* [putCustomerDashboardInfo](docs/sdks/customerdashboard/README.md#putcustomerdashboardinfo) - Update customer information
+* [postCustomerDashboardInvoices](docs/sdks/customerdashboard/README.md#postcustomerdashboardinvoices) - Get customer invoices
+* [getCustomerDashboardInvoicesId](docs/sdks/customerdashboard/README.md#getcustomerdashboardinvoicesid) - Get invoice by ID
+* [postCustomerDashboardSubscriptions](docs/sdks/customerdashboard/README.md#postcustomerdashboardsubscriptions) - Get customer subscriptions
+* [getCustomerDashboardSubscriptionsId](docs/sdks/customerdashboard/README.md#getcustomerdashboardsubscriptionsid) - Get subscription by ID
+* [getCustomerDashboardUsage](docs/sdks/customerdashboard/README.md#getcustomerdashboardusage) - Get customer usage summary
+* [postCustomerDashboardWallets](docs/sdks/customerdashboard/README.md#postcustomerdashboardwallets) - Get customer wallets
+* [getCustomerDashboardWalletsId](docs/sdks/customerdashboard/README.md#getcustomerdashboardwalletsid) - Get wallet by ID
 
 ### [Customers](docs/sdks/customers/README.md)
 
@@ -858,6 +916,18 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`creditNotesPostCreditnotes`](docs/sdks/creditnotes/README.md#postcreditnotes) - Create a new credit note
 - [`creditNotesPostCreditnotesIdFinalize`](docs/sdks/creditnotes/README.md#postcreditnotesidfinalize) - Process a draft credit note
 - [`creditNotesPostCreditnotesIdVoid`](docs/sdks/creditnotes/README.md#postcreditnotesidvoid) - Void a credit note
+- [`customerDashboardGetCustomerDashboardExternalId`](docs/sdks/customerdashboard/README.md#getcustomerdashboardexternalid) - Create a customer dashboard session
+- [`customerDashboardGetCustomerDashboardInfo`](docs/sdks/customerdashboard/README.md#getcustomerdashboardinfo) - Get customer information
+- [`customerDashboardGetCustomerDashboardInvoicesId`](docs/sdks/customerdashboard/README.md#getcustomerdashboardinvoicesid) - Get invoice by ID
+- [`customerDashboardGetCustomerDashboardSubscriptionsId`](docs/sdks/customerdashboard/README.md#getcustomerdashboardsubscriptionsid) - Get subscription by ID
+- [`customerDashboardGetCustomerDashboardUsage`](docs/sdks/customerdashboard/README.md#getcustomerdashboardusage) - Get customer usage summary
+- [`customerDashboardGetCustomerDashboardWalletsId`](docs/sdks/customerdashboard/README.md#getcustomerdashboardwalletsid) - Get wallet by ID
+- [`customerDashboardPostCustomerDashboardAnalytics`](docs/sdks/customerdashboard/README.md#postcustomerdashboardanalytics) - Get customer analytics
+- [`customerDashboardPostCustomerDashboardCostAnalytics`](docs/sdks/customerdashboard/README.md#postcustomerdashboardcostanalytics) - Get customer cost analytics
+- [`customerDashboardPostCustomerDashboardInvoices`](docs/sdks/customerdashboard/README.md#postcustomerdashboardinvoices) - Get customer invoices
+- [`customerDashboardPostCustomerDashboardSubscriptions`](docs/sdks/customerdashboard/README.md#postcustomerdashboardsubscriptions) - Get customer subscriptions
+- [`customerDashboardPostCustomerDashboardWallets`](docs/sdks/customerdashboard/README.md#postcustomerdashboardwallets) - Get customer wallets
+- [`customerDashboardPutCustomerDashboardInfo`](docs/sdks/customerdashboard/README.md#putcustomerdashboardinfo) - Update customer information
 - [`customersDeleteCustomersId`](docs/sdks/customers/README.md#deletecustomersid) - Delete a customer
 - [`customersGetCustomers`](docs/sdks/customers/README.md#getcustomers) - Get customers
 - [`customersGetCustomersExternalExternalId`](docs/sdks/customers/README.md#getcustomersexternalexternalid) - Get a customer by external id
