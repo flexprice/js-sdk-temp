@@ -11,7 +11,7 @@ import { Costs } from "./costs.js";
 import { Coupons } from "./coupons.js";
 import { CreditGrants } from "./creditgrants.js";
 import { CreditNotes } from "./creditnotes.js";
-import { CustomerDashboard } from "./customerdashboard.js";
+import { CustomerPortal } from "./customerportal.js";
 import { Customers } from "./customers.js";
 import { Entitlements } from "./entitlements.js";
 import { EntityIntegrationMappings } from "./entityintegrationmappings.js";
@@ -83,11 +83,6 @@ export class FlexPrice extends ClientSDK {
     return (this._creditNotes ??= new CreditNotes(this._options));
   }
 
-  private _customerDashboard?: CustomerDashboard;
-  get customerDashboard(): CustomerDashboard {
-    return (this._customerDashboard ??= new CustomerDashboard(this._options));
-  }
-
   private _customers?: Customers;
   get customers(): Customers {
     return (this._customers ??= new Customers(this._options));
@@ -138,6 +133,11 @@ export class FlexPrice extends ClientSDK {
   private _plans?: Plans;
   get plans(): Plans {
     return (this._plans ??= new Plans(this._options));
+  }
+
+  private _customerPortal?: CustomerPortal;
+  get customerPortal(): CustomerPortal {
+    return (this._customerPortal ??= new CustomerPortal(this._options));
   }
 
   private _prices?: Prices;

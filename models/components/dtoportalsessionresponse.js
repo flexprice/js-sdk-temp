@@ -36,19 +36,22 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Security$outboundSchema = void 0;
-exports.securityToJSON = securityToJSON;
+exports.DtoPortalSessionResponse$inboundSchema = void 0;
+exports.dtoPortalSessionResponseFromJSON = dtoPortalSessionResponseFromJSON;
 const z = __importStar(require("zod/v3"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const schemas_js_1 = require("../../lib/schemas.js");
 /** @internal */
-exports.Security$outboundSchema = z.object({
-    apiKeyAuth: z.string(),
+exports.DtoPortalSessionResponse$inboundSchema = z.object({
+    expires_at: z.string().optional(),
+    token: z.string().optional(),
+    url: z.string().optional(),
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
-        apiKeyAuth: "ApiKeyAuth",
+        "expires_at": "expiresAt",
     });
 });
-function securityToJSON(security) {
-    return JSON.stringify(exports.Security$outboundSchema.parse(security));
+function dtoPortalSessionResponseFromJSON(jsonString) {
+    return (0, schemas_js_1.safeParse)(jsonString, (x) => exports.DtoPortalSessionResponse$inboundSchema.parse(JSON.parse(x)), `Failed to parse 'DtoPortalSessionResponse' from JSON`);
 }
-//# sourceMappingURL=security.js.map
+//# sourceMappingURL=dtoportalsessionresponse.js.map

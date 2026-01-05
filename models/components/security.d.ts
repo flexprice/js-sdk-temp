@@ -1,10 +1,10 @@
 import * as z from "zod/v3";
 export type Security = {
-    apiKeyAuth?: string | undefined;
+    apiKeyAuth: string;
 };
 /** @internal */
 export type Security$Outbound = {
-    ApiKeyAuth?: string | undefined;
+    ApiKeyAuth: string;
 };
 /** @internal */
 export declare const Security$outboundSchema: z.ZodType<Security$Outbound, z.ZodTypeDef, Security>;

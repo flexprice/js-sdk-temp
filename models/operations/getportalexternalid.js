@@ -36,19 +36,19 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Security$outboundSchema = void 0;
-exports.securityToJSON = securityToJSON;
+exports.GetPortalExternalIdRequest$outboundSchema = void 0;
+exports.getPortalExternalIdRequestToJSON = getPortalExternalIdRequestToJSON;
 const z = __importStar(require("zod/v3"));
 const primitives_js_1 = require("../../lib/primitives.js");
 /** @internal */
-exports.Security$outboundSchema = z.object({
-    apiKeyAuth: z.string(),
+exports.GetPortalExternalIdRequest$outboundSchema = z.object({
+    externalId: z.string(),
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
-        apiKeyAuth: "ApiKeyAuth",
+        externalId: "external_id",
     });
 });
-function securityToJSON(security) {
-    return JSON.stringify(exports.Security$outboundSchema.parse(security));
+function getPortalExternalIdRequestToJSON(getPortalExternalIdRequest) {
+    return JSON.stringify(exports.GetPortalExternalIdRequest$outboundSchema.parse(getPortalExternalIdRequest));
 }
-//# sourceMappingURL=security.js.map
+//# sourceMappingURL=getportalexternalid.js.map
