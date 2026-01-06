@@ -49,6 +49,8 @@ exports.DtoOverrideLineItemRequest$outboundSchema = z.object({
     amount: z.string().optional(),
     billingModel: typesbillingmodel_js_1.TypesBillingModel$outboundSchema.optional(),
     priceId: z.string(),
+    priceUnitAmount: z.string().optional(),
+    priceUnitTiers: z.array(dtocreatepricetier_js_1.DtoCreatePriceTier$outboundSchema).optional(),
     quantity: z.string().optional(),
     tierMode: typesbillingtier_js_1.TypesBillingTier$outboundSchema.optional(),
     tiers: z.array(dtocreatepricetier_js_1.DtoCreatePriceTier$outboundSchema).optional(),
@@ -57,6 +59,8 @@ exports.DtoOverrideLineItemRequest$outboundSchema = z.object({
     return (0, primitives_js_1.remap)(v, {
         billingModel: "billing_model",
         priceId: "price_id",
+        priceUnitAmount: "price_unit_amount",
+        priceUnitTiers: "price_unit_tiers",
         tierMode: "tier_mode",
         transformQuantity: "transform_quantity",
     });

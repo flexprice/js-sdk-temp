@@ -66,6 +66,15 @@ export type DtoCreateWalletRequest = {
      * - conversion_rate: set to price unit's conversion_rate
      */
     priceUnit?: string | undefined;
+    /**
+     * topup_conversion_rate is the conversion rate for the topup to the currency
+     *
+     * @remarks
+     * ex if topup_conversion_rate is 1, then 1 USD = 1 credit
+     * ex if topup_conversion_rate is 2, then 1 USD = 0.5 credits
+     * ex if topup_conversion_rate is 0.5, then 1 USD = 2 credits
+     */
+    topupConversionRate?: string | undefined;
     walletType?: TypesWalletType | undefined;
 };
 /** @internal */
@@ -87,6 +96,7 @@ export type DtoCreateWalletRequest$Outbound = {
     } | undefined;
     name?: string | undefined;
     price_unit?: string | undefined;
+    topup_conversion_rate?: string | undefined;
     wallet_type?: string | undefined;
 };
 /** @internal */

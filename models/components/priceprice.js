@@ -77,7 +77,7 @@ exports.PricePrice$inboundSchema = z.object({
     lookup_key: z.string().optional(),
     metadata: z.record(z.string()).optional(),
     meter_id: z.string().optional(),
-    min_quantity: z.string().optional(),
+    min_quantity: z.nullable(z.string()).optional(),
     parent_price_id: z.string().optional(),
     price_unit: z.string().optional(),
     price_unit_amount: z.string().optional(),

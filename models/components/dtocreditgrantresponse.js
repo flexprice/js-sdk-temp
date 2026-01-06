@@ -50,6 +50,7 @@ const typesstatus_js_1 = require("./typesstatus.js");
 /** @internal */
 exports.DtoCreditGrantResponse$inboundSchema = z.object({
     cadence: typescreditgrantcadence_js_1.TypesCreditGrantCadence$inboundSchema.optional(),
+    conversion_rate: z.string().optional(),
     created_at: z.string().optional(),
     created_by: z.string().optional(),
     credit_grant_anchor: z.string().optional(),
@@ -72,10 +73,12 @@ exports.DtoCreditGrantResponse$inboundSchema = z.object({
     status: typesstatus_js_1.TypesStatus$inboundSchema.optional(),
     subscription_id: z.string().optional(),
     tenant_id: z.string().optional(),
+    topup_conversion_rate: z.string().optional(),
     updated_at: z.string().optional(),
     updated_by: z.string().optional(),
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
+        "conversion_rate": "conversionRate",
         "created_at": "createdAt",
         "created_by": "createdBy",
         "credit_grant_anchor": "creditGrantAnchor",
@@ -89,6 +92,7 @@ exports.DtoCreditGrantResponse$inboundSchema = z.object({
         "start_date": "startDate",
         "subscription_id": "subscriptionId",
         "tenant_id": "tenantId",
+        "topup_conversion_rate": "topupConversionRate",
         "updated_at": "updatedAt",
         "updated_by": "updatedBy",
     });

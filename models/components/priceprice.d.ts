@@ -92,7 +92,7 @@ export type PricePrice = {
     /**
      * MinQuantity is the minimum quantity of the price
      */
-    minQuantity?: string | undefined;
+    minQuantity?: string | null | undefined;
     /**
      * ParentPriceID references the root price (always set for price lineage tracking)
      */

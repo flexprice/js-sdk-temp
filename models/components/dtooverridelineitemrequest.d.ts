@@ -14,6 +14,14 @@ export type DtoOverrideLineItemRequest = {
      */
     priceId: string;
     /**
+     * PriceUnitAmount is the amount of the price unit (for CUSTOM type, FLAT_FEE/PACKAGE billing models)
+     */
+    priceUnitAmount?: string | undefined;
+    /**
+     * PriceUnitTiers are the tiers for the price unit (for CUSTOM type, TIERED billing model)
+     */
+    priceUnitTiers?: Array<DtoCreatePriceTier> | undefined;
+    /**
      * Quantity for this line item (optional)
      */
     quantity?: string | undefined;
@@ -29,6 +37,8 @@ export type DtoOverrideLineItemRequest$Outbound = {
     amount?: string | undefined;
     billing_model?: string | undefined;
     price_id: string;
+    price_unit_amount?: string | undefined;
+    price_unit_tiers?: Array<DtoCreatePriceTier$Outbound> | undefined;
     quantity?: string | undefined;
     tier_mode?: string | undefined;
     tiers?: Array<DtoCreatePriceTier$Outbound> | undefined;

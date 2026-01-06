@@ -52,6 +52,7 @@ const typeswallettxreferencetype_js_1 = require("./typeswallettxreferencetype.js
 /** @internal */
 exports.DtoWalletTransactionResponse$inboundSchema = z.object({
     amount: z.string().optional(),
+    conversion_rate: z.string().optional(),
     created_at: z.string().optional(),
     created_by: z.string().optional(),
     created_by_user: dtouserresponse_js_1.DtoUserResponse$inboundSchema.optional(),
@@ -73,6 +74,7 @@ exports.DtoWalletTransactionResponse$inboundSchema = z.object({
     reference_type: typeswallettxreferencetype_js_1.TypesWalletTxReferenceType$inboundSchema.optional(),
     status: typesstatus_js_1.TypesStatus$inboundSchema.optional(),
     tenant_id: z.string().optional(),
+    topup_conversion_rate: z.string().optional(),
     transaction_reason: typestransactionreason_js_1.TypesTransactionReason$inboundSchema.optional(),
     transaction_status: typestransactionstatus_js_1.TypesTransactionStatus$inboundSchema.optional(),
     type: typestransactiontype_js_1.TypesTransactionType$inboundSchema.optional(),
@@ -82,6 +84,7 @@ exports.DtoWalletTransactionResponse$inboundSchema = z.object({
     wallet_id: z.string().optional(),
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
+        "conversion_rate": "conversionRate",
         "created_at": "createdAt",
         "created_by": "createdBy",
         "created_by_user": "createdByUser",
@@ -96,6 +99,7 @@ exports.DtoWalletTransactionResponse$inboundSchema = z.object({
         "reference_id": "referenceId",
         "reference_type": "referenceType",
         "tenant_id": "tenantId",
+        "topup_conversion_rate": "topupConversionRate",
         "transaction_reason": "transactionReason",
         "transaction_status": "transactionStatus",
         "updated_at": "updatedAt",

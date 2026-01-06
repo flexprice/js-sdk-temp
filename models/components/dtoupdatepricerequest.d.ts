@@ -26,6 +26,14 @@ export type DtoUpdatePriceRequest = {
     metadata?: {
         [k: string]: string;
     } | undefined;
+    /**
+     * PriceUnitAmount is the price unit amount (for CUSTOM price unit type, FLAT_FEE/PACKAGE billing models)
+     */
+    priceUnitAmount?: string | undefined;
+    /**
+     * PriceUnitTiers are the price unit tiers (for CUSTOM price unit type, TIERED billing model)
+     */
+    priceUnitTiers?: Array<DtoCreatePriceTier> | undefined;
     tierMode?: TypesBillingTier | undefined;
     /**
      * Tiers determines the pricing tiers for this line item
@@ -45,6 +53,8 @@ export type DtoUpdatePriceRequest$Outbound = {
     metadata?: {
         [k: string]: string;
     } | undefined;
+    price_unit_amount?: string | undefined;
+    price_unit_tiers?: Array<DtoCreatePriceTier$Outbound> | undefined;
     tier_mode?: string | undefined;
     tiers?: Array<DtoCreatePriceTier$Outbound> | undefined;
     transform_quantity?: PriceTransformQuantity$Outbound | undefined;

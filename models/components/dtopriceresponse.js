@@ -85,7 +85,7 @@ exports.DtoPriceResponse$inboundSchema = z.object({
     metadata: z.record(z.string()).optional(),
     meter: dtometerresponse_js_1.DtoMeterResponse$inboundSchema.optional(),
     meter_id: z.string().optional(),
-    min_quantity: z.string().optional(),
+    min_quantity: z.nullable(z.string()).optional(),
     parent_price_id: z.string().optional(),
     plan: z.lazy(() => dtoplanresponse_js_1.DtoPlanResponse$inboundSchema).optional(),
     price_unit: z.string().optional(),

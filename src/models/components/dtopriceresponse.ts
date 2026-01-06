@@ -150,7 +150,7 @@ export type DtoPriceResponse = {
   /**
    * MinQuantity is the minimum quantity of the price
    */
-  minQuantity?: string | undefined;
+  minQuantity?: string | null | undefined;
   /**
    * ParentPriceID references the root price (always set for price lineage tracking)
    */
@@ -227,7 +227,7 @@ export const DtoPriceResponse$inboundSchema: z.ZodType<
   metadata: z.record(z.string()).optional(),
   meter: DtoMeterResponse$inboundSchema.optional(),
   meter_id: z.string().optional(),
-  min_quantity: z.string().optional(),
+  min_quantity: z.nullable(z.string()).optional(),
   parent_price_id: z.string().optional(),
   plan: z.lazy(() => DtoPlanResponse$inboundSchema).optional(),
   price_unit: z.string().optional(),

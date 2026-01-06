@@ -11,6 +11,10 @@ import { TypesTransactionType } from "./typestransactiontype.js";
 import { TypesWalletTxReferenceType } from "./typeswallettxreferencetype.js";
 export type DtoWalletTransactionResponse = {
     amount?: string | undefined;
+    /**
+     * conversion_rate is the conversion rate for the transaction to the currency
+     */
+    conversionRate?: string | undefined;
     createdAt?: string | undefined;
     createdBy?: string | undefined;
     createdByUser?: DtoUserResponse | undefined;
@@ -37,6 +41,10 @@ export type DtoWalletTransactionResponse = {
     referenceType?: TypesWalletTxReferenceType | undefined;
     status?: TypesStatus | undefined;
     tenantId?: string | undefined;
+    /**
+     * topup_conversion_rate is the conversion rate for the topup to the currency
+     */
+    topupConversionRate?: string | undefined;
     transactionReason?: TypesTransactionReason | undefined;
     transactionStatus?: TypesTransactionStatus | undefined;
     type?: TypesTransactionType | undefined;

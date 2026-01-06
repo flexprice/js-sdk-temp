@@ -48,6 +48,7 @@ const typescreditgrantscope_js_1 = require("./typescreditgrantscope.js");
 /** @internal */
 exports.DtoCreateCreditGrantRequest$outboundSchema = z.object({
     cadence: typescreditgrantcadence_js_1.TypesCreditGrantCadence$outboundSchema,
+    conversionRate: z.string().optional(),
     credits: z.string(),
     expirationDuration: z.number().int().optional(),
     expirationDurationUnit: typescreditgrantexpirydurationunit_js_1.TypesCreditGrantExpiryDurationUnit$outboundSchema
@@ -61,14 +62,17 @@ exports.DtoCreateCreditGrantRequest$outboundSchema = z.object({
     priority: z.number().int().optional(),
     scope: typescreditgrantscope_js_1.TypesCreditGrantScope$outboundSchema,
     subscriptionId: z.string().optional(),
+    topupConversionRate: z.string().optional(),
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
+        conversionRate: "conversion_rate",
         expirationDuration: "expiration_duration",
         expirationDurationUnit: "expiration_duration_unit",
         expirationType: "expiration_type",
         periodCount: "period_count",
         planId: "plan_id",
         subscriptionId: "subscription_id",
+        topupConversionRate: "topup_conversion_rate",
     });
 });
 function dtoCreateCreditGrantRequestToJSON(dtoCreateCreditGrantRequest) {

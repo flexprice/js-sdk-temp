@@ -31,6 +31,15 @@ import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
 
 export type DtoCreditGrantResponse = {
   cadence?: TypesCreditGrantCadence | undefined;
+  /**
+   * amount in the currency =  number of credits * conversion_rate
+   *
+   * @remarks
+   * ex if conversion_rate is 1, then 1 USD = 1 credit
+   * ex if conversion_rate is 2, then 1 USD = 0.5 credits
+   * ex if conversion_rate is 0.5, then 1 USD = 2 credits
+   */
+  conversionRate?: string | undefined;
   createdAt?: string | undefined;
   createdBy?: string | undefined;
   creditGrantAnchor?: string | undefined;
@@ -52,6 +61,15 @@ export type DtoCreditGrantResponse = {
   status?: TypesStatus | undefined;
   subscriptionId?: string | undefined;
   tenantId?: string | undefined;
+  /**
+   * topup_conversion_rate is the conversion rate for the topup to the currency
+   *
+   * @remarks
+   * ex if topup_conversion_rate is 1, then 1 USD = 1 credit
+   * ex if topup_conversion_rate is 2, then 1 USD = 0.5 credits
+   * ex if topup_conversion_rate is 0.5, then 1 USD = 2 credits
+   */
+  topupConversionRate?: string | undefined;
   updatedAt?: string | undefined;
   updatedBy?: string | undefined;
 };
@@ -63,6 +81,7 @@ export const DtoCreditGrantResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   cadence: TypesCreditGrantCadence$inboundSchema.optional(),
+  conversion_rate: z.string().optional(),
   created_at: z.string().optional(),
   created_by: z.string().optional(),
   credit_grant_anchor: z.string().optional(),
@@ -85,10 +104,12 @@ export const DtoCreditGrantResponse$inboundSchema: z.ZodType<
   status: TypesStatus$inboundSchema.optional(),
   subscription_id: z.string().optional(),
   tenant_id: z.string().optional(),
+  topup_conversion_rate: z.string().optional(),
   updated_at: z.string().optional(),
   updated_by: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
+    "conversion_rate": "conversionRate",
     "created_at": "createdAt",
     "created_by": "createdBy",
     "credit_grant_anchor": "creditGrantAnchor",
@@ -102,6 +123,7 @@ export const DtoCreditGrantResponse$inboundSchema: z.ZodType<
     "start_date": "startDate",
     "subscription_id": "subscriptionId",
     "tenant_id": "tenantId",
+    "topup_conversion_rate": "topupConversionRate",
     "updated_at": "updatedAt",
     "updated_by": "updatedBy",
   });

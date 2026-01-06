@@ -15,6 +15,7 @@ import {
   TypesAutoTopup,
   TypesAutoTopup$inboundSchema,
 } from "./typesautotopup.js";
+import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
 import {
   TypesWalletConfig,
   TypesWalletConfig$inboundSchema,
@@ -35,16 +36,38 @@ export type DtoWalletResponse = {
   autoTopup?: TypesAutoTopup | undefined;
   balance?: string | undefined;
   config?: TypesWalletConfig | undefined;
+  /**
+   * amount in the currency =  number of credits * conversion_rate
+   *
+   * @remarks
+   * ex if conversion_rate is 1, then 1 USD = 1 credit
+   * ex if conversion_rate is 2, then 1 USD = 0.5 credits
+   * ex if conversion_rate is 0.5, then 1 USD = 2 credits
+   */
   conversionRate?: string | undefined;
   createdAt?: string | undefined;
+  createdBy?: string | undefined;
   creditBalance?: string | undefined;
   currency?: string | undefined;
   customerId?: string | undefined;
   description?: string | undefined;
+  environmentId?: string | undefined;
   id?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
   name?: string | undefined;
+  status?: TypesStatus | undefined;
+  tenantId?: string | undefined;
+  /**
+   * topup_conversion_rate is the conversion rate for the topup to the currency
+   *
+   * @remarks
+   * ex if topup_conversion_rate is 1, then 1 USD = 1 credit
+   * ex if topup_conversion_rate is 2, then 1 USD = 0.5 credits
+   * ex if topup_conversion_rate is 0.5, then 1 USD = 2 credits
+   */
+  topupConversionRate?: string | undefined;
   updatedAt?: string | undefined;
+  updatedBy?: string | undefined;
   walletStatus?: TypesWalletStatus | undefined;
   walletType?: TypesWalletType | undefined;
 };
@@ -63,14 +86,20 @@ export const DtoWalletResponse$inboundSchema: z.ZodType<
   config: TypesWalletConfig$inboundSchema.optional(),
   conversion_rate: z.string().optional(),
   created_at: z.string().optional(),
+  created_by: z.string().optional(),
   credit_balance: z.string().optional(),
   currency: z.string().optional(),
   customer_id: z.string().optional(),
   description: z.string().optional(),
+  environment_id: z.string().optional(),
   id: z.string().optional(),
   metadata: z.record(z.string()).optional(),
   name: z.string().optional(),
+  status: TypesStatus$inboundSchema.optional(),
+  tenant_id: z.string().optional(),
+  topup_conversion_rate: z.string().optional(),
   updated_at: z.string().optional(),
+  updated_by: z.string().optional(),
   wallet_status: TypesWalletStatus$inboundSchema.optional(),
   wallet_type: TypesWalletType$inboundSchema.optional(),
 }).transform((v) => {
@@ -81,9 +110,14 @@ export const DtoWalletResponse$inboundSchema: z.ZodType<
     "auto_topup": "autoTopup",
     "conversion_rate": "conversionRate",
     "created_at": "createdAt",
+    "created_by": "createdBy",
     "credit_balance": "creditBalance",
     "customer_id": "customerId",
+    "environment_id": "environmentId",
+    "tenant_id": "tenantId",
+    "topup_conversion_rate": "topupConversionRate",
     "updated_at": "updatedAt",
+    "updated_by": "updatedBy",
     "wallet_status": "walletStatus",
     "wallet_type": "walletType",
   });

@@ -9,6 +9,15 @@ import { TypesCreditGrantScope } from "./typescreditgrantscope.js";
 import { TypesStatus } from "./typesstatus.js";
 export type DtoCreditGrantResponse = {
     cadence?: TypesCreditGrantCadence | undefined;
+    /**
+     * amount in the currency =  number of credits * conversion_rate
+     *
+     * @remarks
+     * ex if conversion_rate is 1, then 1 USD = 1 credit
+     * ex if conversion_rate is 2, then 1 USD = 0.5 credits
+     * ex if conversion_rate is 0.5, then 1 USD = 2 credits
+     */
+    conversionRate?: string | undefined;
     createdAt?: string | undefined;
     createdBy?: string | undefined;
     creditGrantAnchor?: string | undefined;
@@ -32,6 +41,15 @@ export type DtoCreditGrantResponse = {
     status?: TypesStatus | undefined;
     subscriptionId?: string | undefined;
     tenantId?: string | undefined;
+    /**
+     * topup_conversion_rate is the conversion rate for the topup to the currency
+     *
+     * @remarks
+     * ex if topup_conversion_rate is 1, then 1 USD = 1 credit
+     * ex if topup_conversion_rate is 2, then 1 USD = 0.5 credits
+     * ex if topup_conversion_rate is 0.5, then 1 USD = 2 credits
+     */
+    topupConversionRate?: string | undefined;
     updatedAt?: string | undefined;
     updatedBy?: string | undefined;
 };

@@ -39,6 +39,10 @@ import {
 
 export type DtoWalletTransactionResponse = {
   amount?: string | undefined;
+  /**
+   * conversion_rate is the conversion rate for the transaction to the currency
+   */
+  conversionRate?: string | undefined;
   createdAt?: string | undefined;
   createdBy?: string | undefined;
   createdByUser?: DtoUserResponse | undefined;
@@ -63,6 +67,10 @@ export type DtoWalletTransactionResponse = {
   referenceType?: TypesWalletTxReferenceType | undefined;
   status?: TypesStatus | undefined;
   tenantId?: string | undefined;
+  /**
+   * topup_conversion_rate is the conversion rate for the topup to the currency
+   */
+  topupConversionRate?: string | undefined;
   transactionReason?: TypesTransactionReason | undefined;
   transactionStatus?: TypesTransactionStatus | undefined;
   type?: TypesTransactionType | undefined;
@@ -79,6 +87,7 @@ export const DtoWalletTransactionResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   amount: z.string().optional(),
+  conversion_rate: z.string().optional(),
   created_at: z.string().optional(),
   created_by: z.string().optional(),
   created_by_user: DtoUserResponse$inboundSchema.optional(),
@@ -100,6 +109,7 @@ export const DtoWalletTransactionResponse$inboundSchema: z.ZodType<
   reference_type: TypesWalletTxReferenceType$inboundSchema.optional(),
   status: TypesStatus$inboundSchema.optional(),
   tenant_id: z.string().optional(),
+  topup_conversion_rate: z.string().optional(),
   transaction_reason: TypesTransactionReason$inboundSchema.optional(),
   transaction_status: TypesTransactionStatus$inboundSchema.optional(),
   type: TypesTransactionType$inboundSchema.optional(),
@@ -109,6 +119,7 @@ export const DtoWalletTransactionResponse$inboundSchema: z.ZodType<
   wallet_id: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
+    "conversion_rate": "conversionRate",
     "created_at": "createdAt",
     "created_by": "createdBy",
     "created_by_user": "createdByUser",
@@ -123,6 +134,7 @@ export const DtoWalletTransactionResponse$inboundSchema: z.ZodType<
     "reference_id": "referenceId",
     "reference_type": "referenceType",
     "tenant_id": "tenantId",
+    "topup_conversion_rate": "topupConversionRate",
     "transaction_reason": "transactionReason",
     "transaction_status": "transactionStatus",
     "updated_at": "updatedAt",

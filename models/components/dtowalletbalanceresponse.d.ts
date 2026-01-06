@@ -41,6 +41,15 @@ export type DtoWalletBalanceResponse = {
     realTimeCreditBalance?: string | undefined;
     status?: TypesStatus | undefined;
     tenantId?: string | undefined;
+    /**
+     * topup_conversion_rate is the conversion rate for the topup to the currency
+     *
+     * @remarks
+     * ex if topup_conversion_rate is 1, then 1 USD = 1 credit
+     * ex if topup_conversion_rate is 2, then 1 USD = 0.5 credits
+     * ex if topup_conversion_rate is 0.5, then 1 USD = 2 credits
+     */
+    topupConversionRate?: string | undefined;
     unpaidInvoicesAmount?: string | undefined;
     updatedAt?: string | undefined;
     updatedBy?: string | undefined;

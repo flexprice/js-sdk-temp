@@ -61,6 +61,15 @@ export type DtoWalletBalanceResponse = {
   realTimeCreditBalance?: string | undefined;
   status?: TypesStatus | undefined;
   tenantId?: string | undefined;
+  /**
+   * topup_conversion_rate is the conversion rate for the topup to the currency
+   *
+   * @remarks
+   * ex if topup_conversion_rate is 1, then 1 USD = 1 credit
+   * ex if topup_conversion_rate is 2, then 1 USD = 0.5 credits
+   * ex if topup_conversion_rate is 0.5, then 1 USD = 2 credits
+   */
+  topupConversionRate?: string | undefined;
   unpaidInvoicesAmount?: string | undefined;
   updatedAt?: string | undefined;
   updatedBy?: string | undefined;
@@ -97,6 +106,7 @@ export const DtoWalletBalanceResponse$inboundSchema: z.ZodType<
   real_time_credit_balance: z.string().optional(),
   status: TypesStatus$inboundSchema.optional(),
   tenant_id: z.string().optional(),
+  topup_conversion_rate: z.string().optional(),
   unpaid_invoices_amount: z.string().optional(),
   updated_at: z.string().optional(),
   updated_by: z.string().optional(),
@@ -119,6 +129,7 @@ export const DtoWalletBalanceResponse$inboundSchema: z.ZodType<
     "real_time_balance": "realTimeBalance",
     "real_time_credit_balance": "realTimeCreditBalance",
     "tenant_id": "tenantId",
+    "topup_conversion_rate": "topupConversionRate",
     "unpaid_invoices_amount": "unpaidInvoicesAmount",
     "updated_at": "updatedAt",
     "updated_by": "updatedBy",

@@ -61,6 +61,7 @@ exports.DtoCreateWalletRequest$outboundSchema = z.object({
     metadata: z.record(z.string()).optional(),
     name: z.string().optional(),
     priceUnit: z.string().optional(),
+    topupConversionRate: z.string().optional(),
     walletType: typeswallettype_js_1.TypesWalletType$outboundSchema.optional(),
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
@@ -74,6 +75,7 @@ exports.DtoCreateWalletRequest$outboundSchema = z.object({
         initialCreditsToLoad: "initial_credits_to_load",
         initialCreditsToLoadExpiryDate: "initial_credits_to_load_expiry_date",
         priceUnit: "price_unit",
+        topupConversionRate: "topup_conversion_rate",
         walletType: "wallet_type",
     });
 });

@@ -54,6 +54,8 @@ exports.DtoUpdatePriceRequest$outboundSchema = z.object({
     groupId: z.string().optional(),
     lookupKey: z.string().optional(),
     metadata: z.record(z.string()).optional(),
+    priceUnitAmount: z.string().optional(),
+    priceUnitTiers: z.array(dtocreatepricetier_js_1.DtoCreatePriceTier$outboundSchema).optional(),
     tierMode: typesbillingtier_js_1.TypesBillingTier$outboundSchema.optional(),
     tiers: z.array(dtocreatepricetier_js_1.DtoCreatePriceTier$outboundSchema).optional(),
     transformQuantity: pricetransformquantity_js_1.PriceTransformQuantity$outboundSchema.optional(),
@@ -64,6 +66,8 @@ exports.DtoUpdatePriceRequest$outboundSchema = z.object({
         effectiveFrom: "effective_from",
         groupId: "group_id",
         lookupKey: "lookup_key",
+        priceUnitAmount: "price_unit_amount",
+        priceUnitTiers: "price_unit_tiers",
         tierMode: "tier_mode",
         transformQuantity: "transform_quantity",
     });

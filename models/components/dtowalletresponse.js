@@ -43,6 +43,7 @@ const primitives_js_1 = require("../../lib/primitives.js");
 const schemas_js_1 = require("../../lib/schemas.js");
 const typesalertconfig_js_1 = require("./typesalertconfig.js");
 const typesautotopup_js_1 = require("./typesautotopup.js");
+const typesstatus_js_1 = require("./typesstatus.js");
 const typeswalletconfig_js_1 = require("./typeswalletconfig.js");
 const typeswalletstatus_js_1 = require("./typeswalletstatus.js");
 const typeswallettype_js_1 = require("./typeswallettype.js");
@@ -56,14 +57,20 @@ exports.DtoWalletResponse$inboundSchema = z.object({
     config: typeswalletconfig_js_1.TypesWalletConfig$inboundSchema.optional(),
     conversion_rate: z.string().optional(),
     created_at: z.string().optional(),
+    created_by: z.string().optional(),
     credit_balance: z.string().optional(),
     currency: z.string().optional(),
     customer_id: z.string().optional(),
     description: z.string().optional(),
+    environment_id: z.string().optional(),
     id: z.string().optional(),
     metadata: z.record(z.string()).optional(),
     name: z.string().optional(),
+    status: typesstatus_js_1.TypesStatus$inboundSchema.optional(),
+    tenant_id: z.string().optional(),
+    topup_conversion_rate: z.string().optional(),
     updated_at: z.string().optional(),
+    updated_by: z.string().optional(),
     wallet_status: typeswalletstatus_js_1.TypesWalletStatus$inboundSchema.optional(),
     wallet_type: typeswallettype_js_1.TypesWalletType$inboundSchema.optional(),
 }).transform((v) => {
@@ -74,9 +81,14 @@ exports.DtoWalletResponse$inboundSchema = z.object({
         "auto_topup": "autoTopup",
         "conversion_rate": "conversionRate",
         "created_at": "createdAt",
+        "created_by": "createdBy",
         "credit_balance": "creditBalance",
         "customer_id": "customerId",
+        "environment_id": "environmentId",
+        "tenant_id": "tenantId",
+        "topup_conversion_rate": "topupConversionRate",
         "updated_at": "updatedAt",
+        "updated_by": "updatedBy",
         "wallet_status": "walletStatus",
         "wallet_type": "walletType",
     });
