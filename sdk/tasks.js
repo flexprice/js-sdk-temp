@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Tasks = void 0;
 const tasksGetTasks_js_1 = require("../funcs/tasksGetTasks.js");
 const tasksGetTasksId_js_1 = require("../funcs/tasksGetTasksId.js");
+const tasksGetTasksIdDownload_js_1 = require("../funcs/tasksGetTasksIdDownload.js");
 const tasksGetTasksResult_js_1 = require("../funcs/tasksGetTasksResult.js");
 const tasksPostTasks_js_1 = require("../funcs/tasksPostTasks.js");
 const tasksPutTasksIdStatus_js_1 = require("../funcs/tasksPutTasksIdStatus.js");
@@ -47,6 +48,15 @@ class Tasks extends sdks_js_1.ClientSDK {
      */
     async getTasksId(id, options) {
         return (0, fp_js_1.unwrapAsync)((0, tasksGetTasksId_js_1.tasksGetTasksId)(this, id, options));
+    }
+    /**
+     * Download task export file
+     *
+     * @remarks
+     * Generate a presigned URL for downloading an exported file (supports both Flexprice-managed and customer-owned S3)
+     */
+    async getTasksIdDownload(id, options) {
+        return (0, fp_js_1.unwrapAsync)((0, tasksGetTasksIdDownload_js_1.tasksGetTasksIdDownload)(this, id, options));
     }
     /**
      * Update task status

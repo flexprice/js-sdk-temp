@@ -5,6 +5,7 @@
 import { pricesDeletePricesId } from "../funcs/pricesDeletePricesId.js";
 import { pricesGetPrices } from "../funcs/pricesGetPrices.js";
 import { pricesGetPricesId } from "../funcs/pricesGetPricesId.js";
+import { pricesGetPricesLookupLookupKey } from "../funcs/pricesGetPricesLookupLookupKey.js";
 import { pricesPostPrices } from "../funcs/pricesPostPrices.js";
 import { pricesPostPricesBulk } from "../funcs/pricesPostPricesBulk.js";
 import { pricesPutPricesId } from "../funcs/pricesPutPricesId.js";
@@ -61,6 +62,23 @@ export class Prices extends ClientSDK {
     return unwrapAsync(pricesPostPricesBulk(
       this,
       request,
+      options,
+    ));
+  }
+
+  /**
+   * Get price by lookup key
+   *
+   * @remarks
+   * Get price by lookup key
+   */
+  async getPricesLookupLookupKey(
+    lookupKey: string,
+    options?: RequestOptions,
+  ): Promise<components.DtoPriceResponse> {
+    return unwrapAsync(pricesGetPricesLookupLookupKey(
+      this,
+      lookupKey,
       options,
     ));
   }

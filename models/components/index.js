@@ -332,6 +332,7 @@ __exportStar(require("./typesroundtype.js"), exports);
 __exportStar(require("./typess3compressiontype.js"), exports);
 __exportStar(require("./typess3connectionmetadata.js"), exports);
 __exportStar(require("./typess3encryptiontype.js"), exports);
+__exportStar(require("./typess3exportconfig.js"), exports);
 __exportStar(require("./typess3jobconfig.js"), exports);
 __exportStar(require("./typesscheduledtaskentitytype.js"), exports);
 __exportStar(require("./typesscheduledtaskinterval.js"), exports);

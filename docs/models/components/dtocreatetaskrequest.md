@@ -6,7 +6,7 @@
 import { DtoCreateTaskRequest } from "flexprice-sdk-test/models/components";
 
 let value: DtoCreateTaskRequest = {
-  entityType: "CUSTOMERS",
+  entityType: "FEATURES",
   fileType: "JSON",
   fileUrl: "https://necessary-wombat.net/",
   taskType: "IMPORT",

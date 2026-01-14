@@ -329,6 +329,7 @@ run();
 * [getPrices](docs/sdks/prices/README.md#getprices) - Get prices
 * [postPrices](docs/sdks/prices/README.md#postprices) - Create a new price
 * [postPricesBulk](docs/sdks/prices/README.md#postpricesbulk) - Create multiple prices in bulk
+* [getPricesLookupLookupKey](docs/sdks/prices/README.md#getpriceslookuplookupkey) - Get price by lookup key
 * [getPricesId](docs/sdks/prices/README.md#getpricesid) - Get a price by ID
 * [putPricesId](docs/sdks/prices/README.md#putpricesid) - Update a price
 * [deletePricesId](docs/sdks/prices/README.md#deletepricesid) - Delete a price
@@ -382,6 +383,7 @@ run();
 * [postTasks](docs/sdks/tasks/README.md#posttasks) - Create a new task
 * [getTasksResult](docs/sdks/tasks/README.md#gettasksresult) - Get task processing result
 * [getTasksId](docs/sdks/tasks/README.md#gettasksid) - Get a task
+* [getTasksIdDownload](docs/sdks/tasks/README.md#gettasksiddownload) - Download task export file
 * [putTasksIdStatus](docs/sdks/tasks/README.md#puttasksidstatus) - Update task status
 
 ### [TaxAssociations](docs/sdks/taxassociations/README.md)
@@ -574,6 +576,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`pricesDeletePricesId`](docs/sdks/prices/README.md#deletepricesid) - Delete a price
 - [`pricesGetPrices`](docs/sdks/prices/README.md#getprices) - Get prices
 - [`pricesGetPricesId`](docs/sdks/prices/README.md#getpricesid) - Get a price by ID
+- [`pricesGetPricesLookupLookupKey`](docs/sdks/prices/README.md#getpriceslookuplookupkey) - Get price by lookup key
 - [`pricesPostPrices`](docs/sdks/prices/README.md#postprices) - Create a new price
 - [`pricesPostPricesBulk`](docs/sdks/prices/README.md#postpricesbulk) - Create multiple prices in bulk
 - [`pricesPutPricesId`](docs/sdks/prices/README.md#putpricesid) - Update a price
@@ -617,6 +620,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`subscriptionsPutSubscriptionsLineitemsId`](docs/sdks/subscriptions/README.md#putsubscriptionslineitemsid) - Update subscription line item
 - [`tasksGetTasks`](docs/sdks/tasks/README.md#gettasks) - List tasks
 - [`tasksGetTasksId`](docs/sdks/tasks/README.md#gettasksid) - Get a task
+- [`tasksGetTasksIdDownload`](docs/sdks/tasks/README.md#gettasksiddownload) - Download task export file
 - [`tasksGetTasksResult`](docs/sdks/tasks/README.md#gettasksresult) - Get task processing result
 - [`tasksPostTasks`](docs/sdks/tasks/README.md#posttasks) - Create a new task
 - [`tasksPutTasksIdStatus`](docs/sdks/tasks/README.md#puttasksidstatus) - Update task status

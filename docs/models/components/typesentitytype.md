@@ -11,5 +11,5 @@ let value: TypesEntityType = "PRICES";
 ## Values
 
 ```typescript
-"EVENTS" | "PRICES" | "CUSTOMERS"
+"EVENTS" | "PRICES" | "CUSTOMERS" | "FEATURES"
 ```

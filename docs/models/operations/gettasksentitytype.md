@@ -11,5 +11,5 @@ let value: GetTasksEntityType = "EVENTS";
 ## Values
 
 ```typescript
-"EVENTS" | "PRICES" | "CUSTOMERS"
+"EVENTS" | "PRICES" | "CUSTOMERS" | "FEATURES"
 ```

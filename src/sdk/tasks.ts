@@ -4,6 +4,7 @@
 
 import { tasksGetTasks } from "../funcs/tasksGetTasks.js";
 import { tasksGetTasksId } from "../funcs/tasksGetTasksId.js";
+import { tasksGetTasksIdDownload } from "../funcs/tasksGetTasksIdDownload.js";
 import { tasksGetTasksResult } from "../funcs/tasksGetTasksResult.js";
 import { tasksPostTasks } from "../funcs/tasksPostTasks.js";
 import { tasksPutTasksIdStatus } from "../funcs/tasksPutTasksIdStatus.js";
@@ -75,6 +76,23 @@ export class Tasks extends ClientSDK {
     options?: RequestOptions,
   ): Promise<components.DtoTaskResponse> {
     return unwrapAsync(tasksGetTasksId(
+      this,
+      id,
+      options,
+    ));
+  }
+
+  /**
+   * Download task export file
+   *
+   * @remarks
+   * Generate a presigned URL for downloading an exported file (supports both Flexprice-managed and customer-owned S3)
+   */
+  async getTasksIdDownload(
+    id: string,
+    options?: RequestOptions,
+  ): Promise<{ [k: string]: string }> {
+    return unwrapAsync(tasksGetTasksIdDownload(
       this,
       id,
       options,

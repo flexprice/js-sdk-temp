@@ -317,6 +317,7 @@ export * from "./typesroundtype.js";
 export * from "./typess3compressiontype.js";
 export * from "./typess3connectionmetadata.js";
 export * from "./typess3encryptiontype.js";
+export * from "./typess3exportconfig.js";
 export * from "./typess3jobconfig.js";
 export * from "./typesscheduledtaskentitytype.js";
 export * from "./typesscheduledtaskinterval.js";

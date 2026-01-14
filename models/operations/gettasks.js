@@ -44,6 +44,7 @@ exports.GetTasksEntityType = {
     Events: "EVENTS",
     Prices: "PRICES",
     Customers: "CUSTOMERS",
+    Features: "FEATURES",
 };
 exports.GetTasksOrder = {
     Asc: "asc",

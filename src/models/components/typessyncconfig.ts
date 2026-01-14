@@ -12,6 +12,12 @@ import {
   TypesEntitySyncConfig$Outbound,
   TypesEntitySyncConfig$outboundSchema,
 } from "./typesentitysyncconfig.js";
+import {
+  TypesS3ExportConfig,
+  TypesS3ExportConfig$inboundSchema,
+  TypesS3ExportConfig$Outbound,
+  TypesS3ExportConfig$outboundSchema,
+} from "./typess3exportconfig.js";
 
 export type TypesSyncConfig = {
   deal?: TypesEntitySyncConfig | undefined;
@@ -19,6 +25,7 @@ export type TypesSyncConfig = {
   payment?: TypesEntitySyncConfig | undefined;
   plan?: TypesEntitySyncConfig | undefined;
   quote?: TypesEntitySyncConfig | undefined;
+  s3?: TypesS3ExportConfig | undefined;
   subscription?: TypesEntitySyncConfig | undefined;
 };
 
@@ -33,6 +40,7 @@ export const TypesSyncConfig$inboundSchema: z.ZodType<
   payment: TypesEntitySyncConfig$inboundSchema.optional(),
   plan: TypesEntitySyncConfig$inboundSchema.optional(),
   quote: TypesEntitySyncConfig$inboundSchema.optional(),
+  s3: TypesS3ExportConfig$inboundSchema.optional(),
   subscription: TypesEntitySyncConfig$inboundSchema.optional(),
 });
 /** @internal */
@@ -42,6 +50,7 @@ export type TypesSyncConfig$Outbound = {
   payment?: TypesEntitySyncConfig$Outbound | undefined;
   plan?: TypesEntitySyncConfig$Outbound | undefined;
   quote?: TypesEntitySyncConfig$Outbound | undefined;
+  s3?: TypesS3ExportConfig$Outbound | undefined;
   subscription?: TypesEntitySyncConfig$Outbound | undefined;
 };
 
@@ -56,6 +65,7 @@ export const TypesSyncConfig$outboundSchema: z.ZodType<
   payment: TypesEntitySyncConfig$outboundSchema.optional(),
   plan: TypesEntitySyncConfig$outboundSchema.optional(),
   quote: TypesEntitySyncConfig$outboundSchema.optional(),
+  s3: TypesS3ExportConfig$outboundSchema.optional(),
   subscription: TypesEntitySyncConfig$outboundSchema.optional(),
 });
 

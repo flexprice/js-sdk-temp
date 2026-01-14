@@ -42,6 +42,7 @@ exports.typesSyncConfigFromJSON = typesSyncConfigFromJSON;
 const z = __importStar(require("zod/v3"));
 const schemas_js_1 = require("../../lib/schemas.js");
 const typesentitysyncconfig_js_1 = require("./typesentitysyncconfig.js");
+const typess3exportconfig_js_1 = require("./typess3exportconfig.js");
 /** @internal */
 exports.TypesSyncConfig$inboundSchema = z.object({
     deal: typesentitysyncconfig_js_1.TypesEntitySyncConfig$inboundSchema.optional(),
@@ -49,6 +50,7 @@ exports.TypesSyncConfig$inboundSchema = z.object({
     payment: typesentitysyncconfig_js_1.TypesEntitySyncConfig$inboundSchema.optional(),
     plan: typesentitysyncconfig_js_1.TypesEntitySyncConfig$inboundSchema.optional(),
     quote: typesentitysyncconfig_js_1.TypesEntitySyncConfig$inboundSchema.optional(),
+    s3: typess3exportconfig_js_1.TypesS3ExportConfig$inboundSchema.optional(),
     subscription: typesentitysyncconfig_js_1.TypesEntitySyncConfig$inboundSchema.optional(),
 });
 /** @internal */
@@ -58,6 +60,7 @@ exports.TypesSyncConfig$outboundSchema = z.object({
     payment: typesentitysyncconfig_js_1.TypesEntitySyncConfig$outboundSchema.optional(),
     plan: typesentitysyncconfig_js_1.TypesEntitySyncConfig$outboundSchema.optional(),
     quote: typesentitysyncconfig_js_1.TypesEntitySyncConfig$outboundSchema.optional(),
+    s3: typess3exportconfig_js_1.TypesS3ExportConfig$outboundSchema.optional(),
     subscription: typesentitysyncconfig_js_1.TypesEntitySyncConfig$outboundSchema.optional(),
 });
 function typesSyncConfigToJSON(typesSyncConfig) {

@@ -42,6 +42,7 @@ exports.TypesEntityType = {
     Events: "EVENTS",
     Prices: "PRICES",
     Customers: "CUSTOMERS",
+    Features: "FEATURES",
 };
 /** @internal */
 exports.TypesEntityType$inboundSchema = z.nativeEnum(exports.TypesEntityType);

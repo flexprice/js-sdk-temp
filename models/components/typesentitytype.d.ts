@@ -4,6 +4,7 @@ export declare const TypesEntityType: {
     readonly Events: "EVENTS";
     readonly Prices: "PRICES";
     readonly Customers: "CUSTOMERS";
+    readonly Features: "FEATURES";
 };
 export type TypesEntityType = ClosedEnum<typeof TypesEntityType>;
 /** @internal */

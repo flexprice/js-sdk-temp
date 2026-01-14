@@ -7,6 +7,7 @@ exports.Prices = void 0;
 const pricesDeletePricesId_js_1 = require("../funcs/pricesDeletePricesId.js");
 const pricesGetPrices_js_1 = require("../funcs/pricesGetPrices.js");
 const pricesGetPricesId_js_1 = require("../funcs/pricesGetPricesId.js");
+const pricesGetPricesLookupLookupKey_js_1 = require("../funcs/pricesGetPricesLookupLookupKey.js");
 const pricesPostPrices_js_1 = require("../funcs/pricesPostPrices.js");
 const pricesPostPricesBulk_js_1 = require("../funcs/pricesPostPricesBulk.js");
 const pricesPutPricesId_js_1 = require("../funcs/pricesPutPricesId.js");
@@ -39,6 +40,15 @@ class Prices extends sdks_js_1.ClientSDK {
      */
     async postPricesBulk(request, options) {
         return (0, fp_js_1.unwrapAsync)((0, pricesPostPricesBulk_js_1.pricesPostPricesBulk)(this, request, options));
+    }
+    /**
+     * Get price by lookup key
+     *
+     * @remarks
+     * Get price by lookup key
+     */
+    async getPricesLookupLookupKey(lookupKey, options) {
+        return (0, fp_js_1.unwrapAsync)((0, pricesGetPricesLookupLookupKey_js_1.pricesGetPricesLookupLookupKey)(this, lookupKey, options));
     }
     /**
      * Get a price by ID

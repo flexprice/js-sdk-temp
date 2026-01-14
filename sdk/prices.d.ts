@@ -24,6 +24,13 @@ export declare class Prices extends ClientSDK {
      */
     postPricesBulk(request: components.DtoCreateBulkPriceRequest, options?: RequestOptions): Promise<components.DtoCreateBulkPriceResponse>;
     /**
+     * Get price by lookup key
+     *
+     * @remarks
+     * Get price by lookup key
+     */
+    getPricesLookupLookupKey(lookupKey: string, options?: RequestOptions): Promise<components.DtoPriceResponse>;
+    /**
      * Get a price by ID
      *
      * @remarks

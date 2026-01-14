@@ -4,6 +4,7 @@ export declare const GetTasksEntityType: {
     readonly Events: "EVENTS";
     readonly Prices: "PRICES";
     readonly Customers: "CUSTOMERS";
+    readonly Features: "FEATURES";
 };
 export type GetTasksEntityType = ClosedEnum<typeof GetTasksEntityType>;
 export declare const GetTasksOrder: {

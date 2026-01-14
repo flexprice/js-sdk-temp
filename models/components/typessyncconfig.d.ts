@@ -2,12 +2,14 @@ import * as z from "zod/v3";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import { TypesEntitySyncConfig, TypesEntitySyncConfig$Outbound } from "./typesentitysyncconfig.js";
+import { TypesS3ExportConfig, TypesS3ExportConfig$Outbound } from "./typess3exportconfig.js";
 export type TypesSyncConfig = {
     deal?: TypesEntitySyncConfig | undefined;
     invoice?: TypesEntitySyncConfig | undefined;
     payment?: TypesEntitySyncConfig | undefined;
     plan?: TypesEntitySyncConfig | undefined;
     quote?: TypesEntitySyncConfig | undefined;
+    s3?: TypesS3ExportConfig | undefined;
     subscription?: TypesEntitySyncConfig | undefined;
 };
 /** @internal */
@@ -19,6 +21,7 @@ export type TypesSyncConfig$Outbound = {
     payment?: TypesEntitySyncConfig$Outbound | undefined;
     plan?: TypesEntitySyncConfig$Outbound | undefined;
     quote?: TypesEntitySyncConfig$Outbound | undefined;
+    s3?: TypesS3ExportConfig$Outbound | undefined;
     subscription?: TypesEntitySyncConfig$Outbound | undefined;
 };
 /** @internal */

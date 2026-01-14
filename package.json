@@ -1,6 +1,6 @@
 {
   "name": "flexprice-sdk-test",
-  "version": "1.0.58",
+  "version": "1.0.59",
   "author": "FlexPrice",
   "main": "./index.js",
   "sideEffects": false,

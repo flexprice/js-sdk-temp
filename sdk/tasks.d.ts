@@ -31,6 +31,15 @@ export declare class Tasks extends ClientSDK {
      */
     getTasksId(id: string, options?: RequestOptions): Promise<components.DtoTaskResponse>;
     /**
+     * Download task export file
+     *
+     * @remarks
+     * Generate a presigned URL for downloading an exported file (supports both Flexprice-managed and customer-owned S3)
+     */
+    getTasksIdDownload(id: string, options?: RequestOptions): Promise<{
+        [k: string]: string;
+    }>;
+    /**
      * Update task status
      *
      * @remarks

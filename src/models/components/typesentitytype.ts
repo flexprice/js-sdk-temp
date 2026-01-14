@@ -9,6 +9,7 @@ export const TypesEntityType = {
   Events: "EVENTS",
   Prices: "PRICES",
   Customers: "CUSTOMERS",
+  Features: "FEATURES",
 } as const;
 export type TypesEntityType = ClosedEnum<typeof TypesEntityType>;
 

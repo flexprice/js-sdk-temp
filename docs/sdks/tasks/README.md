@@ -8,6 +8,7 @@
 * [postTasks](#posttasks) - Create a new task
 * [getTasksResult](#gettasksresult) - Get task processing result
 * [getTasksId](#gettasksid) - Get a task
+* [getTasksIdDownload](#gettasksiddownload) - Download task export file
 * [putTasksIdStatus](#puttasksidstatus) - Update task status
 
 ## getTasks
@@ -100,7 +101,7 @@ const flexPrice = new FlexPrice({
 
 async function run() {
   const result = await flexPrice.tasks.postTasks({
-    entityType: "CUSTOMERS",
+    entityType: "FEATURES",
     fileType: "JSON",
     fileUrl: "https://juicy-fundraising.biz/",
     taskType: "IMPORT",
@@ -129,7 +130,7 @@ const flexPrice = new FlexPriceCore({
 
 async function run() {
   const res = await tasksPostTasks(flexPrice, {
-    entityType: "CUSTOMERS",
+    entityType: "FEATURES",
     fileType: "JSON",
     fileUrl: "https://juicy-fundraising.biz/",
     taskType: "IMPORT",
@@ -303,6 +304,79 @@ run();
 ### Response
 
 **Promise\<[components.DtoTaskResponse](../../models/components/dtotaskresponse.md)\>**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.ErrorsErrorResponse | 400, 404                   | application/json           |
+| errors.ErrorsErrorResponse | 500                        | application/json           |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## getTasksIdDownload
+
+Generate a presigned URL for downloading an exported file (supports both Flexprice-managed and customer-owned S3)
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="get_/tasks/{id}/download" method="get" path="/tasks/{id}/download" -->
+```typescript
+import { FlexPrice } from "flexprice-sdk-test";
+
+const flexPrice = new FlexPrice({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const result = await flexPrice.tasks.getTasksIdDownload("<id>");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { FlexPriceCore } from "flexprice-sdk-test/core.js";
+import { tasksGetTasksIdDownload } from "flexprice-sdk-test/funcs/tasksGetTasksIdDownload.js";
+
+// Use `FlexPriceCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const flexPrice = new FlexPriceCore({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await tasksGetTasksIdDownload(flexPrice, "<id>");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("tasksGetTasksIdDownload failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Task ID                                                                                                                                                                        |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[{ [k: string]: string }](../../models/.md)\>**
 
 ### Errors
 

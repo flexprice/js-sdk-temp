@@ -10,6 +10,7 @@ export const GetTasksEntityType = {
   Events: "EVENTS",
   Prices: "PRICES",
   Customers: "CUSTOMERS",
+  Features: "FEATURES",
 } as const;
 export type GetTasksEntityType = ClosedEnum<typeof GetTasksEntityType>;
 
