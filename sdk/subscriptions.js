@@ -4,25 +4,30 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Subscriptions = void 0;
-const subscriptionsDeleteSubscriptionsAddon_js_1 = require("../funcs/subscriptionsDeleteSubscriptionsAddon.js");
-const subscriptionsDeleteSubscriptionsLineitemsId_js_1 = require("../funcs/subscriptionsDeleteSubscriptionsLineitemsId.js");
-const subscriptionsGetSubscriptions_js_1 = require("../funcs/subscriptionsGetSubscriptions.js");
-const subscriptionsGetSubscriptionsId_js_1 = require("../funcs/subscriptionsGetSubscriptionsId.js");
-const subscriptionsGetSubscriptionsIdAddonsAssociations_js_1 = require("../funcs/subscriptionsGetSubscriptionsIdAddonsAssociations.js");
-const subscriptionsGetSubscriptionsIdEntitlements_js_1 = require("../funcs/subscriptionsGetSubscriptionsIdEntitlements.js");
-const subscriptionsGetSubscriptionsIdGrantsUpcoming_js_1 = require("../funcs/subscriptionsGetSubscriptionsIdGrantsUpcoming.js");
-const subscriptionsGetSubscriptionsIdPauses_js_1 = require("../funcs/subscriptionsGetSubscriptionsIdPauses.js");
-const subscriptionsPostSubscriptions_js_1 = require("../funcs/subscriptionsPostSubscriptions.js");
-const subscriptionsPostSubscriptionsAddon_js_1 = require("../funcs/subscriptionsPostSubscriptionsAddon.js");
-const subscriptionsPostSubscriptionsIdActivate_js_1 = require("../funcs/subscriptionsPostSubscriptionsIdActivate.js");
-const subscriptionsPostSubscriptionsIdCancel_js_1 = require("../funcs/subscriptionsPostSubscriptionsIdCancel.js");
-const subscriptionsPostSubscriptionsIdChangeExecute_js_1 = require("../funcs/subscriptionsPostSubscriptionsIdChangeExecute.js");
-const subscriptionsPostSubscriptionsIdChangePreview_js_1 = require("../funcs/subscriptionsPostSubscriptionsIdChangePreview.js");
-const subscriptionsPostSubscriptionsIdPause_js_1 = require("../funcs/subscriptionsPostSubscriptionsIdPause.js");
-const subscriptionsPostSubscriptionsIdResume_js_1 = require("../funcs/subscriptionsPostSubscriptionsIdResume.js");
-const subscriptionsPostSubscriptionsSearch_js_1 = require("../funcs/subscriptionsPostSubscriptionsSearch.js");
-const subscriptionsPostSubscriptionsUsage_js_1 = require("../funcs/subscriptionsPostSubscriptionsUsage.js");
-const subscriptionsPutSubscriptionsLineitemsId_js_1 = require("../funcs/subscriptionsPutSubscriptionsLineitemsId.js");
+const subscriptions_delete_subscriptions_addon_js_1 = require("../funcs/subscriptions-delete-subscriptions-addon.js");
+const subscriptions_delete_subscriptions_lineitems_id_js_1 = require("../funcs/subscriptions-delete-subscriptions-lineitems-id.js");
+const subscriptions_get_subscriptions_id_addons_associations_js_1 = require("../funcs/subscriptions-get-subscriptions-id-addons-associations.js");
+const subscriptions_get_subscriptions_id_entitlements_js_1 = require("../funcs/subscriptions-get-subscriptions-id-entitlements.js");
+const subscriptions_get_subscriptions_id_grants_upcoming_js_1 = require("../funcs/subscriptions-get-subscriptions-id-grants-upcoming.js");
+const subscriptions_get_subscriptions_id_pauses_js_1 = require("../funcs/subscriptions-get-subscriptions-id-pauses.js");
+const subscriptions_get_subscriptions_id_v2_js_1 = require("../funcs/subscriptions-get-subscriptions-id-v2.js");
+const subscriptions_get_subscriptions_id_js_1 = require("../funcs/subscriptions-get-subscriptions-id.js");
+const subscriptions_get_subscriptions_js_1 = require("../funcs/subscriptions-get-subscriptions.js");
+const subscriptions_get_v1_subscription_schedules_id_js_1 = require("../funcs/subscriptions-get-v1-subscription-schedules-id.js");
+const subscriptions_get_v1_subscription_schedules_js_1 = require("../funcs/subscriptions-get-v1-subscription-schedules.js");
+const subscriptions_get_v1_subscriptions_subscription_id_schedules_js_1 = require("../funcs/subscriptions-get-v1-subscriptions-subscription-id-schedules.js");
+const subscriptions_post_subscriptions_addon_js_1 = require("../funcs/subscriptions-post-subscriptions-addon.js");
+const subscriptions_post_subscriptions_id_activate_js_1 = require("../funcs/subscriptions-post-subscriptions-id-activate.js");
+const subscriptions_post_subscriptions_id_cancel_js_1 = require("../funcs/subscriptions-post-subscriptions-id-cancel.js");
+const subscriptions_post_subscriptions_id_change_execute_js_1 = require("../funcs/subscriptions-post-subscriptions-id-change-execute.js");
+const subscriptions_post_subscriptions_id_change_preview_js_1 = require("../funcs/subscriptions-post-subscriptions-id-change-preview.js");
+const subscriptions_post_subscriptions_id_pause_js_1 = require("../funcs/subscriptions-post-subscriptions-id-pause.js");
+const subscriptions_post_subscriptions_id_resume_js_1 = require("../funcs/subscriptions-post-subscriptions-id-resume.js");
+const subscriptions_post_subscriptions_search_js_1 = require("../funcs/subscriptions-post-subscriptions-search.js");
+const subscriptions_post_subscriptions_usage_js_1 = require("../funcs/subscriptions-post-subscriptions-usage.js");
+const subscriptions_post_subscriptions_js_1 = require("../funcs/subscriptions-post-subscriptions.js");
+const subscriptions_post_v1_subscriptions_schedules_schedule_id_cancel_js_1 = require("../funcs/subscriptions-post-v1-subscriptions-schedules-schedule-id-cancel.js");
+const subscriptions_put_subscriptions_lineitems_id_js_1 = require("../funcs/subscriptions-put-subscriptions-lineitems-id.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
 class Subscriptions extends sdks_js_1.ClientSDK {
@@ -33,7 +38,7 @@ class Subscriptions extends sdks_js_1.ClientSDK {
      * Get subscriptions with optional filtering
      */
     async getSubscriptions(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, subscriptionsGetSubscriptions_js_1.subscriptionsGetSubscriptions)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, subscriptions_get_subscriptions_js_1.subscriptionsGetSubscriptions)(this, request, options));
     }
     /**
      * Create subscription
@@ -42,7 +47,7 @@ class Subscriptions extends sdks_js_1.ClientSDK {
      * Create a new subscription
      */
     async postSubscriptions(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, subscriptionsPostSubscriptions_js_1.subscriptionsPostSubscriptions)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, subscriptions_post_subscriptions_js_1.subscriptionsPostSubscriptions)(this, request, options));
     }
     /**
      * Add addon to subscription
@@ -51,7 +56,7 @@ class Subscriptions extends sdks_js_1.ClientSDK {
      * Add an addon to a subscription
      */
     async postSubscriptionsAddon(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, subscriptionsPostSubscriptionsAddon_js_1.subscriptionsPostSubscriptionsAddon)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, subscriptions_post_subscriptions_addon_js_1.subscriptionsPostSubscriptionsAddon)(this, request, options));
     }
     /**
      * Remove addon from subscription
@@ -60,7 +65,7 @@ class Subscriptions extends sdks_js_1.ClientSDK {
      * Remove an addon from a subscription
      */
     async deleteSubscriptionsAddon(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, subscriptionsDeleteSubscriptionsAddon_js_1.subscriptionsDeleteSubscriptionsAddon)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, subscriptions_delete_subscriptions_addon_js_1.subscriptionsDeleteSubscriptionsAddon)(this, request, options));
     }
     /**
      * Update subscription line item
@@ -69,7 +74,7 @@ class Subscriptions extends sdks_js_1.ClientSDK {
      * Update a subscription line item by terminating the existing one and creating a new one
      */
     async putSubscriptionsLineitemsId(id, body, options) {
-        return (0, fp_js_1.unwrapAsync)((0, subscriptionsPutSubscriptionsLineitemsId_js_1.subscriptionsPutSubscriptionsLineitemsId)(this, id, body, options));
+        return (0, fp_js_1.unwrapAsync)((0, subscriptions_put_subscriptions_lineitems_id_js_1.subscriptionsPutSubscriptionsLineitemsId)(this, id, body, options));
     }
     /**
      * Delete subscription line item
@@ -78,7 +83,7 @@ class Subscriptions extends sdks_js_1.ClientSDK {
      * Delete a subscription line item by setting its end date
      */
     async deleteSubscriptionsLineitemsId(id, body, options) {
-        return (0, fp_js_1.unwrapAsync)((0, subscriptionsDeleteSubscriptionsLineitemsId_js_1.subscriptionsDeleteSubscriptionsLineitemsId)(this, id, body, options));
+        return (0, fp_js_1.unwrapAsync)((0, subscriptions_delete_subscriptions_lineitems_id_js_1.subscriptionsDeleteSubscriptionsLineitemsId)(this, id, body, options));
     }
     /**
      * List subscriptions by filter
@@ -87,7 +92,7 @@ class Subscriptions extends sdks_js_1.ClientSDK {
      * List subscriptions by filter
      */
     async postSubscriptionsSearch(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, subscriptionsPostSubscriptionsSearch_js_1.subscriptionsPostSubscriptionsSearch)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, subscriptions_post_subscriptions_search_js_1.subscriptionsPostSubscriptionsSearch)(this, request, options));
     }
     /**
      * Get usage by subscription
@@ -96,7 +101,7 @@ class Subscriptions extends sdks_js_1.ClientSDK {
      * Get usage for a subscription
      */
     async postSubscriptionsUsage(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, subscriptionsPostSubscriptionsUsage_js_1.subscriptionsPostSubscriptionsUsage)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, subscriptions_post_subscriptions_usage_js_1.subscriptionsPostSubscriptionsUsage)(this, request, options));
     }
     /**
      * Get subscription
@@ -105,7 +110,7 @@ class Subscriptions extends sdks_js_1.ClientSDK {
      * Get a subscription by ID
      */
     async getSubscriptionsId(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, subscriptionsGetSubscriptionsId_js_1.subscriptionsGetSubscriptionsId)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, subscriptions_get_subscriptions_id_js_1.subscriptionsGetSubscriptionsId)(this, id, options));
     }
     /**
      * Activate draft subscription
@@ -114,7 +119,7 @@ class Subscriptions extends sdks_js_1.ClientSDK {
      * Activate a draft subscription with a new start date
      */
     async postSubscriptionsIdActivate(id, body, options) {
-        return (0, fp_js_1.unwrapAsync)((0, subscriptionsPostSubscriptionsIdActivate_js_1.subscriptionsPostSubscriptionsIdActivate)(this, id, body, options));
+        return (0, fp_js_1.unwrapAsync)((0, subscriptions_post_subscriptions_id_activate_js_1.subscriptionsPostSubscriptionsIdActivate)(this, id, body, options));
     }
     /**
      * Get active addon associations
@@ -123,7 +128,7 @@ class Subscriptions extends sdks_js_1.ClientSDK {
      * Get active addon associations for a subscription
      */
     async getSubscriptionsIdAddonsAssociations(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, subscriptionsGetSubscriptionsIdAddonsAssociations_js_1.subscriptionsGetSubscriptionsIdAddonsAssociations)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, subscriptions_get_subscriptions_id_addons_associations_js_1.subscriptionsGetSubscriptionsIdAddonsAssociations)(this, id, options));
     }
     /**
      * Cancel subscription
@@ -132,7 +137,7 @@ class Subscriptions extends sdks_js_1.ClientSDK {
      * Cancel a subscription with enhanced proration support
      */
     async postSubscriptionsIdCancel(id, body, options) {
-        return (0, fp_js_1.unwrapAsync)((0, subscriptionsPostSubscriptionsIdCancel_js_1.subscriptionsPostSubscriptionsIdCancel)(this, id, body, options));
+        return (0, fp_js_1.unwrapAsync)((0, subscriptions_post_subscriptions_id_cancel_js_1.subscriptionsPostSubscriptionsIdCancel)(this, id, body, options));
     }
     /**
      * Execute subscription plan change
@@ -141,7 +146,7 @@ class Subscriptions extends sdks_js_1.ClientSDK {
      * Execute a subscription plan change, including proration and invoice generation
      */
     async postSubscriptionsIdChangeExecute(id, body, options) {
-        return (0, fp_js_1.unwrapAsync)((0, subscriptionsPostSubscriptionsIdChangeExecute_js_1.subscriptionsPostSubscriptionsIdChangeExecute)(this, id, body, options));
+        return (0, fp_js_1.unwrapAsync)((0, subscriptions_post_subscriptions_id_change_execute_js_1.subscriptionsPostSubscriptionsIdChangeExecute)(this, id, body, options));
     }
     /**
      * Preview subscription plan change
@@ -150,7 +155,7 @@ class Subscriptions extends sdks_js_1.ClientSDK {
      * Preview the impact of changing a subscription's plan, including proration calculations
      */
     async postSubscriptionsIdChangePreview(id, body, options) {
-        return (0, fp_js_1.unwrapAsync)((0, subscriptionsPostSubscriptionsIdChangePreview_js_1.subscriptionsPostSubscriptionsIdChangePreview)(this, id, body, options));
+        return (0, fp_js_1.unwrapAsync)((0, subscriptions_post_subscriptions_id_change_preview_js_1.subscriptionsPostSubscriptionsIdChangePreview)(this, id, body, options));
     }
     /**
      * Get subscription entitlements
@@ -159,7 +164,7 @@ class Subscriptions extends sdks_js_1.ClientSDK {
      * Get all entitlements for a subscription
      */
     async getSubscriptionsIdEntitlements(id, featureIds, options) {
-        return (0, fp_js_1.unwrapAsync)((0, subscriptionsGetSubscriptionsIdEntitlements_js_1.subscriptionsGetSubscriptionsIdEntitlements)(this, id, featureIds, options));
+        return (0, fp_js_1.unwrapAsync)((0, subscriptions_get_subscriptions_id_entitlements_js_1.subscriptionsGetSubscriptionsIdEntitlements)(this, id, featureIds, options));
     }
     /**
      * Get upcoming credit grant applications
@@ -168,7 +173,7 @@ class Subscriptions extends sdks_js_1.ClientSDK {
      * Get upcoming credit grant applications for a subscription
      */
     async getSubscriptionsIdGrantsUpcoming(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, subscriptionsGetSubscriptionsIdGrantsUpcoming_js_1.subscriptionsGetSubscriptionsIdGrantsUpcoming)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, subscriptions_get_subscriptions_id_grants_upcoming_js_1.subscriptionsGetSubscriptionsIdGrantsUpcoming)(this, id, options));
     }
     /**
      * Pause a subscription
@@ -177,7 +182,7 @@ class Subscriptions extends sdks_js_1.ClientSDK {
      * Pause a subscription with the specified parameters
      */
     async postSubscriptionsIdPause(id, body, options) {
-        return (0, fp_js_1.unwrapAsync)((0, subscriptionsPostSubscriptionsIdPause_js_1.subscriptionsPostSubscriptionsIdPause)(this, id, body, options));
+        return (0, fp_js_1.unwrapAsync)((0, subscriptions_post_subscriptions_id_pause_js_1.subscriptionsPostSubscriptionsIdPause)(this, id, body, options));
     }
     /**
      * List all pauses for a subscription
@@ -186,7 +191,7 @@ class Subscriptions extends sdks_js_1.ClientSDK {
      * List all pauses for a subscription
      */
     async getSubscriptionsIdPauses(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, subscriptionsGetSubscriptionsIdPauses_js_1.subscriptionsGetSubscriptionsIdPauses)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, subscriptions_get_subscriptions_id_pauses_js_1.subscriptionsGetSubscriptionsIdPauses)(this, id, options));
     }
     /**
      * Resume a paused subscription
@@ -195,7 +200,52 @@ class Subscriptions extends sdks_js_1.ClientSDK {
      * Resume a paused subscription with the specified parameters
      */
     async postSubscriptionsIdResume(id, body, options) {
-        return (0, fp_js_1.unwrapAsync)((0, subscriptionsPostSubscriptionsIdResume_js_1.subscriptionsPostSubscriptionsIdResume)(this, id, body, options));
+        return (0, fp_js_1.unwrapAsync)((0, subscriptions_post_subscriptions_id_resume_js_1.subscriptionsPostSubscriptionsIdResume)(this, id, body, options));
+    }
+    /**
+     * Get subscription V2
+     *
+     * @remarks
+     * Get a subscription by ID with optional expand parameters
+     */
+    async getSubscriptionsIdV2(id, expand, options) {
+        return (0, fp_js_1.unwrapAsync)((0, subscriptions_get_subscriptions_id_v2_js_1.subscriptionsGetSubscriptionsIdV2)(this, id, expand, options));
+    }
+    /**
+     * List all subscription schedules
+     *
+     * @remarks
+     * Retrieves subscription schedules with optional filtering
+     */
+    async getV1SubscriptionSchedules(pendingOnly, subscriptionId, limit, offset, options) {
+        return (0, fp_js_1.unwrapAsync)((0, subscriptions_get_v1_subscription_schedules_js_1.subscriptionsGetV1SubscriptionSchedules)(this, pendingOnly, subscriptionId, limit, offset, options));
+    }
+    /**
+     * Get subscription schedule
+     *
+     * @remarks
+     * Retrieves details of a specific subscription schedule
+     */
+    async getV1SubscriptionSchedulesId(id, options) {
+        return (0, fp_js_1.unwrapAsync)((0, subscriptions_get_v1_subscription_schedules_id_js_1.subscriptionsGetV1SubscriptionSchedulesId)(this, id, options));
+    }
+    /**
+     * Cancel subscription schedule
+     *
+     * @remarks
+     * Cancels a pending subscription schedule. Supports two modes: 1) By schedule ID in path, or 2) By subscription ID + schedule type in request body
+     */
+    async postV1SubscriptionsSchedulesScheduleIdCancel(scheduleId, body, options) {
+        return (0, fp_js_1.unwrapAsync)((0, subscriptions_post_v1_subscriptions_schedules_schedule_id_cancel_js_1.subscriptionsPostV1SubscriptionsSchedulesScheduleIdCancel)(this, scheduleId, body, options));
+    }
+    /**
+     * List subscription schedules
+     *
+     * @remarks
+     * Retrieves all schedules for a specific subscription
+     */
+    async getV1SubscriptionsSubscriptionIdSchedules(subscriptionId, options) {
+        return (0, fp_js_1.unwrapAsync)((0, subscriptions_get_v1_subscriptions_subscription_id_schedules_js_1.subscriptionsGetV1SubscriptionsSubscriptionIdSchedules)(this, subscriptionId, options));
     }
 }
 exports.Subscriptions = Subscriptions;

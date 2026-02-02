@@ -4,9 +4,9 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Users = void 0;
-const usersGetUsersMe_js_1 = require("../funcs/usersGetUsersMe.js");
-const usersPostUsers_js_1 = require("../funcs/usersPostUsers.js");
-const usersPostUsersSearch_js_1 = require("../funcs/usersPostUsersSearch.js");
+const users_get_users_me_js_1 = require("../funcs/users-get-users-me.js");
+const users_post_users_search_js_1 = require("../funcs/users-post-users-search.js");
+const users_post_users_js_1 = require("../funcs/users-post-users.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
 class Users extends sdks_js_1.ClientSDK {
@@ -17,7 +17,7 @@ class Users extends sdks_js_1.ClientSDK {
      * Create a new service account with required roles. Only service accounts can be created via this endpoint.
      */
     async postUsers(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, usersPostUsers_js_1.usersPostUsers)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, users_post_users_js_1.usersPostUsers)(this, request, options));
     }
     /**
      * Get user info
@@ -26,7 +26,7 @@ class Users extends sdks_js_1.ClientSDK {
      * Get the current user's information
      */
     async getUsersMe(options) {
-        return (0, fp_js_1.unwrapAsync)((0, usersGetUsersMe_js_1.usersGetUsersMe)(this, options));
+        return (0, fp_js_1.unwrapAsync)((0, users_get_users_me_js_1.usersGetUsersMe)(this, options));
     }
     /**
      * List users with filters
@@ -35,7 +35,7 @@ class Users extends sdks_js_1.ClientSDK {
      * Search and filter users by type (user/service_account), roles, etc.
      */
     async postUsersSearch(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, usersPostUsersSearch_js_1.usersPostUsersSearch)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, users_post_users_search_js_1.usersPostUsersSearch)(this, request, options));
     }
 }
 exports.Users = Users;

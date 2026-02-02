@@ -40,7 +40,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { taxRatesGetTaxesRates } from "flexprice-sdk-test/funcs/taxRatesGetTaxesRates.js";
+import { taxRatesGetTaxesRates } from "flexprice-sdk-test/funcs/tax-rates-get-taxes-rates.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -66,7 +66,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetTaxesRatesRequest](../../models/operations/gettaxesratesrequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetTaxesRatesRequest](../../models/operations/get-taxes-rates-request.md)                                                                                          | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -116,7 +116,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { taxRatesPostTaxesRates } from "flexprice-sdk-test/funcs/taxRatesPostTaxesRates.js";
+import { taxRatesPostTaxesRates } from "flexprice-sdk-test/funcs/tax-rates-post-taxes-rates.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -145,14 +145,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreateTaxRateRequest](../../models/components/dtocreatetaxraterequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.DtoCreateTaxRateRequest](../../models/components/dto-create-tax-rate-request.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoTaxRateResponse](../../models/components/dtotaxrateresponse.md)\>**
+**Promise\<[components.DtoTaxRateResponse](../../models/components/dto-tax-rate-response.md)\>**
 
 ### Errors
 
@@ -192,7 +192,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { taxRatesGetTaxesRatesId } from "flexprice-sdk-test/funcs/taxRatesGetTaxesRatesId.js";
+import { taxRatesGetTaxesRatesId } from "flexprice-sdk-test/funcs/tax-rates-get-taxes-rates-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -225,7 +225,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoTaxRateResponse](../../models/components/dtotaxrateresponse.md)\>**
+**Promise\<[components.DtoTaxRateResponse](../../models/components/dto-tax-rate-response.md)\>**
 
 ### Errors
 
@@ -265,7 +265,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { taxRatesPutTaxesRatesId } from "flexprice-sdk-test/funcs/taxRatesPutTaxesRatesId.js";
+import { taxRatesPutTaxesRatesId } from "flexprice-sdk-test/funcs/tax-rates-put-taxes-rates-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -292,14 +292,14 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Tax rate ID                                                                                                                                                                    |
-| `body`                                                                                                                                                                         | [components.DtoUpdateTaxRateRequest](../../models/components/dtoupdatetaxraterequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | Tax rate to update                                                                                                                                                             |
+| `body`                                                                                                                                                                         | [components.DtoUpdateTaxRateRequest](../../models/components/dto-update-tax-rate-request.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | Tax rate to update                                                                                                                                                             |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoTaxRateResponse](../../models/components/dtotaxrateresponse.md)\>**
+**Promise\<[components.DtoTaxRateResponse](../../models/components/dto-tax-rate-response.md)\>**
 
 ### Errors
 
@@ -339,7 +339,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { taxRatesDeleteTaxesRatesId } from "flexprice-sdk-test/funcs/taxRatesDeleteTaxesRatesId.js";
+import { taxRatesDeleteTaxesRatesId } from "flexprice-sdk-test/funcs/tax-rates-delete-taxes-rates-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

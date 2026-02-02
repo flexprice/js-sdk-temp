@@ -43,7 +43,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { groupsPostGroups } from "flexprice-sdk-test/funcs/groupsPostGroups.js";
+import { groupsPostGroups } from "flexprice-sdk-test/funcs/groups-post-groups.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -73,14 +73,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreateGroupRequest](../../models/components/dtocreategrouprequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.DtoCreateGroupRequest](../../models/components/dto-create-group-request.md)                                                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoGroupResponse](../../models/components/dtogroupresponse.md)\>**
+**Promise\<[components.DtoGroupResponse](../../models/components/dto-group-response.md)\>**
 
 ### Errors
 
@@ -120,7 +120,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { groupsPostGroupsSearch } from "flexprice-sdk-test/funcs/groupsPostGroupsSearch.js";
+import { groupsPostGroupsSearch } from "flexprice-sdk-test/funcs/groups-post-groups-search.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -146,14 +146,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PostGroupsSearchRequest](../../models/operations/postgroupssearchrequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.PostGroupsSearchRequest](../../models/operations/post-groups-search-request.md)                                                                                    | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoListGroupsResponse](../../models/components/dtolistgroupsresponse.md)\>**
+**Promise\<[components.DtoListGroupsResponse](../../models/components/dto-list-groups-response.md)\>**
 
 ### Errors
 
@@ -193,7 +193,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { groupsGetGroupsId } from "flexprice-sdk-test/funcs/groupsGetGroupsId.js";
+import { groupsGetGroupsId } from "flexprice-sdk-test/funcs/groups-get-groups-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -226,7 +226,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoGroupResponse](../../models/components/dtogroupresponse.md)\>**
+**Promise\<[components.DtoGroupResponse](../../models/components/dto-group-response.md)\>**
 
 ### Errors
 
@@ -266,7 +266,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { groupsDeleteGroupsId } from "flexprice-sdk-test/funcs/groupsDeleteGroupsId.js";
+import { groupsDeleteGroupsId } from "flexprice-sdk-test/funcs/groups-delete-groups-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

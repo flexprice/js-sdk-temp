@@ -61,5 +61,12 @@ export declare class Events extends ClientSDK {
      * Retrieve aggregated usage statistics using meter configuration
      */
     postEventsUsageMeter(request: ReadableStream<Uint8Array> | Blob | ArrayBuffer | Uint8Array, options?: RequestOptions): Promise<components.DtoGetUsageResponse>;
+    /**
+     * Get event by ID
+     *
+     * @remarks
+     * Retrieve event details and processing status with debug information
+     */
+    getEventsId(id: string, options?: RequestOptions): Promise<components.DtoGetEventByIDResponse>;
 }
 //# sourceMappingURL=events.d.ts.map

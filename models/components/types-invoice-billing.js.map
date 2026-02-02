@@ -1,0 +1,1 @@
+{"version":3,"file":"types-invoice-billing.js","sourceRoot":"","sources":["../../src/models/components/types-invoice-billing.ts"],"names":[],"mappings":";AAAA;;GAEG;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAEH,0CAA4B;AAGf,QAAA,mBAAmB,GAAG;IACjC,eAAe,EAAE,mBAAmB;IACpC,aAAa,EAAE,iBAAiB;CACxB,CAAC;AAGX,gBAAgB;AACH,QAAA,kCAAkC,GAE3C,CAAC,CAAC,UAAU,CAAC,2BAAmB,CAAC,CAAC"}

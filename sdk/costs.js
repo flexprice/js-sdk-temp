@@ -4,14 +4,14 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Costs = void 0;
-const costsDeleteCostsId_js_1 = require("../funcs/costsDeleteCostsId.js");
-const costsGetCostsActive_js_1 = require("../funcs/costsGetCostsActive.js");
-const costsGetCostsId_js_1 = require("../funcs/costsGetCostsId.js");
-const costsPostCosts_js_1 = require("../funcs/costsPostCosts.js");
-const costsPostCostsAnalytics_js_1 = require("../funcs/costsPostCostsAnalytics.js");
-const costsPostCostsAnalyticsV2_js_1 = require("../funcs/costsPostCostsAnalyticsV2.js");
-const costsPostCostsSearch_js_1 = require("../funcs/costsPostCostsSearch.js");
-const costsPutCostsId_js_1 = require("../funcs/costsPutCostsId.js");
+const costs_delete_costs_id_js_1 = require("../funcs/costs-delete-costs-id.js");
+const costs_get_costs_active_js_1 = require("../funcs/costs-get-costs-active.js");
+const costs_get_costs_id_js_1 = require("../funcs/costs-get-costs-id.js");
+const costs_post_costs_analytics_v2_js_1 = require("../funcs/costs-post-costs-analytics-v2.js");
+const costs_post_costs_analytics_js_1 = require("../funcs/costs-post-costs-analytics.js");
+const costs_post_costs_search_js_1 = require("../funcs/costs-post-costs-search.js");
+const costs_post_costs_js_1 = require("../funcs/costs-post-costs.js");
+const costs_put_costs_id_js_1 = require("../funcs/costs-put-costs-id.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
 class Costs extends sdks_js_1.ClientSDK {
@@ -22,7 +22,7 @@ class Costs extends sdks_js_1.ClientSDK {
      * Create a new costsheet with the specified name
      */
     async postCosts(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, costsPostCosts_js_1.costsPostCosts)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, costs_post_costs_js_1.costsPostCosts)(this, request, options));
     }
     /**
      * Get active costsheet for tenant
@@ -31,7 +31,7 @@ class Costs extends sdks_js_1.ClientSDK {
      * Get the active costsheet for the current tenant
      */
     async getCostsActive(options) {
-        return (0, fp_js_1.unwrapAsync)((0, costsGetCostsActive_js_1.costsGetCostsActive)(this, options));
+        return (0, fp_js_1.unwrapAsync)((0, costs_get_costs_active_js_1.costsGetCostsActive)(this, options));
     }
     /**
      * Get combined revenue and cost analytics
@@ -40,7 +40,7 @@ class Costs extends sdks_js_1.ClientSDK {
      * Retrieve combined analytics with ROI, margin, and detailed breakdowns. If start_time and end_time are not provided, defaults to last 7 days.
      */
     async postCostsAnalytics(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, costsPostCostsAnalytics_js_1.costsPostCostsAnalytics)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, costs_post_costs_analytics_js_1.costsPostCostsAnalytics)(this, request, options));
     }
     /**
      * Get combined revenue and cost analytics
@@ -49,7 +49,7 @@ class Costs extends sdks_js_1.ClientSDK {
      * Retrieve combined analytics with ROI, margin, and detailed breakdowns. If start_time and end_time are not provided, defaults to last 7 days.
      */
     async postCostsAnalyticsV2(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, costsPostCostsAnalyticsV2_js_1.costsPostCostsAnalyticsV2)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, costs_post_costs_analytics_v2_js_1.costsPostCostsAnalyticsV2)(this, request, options));
     }
     /**
      * List costsheets by filter
@@ -58,7 +58,7 @@ class Costs extends sdks_js_1.ClientSDK {
      * List costsheet records by filter with POST body
      */
     async postCostsSearch(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, costsPostCostsSearch_js_1.costsPostCostsSearch)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, costs_post_costs_search_js_1.costsPostCostsSearch)(this, request, options));
     }
     /**
      * Get a costsheet by ID
@@ -67,7 +67,7 @@ class Costs extends sdks_js_1.ClientSDK {
      * Get a costsheet by ID with optional price expansion
      */
     async getCostsId(id, expand, options) {
-        return (0, fp_js_1.unwrapAsync)((0, costsGetCostsId_js_1.costsGetCostsId)(this, id, expand, options));
+        return (0, fp_js_1.unwrapAsync)((0, costs_get_costs_id_js_1.costsGetCostsId)(this, id, expand, options));
     }
     /**
      * Update a costsheet
@@ -76,7 +76,7 @@ class Costs extends sdks_js_1.ClientSDK {
      * Update a costsheet with the specified configuration
      */
     async putCostsId(id, body, options) {
-        return (0, fp_js_1.unwrapAsync)((0, costsPutCostsId_js_1.costsPutCostsId)(this, id, body, options));
+        return (0, fp_js_1.unwrapAsync)((0, costs_put_costs_id_js_1.costsPutCostsId)(this, id, body, options));
     }
     /**
      * Delete a costsheet
@@ -85,7 +85,7 @@ class Costs extends sdks_js_1.ClientSDK {
      * Soft delete a costsheet by setting its status to deleted
      */
     async deleteCostsId(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, costsDeleteCostsId_js_1.costsDeleteCostsId)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, costs_delete_costs_id_js_1.costsDeleteCostsId)(this, id, options));
     }
 }
 exports.Costs = Costs;

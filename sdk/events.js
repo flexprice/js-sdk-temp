@@ -4,14 +4,15 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Events = void 0;
-const eventsGetEventsMonitoring_js_1 = require("../funcs/eventsGetEventsMonitoring.js");
-const eventsPostEvents_js_1 = require("../funcs/eventsPostEvents.js");
-const eventsPostEventsAnalytics_js_1 = require("../funcs/eventsPostEventsAnalytics.js");
-const eventsPostEventsBulk_js_1 = require("../funcs/eventsPostEventsBulk.js");
-const eventsPostEventsHuggingfaceInference_js_1 = require("../funcs/eventsPostEventsHuggingfaceInference.js");
-const eventsPostEventsQuery_js_1 = require("../funcs/eventsPostEventsQuery.js");
-const eventsPostEventsUsage_js_1 = require("../funcs/eventsPostEventsUsage.js");
-const eventsPostEventsUsageMeter_js_1 = require("../funcs/eventsPostEventsUsageMeter.js");
+const events_get_events_id_js_1 = require("../funcs/events-get-events-id.js");
+const events_get_events_monitoring_js_1 = require("../funcs/events-get-events-monitoring.js");
+const events_post_events_analytics_js_1 = require("../funcs/events-post-events-analytics.js");
+const events_post_events_bulk_js_1 = require("../funcs/events-post-events-bulk.js");
+const events_post_events_huggingface_inference_js_1 = require("../funcs/events-post-events-huggingface-inference.js");
+const events_post_events_query_js_1 = require("../funcs/events-post-events-query.js");
+const events_post_events_usage_meter_js_1 = require("../funcs/events-post-events-usage-meter.js");
+const events_post_events_usage_js_1 = require("../funcs/events-post-events-usage.js");
+const events_post_events_js_1 = require("../funcs/events-post-events.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
 class Events extends sdks_js_1.ClientSDK {
@@ -22,7 +23,7 @@ class Events extends sdks_js_1.ClientSDK {
      * Ingest a new event into the system
      */
     async postEvents(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, eventsPostEvents_js_1.eventsPostEvents)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, events_post_events_js_1.eventsPostEvents)(this, request, options));
     }
     /**
      * Get usage analytics
@@ -31,7 +32,7 @@ class Events extends sdks_js_1.ClientSDK {
      * Retrieve comprehensive usage analytics with filtering, grouping, and time-series data
      */
     async postEventsAnalytics(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, eventsPostEventsAnalytics_js_1.eventsPostEventsAnalytics)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, events_post_events_analytics_js_1.eventsPostEventsAnalytics)(this, request, options));
     }
     /**
      * Bulk Ingest events
@@ -40,7 +41,7 @@ class Events extends sdks_js_1.ClientSDK {
      * Ingest bulk events into the system
      */
     async postEventsBulk(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, eventsPostEventsBulk_js_1.eventsPostEventsBulk)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, events_post_events_bulk_js_1.eventsPostEventsBulk)(this, request, options));
     }
     /**
      * Get hugging face inference data
@@ -49,7 +50,7 @@ class Events extends sdks_js_1.ClientSDK {
      * Retrieve hugging face inference data for events
      */
     async postEventsHuggingfaceInference(options) {
-        return (0, fp_js_1.unwrapAsync)((0, eventsPostEventsHuggingfaceInference_js_1.eventsPostEventsHuggingfaceInference)(this, options));
+        return (0, fp_js_1.unwrapAsync)((0, events_post_events_huggingface_inference_js_1.eventsPostEventsHuggingfaceInference)(this, options));
     }
     /**
      * Get monitoring data
@@ -58,7 +59,7 @@ class Events extends sdks_js_1.ClientSDK {
      * Retrieve monitoring data for events including consumer lag and event metrics (last 24 hours by default)
      */
     async getEventsMonitoring(windowSize, options) {
-        return (0, fp_js_1.unwrapAsync)((0, eventsGetEventsMonitoring_js_1.eventsGetEventsMonitoring)(this, windowSize, options));
+        return (0, fp_js_1.unwrapAsync)((0, events_get_events_monitoring_js_1.eventsGetEventsMonitoring)(this, windowSize, options));
     }
     /**
      * List raw events
@@ -67,7 +68,7 @@ class Events extends sdks_js_1.ClientSDK {
      * Retrieve raw events with pagination and filtering
      */
     async postEventsQuery(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, eventsPostEventsQuery_js_1.eventsPostEventsQuery)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, events_post_events_query_js_1.eventsPostEventsQuery)(this, request, options));
     }
     /**
      * Get usage statistics
@@ -76,7 +77,7 @@ class Events extends sdks_js_1.ClientSDK {
      * Retrieve aggregated usage statistics for events
      */
     async postEventsUsage(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, eventsPostEventsUsage_js_1.eventsPostEventsUsage)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, events_post_events_usage_js_1.eventsPostEventsUsage)(this, request, options));
     }
     /**
      * Get usage by meter
@@ -85,7 +86,16 @@ class Events extends sdks_js_1.ClientSDK {
      * Retrieve aggregated usage statistics using meter configuration
      */
     async postEventsUsageMeter(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, eventsPostEventsUsageMeter_js_1.eventsPostEventsUsageMeter)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, events_post_events_usage_meter_js_1.eventsPostEventsUsageMeter)(this, request, options));
+    }
+    /**
+     * Get event by ID
+     *
+     * @remarks
+     * Retrieve event details and processing status with debug information
+     */
+    async getEventsId(id, options) {
+        return (0, fp_js_1.unwrapAsync)((0, events_get_events_id_js_1.eventsGetEventsId)(this, id, options));
     }
 }
 exports.Events = Events;

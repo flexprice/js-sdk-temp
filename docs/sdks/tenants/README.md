@@ -39,7 +39,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { tenantsGetTenantBilling } from "flexprice-sdk-test/funcs/tenantsGetTenantBilling.js";
+import { tenantsGetTenantBilling } from "flexprice-sdk-test/funcs/tenants-get-tenant-billing.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -71,7 +71,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoTenantBillingUsage](../../models/components/dtotenantbillingusage.md)\>**
+**Promise\<[components.DtoTenantBillingUsage](../../models/components/dto-tenant-billing-usage.md)\>**
 
 ### Errors
 
@@ -113,7 +113,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { tenantsPostTenants } from "flexprice-sdk-test/funcs/tenantsPostTenants.js";
+import { tenantsPostTenants } from "flexprice-sdk-test/funcs/tenants-post-tenants.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -141,14 +141,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreateTenantRequest](../../models/components/dtocreatetenantrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.DtoCreateTenantRequest](../../models/components/dto-create-tenant-request.md)                                                                                      | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoTenantResponse](../../models/components/dtotenantresponse.md)\>**
+**Promise\<[components.DtoTenantResponse](../../models/components/dto-tenant-response.md)\>**
 
 ### Errors
 
@@ -188,7 +188,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { tenantsPutTenantsUpdate } from "flexprice-sdk-test/funcs/tenantsPutTenantsUpdate.js";
+import { tenantsPutTenantsUpdate } from "flexprice-sdk-test/funcs/tenants-put-tenants-update.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -214,14 +214,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoUpdateTenantRequest](../../models/components/dtoupdatetenantrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.DtoUpdateTenantRequest](../../models/components/dto-update-tenant-request.md)                                                                                      | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoTenantResponse](../../models/components/dtotenantresponse.md)\>**
+**Promise\<[components.DtoTenantResponse](../../models/components/dto-tenant-response.md)\>**
 
 ### Errors
 
@@ -261,7 +261,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { tenantsGetTenantsId } from "flexprice-sdk-test/funcs/tenantsGetTenantsId.js";
+import { tenantsGetTenantsId } from "flexprice-sdk-test/funcs/tenants-get-tenants-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -294,7 +294,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoTenantResponse](../../models/components/dtotenantresponse.md)\>**
+**Promise\<[components.DtoTenantResponse](../../models/components/dto-tenant-response.md)\>**
 
 ### Errors
 

@@ -39,7 +39,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { integrationsGetSecretsIntegrationsByProviderProvider } from "flexprice-sdk-test/funcs/integrationsGetSecretsIntegrationsByProviderProvider.js";
+import { integrationsGetSecretsIntegrationsByProviderProvider } from "flexprice-sdk-test/funcs/integrations-get-secrets-integrations-by-provider-provider.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -72,7 +72,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoSecretResponse](../../models/components/dtosecretresponse.md)\>**
+**Promise\<[components.DtoSecretResponse](../../models/components/dto-secret-response.md)\>**
 
 ### Errors
 
@@ -118,7 +118,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { integrationsPostSecretsIntegrationsCreateProvider } from "flexprice-sdk-test/funcs/integrationsPostSecretsIntegrationsCreateProvider.js";
+import { integrationsPostSecretsIntegrationsCreateProvider } from "flexprice-sdk-test/funcs/integrations-post-secrets-integrations-create-provider.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -151,14 +151,14 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `provider`                                                                                                                                                                     | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Integration provider                                                                                                                                                           |
-| `body`                                                                                                                                                                         | [components.DtoCreateIntegrationRequest](../../models/components/dtocreateintegrationrequest.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | Integration creation request                                                                                                                                                   |
+| `body`                                                                                                                                                                         | [components.DtoCreateIntegrationRequest](../../models/components/dto-create-integration-request.md)                                                                            | :heavy_check_mark:                                                                                                                                                             | Integration creation request                                                                                                                                                   |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoSecretResponse](../../models/components/dtosecretresponse.md)\>**
+**Promise\<[components.DtoSecretResponse](../../models/components/dto-secret-response.md)\>**
 
 ### Errors
 
@@ -198,7 +198,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { integrationsGetSecretsIntegrationsLinked } from "flexprice-sdk-test/funcs/integrationsGetSecretsIntegrationsLinked.js";
+import { integrationsGetSecretsIntegrationsLinked } from "flexprice-sdk-test/funcs/integrations-get-secrets-integrations-linked.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -230,7 +230,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoLinkedIntegrationsResponse](../../models/components/dtolinkedintegrationsresponse.md)\>**
+**Promise\<[components.DtoLinkedIntegrationsResponse](../../models/components/dto-linked-integrations-response.md)\>**
 
 ### Errors
 
@@ -269,7 +269,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { integrationsDeleteSecretsIntegrationsId } from "flexprice-sdk-test/funcs/integrationsDeleteSecretsIntegrationsId.js";
+import { integrationsDeleteSecretsIntegrationsId } from "flexprice-sdk-test/funcs/integrations-delete-secrets-integrations-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

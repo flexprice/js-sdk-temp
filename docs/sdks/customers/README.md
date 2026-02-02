@@ -5,12 +5,12 @@
 ### Available Operations
 
 * [getCustomers](#getcustomers) - Get customers
+* [putCustomers](#putcustomers) - Update a customer
 * [postCustomers](#postcustomers) - Create a customer
 * [getCustomersExternalExternalId](#getcustomersexternalexternalid) - Get a customer by external id
 * [postCustomersSearch](#postcustomerssearch) - List customers by filter
 * [getCustomersUsage](#getcustomersusage) - Get customer usage summary
 * [getCustomersId](#getcustomersid) - Get a customer
-* [putCustomersId](#putcustomersid) - Update a customer
 * [deleteCustomersId](#deletecustomersid) - Delete a customer
 * [getCustomersIdEntitlements](#getcustomersidentitlements) - Get customer entitlements
 * [getCustomersIdGrantsUpcoming](#getcustomersidgrantsupcoming) - Get upcoming credit grant applications
@@ -45,7 +45,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { customersGetCustomers } from "flexprice-sdk-test/funcs/customersGetCustomers.js";
+import { customersGetCustomers } from "flexprice-sdk-test/funcs/customers-get-customers.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -71,14 +71,89 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetCustomersRequest](../../models/operations/getcustomersrequest.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetCustomersRequest](../../models/operations/get-customers-request.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoListCustomersResponse](../../models/components/dtolistcustomersresponse.md)\>**
+**Promise\<[components.DtoListCustomersResponse](../../models/components/dto-list-customers-response.md)\>**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.ErrorsErrorResponse | 400                        | application/json           |
+| errors.ErrorsErrorResponse | 500                        | application/json           |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## putCustomers
+
+Update a customer by id or external_customer_id
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="put_/customers" method="put" path="/customers" -->
+```typescript
+import { FlexPrice } from "flexprice-sdk-test";
+
+const flexPrice = new FlexPrice({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const result = await flexPrice.customers.putCustomers({});
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { FlexPriceCore } from "flexprice-sdk-test/core.js";
+import { customersPutCustomers } from "flexprice-sdk-test/funcs/customers-put-customers.js";
+
+// Use `FlexPriceCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const flexPrice = new FlexPriceCore({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await customersPutCustomers(flexPrice, {});
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("customersPutCustomers failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `body`                                                                                                                                                                         | [components.DtoUpdateCustomerRequest](../../models/components/dto-update-customer-request.md)                                                                                  | :heavy_check_mark:                                                                                                                                                             | Customer                                                                                                                                                                       |
+| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Customer ID                                                                                                                                                                    |
+| `externalCustomerId`                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Customer External ID                                                                                                                                                           |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[components.DtoCustomerResponse](../../models/components/dto-customer-response.md)\>**
 
 ### Errors
 
@@ -120,7 +195,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { customersPostCustomers } from "flexprice-sdk-test/funcs/customersPostCustomers.js";
+import { customersPostCustomers } from "flexprice-sdk-test/funcs/customers-post-customers.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -148,14 +223,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreateCustomerRequest](../../models/components/dtocreatecustomerrequest.md)                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.DtoCreateCustomerRequest](../../models/components/dto-create-customer-request.md)                                                                                  | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoCustomerResponse](../../models/components/dtocustomerresponse.md)\>**
+**Promise\<[components.DtoCustomerResponse](../../models/components/dto-customer-response.md)\>**
 
 ### Errors
 
@@ -195,7 +270,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { customersGetCustomersExternalExternalId } from "flexprice-sdk-test/funcs/customersGetCustomersExternalExternalId.js";
+import { customersGetCustomersExternalExternalId } from "flexprice-sdk-test/funcs/customers-get-customers-external-external-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -228,7 +303,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoCustomerResponse](../../models/components/dtocustomerresponse.md)\>**
+**Promise\<[components.DtoCustomerResponse](../../models/components/dto-customer-response.md)\>**
 
 ### Errors
 
@@ -268,7 +343,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { customersPostCustomersSearch } from "flexprice-sdk-test/funcs/customersPostCustomersSearch.js";
+import { customersPostCustomersSearch } from "flexprice-sdk-test/funcs/customers-post-customers-search.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -294,14 +369,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.TypesCustomerFilter](../../models/components/typescustomerfilter.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.TypesCustomerFilter](../../models/components/types-customer-filter.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoListCustomersResponse](../../models/components/dtolistcustomersresponse.md)\>**
+**Promise\<[components.DtoListCustomersResponse](../../models/components/dto-list-customers-response.md)\>**
 
 ### Errors
 
@@ -341,7 +416,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { customersGetCustomersUsage } from "flexprice-sdk-test/funcs/customersGetCustomersUsage.js";
+import { customersGetCustomersUsage } from "flexprice-sdk-test/funcs/customers-get-customers-usage.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -367,14 +442,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetCustomersUsageRequest](../../models/operations/getcustomersusagerequest.md)                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetCustomersUsageRequest](../../models/operations/get-customers-usage-request.md)                                                                                  | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoCustomerUsageSummaryResponse](../../models/components/dtocustomerusagesummaryresponse.md)\>**
+**Promise\<[components.DtoCustomerUsageSummaryResponse](../../models/components/dto-customer-usage-summary-response.md)\>**
 
 ### Errors
 
@@ -414,7 +489,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { customersGetCustomersId } from "flexprice-sdk-test/funcs/customersGetCustomersId.js";
+import { customersGetCustomersId } from "flexprice-sdk-test/funcs/customers-get-customers-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -447,81 +522,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoCustomerResponse](../../models/components/dtocustomerresponse.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## putCustomersId
-
-Update a customer
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="put_/customers/{id}" method="put" path="/customers/{id}" -->
-```typescript
-import { FlexPrice } from "flexprice-sdk-test";
-
-const flexPrice = new FlexPrice({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const result = await flexPrice.customers.putCustomersId("<id>", {});
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { customersPutCustomersId } from "flexprice-sdk-test/funcs/customersPutCustomersId.js";
-
-// Use `FlexPriceCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const res = await customersPutCustomersId(flexPrice, "<id>", {});
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("customersPutCustomersId failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Customer ID                                                                                                                                                                    |
-| `body`                                                                                                                                                                         | [components.DtoUpdateCustomerRequest](../../models/components/dtoupdatecustomerrequest.md)                                                                                     | :heavy_check_mark:                                                                                                                                                             | Customer                                                                                                                                                                       |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.DtoCustomerResponse](../../models/components/dtocustomerresponse.md)\>**
+**Promise\<[components.DtoCustomerResponse](../../models/components/dto-customer-response.md)\>**
 
 ### Errors
 
@@ -561,7 +562,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { customersDeleteCustomersId } from "flexprice-sdk-test/funcs/customersDeleteCustomersId.js";
+import { customersDeleteCustomersId } from "flexprice-sdk-test/funcs/customers-delete-customers-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -634,7 +635,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { customersGetCustomersIdEntitlements } from "flexprice-sdk-test/funcs/customersGetCustomersIdEntitlements.js";
+import { customersGetCustomersIdEntitlements } from "flexprice-sdk-test/funcs/customers-get-customers-id-entitlements.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -669,7 +670,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoCustomerEntitlementsResponse](../../models/components/dtocustomerentitlementsresponse.md)\>**
+**Promise\<[components.DtoCustomerEntitlementsResponse](../../models/components/dto-customer-entitlements-response.md)\>**
 
 ### Errors
 
@@ -709,7 +710,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { customersGetCustomersIdGrantsUpcoming } from "flexprice-sdk-test/funcs/customersGetCustomersIdGrantsUpcoming.js";
+import { customersGetCustomersIdGrantsUpcoming } from "flexprice-sdk-test/funcs/customers-get-customers-id-grants-upcoming.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -742,7 +743,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoListCreditGrantApplicationsResponse](../../models/components/dtolistcreditgrantapplicationsresponse.md)\>**
+**Promise\<[components.DtoListCreditGrantApplicationsResponse](../../models/components/dto-list-credit-grant-applications-response.md)\>**
 
 ### Errors
 

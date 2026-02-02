@@ -10,6 +10,13 @@ export declare class Customers extends ClientSDK {
      */
     getCustomers(request: operations.GetCustomersRequest, options?: RequestOptions): Promise<components.DtoListCustomersResponse>;
     /**
+     * Update a customer
+     *
+     * @remarks
+     * Update a customer by id or external_customer_id
+     */
+    putCustomers(body: components.DtoUpdateCustomerRequest, id?: string | undefined, externalCustomerId?: string | undefined, options?: RequestOptions): Promise<components.DtoCustomerResponse>;
+    /**
      * Create a customer
      *
      * @remarks
@@ -44,13 +51,6 @@ export declare class Customers extends ClientSDK {
      * Get a customer
      */
     getCustomersId(id: string, options?: RequestOptions): Promise<components.DtoCustomerResponse>;
-    /**
-     * Update a customer
-     *
-     * @remarks
-     * Update a customer
-     */
-    putCustomersId(id: string, body: components.DtoUpdateCustomerRequest, options?: RequestOptions): Promise<components.DtoCustomerResponse>;
     /**
      * Delete a customer
      *

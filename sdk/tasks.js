@@ -4,12 +4,12 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Tasks = void 0;
-const tasksGetTasks_js_1 = require("../funcs/tasksGetTasks.js");
-const tasksGetTasksId_js_1 = require("../funcs/tasksGetTasksId.js");
-const tasksGetTasksIdDownload_js_1 = require("../funcs/tasksGetTasksIdDownload.js");
-const tasksGetTasksResult_js_1 = require("../funcs/tasksGetTasksResult.js");
-const tasksPostTasks_js_1 = require("../funcs/tasksPostTasks.js");
-const tasksPutTasksIdStatus_js_1 = require("../funcs/tasksPutTasksIdStatus.js");
+const tasks_get_tasks_id_download_js_1 = require("../funcs/tasks-get-tasks-id-download.js");
+const tasks_get_tasks_id_js_1 = require("../funcs/tasks-get-tasks-id.js");
+const tasks_get_tasks_result_js_1 = require("../funcs/tasks-get-tasks-result.js");
+const tasks_get_tasks_js_1 = require("../funcs/tasks-get-tasks.js");
+const tasks_post_tasks_js_1 = require("../funcs/tasks-post-tasks.js");
+const tasks_put_tasks_id_status_js_1 = require("../funcs/tasks-put-tasks-id-status.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
 class Tasks extends sdks_js_1.ClientSDK {
@@ -20,7 +20,7 @@ class Tasks extends sdks_js_1.ClientSDK {
      * List tasks with optional filtering
      */
     async getTasks(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, tasksGetTasks_js_1.tasksGetTasks)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, tasks_get_tasks_js_1.tasksGetTasks)(this, request, options));
     }
     /**
      * Create a new task
@@ -29,7 +29,7 @@ class Tasks extends sdks_js_1.ClientSDK {
      * Create a new task for processing files asynchronously
      */
     async postTasks(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, tasksPostTasks_js_1.tasksPostTasks)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, tasks_post_tasks_js_1.tasksPostTasks)(this, request, options));
     }
     /**
      * Get task processing result
@@ -38,7 +38,7 @@ class Tasks extends sdks_js_1.ClientSDK {
      * Get the result of a task processing workflow
      */
     async getTasksResult(workflowId, options) {
-        return (0, fp_js_1.unwrapAsync)((0, tasksGetTasksResult_js_1.tasksGetTasksResult)(this, workflowId, options));
+        return (0, fp_js_1.unwrapAsync)((0, tasks_get_tasks_result_js_1.tasksGetTasksResult)(this, workflowId, options));
     }
     /**
      * Get a task
@@ -47,7 +47,7 @@ class Tasks extends sdks_js_1.ClientSDK {
      * Get a task by ID
      */
     async getTasksId(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, tasksGetTasksId_js_1.tasksGetTasksId)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, tasks_get_tasks_id_js_1.tasksGetTasksId)(this, id, options));
     }
     /**
      * Download task export file
@@ -56,7 +56,7 @@ class Tasks extends sdks_js_1.ClientSDK {
      * Generate a presigned URL for downloading an exported file (supports both Flexprice-managed and customer-owned S3)
      */
     async getTasksIdDownload(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, tasksGetTasksIdDownload_js_1.tasksGetTasksIdDownload)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, tasks_get_tasks_id_download_js_1.tasksGetTasksIdDownload)(this, id, options));
     }
     /**
      * Update task status
@@ -65,7 +65,7 @@ class Tasks extends sdks_js_1.ClientSDK {
      * Update a task's status
      */
     async putTasksIdStatus(id, body, options) {
-        return (0, fp_js_1.unwrapAsync)((0, tasksPutTasksIdStatus_js_1.tasksPutTasksIdStatus)(this, id, body, options));
+        return (0, fp_js_1.unwrapAsync)((0, tasks_put_tasks_id_status_js_1.tasksPutTasksIdStatus)(this, id, body, options));
     }
 }
 exports.Tasks = Tasks;

@@ -1,0 +1,16 @@
+# DtoListSecretsResponse
+
+## Example Usage
+
+```typescript
+import { DtoListSecretsResponse } from "flexprice-sdk-test/models/components";
+
+let value: DtoListSecretsResponse = {};
+```
+
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `items`                                                                                    | [components.DtoSecretResponse](../../models/components/dto-secret-response.md)[]           | :heavy_minus_sign:                                                                         | N/A                                                                                        |
+| `pagination`                                                                               | [components.TypesPaginationResponse](../../models/components/types-pagination-response.md) | :heavy_minus_sign:                                                                         | N/A                                                                                        |

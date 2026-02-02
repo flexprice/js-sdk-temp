@@ -36,7 +36,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { customerPortalGetPortalExternalId } from "flexprice-sdk-test/funcs/customerPortalGetPortalExternalId.js";
+import { customerPortalGetPortalExternalId } from "flexprice-sdk-test/funcs/customer-portal-get-portal-external-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -69,7 +69,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoPortalSessionResponse](../../models/components/dtoportalsessionresponse.md)\>**
+**Promise\<[components.DtoPortalSessionResponse](../../models/components/dto-portal-session-response.md)\>**
 
 ### Errors
 

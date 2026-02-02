@@ -37,7 +37,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { rbacGetRBACRoles } from "flexprice-sdk-test/funcs/rbacGetRBACRoles.js";
+import { rbacGetRBACRoles } from "flexprice-sdk-test/funcs/rbac-get-rbac-roles.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -107,7 +107,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { rbacGetRBACRolesId } from "flexprice-sdk-test/funcs/rbacGetRBACRolesId.js";
+import { rbacGetRBACRolesId } from "flexprice-sdk-test/funcs/rbac-get-rbac-roles-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

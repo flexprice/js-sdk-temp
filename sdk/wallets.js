@@ -4,18 +4,18 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Wallets = void 0;
-const walletsGetCustomersIdWallets_js_1 = require("../funcs/walletsGetCustomersIdWallets.js");
-const walletsGetCustomersWallets_js_1 = require("../funcs/walletsGetCustomersWallets.js");
-const walletsGetWallets_js_1 = require("../funcs/walletsGetWallets.js");
-const walletsGetWalletsId_js_1 = require("../funcs/walletsGetWalletsId.js");
-const walletsGetWalletsIdBalanceRealTime_js_1 = require("../funcs/walletsGetWalletsIdBalanceRealTime.js");
-const walletsGetWalletsIdTransactions_js_1 = require("../funcs/walletsGetWalletsIdTransactions.js");
-const walletsPostWallets_js_1 = require("../funcs/walletsPostWallets.js");
-const walletsPostWalletsIdTerminate_js_1 = require("../funcs/walletsPostWalletsIdTerminate.js");
-const walletsPostWalletsIdTopUp_js_1 = require("../funcs/walletsPostWalletsIdTopUp.js");
-const walletsPostWalletsSearch_js_1 = require("../funcs/walletsPostWalletsSearch.js");
-const walletsPostWalletsTransactionsSearch_js_1 = require("../funcs/walletsPostWalletsTransactionsSearch.js");
-const walletsPutWalletsId_js_1 = require("../funcs/walletsPutWalletsId.js");
+const wallets_get_customers_id_wallets_js_1 = require("../funcs/wallets-get-customers-id-wallets.js");
+const wallets_get_customers_wallets_js_1 = require("../funcs/wallets-get-customers-wallets.js");
+const wallets_get_wallets_id_balance_real_time_js_1 = require("../funcs/wallets-get-wallets-id-balance-real-time.js");
+const wallets_get_wallets_id_transactions_js_1 = require("../funcs/wallets-get-wallets-id-transactions.js");
+const wallets_get_wallets_id_js_1 = require("../funcs/wallets-get-wallets-id.js");
+const wallets_get_wallets_js_1 = require("../funcs/wallets-get-wallets.js");
+const wallets_post_wallets_id_terminate_js_1 = require("../funcs/wallets-post-wallets-id-terminate.js");
+const wallets_post_wallets_id_top_up_js_1 = require("../funcs/wallets-post-wallets-id-top-up.js");
+const wallets_post_wallets_search_js_1 = require("../funcs/wallets-post-wallets-search.js");
+const wallets_post_wallets_transactions_search_js_1 = require("../funcs/wallets-post-wallets-transactions-search.js");
+const wallets_post_wallets_js_1 = require("../funcs/wallets-post-wallets.js");
+const wallets_put_wallets_id_js_1 = require("../funcs/wallets-put-wallets-id.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
 class Wallets extends sdks_js_1.ClientSDK {
@@ -25,8 +25,8 @@ class Wallets extends sdks_js_1.ClientSDK {
      * @remarks
      * Get all wallets for a customer by lookup key or id
      */
-    async getCustomersWallets(id, includeRealTimeBalance, lookupKey, options) {
-        return (0, fp_js_1.unwrapAsync)((0, walletsGetCustomersWallets_js_1.walletsGetCustomersWallets)(this, id, includeRealTimeBalance, lookupKey, options));
+    async getCustomersWallets(request, options) {
+        return (0, fp_js_1.unwrapAsync)((0, wallets_get_customers_wallets_js_1.walletsGetCustomersWallets)(this, request, options));
     }
     /**
      * Get wallets by customer ID
@@ -35,7 +35,7 @@ class Wallets extends sdks_js_1.ClientSDK {
      * Get all wallets for a customer
      */
     async getCustomersIdWallets(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, walletsGetCustomersIdWallets_js_1.walletsGetCustomersIdWallets)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, wallets_get_customers_id_wallets_js_1.walletsGetCustomersIdWallets)(this, id, options));
     }
     /**
      * List wallets
@@ -44,7 +44,7 @@ class Wallets extends sdks_js_1.ClientSDK {
      * List wallets with optional filtering
      */
     async getWallets(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, walletsGetWallets_js_1.walletsGetWallets)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, wallets_get_wallets_js_1.walletsGetWallets)(this, request, options));
     }
     /**
      * Create a new wallet
@@ -53,7 +53,7 @@ class Wallets extends sdks_js_1.ClientSDK {
      * Create a new wallet for a customer
      */
     async postWallets(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, walletsPostWallets_js_1.walletsPostWallets)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, wallets_post_wallets_js_1.walletsPostWallets)(this, request, options));
     }
     /**
      * List wallets by filter
@@ -62,7 +62,7 @@ class Wallets extends sdks_js_1.ClientSDK {
      * List wallets by filter
      */
     async postWalletsSearch(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, walletsPostWalletsSearch_js_1.walletsPostWalletsSearch)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, wallets_post_wallets_search_js_1.walletsPostWalletsSearch)(this, request, options));
     }
     /**
      * List wallet transactions by filter
@@ -71,7 +71,7 @@ class Wallets extends sdks_js_1.ClientSDK {
      * List wallet transactions by filter
      */
     async postWalletsTransactionsSearch(expand, body, options) {
-        return (0, fp_js_1.unwrapAsync)((0, walletsPostWalletsTransactionsSearch_js_1.walletsPostWalletsTransactionsSearch)(this, expand, body, options));
+        return (0, fp_js_1.unwrapAsync)((0, wallets_post_wallets_transactions_search_js_1.walletsPostWalletsTransactionsSearch)(this, expand, body, options));
     }
     /**
      * Get wallet by ID
@@ -80,7 +80,7 @@ class Wallets extends sdks_js_1.ClientSDK {
      * Get a wallet by its ID
      */
     async getWalletsId(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, walletsGetWalletsId_js_1.walletsGetWalletsId)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, wallets_get_wallets_id_js_1.walletsGetWalletsId)(this, id, options));
     }
     /**
      * Update a wallet
@@ -89,7 +89,7 @@ class Wallets extends sdks_js_1.ClientSDK {
      * Update a wallet's details including auto top-up configuration
      */
     async putWalletsId(id, body, options) {
-        return (0, fp_js_1.unwrapAsync)((0, walletsPutWalletsId_js_1.walletsPutWalletsId)(this, id, body, options));
+        return (0, fp_js_1.unwrapAsync)((0, wallets_put_wallets_id_js_1.walletsPutWalletsId)(this, id, body, options));
     }
     /**
      * Get wallet balance
@@ -97,8 +97,8 @@ class Wallets extends sdks_js_1.ClientSDK {
      * @remarks
      * Get real-time balance of a wallet
      */
-    async getWalletsIdBalanceRealTime(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, walletsGetWalletsIdBalanceRealTime_js_1.walletsGetWalletsIdBalanceRealTime)(this, id, options));
+    async getWalletsIdBalanceRealTime(id, expand, options) {
+        return (0, fp_js_1.unwrapAsync)((0, wallets_get_wallets_id_balance_real_time_js_1.walletsGetWalletsIdBalanceRealTime)(this, id, expand, options));
     }
     /**
      * Terminate a wallet
@@ -107,7 +107,7 @@ class Wallets extends sdks_js_1.ClientSDK {
      * Terminates a wallet by closing it and debiting remaining balance
      */
     async postWalletsIdTerminate(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, walletsPostWalletsIdTerminate_js_1.walletsPostWalletsIdTerminate)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, wallets_post_wallets_id_terminate_js_1.walletsPostWalletsIdTerminate)(this, id, options));
     }
     /**
      * Top up wallet
@@ -116,7 +116,7 @@ class Wallets extends sdks_js_1.ClientSDK {
      * Add credits to a wallet
      */
     async postWalletsIdTopUp(id, body, options) {
-        return (0, fp_js_1.unwrapAsync)((0, walletsPostWalletsIdTopUp_js_1.walletsPostWalletsIdTopUp)(this, id, body, options));
+        return (0, fp_js_1.unwrapAsync)((0, wallets_post_wallets_id_top_up_js_1.walletsPostWalletsIdTopUp)(this, id, body, options));
     }
     /**
      * Get wallet transactions
@@ -125,7 +125,7 @@ class Wallets extends sdks_js_1.ClientSDK {
      * Get transactions for a wallet with pagination
      */
     async getWalletsIdTransactions(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, walletsGetWalletsIdTransactions_js_1.walletsGetWalletsIdTransactions)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, wallets_get_wallets_id_transactions_js_1.walletsGetWalletsIdTransactions)(this, request, options));
     }
 }
 exports.Wallets = Wallets;

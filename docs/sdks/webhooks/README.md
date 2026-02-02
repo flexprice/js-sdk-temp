@@ -6,6 +6,7 @@
 
 * [postWebhooksChargebeeTenantIdEnvironmentId](#postwebhookschargebeetenantidenvironmentid) - Handle Chargebee webhook events
 * [postWebhooksHubspotTenantIdEnvironmentId](#postwebhookshubspottenantidenvironmentid) - Handle HubSpot webhook events
+* [postWebhooksMoyasarTenantIdEnvironmentId](#postwebhooksmoyasartenantidenvironmentid) - Handle Moyasar webhook events
 * [postWebhooksNomodTenantIdEnvironmentId](#postwebhooksnomodtenantidenvironmentid) - Handle Nomod webhook events
 * [postWebhooksQuickbooksTenantIdEnvironmentId](#postwebhooksquickbookstenantidenvironmentid) - Handle QuickBooks webhook events
 * [postWebhooksRazorpayTenantIdEnvironmentId](#postwebhooksrazorpaytenantidenvironmentid) - Handle Razorpay webhook events
@@ -41,7 +42,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { webhooksPostWebhooksChargebeeTenantIdEnvironmentId } from "flexprice-sdk-test/funcs/webhooksPostWebhooksChargebeeTenantIdEnvironmentId.js";
+import { webhooksPostWebhooksChargebeeTenantIdEnvironmentId } from "flexprice-sdk-test/funcs/webhooks-post-webhooks-chargebee-tenant-id-environment-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -113,7 +114,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { webhooksPostWebhooksHubspotTenantIdEnvironmentId } from "flexprice-sdk-test/funcs/webhooksPostWebhooksHubspotTenantIdEnvironmentId.js";
+import { webhooksPostWebhooksHubspotTenantIdEnvironmentId } from "flexprice-sdk-test/funcs/webhooks-post-webhooks-hubspot-tenant-id-environment-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -142,6 +143,79 @@ run();
 | `tenantId`                                                                                                                                                                     | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Tenant ID                                                                                                                                                                      |
 | `environmentId`                                                                                                                                                                | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Environment ID                                                                                                                                                                 |
 | `xHubSpotSignatureV3`                                                                                                                                                          | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | HubSpot webhook signature                                                                                                                                                      |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[{ [k: string]: any }](../../models/.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## postWebhooksMoyasarTenantIdEnvironmentId
+
+Process incoming Moyasar webhook events for payment status updates
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="post_/webhooks/moyasar/{tenant_id}/{environment_id}" method="post" path="/webhooks/moyasar/{tenant_id}/{environment_id}" -->
+```typescript
+import { FlexPrice } from "flexprice-sdk-test";
+
+const flexPrice = new FlexPrice({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const result = await flexPrice.webhooks.postWebhooksMoyasarTenantIdEnvironmentId("<id>", "<id>");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { FlexPriceCore } from "flexprice-sdk-test/core.js";
+import { webhooksPostWebhooksMoyasarTenantIdEnvironmentId } from "flexprice-sdk-test/funcs/webhooks-post-webhooks-moyasar-tenant-id-environment-id.js";
+
+// Use `FlexPriceCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const flexPrice = new FlexPriceCore({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await webhooksPostWebhooksMoyasarTenantIdEnvironmentId(flexPrice, "<id>", "<id>");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("webhooksPostWebhooksMoyasarTenantIdEnvironmentId failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `tenantId`                                                                                                                                                                     | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Tenant ID                                                                                                                                                                      |
+| `environmentId`                                                                                                                                                                | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Environment ID                                                                                                                                                                 |
+| `xMoyasarSignature`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Moyasar webhook signature                                                                                                                                                      |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -186,7 +260,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { webhooksPostWebhooksNomodTenantIdEnvironmentId } from "flexprice-sdk-test/funcs/webhooksPostWebhooksNomodTenantIdEnvironmentId.js";
+import { webhooksPostWebhooksNomodTenantIdEnvironmentId } from "flexprice-sdk-test/funcs/webhooks-post-webhooks-nomod-tenant-id-environment-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -259,7 +333,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { webhooksPostWebhooksQuickbooksTenantIdEnvironmentId } from "flexprice-sdk-test/funcs/webhooksPostWebhooksQuickbooksTenantIdEnvironmentId.js";
+import { webhooksPostWebhooksQuickbooksTenantIdEnvironmentId } from "flexprice-sdk-test/funcs/webhooks-post-webhooks-quickbooks-tenant-id-environment-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -332,7 +406,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { webhooksPostWebhooksRazorpayTenantIdEnvironmentId } from "flexprice-sdk-test/funcs/webhooksPostWebhooksRazorpayTenantIdEnvironmentId.js";
+import { webhooksPostWebhooksRazorpayTenantIdEnvironmentId } from "flexprice-sdk-test/funcs/webhooks-post-webhooks-razorpay-tenant-id-environment-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -405,7 +479,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { webhooksPostWebhooksStripeTenantIdEnvironmentId } from "flexprice-sdk-test/funcs/webhooksPostWebhooksStripeTenantIdEnvironmentId.js";
+import { webhooksPostWebhooksStripeTenantIdEnvironmentId } from "flexprice-sdk-test/funcs/webhooks-post-webhooks-stripe-tenant-id-environment-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

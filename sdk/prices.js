@@ -4,13 +4,13 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Prices = void 0;
-const pricesDeletePricesId_js_1 = require("../funcs/pricesDeletePricesId.js");
-const pricesGetPrices_js_1 = require("../funcs/pricesGetPrices.js");
-const pricesGetPricesId_js_1 = require("../funcs/pricesGetPricesId.js");
-const pricesGetPricesLookupLookupKey_js_1 = require("../funcs/pricesGetPricesLookupLookupKey.js");
-const pricesPostPrices_js_1 = require("../funcs/pricesPostPrices.js");
-const pricesPostPricesBulk_js_1 = require("../funcs/pricesPostPricesBulk.js");
-const pricesPutPricesId_js_1 = require("../funcs/pricesPutPricesId.js");
+const prices_delete_prices_id_js_1 = require("../funcs/prices-delete-prices-id.js");
+const prices_get_prices_id_js_1 = require("../funcs/prices-get-prices-id.js");
+const prices_get_prices_lookup_lookup_key_js_1 = require("../funcs/prices-get-prices-lookup-lookup-key.js");
+const prices_get_prices_js_1 = require("../funcs/prices-get-prices.js");
+const prices_post_prices_bulk_js_1 = require("../funcs/prices-post-prices-bulk.js");
+const prices_post_prices_js_1 = require("../funcs/prices-post-prices.js");
+const prices_put_prices_id_js_1 = require("../funcs/prices-put-prices-id.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
 class Prices extends sdks_js_1.ClientSDK {
@@ -21,7 +21,7 @@ class Prices extends sdks_js_1.ClientSDK {
      * Get prices with the specified filter
      */
     async getPrices(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, pricesGetPrices_js_1.pricesGetPrices)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, prices_get_prices_js_1.pricesGetPrices)(this, request, options));
     }
     /**
      * Create a new price
@@ -30,7 +30,7 @@ class Prices extends sdks_js_1.ClientSDK {
      * Create a new price with the specified configuration. Supports both regular and price unit configurations.
      */
     async postPrices(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, pricesPostPrices_js_1.pricesPostPrices)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, prices_post_prices_js_1.pricesPostPrices)(this, request, options));
     }
     /**
      * Create multiple prices in bulk
@@ -39,7 +39,7 @@ class Prices extends sdks_js_1.ClientSDK {
      * Create multiple prices with the specified configurations. Supports both regular and price unit configurations.
      */
     async postPricesBulk(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, pricesPostPricesBulk_js_1.pricesPostPricesBulk)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, prices_post_prices_bulk_js_1.pricesPostPricesBulk)(this, request, options));
     }
     /**
      * Get price by lookup key
@@ -48,7 +48,7 @@ class Prices extends sdks_js_1.ClientSDK {
      * Get price by lookup key
      */
     async getPricesLookupLookupKey(lookupKey, options) {
-        return (0, fp_js_1.unwrapAsync)((0, pricesGetPricesLookupLookupKey_js_1.pricesGetPricesLookupLookupKey)(this, lookupKey, options));
+        return (0, fp_js_1.unwrapAsync)((0, prices_get_prices_lookup_lookup_key_js_1.pricesGetPricesLookupLookupKey)(this, lookupKey, options));
     }
     /**
      * Get a price by ID
@@ -57,7 +57,7 @@ class Prices extends sdks_js_1.ClientSDK {
      * Get a price by ID with expanded meter and price unit information
      */
     async getPricesId(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, pricesGetPricesId_js_1.pricesGetPricesId)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, prices_get_prices_id_js_1.pricesGetPricesId)(this, id, options));
     }
     /**
      * Update a price
@@ -66,7 +66,7 @@ class Prices extends sdks_js_1.ClientSDK {
      * Update a price with the specified configuration
      */
     async putPricesId(id, body, options) {
-        return (0, fp_js_1.unwrapAsync)((0, pricesPutPricesId_js_1.pricesPutPricesId)(this, id, body, options));
+        return (0, fp_js_1.unwrapAsync)((0, prices_put_prices_id_js_1.pricesPutPricesId)(this, id, body, options));
     }
     /**
      * Delete a price
@@ -75,7 +75,7 @@ class Prices extends sdks_js_1.ClientSDK {
      * Delete a price
      */
     async deletePricesId(id, body, options) {
-        return (0, fp_js_1.unwrapAsync)((0, pricesDeletePricesId_js_1.pricesDeletePricesId)(this, id, body, options));
+        return (0, fp_js_1.unwrapAsync)((0, prices_delete_prices_id_js_1.pricesDeletePricesId)(this, id, body, options));
     }
 }
 exports.Prices = Prices;

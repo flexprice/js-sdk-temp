@@ -39,7 +39,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { environmentsGetEnvironments } from "flexprice-sdk-test/funcs/environmentsGetEnvironments.js";
+import { environmentsGetEnvironments } from "flexprice-sdk-test/funcs/environments-get-environments.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -65,14 +65,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetEnvironmentsRequest](../../models/operations/getenvironmentsrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetEnvironmentsRequest](../../models/operations/get-environments-request.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoListEnvironmentsResponse](../../models/components/dtolistenvironmentsresponse.md)\>**
+**Promise\<[components.DtoListEnvironmentsResponse](../../models/components/dto-list-environments-response.md)\>**
 
 ### Errors
 
@@ -115,7 +115,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { environmentsPostEnvironments } from "flexprice-sdk-test/funcs/environmentsPostEnvironments.js";
+import { environmentsPostEnvironments } from "flexprice-sdk-test/funcs/environments-post-environments.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -144,14 +144,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreateEnvironmentRequest](../../models/components/dtocreateenvironmentrequest.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.DtoCreateEnvironmentRequest](../../models/components/dto-create-environment-request.md)                                                                            | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoEnvironmentResponse](../../models/components/dtoenvironmentresponse.md)\>**
+**Promise\<[components.DtoEnvironmentResponse](../../models/components/dto-environment-response.md)\>**
 
 ### Errors
 
@@ -191,7 +191,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { environmentsGetEnvironmentsId } from "flexprice-sdk-test/funcs/environmentsGetEnvironmentsId.js";
+import { environmentsGetEnvironmentsId } from "flexprice-sdk-test/funcs/environments-get-environments-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -224,7 +224,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoEnvironmentResponse](../../models/components/dtoenvironmentresponse.md)\>**
+**Promise\<[components.DtoEnvironmentResponse](../../models/components/dto-environment-response.md)\>**
 
 ### Errors
 
@@ -264,7 +264,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { environmentsPutEnvironmentsId } from "flexprice-sdk-test/funcs/environmentsPutEnvironmentsId.js";
+import { environmentsPutEnvironmentsId } from "flexprice-sdk-test/funcs/environments-put-environments-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -291,14 +291,14 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Environment ID                                                                                                                                                                 |
-| `body`                                                                                                                                                                         | [components.DtoUpdateEnvironmentRequest](../../models/components/dtoupdateenvironmentrequest.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | Environment                                                                                                                                                                    |
+| `body`                                                                                                                                                                         | [components.DtoUpdateEnvironmentRequest](../../models/components/dto-update-environment-request.md)                                                                            | :heavy_check_mark:                                                                                                                                                             | Environment                                                                                                                                                                    |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoEnvironmentResponse](../../models/components/dtoenvironmentresponse.md)\>**
+**Promise\<[components.DtoEnvironmentResponse](../../models/components/dto-environment-response.md)\>**
 
 ### Errors
 

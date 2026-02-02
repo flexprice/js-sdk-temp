@@ -41,7 +41,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { tasksGetTasks } from "flexprice-sdk-test/funcs/tasksGetTasks.js";
+import { tasksGetTasks } from "flexprice-sdk-test/funcs/tasks-get-tasks.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -67,14 +67,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetTasksRequest](../../models/operations/gettasksrequest.md)                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetTasksRequest](../../models/operations/get-tasks-request.md)                                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoListTasksResponse](../../models/components/dtolisttasksresponse.md)\>**
+**Promise\<[components.DtoListTasksResponse](../../models/components/dto-list-tasks-response.md)\>**
 
 ### Errors
 
@@ -119,7 +119,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { tasksPostTasks } from "flexprice-sdk-test/funcs/tasksPostTasks.js";
+import { tasksPostTasks } from "flexprice-sdk-test/funcs/tasks-post-tasks.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -150,14 +150,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreateTaskRequest](../../models/components/dtocreatetaskrequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.DtoCreateTaskRequest](../../models/components/dto-create-task-request.md)                                                                                          | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoTaskResponse](../../models/components/dtotaskresponse.md)\>**
+**Promise\<[components.DtoTaskResponse](../../models/components/dto-task-response.md)\>**
 
 ### Errors
 
@@ -197,7 +197,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { tasksGetTasksResult } from "flexprice-sdk-test/funcs/tasksGetTasksResult.js";
+import { tasksGetTasksResult } from "flexprice-sdk-test/funcs/tasks-get-tasks-result.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -230,7 +230,7 @@ run();
 
 ### Response
 
-**Promise\<[components.ModelsTemporalWorkflowResult](../../models/components/modelstemporalworkflowresult.md)\>**
+**Promise\<[components.ModelsTemporalWorkflowResult](../../models/components/models-temporal-workflow-result.md)\>**
 
 ### Errors
 
@@ -270,7 +270,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { tasksGetTasksId } from "flexprice-sdk-test/funcs/tasksGetTasksId.js";
+import { tasksGetTasksId } from "flexprice-sdk-test/funcs/tasks-get-tasks-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -303,7 +303,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoTaskResponse](../../models/components/dtotaskresponse.md)\>**
+**Promise\<[components.DtoTaskResponse](../../models/components/dto-task-response.md)\>**
 
 ### Errors
 
@@ -343,7 +343,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { tasksGetTasksIdDownload } from "flexprice-sdk-test/funcs/tasksGetTasksIdDownload.js";
+import { tasksGetTasksIdDownload } from "flexprice-sdk-test/funcs/tasks-get-tasks-id-download.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -418,7 +418,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { tasksPutTasksIdStatus } from "flexprice-sdk-test/funcs/tasksPutTasksIdStatus.js";
+import { tasksPutTasksIdStatus } from "flexprice-sdk-test/funcs/tasks-put-tasks-id-status.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -447,14 +447,14 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Task ID                                                                                                                                                                        |
-| `body`                                                                                                                                                                         | [components.DtoUpdateTaskStatusRequest](../../models/components/dtoupdatetaskstatusrequest.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | Status update                                                                                                                                                                  |
+| `body`                                                                                                                                                                         | [components.DtoUpdateTaskStatusRequest](../../models/components/dto-update-task-status-request.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | Status update                                                                                                                                                                  |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoSuccessResponse](../../models/components/dtosuccessresponse.md)\>**
+**Promise\<[components.DtoSuccessResponse](../../models/components/dto-success-response.md)\>**
 
 ### Errors
 

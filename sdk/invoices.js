@@ -4,20 +4,20 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Invoices = void 0;
-const invoicesGetCustomersIdInvoicesSummary_js_1 = require("../funcs/invoicesGetCustomersIdInvoicesSummary.js");
-const invoicesGetInvoices_js_1 = require("../funcs/invoicesGetInvoices.js");
-const invoicesGetInvoicesId_js_1 = require("../funcs/invoicesGetInvoicesId.js");
-const invoicesGetInvoicesIdPdf_js_1 = require("../funcs/invoicesGetInvoicesIdPdf.js");
-const invoicesPostInvoices_js_1 = require("../funcs/invoicesPostInvoices.js");
-const invoicesPostInvoicesIdCommsTrigger_js_1 = require("../funcs/invoicesPostInvoicesIdCommsTrigger.js");
-const invoicesPostInvoicesIdFinalize_js_1 = require("../funcs/invoicesPostInvoicesIdFinalize.js");
-const invoicesPostInvoicesIdPaymentAttempt_js_1 = require("../funcs/invoicesPostInvoicesIdPaymentAttempt.js");
-const invoicesPostInvoicesIdRecalculate_js_1 = require("../funcs/invoicesPostInvoicesIdRecalculate.js");
-const invoicesPostInvoicesIdVoid_js_1 = require("../funcs/invoicesPostInvoicesIdVoid.js");
-const invoicesPostInvoicesPreview_js_1 = require("../funcs/invoicesPostInvoicesPreview.js");
-const invoicesPostInvoicesSearch_js_1 = require("../funcs/invoicesPostInvoicesSearch.js");
-const invoicesPutInvoicesId_js_1 = require("../funcs/invoicesPutInvoicesId.js");
-const invoicesPutInvoicesIdPayment_js_1 = require("../funcs/invoicesPutInvoicesIdPayment.js");
+const invoices_get_customers_id_invoices_summary_js_1 = require("../funcs/invoices-get-customers-id-invoices-summary.js");
+const invoices_get_invoices_id_pdf_js_1 = require("../funcs/invoices-get-invoices-id-pdf.js");
+const invoices_get_invoices_id_js_1 = require("../funcs/invoices-get-invoices-id.js");
+const invoices_get_invoices_js_1 = require("../funcs/invoices-get-invoices.js");
+const invoices_post_invoices_id_comms_trigger_js_1 = require("../funcs/invoices-post-invoices-id-comms-trigger.js");
+const invoices_post_invoices_id_finalize_js_1 = require("../funcs/invoices-post-invoices-id-finalize.js");
+const invoices_post_invoices_id_payment_attempt_js_1 = require("../funcs/invoices-post-invoices-id-payment-attempt.js");
+const invoices_post_invoices_id_recalculate_js_1 = require("../funcs/invoices-post-invoices-id-recalculate.js");
+const invoices_post_invoices_id_void_js_1 = require("../funcs/invoices-post-invoices-id-void.js");
+const invoices_post_invoices_preview_js_1 = require("../funcs/invoices-post-invoices-preview.js");
+const invoices_post_invoices_search_js_1 = require("../funcs/invoices-post-invoices-search.js");
+const invoices_post_invoices_js_1 = require("../funcs/invoices-post-invoices.js");
+const invoices_put_invoices_id_payment_js_1 = require("../funcs/invoices-put-invoices-id-payment.js");
+const invoices_put_invoices_id_js_1 = require("../funcs/invoices-put-invoices-id.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
 class Invoices extends sdks_js_1.ClientSDK {
@@ -28,7 +28,7 @@ class Invoices extends sdks_js_1.ClientSDK {
      * Get a customer invoice summary
      */
     async getCustomersIdInvoicesSummary(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, invoicesGetCustomersIdInvoicesSummary_js_1.invoicesGetCustomersIdInvoicesSummary)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, invoices_get_customers_id_invoices_summary_js_1.invoicesGetCustomersIdInvoicesSummary)(this, id, options));
     }
     /**
      * List invoices
@@ -37,7 +37,7 @@ class Invoices extends sdks_js_1.ClientSDK {
      * List invoices with optional filtering
      */
     async getInvoices(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, invoicesGetInvoices_js_1.invoicesGetInvoices)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, invoices_get_invoices_js_1.invoicesGetInvoices)(this, request, options));
     }
     /**
      * Create a new one off invoice
@@ -46,7 +46,7 @@ class Invoices extends sdks_js_1.ClientSDK {
      * Create a new one off invoice with the provided details
      */
     async postInvoices(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, invoicesPostInvoices_js_1.invoicesPostInvoices)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, invoices_post_invoices_js_1.invoicesPostInvoices)(this, request, options));
     }
     /**
      * Get a preview invoice
@@ -55,7 +55,7 @@ class Invoices extends sdks_js_1.ClientSDK {
      * Get a preview invoice
      */
     async postInvoicesPreview(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, invoicesPostInvoicesPreview_js_1.invoicesPostInvoicesPreview)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, invoices_post_invoices_preview_js_1.invoicesPostInvoicesPreview)(this, request, options));
     }
     /**
      * List invoices by filter
@@ -64,7 +64,7 @@ class Invoices extends sdks_js_1.ClientSDK {
      * List invoices by filter
      */
     async postInvoicesSearch(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, invoicesPostInvoicesSearch_js_1.invoicesPostInvoicesSearch)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, invoices_post_invoices_search_js_1.invoicesPostInvoicesSearch)(this, request, options));
     }
     /**
      * Get an invoice by ID
@@ -73,7 +73,7 @@ class Invoices extends sdks_js_1.ClientSDK {
      * Get detailed information about an invoice
      */
     async getInvoicesId(id, expandBySource, groupBy, options) {
-        return (0, fp_js_1.unwrapAsync)((0, invoicesGetInvoicesId_js_1.invoicesGetInvoicesId)(this, id, expandBySource, groupBy, options));
+        return (0, fp_js_1.unwrapAsync)((0, invoices_get_invoices_id_js_1.invoicesGetInvoicesId)(this, id, expandBySource, groupBy, options));
     }
     /**
      * Update an invoice
@@ -82,7 +82,7 @@ class Invoices extends sdks_js_1.ClientSDK {
      * Update invoice details like PDF URL and due date.
      */
     async putInvoicesId(id, body, options) {
-        return (0, fp_js_1.unwrapAsync)((0, invoicesPutInvoicesId_js_1.invoicesPutInvoicesId)(this, id, body, options));
+        return (0, fp_js_1.unwrapAsync)((0, invoices_put_invoices_id_js_1.invoicesPutInvoicesId)(this, id, body, options));
     }
     /**
      * Trigger communication webhook for an invoice
@@ -91,7 +91,7 @@ class Invoices extends sdks_js_1.ClientSDK {
      * Triggers a communication webhook event containing all information about the invoice
      */
     async postInvoicesIdCommsTrigger(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, invoicesPostInvoicesIdCommsTrigger_js_1.invoicesPostInvoicesIdCommsTrigger)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, invoices_post_invoices_id_comms_trigger_js_1.invoicesPostInvoicesIdCommsTrigger)(this, id, options));
     }
     /**
      * Finalize an invoice
@@ -100,7 +100,7 @@ class Invoices extends sdks_js_1.ClientSDK {
      * Finalize a draft invoice
      */
     async postInvoicesIdFinalize(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, invoicesPostInvoicesIdFinalize_js_1.invoicesPostInvoicesIdFinalize)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, invoices_post_invoices_id_finalize_js_1.invoicesPostInvoicesIdFinalize)(this, id, options));
     }
     /**
      * Update invoice payment status
@@ -109,7 +109,7 @@ class Invoices extends sdks_js_1.ClientSDK {
      * Update the payment status of an invoice
      */
     async putInvoicesIdPayment(id, body, options) {
-        return (0, fp_js_1.unwrapAsync)((0, invoicesPutInvoicesIdPayment_js_1.invoicesPutInvoicesIdPayment)(this, id, body, options));
+        return (0, fp_js_1.unwrapAsync)((0, invoices_put_invoices_id_payment_js_1.invoicesPutInvoicesIdPayment)(this, id, body, options));
     }
     /**
      * Attempt payment for an invoice
@@ -118,7 +118,7 @@ class Invoices extends sdks_js_1.ClientSDK {
      * Attempt to pay an invoice using customer's available wallets
      */
     async postInvoicesIdPaymentAttempt(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, invoicesPostInvoicesIdPaymentAttempt_js_1.invoicesPostInvoicesIdPaymentAttempt)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, invoices_post_invoices_id_payment_attempt_js_1.invoicesPostInvoicesIdPaymentAttempt)(this, id, options));
     }
     /**
      * Get PDF for an invoice
@@ -127,7 +127,7 @@ class Invoices extends sdks_js_1.ClientSDK {
      * Retrieve the PDF document for a specific invoice by its ID
      */
     async getInvoicesIdPdf(id, url, options) {
-        return (0, fp_js_1.unwrapAsync)((0, invoicesGetInvoicesIdPdf_js_1.invoicesGetInvoicesIdPdf)(this, id, url, options));
+        return (0, fp_js_1.unwrapAsync)((0, invoices_get_invoices_id_pdf_js_1.invoicesGetInvoicesIdPdf)(this, id, url, options));
     }
     /**
      * Recalculate invoice totals and line items
@@ -136,7 +136,7 @@ class Invoices extends sdks_js_1.ClientSDK {
      * Recalculate totals and line items for a draft invoice, useful when subscription line items or usage data has changed
      */
     async postInvoicesIdRecalculate(id, finalize, options) {
-        return (0, fp_js_1.unwrapAsync)((0, invoicesPostInvoicesIdRecalculate_js_1.invoicesPostInvoicesIdRecalculate)(this, id, finalize, options));
+        return (0, fp_js_1.unwrapAsync)((0, invoices_post_invoices_id_recalculate_js_1.invoicesPostInvoicesIdRecalculate)(this, id, finalize, options));
     }
     /**
      * Void an invoice
@@ -145,7 +145,7 @@ class Invoices extends sdks_js_1.ClientSDK {
      * Void an invoice that hasn't been paid
      */
     async postInvoicesIdVoid(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, invoicesPostInvoicesIdVoid_js_1.invoicesPostInvoicesIdVoid)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, invoices_post_invoices_id_void_js_1.invoicesPostInvoicesIdVoid)(this, id, options));
     }
 }
 exports.Invoices = Invoices;

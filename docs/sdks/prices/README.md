@@ -42,7 +42,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { pricesGetPrices } from "flexprice-sdk-test/funcs/pricesGetPrices.js";
+import { pricesGetPrices } from "flexprice-sdk-test/funcs/prices-get-prices.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -68,14 +68,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetPricesRequest](../../models/operations/getpricesrequest.md)                                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetPricesRequest](../../models/operations/get-prices-request.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoListPricesResponse](../../models/components/dtolistpricesresponse.md)\>**
+**Promise\<[components.DtoListPricesResponse](../../models/components/dto-list-prices-response.md)\>**
 
 ### Errors
 
@@ -125,7 +125,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { pricesPostPrices } from "flexprice-sdk-test/funcs/pricesPostPrices.js";
+import { pricesPostPrices } from "flexprice-sdk-test/funcs/prices-post-prices.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -161,14 +161,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreatePriceRequest](../../models/components/dtocreatepricerequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.DtoCreatePriceRequest](../../models/components/dto-create-price-request.md)                                                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoPriceResponse](../../models/components/dtopriceresponse.md)\>**
+**Promise\<[components.DtoPriceResponse](../../models/components/dto-price-response.md)\>**
 
 ### Errors
 
@@ -210,7 +210,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { pricesPostPricesBulk } from "flexprice-sdk-test/funcs/pricesPostPricesBulk.js";
+import { pricesPostPricesBulk } from "flexprice-sdk-test/funcs/prices-post-prices-bulk.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -238,14 +238,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreateBulkPriceRequest](../../models/components/dtocreatebulkpricerequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.DtoCreateBulkPriceRequest](../../models/components/dto-create-bulk-price-request.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoCreateBulkPriceResponse](../../models/components/dtocreatebulkpriceresponse.md)\>**
+**Promise\<[components.DtoCreateBulkPriceResponse](../../models/components/dto-create-bulk-price-response.md)\>**
 
 ### Errors
 
@@ -285,7 +285,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { pricesGetPricesLookupLookupKey } from "flexprice-sdk-test/funcs/pricesGetPricesLookupLookupKey.js";
+import { pricesGetPricesLookupLookupKey } from "flexprice-sdk-test/funcs/prices-get-prices-lookup-lookup-key.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -318,7 +318,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoPriceResponse](../../models/components/dtopriceresponse.md)\>**
+**Promise\<[components.DtoPriceResponse](../../models/components/dto-price-response.md)\>**
 
 ### Errors
 
@@ -358,7 +358,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { pricesGetPricesId } from "flexprice-sdk-test/funcs/pricesGetPricesId.js";
+import { pricesGetPricesId } from "flexprice-sdk-test/funcs/prices-get-prices-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -391,7 +391,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoPriceResponse](../../models/components/dtopriceresponse.md)\>**
+**Promise\<[components.DtoPriceResponse](../../models/components/dto-price-response.md)\>**
 
 ### Errors
 
@@ -431,7 +431,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { pricesPutPricesId } from "flexprice-sdk-test/funcs/pricesPutPricesId.js";
+import { pricesPutPricesId } from "flexprice-sdk-test/funcs/prices-put-prices-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -458,14 +458,14 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Price ID                                                                                                                                                                       |
-| `body`                                                                                                                                                                         | [components.DtoUpdatePriceRequest](../../models/components/dtoupdatepricerequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | Price configuration                                                                                                                                                            |
+| `body`                                                                                                                                                                         | [components.DtoUpdatePriceRequest](../../models/components/dto-update-price-request.md)                                                                                        | :heavy_check_mark:                                                                                                                                                             | Price configuration                                                                                                                                                            |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoPriceResponse](../../models/components/dtopriceresponse.md)\>**
+**Promise\<[components.DtoPriceResponse](../../models/components/dto-price-response.md)\>**
 
 ### Errors
 
@@ -505,7 +505,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { pricesDeletePricesId } from "flexprice-sdk-test/funcs/pricesDeletePricesId.js";
+import { pricesDeletePricesId } from "flexprice-sdk-test/funcs/prices-delete-prices-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -532,14 +532,14 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Price ID                                                                                                                                                                       |
-| `body`                                                                                                                                                                         | [components.DtoDeletePriceRequest](../../models/components/dtodeletepricerequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | Delete Price Request                                                                                                                                                           |
+| `body`                                                                                                                                                                         | [components.DtoDeletePriceRequest](../../models/components/dto-delete-price-request.md)                                                                                        | :heavy_check_mark:                                                                                                                                                             | Delete Price Request                                                                                                                                                           |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoSuccessResponse](../../models/components/dtosuccessresponse.md)\>**
+**Promise\<[components.DtoSuccessResponse](../../models/components/dto-success-response.md)\>**
 
 ### Errors
 

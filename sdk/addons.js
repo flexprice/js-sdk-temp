@@ -4,13 +4,13 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Addons = void 0;
-const addonsDeleteAddonsId_js_1 = require("../funcs/addonsDeleteAddonsId.js");
-const addonsGetAddons_js_1 = require("../funcs/addonsGetAddons.js");
-const addonsGetAddonsId_js_1 = require("../funcs/addonsGetAddonsId.js");
-const addonsGetAddonsLookupLookupKey_js_1 = require("../funcs/addonsGetAddonsLookupLookupKey.js");
-const addonsPostAddons_js_1 = require("../funcs/addonsPostAddons.js");
-const addonsPostAddonsSearch_js_1 = require("../funcs/addonsPostAddonsSearch.js");
-const addonsPutAddonsId_js_1 = require("../funcs/addonsPutAddonsId.js");
+const addons_delete_addons_id_js_1 = require("../funcs/addons-delete-addons-id.js");
+const addons_get_addons_id_js_1 = require("../funcs/addons-get-addons-id.js");
+const addons_get_addons_lookup_lookup_key_js_1 = require("../funcs/addons-get-addons-lookup-lookup-key.js");
+const addons_get_addons_js_1 = require("../funcs/addons-get-addons.js");
+const addons_post_addons_search_js_1 = require("../funcs/addons-post-addons-search.js");
+const addons_post_addons_js_1 = require("../funcs/addons-post-addons.js");
+const addons_put_addons_id_js_1 = require("../funcs/addons-put-addons-id.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
 class Addons extends sdks_js_1.ClientSDK {
@@ -21,7 +21,7 @@ class Addons extends sdks_js_1.ClientSDK {
      * Get addons with optional filtering
      */
     async getAddons(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, addonsGetAddons_js_1.addonsGetAddons)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, addons_get_addons_js_1.addonsGetAddons)(this, request, options));
     }
     /**
      * Create addon
@@ -30,7 +30,7 @@ class Addons extends sdks_js_1.ClientSDK {
      * Create a new addon
      */
     async postAddons(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, addonsPostAddons_js_1.addonsPostAddons)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, addons_post_addons_js_1.addonsPostAddons)(this, request, options));
     }
     /**
      * Get addon by lookup key
@@ -39,7 +39,7 @@ class Addons extends sdks_js_1.ClientSDK {
      * Get an addon by lookup key
      */
     async getAddonsLookupLookupKey(lookupKey, options) {
-        return (0, fp_js_1.unwrapAsync)((0, addonsGetAddonsLookupLookupKey_js_1.addonsGetAddonsLookupLookupKey)(this, lookupKey, options));
+        return (0, fp_js_1.unwrapAsync)((0, addons_get_addons_lookup_lookup_key_js_1.addonsGetAddonsLookupLookupKey)(this, lookupKey, options));
     }
     /**
      * List addons by filter
@@ -48,7 +48,7 @@ class Addons extends sdks_js_1.ClientSDK {
      * List addons by filter
      */
     async postAddonsSearch(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, addonsPostAddonsSearch_js_1.addonsPostAddonsSearch)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, addons_post_addons_search_js_1.addonsPostAddonsSearch)(this, request, options));
     }
     /**
      * Get addon
@@ -57,7 +57,7 @@ class Addons extends sdks_js_1.ClientSDK {
      * Get an addon by ID
      */
     async getAddonsId(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, addonsGetAddonsId_js_1.addonsGetAddonsId)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, addons_get_addons_id_js_1.addonsGetAddonsId)(this, id, options));
     }
     /**
      * Update addon
@@ -66,7 +66,7 @@ class Addons extends sdks_js_1.ClientSDK {
      * Update an existing addon
      */
     async putAddonsId(id, body, options) {
-        return (0, fp_js_1.unwrapAsync)((0, addonsPutAddonsId_js_1.addonsPutAddonsId)(this, id, body, options));
+        return (0, fp_js_1.unwrapAsync)((0, addons_put_addons_id_js_1.addonsPutAddonsId)(this, id, body, options));
     }
     /**
      * Delete addon
@@ -75,7 +75,7 @@ class Addons extends sdks_js_1.ClientSDK {
      * Delete an addon
      */
     async deleteAddonsId(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, addonsDeleteAddonsId_js_1.addonsDeleteAddonsId)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, addons_delete_addons_id_js_1.addonsDeleteAddonsId)(this, id, options));
     }
 }
 exports.Addons = Addons;

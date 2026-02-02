@@ -135,5 +135,40 @@ export declare class Subscriptions extends ClientSDK {
      * Resume a paused subscription with the specified parameters
      */
     postSubscriptionsIdResume(id: string, body: components.DtoResumeSubscriptionRequest, options?: RequestOptions): Promise<components.DtoSubscriptionPauseResponse>;
+    /**
+     * Get subscription V2
+     *
+     * @remarks
+     * Get a subscription by ID with optional expand parameters
+     */
+    getSubscriptionsIdV2(id: string, expand?: string | undefined, options?: RequestOptions): Promise<components.DtoSubscriptionResponseV2>;
+    /**
+     * List all subscription schedules
+     *
+     * @remarks
+     * Retrieves subscription schedules with optional filtering
+     */
+    getV1SubscriptionSchedules(pendingOnly?: boolean | undefined, subscriptionId?: string | undefined, limit?: number | undefined, offset?: number | undefined, options?: RequestOptions): Promise<components.DtoGetPendingSchedulesResponse>;
+    /**
+     * Get subscription schedule
+     *
+     * @remarks
+     * Retrieves details of a specific subscription schedule
+     */
+    getV1SubscriptionSchedulesId(id: string, options?: RequestOptions): Promise<components.DtoSubscriptionScheduleResponse>;
+    /**
+     * Cancel subscription schedule
+     *
+     * @remarks
+     * Cancels a pending subscription schedule. Supports two modes: 1) By schedule ID in path, or 2) By subscription ID + schedule type in request body
+     */
+    postV1SubscriptionsSchedulesScheduleIdCancel(scheduleId: string, body?: components.DtoCancelScheduleRequest | undefined, options?: RequestOptions): Promise<components.DtoCancelScheduleResponse>;
+    /**
+     * List subscription schedules
+     *
+     * @remarks
+     * Retrieves all schedules for a specific subscription
+     */
+    getV1SubscriptionsSubscriptionIdSchedules(subscriptionId: string, options?: RequestOptions): Promise<components.DtoGetPendingSchedulesResponse>;
 }
 //# sourceMappingURL=subscriptions.d.ts.map

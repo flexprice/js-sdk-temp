@@ -1,7 +1,7 @@
-export * from "./errorserrorresponse.js";
-export * from "./flexpriceerror.js";
-export * from "./httpclienterrors.js";
-export * from "./responsevalidationerror.js";
-export * from "./sdkerror.js";
-export * from "./sdkvalidationerror.js";
+export * from "./errors-error-response.js";
+export * from "./flex-price-error.js";
+export * from "./http-client-errors.js";
+export * from "./response-validation-error.js";
+export * from "./sdk-error.js";
+export * from "./sdk-validation-error.js";
 //# sourceMappingURL=index.d.ts.map

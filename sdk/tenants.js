@@ -4,10 +4,10 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Tenants = void 0;
-const tenantsGetTenantBilling_js_1 = require("../funcs/tenantsGetTenantBilling.js");
-const tenantsGetTenantsId_js_1 = require("../funcs/tenantsGetTenantsId.js");
-const tenantsPostTenants_js_1 = require("../funcs/tenantsPostTenants.js");
-const tenantsPutTenantsUpdate_js_1 = require("../funcs/tenantsPutTenantsUpdate.js");
+const tenants_get_tenant_billing_js_1 = require("../funcs/tenants-get-tenant-billing.js");
+const tenants_get_tenants_id_js_1 = require("../funcs/tenants-get-tenants-id.js");
+const tenants_post_tenants_js_1 = require("../funcs/tenants-post-tenants.js");
+const tenants_put_tenants_update_js_1 = require("../funcs/tenants-put-tenants-update.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
 class Tenants extends sdks_js_1.ClientSDK {
@@ -18,7 +18,7 @@ class Tenants extends sdks_js_1.ClientSDK {
      * Get the subscription and usage details for the current tenant
      */
     async getTenantBilling(options) {
-        return (0, fp_js_1.unwrapAsync)((0, tenantsGetTenantBilling_js_1.tenantsGetTenantBilling)(this, options));
+        return (0, fp_js_1.unwrapAsync)((0, tenants_get_tenant_billing_js_1.tenantsGetTenantBilling)(this, options));
     }
     /**
      * Create a new tenant
@@ -27,7 +27,7 @@ class Tenants extends sdks_js_1.ClientSDK {
      * Create a new tenant
      */
     async postTenants(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, tenantsPostTenants_js_1.tenantsPostTenants)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, tenants_post_tenants_js_1.tenantsPostTenants)(this, request, options));
     }
     /**
      * Update a tenant
@@ -36,7 +36,7 @@ class Tenants extends sdks_js_1.ClientSDK {
      * Update a tenant's details including name and billing information
      */
     async putTenantsUpdate(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, tenantsPutTenantsUpdate_js_1.tenantsPutTenantsUpdate)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, tenants_put_tenants_update_js_1.tenantsPutTenantsUpdate)(this, request, options));
     }
     /**
      * Get tenant by ID
@@ -45,7 +45,7 @@ class Tenants extends sdks_js_1.ClientSDK {
      * Get tenant by ID
      */
     async getTenantsId(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, tenantsGetTenantsId_js_1.tenantsGetTenantsId)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, tenants_get_tenants_id_js_1.tenantsGetTenantsId)(this, id, options));
     }
 }
 exports.Tenants = Tenants;

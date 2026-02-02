@@ -40,7 +40,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { creditNotesGetCreditnotes } from "flexprice-sdk-test/funcs/creditNotesGetCreditnotes.js";
+import { creditNotesGetCreditnotes } from "flexprice-sdk-test/funcs/credit-notes-get-creditnotes.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -66,14 +66,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetCreditnotesRequest](../../models/operations/getcreditnotesrequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetCreditnotesRequest](../../models/operations/get-creditnotes-request.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoListCreditNotesResponse](../../models/components/dtolistcreditnotesresponse.md)\>**
+**Promise\<[components.DtoListCreditNotesResponse](../../models/components/dto-list-credit-notes-response.md)\>**
 
 ### Errors
 
@@ -116,7 +116,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { creditNotesPostCreditnotes } from "flexprice-sdk-test/funcs/creditNotesPostCreditnotes.js";
+import { creditNotesPostCreditnotes } from "flexprice-sdk-test/funcs/credit-notes-post-creditnotes.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -145,14 +145,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreateCreditNoteRequest](../../models/components/dtocreatecreditnoterequest.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.DtoCreateCreditNoteRequest](../../models/components/dto-create-credit-note-request.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoCreditNoteResponse](../../models/components/dtocreditnoteresponse.md)\>**
+**Promise\<[components.DtoCreditNoteResponse](../../models/components/dto-credit-note-response.md)\>**
 
 ### Errors
 
@@ -192,7 +192,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { creditNotesGetCreditnotesId } from "flexprice-sdk-test/funcs/creditNotesGetCreditnotesId.js";
+import { creditNotesGetCreditnotesId } from "flexprice-sdk-test/funcs/credit-notes-get-creditnotes-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -225,7 +225,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoCreditNoteResponse](../../models/components/dtocreditnoteresponse.md)\>**
+**Promise\<[components.DtoCreditNoteResponse](../../models/components/dto-credit-note-response.md)\>**
 
 ### Errors
 
@@ -265,7 +265,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { creditNotesPostCreditnotesIdFinalize } from "flexprice-sdk-test/funcs/creditNotesPostCreditnotesIdFinalize.js";
+import { creditNotesPostCreditnotesIdFinalize } from "flexprice-sdk-test/funcs/credit-notes-post-creditnotes-id-finalize.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -298,7 +298,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoCreditNoteResponse](../../models/components/dtocreditnoteresponse.md)\>**
+**Promise\<[components.DtoCreditNoteResponse](../../models/components/dto-credit-note-response.md)\>**
 
 ### Errors
 
@@ -338,7 +338,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { creditNotesPostCreditnotesIdVoid } from "flexprice-sdk-test/funcs/creditNotesPostCreditnotesIdVoid.js";
+import { creditNotesPostCreditnotesIdVoid } from "flexprice-sdk-test/funcs/credit-notes-post-creditnotes-id-void.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -371,7 +371,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoCreditNoteResponse](../../models/components/dtocreditnoteresponse.md)\>**
+**Promise\<[components.DtoCreditNoteResponse](../../models/components/dto-credit-note-response.md)\>**
 
 ### Errors
 

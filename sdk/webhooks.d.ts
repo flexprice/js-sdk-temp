@@ -19,6 +19,15 @@ export declare class Webhooks extends ClientSDK {
         [k: string]: any;
     }>;
     /**
+     * Handle Moyasar webhook events
+     *
+     * @remarks
+     * Process incoming Moyasar webhook events for payment status updates
+     */
+    postWebhooksMoyasarTenantIdEnvironmentId(tenantId: string, environmentId: string, xMoyasarSignature?: string | undefined, options?: RequestOptions): Promise<{
+        [k: string]: any;
+    }>;
+    /**
      * Handle Nomod webhook events
      *
      * @remarks

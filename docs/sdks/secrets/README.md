@@ -38,7 +38,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { secretsGetSecretsApiKeys } from "flexprice-sdk-test/funcs/secretsGetSecretsApiKeys.js";
+import { secretsGetSecretsApiKeys } from "flexprice-sdk-test/funcs/secrets-get-secrets-api-keys.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -73,7 +73,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoListSecretsResponse](../../models/components/dtolistsecretsresponse.md)\>**
+**Promise\<[components.DtoListSecretsResponse](../../models/components/dto-list-secrets-response.md)\>**
 
 ### Errors
 
@@ -116,7 +116,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { secretsPostSecretsApiKeys } from "flexprice-sdk-test/funcs/secretsPostSecretsApiKeys.js";
+import { secretsPostSecretsApiKeys } from "flexprice-sdk-test/funcs/secrets-post-secrets-api-keys.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -145,14 +145,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreateAPIKeyRequest](../../models/components/dtocreateapikeyrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.DtoCreateAPIKeyRequest](../../models/components/dto-create-api-key-request.md)                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoCreateAPIKeyResponse](../../models/components/dtocreateapikeyresponse.md)\>**
+**Promise\<[components.DtoCreateAPIKeyResponse](../../models/components/dto-create-api-key-response.md)\>**
 
 ### Errors
 
@@ -192,7 +192,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { secretsDeleteSecretsApiKeysId } from "flexprice-sdk-test/funcs/secretsDeleteSecretsApiKeysId.js";
+import { secretsDeleteSecretsApiKeysId } from "flexprice-sdk-test/funcs/secrets-delete-secrets-api-keys-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

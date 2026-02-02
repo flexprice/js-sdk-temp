@@ -40,7 +40,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { taxAssociationsGetTaxesAssociations } from "flexprice-sdk-test/funcs/taxAssociationsGetTaxesAssociations.js";
+import { taxAssociationsGetTaxesAssociations } from "flexprice-sdk-test/funcs/tax-associations-get-taxes-associations.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -75,7 +75,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoListTaxAssociationsResponse](../../models/components/dtolisttaxassociationsresponse.md)\>**
+**Promise\<[components.DtoListTaxAssociationsResponse](../../models/components/dto-list-tax-associations-response.md)\>**
 
 ### Errors
 
@@ -119,7 +119,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { taxAssociationsPostTaxesAssociations } from "flexprice-sdk-test/funcs/taxAssociationsPostTaxesAssociations.js";
+import { taxAssociationsPostTaxesAssociations } from "flexprice-sdk-test/funcs/tax-associations-post-taxes-associations.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -149,14 +149,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreateTaxAssociationRequest](../../models/components/dtocreatetaxassociationrequest.md)                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.DtoCreateTaxAssociationRequest](../../models/components/dto-create-tax-association-request.md)                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoTaxAssociationResponse](../../models/components/dtotaxassociationresponse.md)\>**
+**Promise\<[components.DtoTaxAssociationResponse](../../models/components/dto-tax-association-response.md)\>**
 
 ### Errors
 
@@ -196,7 +196,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { taxAssociationsGetTaxesAssociationsId } from "flexprice-sdk-test/funcs/taxAssociationsGetTaxesAssociationsId.js";
+import { taxAssociationsGetTaxesAssociationsId } from "flexprice-sdk-test/funcs/tax-associations-get-taxes-associations-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -229,7 +229,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoTaxAssociationResponse](../../models/components/dtotaxassociationresponse.md)\>**
+**Promise\<[components.DtoTaxAssociationResponse](../../models/components/dto-tax-association-response.md)\>**
 
 ### Errors
 
@@ -269,7 +269,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { taxAssociationsPutTaxesAssociationsId } from "flexprice-sdk-test/funcs/taxAssociationsPutTaxesAssociationsId.js";
+import { taxAssociationsPutTaxesAssociationsId } from "flexprice-sdk-test/funcs/tax-associations-put-taxes-associations-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -296,14 +296,14 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Tax Config ID                                                                                                                                                                  |
-| `body`                                                                                                                                                                         | [components.DtoTaxAssociationUpdateRequest](../../models/components/dtotaxassociationupdaterequest.md)                                                                         | :heavy_check_mark:                                                                                                                                                             | Tax Config Request                                                                                                                                                             |
+| `body`                                                                                                                                                                         | [components.DtoTaxAssociationUpdateRequest](../../models/components/dto-tax-association-update-request.md)                                                                     | :heavy_check_mark:                                                                                                                                                             | Tax Config Request                                                                                                                                                             |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoTaxAssociationResponse](../../models/components/dtotaxassociationresponse.md)\>**
+**Promise\<[components.DtoTaxAssociationResponse](../../models/components/dto-tax-association-response.md)\>**
 
 ### Errors
 
@@ -343,7 +343,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { taxAssociationsDeleteTaxesAssociationsId } from "flexprice-sdk-test/funcs/taxAssociationsDeleteTaxesAssociationsId.js";
+import { taxAssociationsDeleteTaxesAssociationsId } from "flexprice-sdk-test/funcs/tax-associations-delete-taxes-associations-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -376,7 +376,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoTaxAssociationResponse](../../models/components/dtotaxassociationresponse.md)\>**
+**Promise\<[components.DtoTaxAssociationResponse](../../models/components/dto-tax-association-response.md)\>**
 
 ### Errors
 

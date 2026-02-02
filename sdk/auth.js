@@ -4,8 +4,8 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Auth = void 0;
-const authPostAuthLogin_js_1 = require("../funcs/authPostAuthLogin.js");
-const authPostAuthSignup_js_1 = require("../funcs/authPostAuthSignup.js");
+const auth_post_auth_login_js_1 = require("../funcs/auth-post-auth-login.js");
+const auth_post_auth_signup_js_1 = require("../funcs/auth-post-auth-signup.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
 class Auth extends sdks_js_1.ClientSDK {
@@ -16,7 +16,7 @@ class Auth extends sdks_js_1.ClientSDK {
      * Login a user
      */
     async postAuthLogin(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, authPostAuthLogin_js_1.authPostAuthLogin)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, auth_post_auth_login_js_1.authPostAuthLogin)(this, request, options));
     }
     /**
      * Sign up
@@ -25,7 +25,7 @@ class Auth extends sdks_js_1.ClientSDK {
      * Sign up a new user
      */
     async postAuthSignup(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, authPostAuthSignup_js_1.authPostAuthSignup)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, auth_post_auth_signup_js_1.authPostAuthSignup)(this, request, options));
     }
 }
 exports.Auth = Auth;

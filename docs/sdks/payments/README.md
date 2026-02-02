@@ -41,7 +41,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { paymentsGetPayments } from "flexprice-sdk-test/funcs/paymentsGetPayments.js";
+import { paymentsGetPayments } from "flexprice-sdk-test/funcs/payments-get-payments.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -67,14 +67,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetPaymentsRequest](../../models/operations/getpaymentsrequest.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetPaymentsRequest](../../models/operations/get-payments-request.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoListPaymentsResponse](../../models/components/dtolistpaymentsresponse.md)\>**
+**Promise\<[components.DtoListPaymentsResponse](../../models/components/dto-list-payments-response.md)\>**
 
 ### Errors
 
@@ -120,7 +120,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { paymentsPostPayments } from "flexprice-sdk-test/funcs/paymentsPostPayments.js";
+import { paymentsPostPayments } from "flexprice-sdk-test/funcs/payments-post-payments.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -152,14 +152,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreatePaymentRequest](../../models/components/dtocreatepaymentrequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.DtoCreatePaymentRequest](../../models/components/dto-create-payment-request.md)                                                                                    | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoPaymentResponse](../../models/components/dtopaymentresponse.md)\>**
+**Promise\<[components.DtoPaymentResponse](../../models/components/dto-payment-response.md)\>**
 
 ### Errors
 
@@ -199,7 +199,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { paymentsGetPaymentsId } from "flexprice-sdk-test/funcs/paymentsGetPaymentsId.js";
+import { paymentsGetPaymentsId } from "flexprice-sdk-test/funcs/payments-get-payments-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -232,7 +232,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoPaymentResponse](../../models/components/dtopaymentresponse.md)\>**
+**Promise\<[components.DtoPaymentResponse](../../models/components/dto-payment-response.md)\>**
 
 ### Errors
 
@@ -272,7 +272,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { paymentsPutPaymentsId } from "flexprice-sdk-test/funcs/paymentsPutPaymentsId.js";
+import { paymentsPutPaymentsId } from "flexprice-sdk-test/funcs/payments-put-payments-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -299,14 +299,14 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Payment ID                                                                                                                                                                     |
-| `body`                                                                                                                                                                         | [components.DtoUpdatePaymentRequest](../../models/components/dtoupdatepaymentrequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | Payment configuration                                                                                                                                                          |
+| `body`                                                                                                                                                                         | [components.DtoUpdatePaymentRequest](../../models/components/dto-update-payment-request.md)                                                                                    | :heavy_check_mark:                                                                                                                                                             | Payment configuration                                                                                                                                                          |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoPaymentResponse](../../models/components/dtopaymentresponse.md)\>**
+**Promise\<[components.DtoPaymentResponse](../../models/components/dto-payment-response.md)\>**
 
 ### Errors
 
@@ -346,7 +346,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { paymentsDeletePaymentsId } from "flexprice-sdk-test/funcs/paymentsDeletePaymentsId.js";
+import { paymentsDeletePaymentsId } from "flexprice-sdk-test/funcs/payments-delete-payments-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -379,7 +379,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoSuccessResponse](../../models/components/dtosuccessresponse.md)\>**
+**Promise\<[components.DtoSuccessResponse](../../models/components/dto-success-response.md)\>**
 
 ### Errors
 
@@ -419,7 +419,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { paymentsPostPaymentsIdProcess } from "flexprice-sdk-test/funcs/paymentsPostPaymentsIdProcess.js";
+import { paymentsPostPaymentsIdProcess } from "flexprice-sdk-test/funcs/payments-post-payments-id-process.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -452,7 +452,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoPaymentResponse](../../models/components/dtopaymentresponse.md)\>**
+**Promise\<[components.DtoPaymentResponse](../../models/components/dto-payment-response.md)\>**
 
 ### Errors
 

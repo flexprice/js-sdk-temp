@@ -8,7 +8,7 @@ export declare class Wallets extends ClientSDK {
      * @remarks
      * Get all wallets for a customer by lookup key or id
      */
-    getCustomersWallets(id?: string | undefined, includeRealTimeBalance?: boolean | undefined, lookupKey?: string | undefined, options?: RequestOptions): Promise<Array<components.DtoWalletResponse>>;
+    getCustomersWallets(request: operations.GetCustomersWalletsRequest, options?: RequestOptions): Promise<Array<components.DtoWalletResponse>>;
     /**
      * Get wallets by customer ID
      *
@@ -64,7 +64,7 @@ export declare class Wallets extends ClientSDK {
      * @remarks
      * Get real-time balance of a wallet
      */
-    getWalletsIdBalanceRealTime(id: string, options?: RequestOptions): Promise<components.DtoWalletBalanceResponse>;
+    getWalletsIdBalanceRealTime(id: string, expand?: string | undefined, options?: RequestOptions): Promise<components.DtoWalletBalanceResponse>;
     /**
      * Terminate a wallet
      *

@@ -40,7 +40,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { couponsGetCoupons } from "flexprice-sdk-test/funcs/couponsGetCoupons.js";
+import { couponsGetCoupons } from "flexprice-sdk-test/funcs/coupons-get-coupons.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -66,14 +66,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetCouponsRequest](../../models/operations/getcouponsrequest.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetCouponsRequest](../../models/operations/get-coupons-request.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoListCouponsResponse](../../models/components/dtolistcouponsresponse.md)\>**
+**Promise\<[components.DtoListCouponsResponse](../../models/components/dto-list-coupons-response.md)\>**
 
 ### Errors
 
@@ -117,7 +117,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { couponsPostCoupons } from "flexprice-sdk-test/funcs/couponsPostCoupons.js";
+import { couponsPostCoupons } from "flexprice-sdk-test/funcs/coupons-post-coupons.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -147,14 +147,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreateCouponRequest](../../models/components/dtocreatecouponrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.DtoCreateCouponRequest](../../models/components/dto-create-coupon-request.md)                                                                                      | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoCouponResponse](../../models/components/dtocouponresponse.md)\>**
+**Promise\<[components.DtoCouponResponse](../../models/components/dto-coupon-response.md)\>**
 
 ### Errors
 
@@ -194,7 +194,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { couponsGetCouponsId } from "flexprice-sdk-test/funcs/couponsGetCouponsId.js";
+import { couponsGetCouponsId } from "flexprice-sdk-test/funcs/coupons-get-coupons-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -227,7 +227,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoCouponResponse](../../models/components/dtocouponresponse.md)\>**
+**Promise\<[components.DtoCouponResponse](../../models/components/dto-coupon-response.md)\>**
 
 ### Errors
 
@@ -267,7 +267,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { couponsPutCouponsId } from "flexprice-sdk-test/funcs/couponsPutCouponsId.js";
+import { couponsPutCouponsId } from "flexprice-sdk-test/funcs/coupons-put-coupons-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -294,14 +294,14 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Coupon ID                                                                                                                                                                      |
-| `body`                                                                                                                                                                         | [components.DtoUpdateCouponRequest](../../models/components/dtoupdatecouponrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | Coupon update request                                                                                                                                                          |
+| `body`                                                                                                                                                                         | [components.DtoUpdateCouponRequest](../../models/components/dto-update-coupon-request.md)                                                                                      | :heavy_check_mark:                                                                                                                                                             | Coupon update request                                                                                                                                                          |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoCouponResponse](../../models/components/dtocouponresponse.md)\>**
+**Promise\<[components.DtoCouponResponse](../../models/components/dto-coupon-response.md)\>**
 
 ### Errors
 
@@ -341,7 +341,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { couponsDeleteCouponsId } from "flexprice-sdk-test/funcs/couponsDeleteCouponsId.js";
+import { couponsDeleteCouponsId } from "flexprice-sdk-test/funcs/coupons-delete-coupons-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

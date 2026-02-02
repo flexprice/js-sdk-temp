@@ -1,5 +1,5 @@
-import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
-import { SDKError } from "../models/errors/sdkerror.js";
+import { ResponseValidationError } from "../models/errors/response-validation-error.js";
+import { SDKError } from "../models/errors/sdk-error.js";
 import { Result } from "../types/fp.js";
 import { StatusCodePredicate } from "./http.js";
 export type Encoding = "jsonl" | "json" | "text" | "bytes" | "stream" | "sse" | "nil" | "fail";

@@ -4,15 +4,15 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Entitlements = void 0;
-const entitlementsDeleteEntitlementsId_js_1 = require("../funcs/entitlementsDeleteEntitlementsId.js");
-const entitlementsGetAddonsIdEntitlements_js_1 = require("../funcs/entitlementsGetAddonsIdEntitlements.js");
-const entitlementsGetEntitlements_js_1 = require("../funcs/entitlementsGetEntitlements.js");
-const entitlementsGetEntitlementsId_js_1 = require("../funcs/entitlementsGetEntitlementsId.js");
-const entitlementsGetPlansIdEntitlements_js_1 = require("../funcs/entitlementsGetPlansIdEntitlements.js");
-const entitlementsPostEntitlements_js_1 = require("../funcs/entitlementsPostEntitlements.js");
-const entitlementsPostEntitlementsBulk_js_1 = require("../funcs/entitlementsPostEntitlementsBulk.js");
-const entitlementsPostEntitlementsSearch_js_1 = require("../funcs/entitlementsPostEntitlementsSearch.js");
-const entitlementsPutEntitlementsId_js_1 = require("../funcs/entitlementsPutEntitlementsId.js");
+const entitlements_delete_entitlements_id_js_1 = require("../funcs/entitlements-delete-entitlements-id.js");
+const entitlements_get_addons_id_entitlements_js_1 = require("../funcs/entitlements-get-addons-id-entitlements.js");
+const entitlements_get_entitlements_id_js_1 = require("../funcs/entitlements-get-entitlements-id.js");
+const entitlements_get_entitlements_js_1 = require("../funcs/entitlements-get-entitlements.js");
+const entitlements_get_plans_id_entitlements_js_1 = require("../funcs/entitlements-get-plans-id-entitlements.js");
+const entitlements_post_entitlements_bulk_js_1 = require("../funcs/entitlements-post-entitlements-bulk.js");
+const entitlements_post_entitlements_search_js_1 = require("../funcs/entitlements-post-entitlements-search.js");
+const entitlements_post_entitlements_js_1 = require("../funcs/entitlements-post-entitlements.js");
+const entitlements_put_entitlements_id_js_1 = require("../funcs/entitlements-put-entitlements-id.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
 class Entitlements extends sdks_js_1.ClientSDK {
@@ -23,7 +23,7 @@ class Entitlements extends sdks_js_1.ClientSDK {
      * Get all entitlements for an addon
      */
     async getAddonsIdEntitlements(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, entitlementsGetAddonsIdEntitlements_js_1.entitlementsGetAddonsIdEntitlements)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, entitlements_get_addons_id_entitlements_js_1.entitlementsGetAddonsIdEntitlements)(this, id, options));
     }
     /**
      * Get entitlements
@@ -32,7 +32,7 @@ class Entitlements extends sdks_js_1.ClientSDK {
      * Get entitlements with the specified filter
      */
     async getEntitlements(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, entitlementsGetEntitlements_js_1.entitlementsGetEntitlements)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, entitlements_get_entitlements_js_1.entitlementsGetEntitlements)(this, request, options));
     }
     /**
      * Create a new entitlement
@@ -41,7 +41,7 @@ class Entitlements extends sdks_js_1.ClientSDK {
      * Create a new entitlement with the specified configuration
      */
     async postEntitlements(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, entitlementsPostEntitlements_js_1.entitlementsPostEntitlements)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, entitlements_post_entitlements_js_1.entitlementsPostEntitlements)(this, request, options));
     }
     /**
      * Create multiple entitlements in bulk
@@ -50,7 +50,7 @@ class Entitlements extends sdks_js_1.ClientSDK {
      * Create multiple entitlements with the specified configurations
      */
     async postEntitlementsBulk(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, entitlementsPostEntitlementsBulk_js_1.entitlementsPostEntitlementsBulk)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, entitlements_post_entitlements_bulk_js_1.entitlementsPostEntitlementsBulk)(this, request, options));
     }
     /**
      * List entitlements by filter
@@ -59,7 +59,7 @@ class Entitlements extends sdks_js_1.ClientSDK {
      * List entitlements by filter
      */
     async postEntitlementsSearch(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, entitlementsPostEntitlementsSearch_js_1.entitlementsPostEntitlementsSearch)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, entitlements_post_entitlements_search_js_1.entitlementsPostEntitlementsSearch)(this, request, options));
     }
     /**
      * Get an entitlement by ID
@@ -68,7 +68,7 @@ class Entitlements extends sdks_js_1.ClientSDK {
      * Get an entitlement by ID
      */
     async getEntitlementsId(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, entitlementsGetEntitlementsId_js_1.entitlementsGetEntitlementsId)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, entitlements_get_entitlements_id_js_1.entitlementsGetEntitlementsId)(this, id, options));
     }
     /**
      * Update an entitlement
@@ -77,7 +77,7 @@ class Entitlements extends sdks_js_1.ClientSDK {
      * Update an entitlement with the specified configuration
      */
     async putEntitlementsId(id, body, options) {
-        return (0, fp_js_1.unwrapAsync)((0, entitlementsPutEntitlementsId_js_1.entitlementsPutEntitlementsId)(this, id, body, options));
+        return (0, fp_js_1.unwrapAsync)((0, entitlements_put_entitlements_id_js_1.entitlementsPutEntitlementsId)(this, id, body, options));
     }
     /**
      * Delete an entitlement
@@ -86,7 +86,7 @@ class Entitlements extends sdks_js_1.ClientSDK {
      * Delete an entitlement
      */
     async deleteEntitlementsId(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, entitlementsDeleteEntitlementsId_js_1.entitlementsDeleteEntitlementsId)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, entitlements_delete_entitlements_id_js_1.entitlementsDeleteEntitlementsId)(this, id, options));
     }
     /**
      * Get plan entitlements
@@ -95,7 +95,7 @@ class Entitlements extends sdks_js_1.ClientSDK {
      * Get all entitlements for a plan
      */
     async getPlansIdEntitlements(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, entitlementsGetPlansIdEntitlements_js_1.entitlementsGetPlansIdEntitlements)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, entitlements_get_plans_id_entitlements_js_1.entitlementsGetPlansIdEntitlements)(this, id, options));
     }
 }
 exports.Entitlements = Entitlements;

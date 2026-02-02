@@ -12,6 +12,7 @@
 * [postEventsQuery](#posteventsquery) - List raw events
 * [postEventsUsage](#posteventsusage) - Get usage statistics
 * [postEventsUsageMeter](#posteventsusagemeter) - Get usage by meter
+* [getEventsId](#geteventsid) - Get event by ID
 
 ## postEvents
 
@@ -54,7 +55,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { eventsPostEvents } from "flexprice-sdk-test/funcs/eventsPostEvents.js";
+import { eventsPostEvents } from "flexprice-sdk-test/funcs/events-post-events.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -91,7 +92,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoIngestEventRequest](../../models/components/dtoingesteventrequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.DtoIngestEventRequest](../../models/components/dto-ingest-event-request.md)                                                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -139,7 +140,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { eventsPostEventsAnalytics } from "flexprice-sdk-test/funcs/eventsPostEventsAnalytics.js";
+import { eventsPostEventsAnalytics } from "flexprice-sdk-test/funcs/events-post-events-analytics.js";
 import { openAsBlob } from "node:fs";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
@@ -166,14 +167,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [ReadableStream<Uint8Array>](../../models/dtogetusageanalyticsrequest.md)                                                                                                      | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [ReadableStream<Uint8Array>](../../models/dto-get-usage-analytics-request.md)                                                                                                  | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoGetUsageAnalyticsResponse](../../models/components/dtogetusageanalyticsresponse.md)\>**
+**Promise\<[components.DtoGetUsageAnalyticsResponse](../../models/components/dto-get-usage-analytics-response.md)\>**
 
 ### Errors
 
@@ -215,7 +216,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { eventsPostEventsBulk } from "flexprice-sdk-test/funcs/eventsPostEventsBulk.js";
+import { eventsPostEventsBulk } from "flexprice-sdk-test/funcs/events-post-events-bulk.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -243,7 +244,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoBulkIngestEventRequest](../../models/components/dtobulkingesteventrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.DtoBulkIngestEventRequest](../../models/components/dto-bulk-ingest-event-request.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -290,7 +291,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { eventsPostEventsHuggingfaceInference } from "flexprice-sdk-test/funcs/eventsPostEventsHuggingfaceInference.js";
+import { eventsPostEventsHuggingfaceInference } from "flexprice-sdk-test/funcs/events-post-events-huggingface-inference.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -322,7 +323,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoGetHuggingFaceBillingDataResponse](../../models/components/dtogethuggingfacebillingdataresponse.md)\>**
+**Promise\<[components.DtoGetHuggingFaceBillingDataResponse](../../models/components/dto-get-hugging-face-billing-data-response.md)\>**
 
 ### Errors
 
@@ -361,7 +362,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { eventsGetEventsMonitoring } from "flexprice-sdk-test/funcs/eventsGetEventsMonitoring.js";
+import { eventsGetEventsMonitoring } from "flexprice-sdk-test/funcs/events-get-events-monitoring.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -394,7 +395,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoGetMonitoringDataResponse](../../models/components/dtogetmonitoringdataresponse.md)\>**
+**Promise\<[components.DtoGetMonitoringDataResponse](../../models/components/dto-get-monitoring-data-response.md)\>**
 
 ### Errors
 
@@ -435,7 +436,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { eventsPostEventsQuery } from "flexprice-sdk-test/funcs/eventsPostEventsQuery.js";
+import { eventsPostEventsQuery } from "flexprice-sdk-test/funcs/events-post-events-query.js";
 import { openAsBlob } from "node:fs";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
@@ -462,14 +463,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [ReadableStream<Uint8Array>](../../models/dtogeteventsrequest.md)                                                                                                              | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [ReadableStream<Uint8Array>](../../models/dto-get-events-request.md)                                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoGetEventsResponse](../../models/components/dtogeteventsresponse.md)\>**
+**Promise\<[components.DtoGetEventsResponse](../../models/components/dto-get-events-response.md)\>**
 
 ### Errors
 
@@ -510,7 +511,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { eventsPostEventsUsage } from "flexprice-sdk-test/funcs/eventsPostEventsUsage.js";
+import { eventsPostEventsUsage } from "flexprice-sdk-test/funcs/events-post-events-usage.js";
 import { openAsBlob } from "node:fs";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
@@ -537,14 +538,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [ReadableStream<Uint8Array>](../../models/dtogetusagerequest.md)                                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [ReadableStream<Uint8Array>](../../models/dto-get-usage-request.md)                                                                                                            | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoGetUsageResponse](../../models/components/dtogetusageresponse.md)\>**
+**Promise\<[components.DtoGetUsageResponse](../../models/components/dto-get-usage-response.md)\>**
 
 ### Errors
 
@@ -585,7 +586,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { eventsPostEventsUsageMeter } from "flexprice-sdk-test/funcs/eventsPostEventsUsageMeter.js";
+import { eventsPostEventsUsageMeter } from "flexprice-sdk-test/funcs/events-post-events-usage-meter.js";
 import { openAsBlob } from "node:fs";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
@@ -612,19 +613,92 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [ReadableStream<Uint8Array>](../../models/dtogetusagebymeterrequest.md)                                                                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [ReadableStream<Uint8Array>](../../models/dto-get-usage-by-meter-request.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoGetUsageResponse](../../models/components/dtogetusageresponse.md)\>**
+**Promise\<[components.DtoGetUsageResponse](../../models/components/dto-get-usage-response.md)\>**
 
 ### Errors
 
 | Error Type                 | Status Code                | Content Type               |
 | -------------------------- | -------------------------- | -------------------------- |
 | errors.ErrorsErrorResponse | 400, 404                   | application/json           |
+| errors.ErrorsErrorResponse | 500                        | application/json           |
+| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+
+## getEventsId
+
+Retrieve event details and processing status with debug information
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="get_/events/{id}" method="get" path="/events/{id}" -->
+```typescript
+import { FlexPrice } from "flexprice-sdk-test";
+
+const flexPrice = new FlexPrice({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const result = await flexPrice.events.getEventsId("<id>");
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { FlexPriceCore } from "flexprice-sdk-test/core.js";
+import { eventsGetEventsId } from "flexprice-sdk-test/funcs/events-get-events-id.js";
+
+// Use `FlexPriceCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const flexPrice = new FlexPriceCore({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await eventsGetEventsId(flexPrice, "<id>");
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("eventsGetEventsId failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Event ID                                                                                                                                                                       |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[components.DtoGetEventByIDResponse](../../models/components/dto-get-event-by-id-response.md)\>**
+
+### Errors
+
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.ErrorsErrorResponse | 404                        | application/json           |
 | errors.ErrorsErrorResponse | 500                        | application/json           |
 | errors.SDKError            | 4XX, 5XX                   | \*/\*                      |

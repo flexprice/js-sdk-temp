@@ -4,10 +4,10 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Integrations = void 0;
-const integrationsDeleteSecretsIntegrationsId_js_1 = require("../funcs/integrationsDeleteSecretsIntegrationsId.js");
-const integrationsGetSecretsIntegrationsByProviderProvider_js_1 = require("../funcs/integrationsGetSecretsIntegrationsByProviderProvider.js");
-const integrationsGetSecretsIntegrationsLinked_js_1 = require("../funcs/integrationsGetSecretsIntegrationsLinked.js");
-const integrationsPostSecretsIntegrationsCreateProvider_js_1 = require("../funcs/integrationsPostSecretsIntegrationsCreateProvider.js");
+const integrations_delete_secrets_integrations_id_js_1 = require("../funcs/integrations-delete-secrets-integrations-id.js");
+const integrations_get_secrets_integrations_by_provider_provider_js_1 = require("../funcs/integrations-get-secrets-integrations-by-provider-provider.js");
+const integrations_get_secrets_integrations_linked_js_1 = require("../funcs/integrations-get-secrets-integrations-linked.js");
+const integrations_post_secrets_integrations_create_provider_js_1 = require("../funcs/integrations-post-secrets-integrations-create-provider.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
 class Integrations extends sdks_js_1.ClientSDK {
@@ -18,7 +18,7 @@ class Integrations extends sdks_js_1.ClientSDK {
      * Get details of a specific integration
      */
     async getSecretsIntegrationsByProviderProvider(provider, options) {
-        return (0, fp_js_1.unwrapAsync)((0, integrationsGetSecretsIntegrationsByProviderProvider_js_1.integrationsGetSecretsIntegrationsByProviderProvider)(this, provider, options));
+        return (0, fp_js_1.unwrapAsync)((0, integrations_get_secrets_integrations_by_provider_provider_js_1.integrationsGetSecretsIntegrationsByProviderProvider)(this, provider, options));
     }
     /**
      * Create or update an integration
@@ -27,7 +27,7 @@ class Integrations extends sdks_js_1.ClientSDK {
      * Create or update integration credentials
      */
     async postSecretsIntegrationsCreateProvider(provider, body, options) {
-        return (0, fp_js_1.unwrapAsync)((0, integrationsPostSecretsIntegrationsCreateProvider_js_1.integrationsPostSecretsIntegrationsCreateProvider)(this, provider, body, options));
+        return (0, fp_js_1.unwrapAsync)((0, integrations_post_secrets_integrations_create_provider_js_1.integrationsPostSecretsIntegrationsCreateProvider)(this, provider, body, options));
     }
     /**
      * List linked integrations
@@ -36,7 +36,7 @@ class Integrations extends sdks_js_1.ClientSDK {
      * Get a list of unique providers which have a valid linked integration secret
      */
     async getSecretsIntegrationsLinked(options) {
-        return (0, fp_js_1.unwrapAsync)((0, integrationsGetSecretsIntegrationsLinked_js_1.integrationsGetSecretsIntegrationsLinked)(this, options));
+        return (0, fp_js_1.unwrapAsync)((0, integrations_get_secrets_integrations_linked_js_1.integrationsGetSecretsIntegrationsLinked)(this, options));
     }
     /**
      * Delete an integration
@@ -45,7 +45,7 @@ class Integrations extends sdks_js_1.ClientSDK {
      * Delete integration credentials
      */
     async deleteSecretsIntegrationsId(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, integrationsDeleteSecretsIntegrationsId_js_1.integrationsDeleteSecretsIntegrationsId)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, integrations_delete_secrets_integrations_id_js_1.integrationsDeleteSecretsIntegrationsId)(this, id, options));
     }
 }
 exports.Integrations = Integrations;

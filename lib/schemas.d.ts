@@ -1,5 +1,5 @@
 import { output, ZodEffects, ZodObject, ZodRawShape, ZodTypeAny } from "zod/v3";
-import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { SDKValidationError } from "../models/errors/sdk-validation-error.js";
 import { Result } from "../types/fp.js";
 /**
  * Utility function that executes some code which may throw a ZodError. It

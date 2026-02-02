@@ -4,16 +4,16 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Customers = void 0;
-const customersDeleteCustomersId_js_1 = require("../funcs/customersDeleteCustomersId.js");
-const customersGetCustomers_js_1 = require("../funcs/customersGetCustomers.js");
-const customersGetCustomersExternalExternalId_js_1 = require("../funcs/customersGetCustomersExternalExternalId.js");
-const customersGetCustomersId_js_1 = require("../funcs/customersGetCustomersId.js");
-const customersGetCustomersIdEntitlements_js_1 = require("../funcs/customersGetCustomersIdEntitlements.js");
-const customersGetCustomersIdGrantsUpcoming_js_1 = require("../funcs/customersGetCustomersIdGrantsUpcoming.js");
-const customersGetCustomersUsage_js_1 = require("../funcs/customersGetCustomersUsage.js");
-const customersPostCustomers_js_1 = require("../funcs/customersPostCustomers.js");
-const customersPostCustomersSearch_js_1 = require("../funcs/customersPostCustomersSearch.js");
-const customersPutCustomersId_js_1 = require("../funcs/customersPutCustomersId.js");
+const customers_delete_customers_id_js_1 = require("../funcs/customers-delete-customers-id.js");
+const customers_get_customers_external_external_id_js_1 = require("../funcs/customers-get-customers-external-external-id.js");
+const customers_get_customers_id_entitlements_js_1 = require("../funcs/customers-get-customers-id-entitlements.js");
+const customers_get_customers_id_grants_upcoming_js_1 = require("../funcs/customers-get-customers-id-grants-upcoming.js");
+const customers_get_customers_id_js_1 = require("../funcs/customers-get-customers-id.js");
+const customers_get_customers_usage_js_1 = require("../funcs/customers-get-customers-usage.js");
+const customers_get_customers_js_1 = require("../funcs/customers-get-customers.js");
+const customers_post_customers_search_js_1 = require("../funcs/customers-post-customers-search.js");
+const customers_post_customers_js_1 = require("../funcs/customers-post-customers.js");
+const customers_put_customers_js_1 = require("../funcs/customers-put-customers.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
 class Customers extends sdks_js_1.ClientSDK {
@@ -24,7 +24,16 @@ class Customers extends sdks_js_1.ClientSDK {
      * Get customers
      */
     async getCustomers(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, customersGetCustomers_js_1.customersGetCustomers)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, customers_get_customers_js_1.customersGetCustomers)(this, request, options));
+    }
+    /**
+     * Update a customer
+     *
+     * @remarks
+     * Update a customer by id or external_customer_id
+     */
+    async putCustomers(body, id, externalCustomerId, options) {
+        return (0, fp_js_1.unwrapAsync)((0, customers_put_customers_js_1.customersPutCustomers)(this, body, id, externalCustomerId, options));
     }
     /**
      * Create a customer
@@ -33,7 +42,7 @@ class Customers extends sdks_js_1.ClientSDK {
      * Create a customer
      */
     async postCustomers(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, customersPostCustomers_js_1.customersPostCustomers)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, customers_post_customers_js_1.customersPostCustomers)(this, request, options));
     }
     /**
      * Get a customer by external id
@@ -42,7 +51,7 @@ class Customers extends sdks_js_1.ClientSDK {
      * Get a customer by external id
      */
     async getCustomersExternalExternalId(externalId, options) {
-        return (0, fp_js_1.unwrapAsync)((0, customersGetCustomersExternalExternalId_js_1.customersGetCustomersExternalExternalId)(this, externalId, options));
+        return (0, fp_js_1.unwrapAsync)((0, customers_get_customers_external_external_id_js_1.customersGetCustomersExternalExternalId)(this, externalId, options));
     }
     /**
      * List customers by filter
@@ -51,7 +60,7 @@ class Customers extends sdks_js_1.ClientSDK {
      * List customers by filter
      */
     async postCustomersSearch(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, customersPostCustomersSearch_js_1.customersPostCustomersSearch)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, customers_post_customers_search_js_1.customersPostCustomersSearch)(this, request, options));
     }
     /**
      * Get customer usage summary
@@ -60,7 +69,7 @@ class Customers extends sdks_js_1.ClientSDK {
      * Get customer usage summary by customer_id or customer_lookup_key (external_customer_id)
      */
     async getCustomersUsage(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, customersGetCustomersUsage_js_1.customersGetCustomersUsage)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, customers_get_customers_usage_js_1.customersGetCustomersUsage)(this, request, options));
     }
     /**
      * Get a customer
@@ -69,16 +78,7 @@ class Customers extends sdks_js_1.ClientSDK {
      * Get a customer
      */
     async getCustomersId(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, customersGetCustomersId_js_1.customersGetCustomersId)(this, id, options));
-    }
-    /**
-     * Update a customer
-     *
-     * @remarks
-     * Update a customer
-     */
-    async putCustomersId(id, body, options) {
-        return (0, fp_js_1.unwrapAsync)((0, customersPutCustomersId_js_1.customersPutCustomersId)(this, id, body, options));
+        return (0, fp_js_1.unwrapAsync)((0, customers_get_customers_id_js_1.customersGetCustomersId)(this, id, options));
     }
     /**
      * Delete a customer
@@ -87,7 +87,7 @@ class Customers extends sdks_js_1.ClientSDK {
      * Delete a customer
      */
     async deleteCustomersId(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, customersDeleteCustomersId_js_1.customersDeleteCustomersId)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, customers_delete_customers_id_js_1.customersDeleteCustomersId)(this, id, options));
     }
     /**
      * Get customer entitlements
@@ -96,7 +96,7 @@ class Customers extends sdks_js_1.ClientSDK {
      * Get customer entitlements
      */
     async getCustomersIdEntitlements(id, featureIds, subscriptionIds, options) {
-        return (0, fp_js_1.unwrapAsync)((0, customersGetCustomersIdEntitlements_js_1.customersGetCustomersIdEntitlements)(this, id, featureIds, subscriptionIds, options));
+        return (0, fp_js_1.unwrapAsync)((0, customers_get_customers_id_entitlements_js_1.customersGetCustomersIdEntitlements)(this, id, featureIds, subscriptionIds, options));
     }
     /**
      * Get upcoming credit grant applications
@@ -105,7 +105,7 @@ class Customers extends sdks_js_1.ClientSDK {
      * Get upcoming credit grant applications for a customer
      */
     async getCustomersIdGrantsUpcoming(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, customersGetCustomersIdGrantsUpcoming_js_1.customersGetCustomersIdGrantsUpcoming)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, customers_get_customers_id_grants_upcoming_js_1.customersGetCustomersIdGrantsUpcoming)(this, id, options));
     }
 }
 exports.Customers = Customers;

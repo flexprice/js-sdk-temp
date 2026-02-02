@@ -40,7 +40,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { connectionsGetConnections } from "flexprice-sdk-test/funcs/connectionsGetConnections.js";
+import { connectionsGetConnections } from "flexprice-sdk-test/funcs/connections-get-connections.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -66,14 +66,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetConnectionsRequest](../../models/operations/getconnectionsrequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetConnectionsRequest](../../models/operations/get-connections-request.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoListConnectionsResponse](../../models/components/dtolistconnectionsresponse.md)\>**
+**Promise\<[components.DtoListConnectionsResponse](../../models/components/dto-list-connections-response.md)\>**
 
 ### Errors
 
@@ -113,7 +113,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { connectionsPostConnectionsSearch } from "flexprice-sdk-test/funcs/connectionsPostConnectionsSearch.js";
+import { connectionsPostConnectionsSearch } from "flexprice-sdk-test/funcs/connections-post-connections-search.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -139,14 +139,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.TypesConnectionFilter](../../models/components/typesconnectionfilter.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.TypesConnectionFilter](../../models/components/types-connection-filter.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoListConnectionsResponse](../../models/components/dtolistconnectionsresponse.md)\>**
+**Promise\<[components.DtoListConnectionsResponse](../../models/components/dto-list-connections-response.md)\>**
 
 ### Errors
 
@@ -186,7 +186,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { connectionsGetConnectionsId } from "flexprice-sdk-test/funcs/connectionsGetConnectionsId.js";
+import { connectionsGetConnectionsId } from "flexprice-sdk-test/funcs/connections-get-connections-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -219,7 +219,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoConnectionResponse](../../models/components/dtoconnectionresponse.md)\>**
+**Promise\<[components.DtoConnectionResponse](../../models/components/dto-connection-response.md)\>**
 
 ### Errors
 
@@ -259,7 +259,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { connectionsPutConnectionsId } from "flexprice-sdk-test/funcs/connectionsPutConnectionsId.js";
+import { connectionsPutConnectionsId } from "flexprice-sdk-test/funcs/connections-put-connections-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -286,14 +286,14 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Connection ID                                                                                                                                                                  |
-| `body`                                                                                                                                                                         | [components.DtoUpdateConnectionRequest](../../models/components/dtoupdateconnectionrequest.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | Connection                                                                                                                                                                     |
+| `body`                                                                                                                                                                         | [components.DtoUpdateConnectionRequest](../../models/components/dto-update-connection-request.md)                                                                              | :heavy_check_mark:                                                                                                                                                             | Connection                                                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoConnectionResponse](../../models/components/dtoconnectionresponse.md)\>**
+**Promise\<[components.DtoConnectionResponse](../../models/components/dto-connection-response.md)\>**
 
 ### Errors
 
@@ -333,7 +333,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { connectionsDeleteConnectionsId } from "flexprice-sdk-test/funcs/connectionsDeleteConnectionsId.js";
+import { connectionsDeleteConnectionsId } from "flexprice-sdk-test/funcs/connections-delete-connections-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

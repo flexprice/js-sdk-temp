@@ -4,13 +4,13 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Plans = void 0;
-const plansDeletePlansId_js_1 = require("../funcs/plansDeletePlansId.js");
-const plansGetPlans_js_1 = require("../funcs/plansGetPlans.js");
-const plansGetPlansId_js_1 = require("../funcs/plansGetPlansId.js");
-const plansPostPlans_js_1 = require("../funcs/plansPostPlans.js");
-const plansPostPlansIdSyncSubscriptions_js_1 = require("../funcs/plansPostPlansIdSyncSubscriptions.js");
-const plansPostPlansSearch_js_1 = require("../funcs/plansPostPlansSearch.js");
-const plansPutPlansId_js_1 = require("../funcs/plansPutPlansId.js");
+const plans_delete_plans_id_js_1 = require("../funcs/plans-delete-plans-id.js");
+const plans_get_plans_id_js_1 = require("../funcs/plans-get-plans-id.js");
+const plans_get_plans_js_1 = require("../funcs/plans-get-plans.js");
+const plans_post_plans_id_sync_subscriptions_js_1 = require("../funcs/plans-post-plans-id-sync-subscriptions.js");
+const plans_post_plans_search_js_1 = require("../funcs/plans-post-plans-search.js");
+const plans_post_plans_js_1 = require("../funcs/plans-post-plans.js");
+const plans_put_plans_id_js_1 = require("../funcs/plans-put-plans-id.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
 class Plans extends sdks_js_1.ClientSDK {
@@ -21,7 +21,7 @@ class Plans extends sdks_js_1.ClientSDK {
      * Get plans with optional filtering
      */
     async getPlans(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, plansGetPlans_js_1.plansGetPlans)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, plans_get_plans_js_1.plansGetPlans)(this, request, options));
     }
     /**
      * Create a new plan
@@ -30,7 +30,7 @@ class Plans extends sdks_js_1.ClientSDK {
      * Create a new plan with the specified configuration
      */
     async postPlans(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, plansPostPlans_js_1.plansPostPlans)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, plans_post_plans_js_1.plansPostPlans)(this, request, options));
     }
     /**
      * List plans by filter
@@ -39,7 +39,7 @@ class Plans extends sdks_js_1.ClientSDK {
      * List plans by filter
      */
     async postPlansSearch(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, plansPostPlansSearch_js_1.plansPostPlansSearch)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, plans_post_plans_search_js_1.plansPostPlansSearch)(this, request, options));
     }
     /**
      * Get a plan
@@ -48,7 +48,7 @@ class Plans extends sdks_js_1.ClientSDK {
      * Get a plan by ID
      */
     async getPlansId(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, plansGetPlansId_js_1.plansGetPlansId)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, plans_get_plans_id_js_1.plansGetPlansId)(this, id, options));
     }
     /**
      * Update a plan
@@ -57,7 +57,7 @@ class Plans extends sdks_js_1.ClientSDK {
      * Update a plan by ID
      */
     async putPlansId(id, body, options) {
-        return (0, fp_js_1.unwrapAsync)((0, plansPutPlansId_js_1.plansPutPlansId)(this, id, body, options));
+        return (0, fp_js_1.unwrapAsync)((0, plans_put_plans_id_js_1.plansPutPlansId)(this, id, body, options));
     }
     /**
      * Delete a plan
@@ -66,7 +66,7 @@ class Plans extends sdks_js_1.ClientSDK {
      * Delete a plan by ID
      */
     async deletePlansId(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, plansDeletePlansId_js_1.plansDeletePlansId)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, plans_delete_plans_id_js_1.plansDeletePlansId)(this, id, options));
     }
     /**
      * Synchronize plan prices
@@ -75,7 +75,7 @@ class Plans extends sdks_js_1.ClientSDK {
      * Synchronize current plan prices with all existing active subscriptions
      */
     async postPlansIdSyncSubscriptions(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, plansPostPlansIdSyncSubscriptions_js_1.plansPostPlansIdSyncSubscriptions)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, plans_post_plans_id_sync_subscriptions_js_1.plansPostPlansIdSyncSubscriptions)(this, id, options));
     }
 }
 exports.Plans = Plans;

@@ -208,12 +208,12 @@ run();
 ### [Customers](docs/sdks/customers/README.md)
 
 * [getCustomers](docs/sdks/customers/README.md#getcustomers) - Get customers
+* [putCustomers](docs/sdks/customers/README.md#putcustomers) - Update a customer
 * [postCustomers](docs/sdks/customers/README.md#postcustomers) - Create a customer
 * [getCustomersExternalExternalId](docs/sdks/customers/README.md#getcustomersexternalexternalid) - Get a customer by external id
 * [postCustomersSearch](docs/sdks/customers/README.md#postcustomerssearch) - List customers by filter
 * [getCustomersUsage](docs/sdks/customers/README.md#getcustomersusage) - Get customer usage summary
 * [getCustomersId](docs/sdks/customers/README.md#getcustomersid) - Get a customer
-* [putCustomersId](docs/sdks/customers/README.md#putcustomersid) - Update a customer
 * [deleteCustomersId](docs/sdks/customers/README.md#deletecustomersid) - Delete a customer
 * [getCustomersIdEntitlements](docs/sdks/customers/README.md#getcustomersidentitlements) - Get customer entitlements
 * [getCustomersIdGrantsUpcoming](docs/sdks/customers/README.md#getcustomersidgrantsupcoming) - Get upcoming credit grant applications
@@ -254,6 +254,7 @@ run();
 * [postEventsQuery](docs/sdks/events/README.md#posteventsquery) - List raw events
 * [postEventsUsage](docs/sdks/events/README.md#posteventsusage) - Get usage statistics
 * [postEventsUsageMeter](docs/sdks/events/README.md#posteventsusagemeter) - Get usage by meter
+* [getEventsId](docs/sdks/events/README.md#geteventsid) - Get event by ID
 
 ### [Features](docs/sdks/features/README.md)
 
@@ -376,6 +377,11 @@ run();
 * [postSubscriptionsIdPause](docs/sdks/subscriptions/README.md#postsubscriptionsidpause) - Pause a subscription
 * [getSubscriptionsIdPauses](docs/sdks/subscriptions/README.md#getsubscriptionsidpauses) - List all pauses for a subscription
 * [postSubscriptionsIdResume](docs/sdks/subscriptions/README.md#postsubscriptionsidresume) - Resume a paused subscription
+* [getSubscriptionsIdV2](docs/sdks/subscriptions/README.md#getsubscriptionsidv2) - Get subscription V2
+* [getV1SubscriptionSchedules](docs/sdks/subscriptions/README.md#getv1subscriptionschedules) - List all subscription schedules
+* [getV1SubscriptionSchedulesId](docs/sdks/subscriptions/README.md#getv1subscriptionschedulesid) - Get subscription schedule
+* [postV1SubscriptionsSchedulesScheduleIdCancel](docs/sdks/subscriptions/README.md#postv1subscriptionsschedulesscheduleidcancel) - Cancel subscription schedule
+* [getV1SubscriptionsSubscriptionIdSchedules](docs/sdks/subscriptions/README.md#getv1subscriptionssubscriptionidschedules) - List subscription schedules
 
 ### [Tasks](docs/sdks/tasks/README.md)
 
@@ -434,6 +440,7 @@ run();
 
 * [postWebhooksChargebeeTenantIdEnvironmentId](docs/sdks/webhooks/README.md#postwebhookschargebeetenantidenvironmentid) - Handle Chargebee webhook events
 * [postWebhooksHubspotTenantIdEnvironmentId](docs/sdks/webhooks/README.md#postwebhookshubspottenantidenvironmentid) - Handle HubSpot webhook events
+* [postWebhooksMoyasarTenantIdEnvironmentId](docs/sdks/webhooks/README.md#postwebhooksmoyasartenantidenvironmentid) - Handle Moyasar webhook events
 * [postWebhooksNomodTenantIdEnvironmentId](docs/sdks/webhooks/README.md#postwebhooksnomodtenantidenvironmentid) - Handle Nomod webhook events
 * [postWebhooksQuickbooksTenantIdEnvironmentId](docs/sdks/webhooks/README.md#postwebhooksquickbookstenantidenvironmentid) - Handle QuickBooks webhook events
 * [postWebhooksRazorpayTenantIdEnvironmentId](docs/sdks/webhooks/README.md#postwebhooksrazorpaytenantidenvironmentid) - Handle Razorpay webhook events
@@ -506,7 +513,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`customersGetCustomersUsage`](docs/sdks/customers/README.md#getcustomersusage) - Get customer usage summary
 - [`customersPostCustomers`](docs/sdks/customers/README.md#postcustomers) - Create a customer
 - [`customersPostCustomersSearch`](docs/sdks/customers/README.md#postcustomerssearch) - List customers by filter
-- [`customersPutCustomersId`](docs/sdks/customers/README.md#putcustomersid) - Update a customer
+- [`customersPutCustomers`](docs/sdks/customers/README.md#putcustomers) - Update a customer
 - [`entitlementsDeleteEntitlementsId`](docs/sdks/entitlements/README.md#deleteentitlementsid) - Delete an entitlement
 - [`entitlementsGetAddonsIdEntitlements`](docs/sdks/entitlements/README.md#getaddonsidentitlements) - Get addon entitlements
 - [`entitlementsGetEntitlements`](docs/sdks/entitlements/README.md#getentitlements) - Get entitlements
@@ -524,6 +531,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`environmentsGetEnvironmentsId`](docs/sdks/environments/README.md#getenvironmentsid) - Get an environment
 - [`environmentsPostEnvironments`](docs/sdks/environments/README.md#postenvironments) - Create an environment
 - [`environmentsPutEnvironmentsId`](docs/sdks/environments/README.md#putenvironmentsid) - Update an environment
+- [`eventsGetEventsId`](docs/sdks/events/README.md#geteventsid) - Get event by ID
 - [`eventsGetEventsMonitoring`](docs/sdks/events/README.md#geteventsmonitoring) - Get monitoring data
 - [`eventsPostEvents`](docs/sdks/events/README.md#postevents) - Ingest event
 - [`eventsPostEventsAnalytics`](docs/sdks/events/README.md#posteventsanalytics) - Get usage analytics
@@ -607,6 +615,10 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`subscriptionsGetSubscriptionsIdEntitlements`](docs/sdks/subscriptions/README.md#getsubscriptionsidentitlements) - Get subscription entitlements
 - [`subscriptionsGetSubscriptionsIdGrantsUpcoming`](docs/sdks/subscriptions/README.md#getsubscriptionsidgrantsupcoming) - Get upcoming credit grant applications
 - [`subscriptionsGetSubscriptionsIdPauses`](docs/sdks/subscriptions/README.md#getsubscriptionsidpauses) - List all pauses for a subscription
+- [`subscriptionsGetSubscriptionsIdV2`](docs/sdks/subscriptions/README.md#getsubscriptionsidv2) - Get subscription V2
+- [`subscriptionsGetV1SubscriptionSchedules`](docs/sdks/subscriptions/README.md#getv1subscriptionschedules) - List all subscription schedules
+- [`subscriptionsGetV1SubscriptionSchedulesId`](docs/sdks/subscriptions/README.md#getv1subscriptionschedulesid) - Get subscription schedule
+- [`subscriptionsGetV1SubscriptionsSubscriptionIdSchedules`](docs/sdks/subscriptions/README.md#getv1subscriptionssubscriptionidschedules) - List subscription schedules
 - [`subscriptionsPostSubscriptions`](docs/sdks/subscriptions/README.md#postsubscriptions) - Create subscription
 - [`subscriptionsPostSubscriptionsAddon`](docs/sdks/subscriptions/README.md#postsubscriptionsaddon) - Add addon to subscription
 - [`subscriptionsPostSubscriptionsIdActivate`](docs/sdks/subscriptions/README.md#postsubscriptionsidactivate) - Activate draft subscription
@@ -617,6 +629,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`subscriptionsPostSubscriptionsIdResume`](docs/sdks/subscriptions/README.md#postsubscriptionsidresume) - Resume a paused subscription
 - [`subscriptionsPostSubscriptionsSearch`](docs/sdks/subscriptions/README.md#postsubscriptionssearch) - List subscriptions by filter
 - [`subscriptionsPostSubscriptionsUsage`](docs/sdks/subscriptions/README.md#postsubscriptionsusage) - Get usage by subscription
+- [`subscriptionsPostV1SubscriptionsSchedulesScheduleIdCancel`](docs/sdks/subscriptions/README.md#postv1subscriptionsschedulesscheduleidcancel) - Cancel subscription schedule
 - [`subscriptionsPutSubscriptionsLineitemsId`](docs/sdks/subscriptions/README.md#putsubscriptionslineitemsid) - Update subscription line item
 - [`tasksGetTasks`](docs/sdks/tasks/README.md#gettasks) - List tasks
 - [`tasksGetTasksId`](docs/sdks/tasks/README.md#gettasksid) - Get a task
@@ -655,6 +668,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`walletsPutWalletsId`](docs/sdks/wallets/README.md#putwalletsid) - Update a wallet
 - [`webhooksPostWebhooksChargebeeTenantIdEnvironmentId`](docs/sdks/webhooks/README.md#postwebhookschargebeetenantidenvironmentid) - Handle Chargebee webhook events
 - [`webhooksPostWebhooksHubspotTenantIdEnvironmentId`](docs/sdks/webhooks/README.md#postwebhookshubspottenantidenvironmentid) - Handle HubSpot webhook events
+- [`webhooksPostWebhooksMoyasarTenantIdEnvironmentId`](docs/sdks/webhooks/README.md#postwebhooksmoyasartenantidenvironmentid) - Handle Moyasar webhook events
 - [`webhooksPostWebhooksNomodTenantIdEnvironmentId`](docs/sdks/webhooks/README.md#postwebhooksnomodtenantidenvironmentid) - Handle Nomod webhook events
 - [`webhooksPostWebhooksQuickbooksTenantIdEnvironmentId`](docs/sdks/webhooks/README.md#postwebhooksquickbookstenantidenvironmentid) - Handle QuickBooks webhook events
 - [`webhooksPostWebhooksRazorpayTenantIdEnvironmentId`](docs/sdks/webhooks/README.md#postwebhooksrazorpaytenantidenvironmentid) - Handle Razorpay webhook events
@@ -767,7 +781,7 @@ run();
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-[`FlexPriceError`](./src/models/errors/flexpriceerror.ts) is the base class for all HTTP error responses. It has the following properties:
+[`FlexPriceError`](./src/models/errors/flex-price-error.ts) is the base class for all HTTP error responses. It has the following properties:
 
 | Property            | Type       | Description                                                                             |
 | ------------------- | ---------- | --------------------------------------------------------------------------------------- |
@@ -816,23 +830,23 @@ run();
 
 ### Error Classes
 **Primary errors:**
-* [`FlexPriceError`](./src/models/errors/flexpriceerror.ts): The base class for HTTP error responses.
-  * [`ErrorsErrorResponse`](./src/models/errors/errorserrorresponse.ts): *
+* [`FlexPriceError`](./src/models/errors/flex-price-error.ts): The base class for HTTP error responses.
+  * [`ErrorsErrorResponse`](./src/models/errors/errors-error-response.ts): *
 
 <details><summary>Less common errors (6)</summary>
 
 <br />
 
 **Network errors:**
-* [`ConnectionError`](./src/models/errors/httpclienterrors.ts): HTTP client was unable to make a request to a server.
-* [`RequestTimeoutError`](./src/models/errors/httpclienterrors.ts): HTTP request timed out due to an AbortSignal signal.
-* [`RequestAbortedError`](./src/models/errors/httpclienterrors.ts): HTTP request was aborted by the client.
-* [`InvalidRequestError`](./src/models/errors/httpclienterrors.ts): Any input used to create a request is invalid.
-* [`UnexpectedClientError`](./src/models/errors/httpclienterrors.ts): Unrecognised or unexpected error.
+* [`ConnectionError`](./src/models/errors/http-client-errors.ts): HTTP client was unable to make a request to a server.
+* [`RequestTimeoutError`](./src/models/errors/http-client-errors.ts): HTTP request timed out due to an AbortSignal signal.
+* [`RequestAbortedError`](./src/models/errors/http-client-errors.ts): HTTP request was aborted by the client.
+* [`InvalidRequestError`](./src/models/errors/http-client-errors.ts): Any input used to create a request is invalid.
+* [`UnexpectedClientError`](./src/models/errors/http-client-errors.ts): Unrecognised or unexpected error.
 
 
-**Inherit from [`FlexPriceError`](./src/models/errors/flexpriceerror.ts)**:
-* [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
+**Inherit from [`FlexPriceError`](./src/models/errors/flex-price-error.ts)**:
+* [`ResponseValidationError`](./src/models/errors/response-validation-error.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>
 

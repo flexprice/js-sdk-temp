@@ -1,6 +1,6 @@
 import { SDKHooks } from "../hooks/hooks.js";
 import { HookContext } from "../hooks/types.js";
-import { ConnectionError, InvalidRequestError, RequestAbortedError, RequestTimeoutError, UnexpectedClientError } from "../models/errors/httpclienterrors.js";
+import { ConnectionError, InvalidRequestError, RequestAbortedError, RequestTimeoutError, UnexpectedClientError } from "../models/errors/http-client-errors.js";
 import { Result } from "../types/fp.js";
 import { SDKOptions } from "./config.js";
 import { RetryConfig } from "./retries.js";

@@ -1,0 +1,101 @@
+import * as z from "zod/v3";
+import { DtoIntegrationEntityMapping, DtoIntegrationEntityMapping$Outbound } from "./dto-integration-entity-mapping.js";
+import { DtoTaxRateOverride, DtoTaxRateOverride$Outbound } from "./dto-tax-rate-override.js";
+/**
+ * Request object for creating a new customer in the system
+ */
+export type DtoCreateCustomerRequest = {
+    /**
+     * address_city is the city name with maximum 100 characters
+     */
+    addressCity?: string | undefined;
+    /**
+     * address_country is the two-letter ISO 3166-1 alpha-2 country code
+     */
+    addressCountry?: string | undefined;
+    /**
+     * address_line1 is the primary address line with maximum 255 characters
+     */
+    addressLine1?: string | undefined;
+    /**
+     * address_line2 is the secondary address line with maximum 255 characters
+     */
+    addressLine2?: string | undefined;
+    /**
+     * address_postal_code is the ZIP code or postal code with maximum 20 characters
+     */
+    addressPostalCode?: string | undefined;
+    /**
+     * address_state is the state, province, or region name with maximum 100 characters
+     */
+    addressState?: string | undefined;
+    /**
+     * email is the customer's email address and must be a valid email format if provided
+     */
+    email?: string | undefined;
+    /**
+     * external_id is the unique identifier from your system to reference this customer (required)
+     */
+    externalId: string;
+    /**
+     * integration_entity_mapping contains provider integration mappings for this customer
+     */
+    integrationEntityMapping?: Array<DtoIntegrationEntityMapping> | undefined;
+    /**
+     * metadata contains additional key-value pairs for storing extra information
+     */
+    metadata?: {
+        [k: string]: string;
+    } | undefined;
+    /**
+     * name is the full name or company name of the customer
+     */
+    name?: string | undefined;
+    /**
+     * parent_customer_external_id is the external ID of the parent customer from your system
+     *
+     * @remarks
+     * Exactly one of parent_customer_id or parent_customer_external_id may be provided
+     */
+    parentCustomerExternalId?: string | undefined;
+    /**
+     * parent_customer_id is the internal FlexPrice ID of the parent customer
+     */
+    parentCustomerId?: string | undefined;
+    /**
+     * skip_onboarding_workflow when true, prevents the customer onboarding workflow from being triggered
+     *
+     * @remarks
+     * This is used internally when a customer is created via a workflow to prevent infinite loops
+     * Default: false
+     */
+    skipOnboardingWorkflow?: boolean | undefined;
+    /**
+     * tax_rate_overrides contains tax rate configurations to be linked to this customer
+     */
+    taxRateOverrides?: Array<DtoTaxRateOverride> | undefined;
+};
+/** @internal */
+export type DtoCreateCustomerRequest$Outbound = {
+    address_city?: string | undefined;
+    address_country?: string | undefined;
+    address_line1?: string | undefined;
+    address_line2?: string | undefined;
+    address_postal_code?: string | undefined;
+    address_state?: string | undefined;
+    email?: string | undefined;
+    external_id: string;
+    integration_entity_mapping?: Array<DtoIntegrationEntityMapping$Outbound> | undefined;
+    metadata?: {
+        [k: string]: string;
+    } | undefined;
+    name?: string | undefined;
+    parent_customer_external_id?: string | undefined;
+    parent_customer_id?: string | undefined;
+    skip_onboarding_workflow?: boolean | undefined;
+    tax_rate_overrides?: Array<DtoTaxRateOverride$Outbound> | undefined;
+};
+/** @internal */
+export declare const DtoCreateCustomerRequest$outboundSchema: z.ZodType<DtoCreateCustomerRequest$Outbound, z.ZodTypeDef, DtoCreateCustomerRequest>;
+export declare function dtoCreateCustomerRequestToJSON(dtoCreateCustomerRequest: DtoCreateCustomerRequest): string;
+//# sourceMappingURL=dto-create-customer-request.d.ts.map

@@ -39,7 +39,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { entityIntegrationMappingsGetEntityIntegrationMappings } from "flexprice-sdk-test/funcs/entityIntegrationMappingsGetEntityIntegrationMappings.js";
+import { entityIntegrationMappingsGetEntityIntegrationMappings } from "flexprice-sdk-test/funcs/entity-integration-mappings-get-entity-integration-mappings.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -65,14 +65,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetEntityIntegrationMappingsRequest](../../models/operations/getentityintegrationmappingsrequest.md)                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetEntityIntegrationMappingsRequest](../../models/operations/get-entity-integration-mappings-request.md)                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoListEntityIntegrationMappingsResponse](../../models/components/dtolistentityintegrationmappingsresponse.md)\>**
+**Promise\<[components.DtoListEntityIntegrationMappingsResponse](../../models/components/dto-list-entity-integration-mappings-response.md)\>**
 
 ### Errors
 
@@ -117,7 +117,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { entityIntegrationMappingsPostEntityIntegrationMappings } from "flexprice-sdk-test/funcs/entityIntegrationMappingsPostEntityIntegrationMappings.js";
+import { entityIntegrationMappingsPostEntityIntegrationMappings } from "flexprice-sdk-test/funcs/entity-integration-mappings-post-entity-integration-mappings.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -148,14 +148,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreateEntityIntegrationMappingRequest](../../models/components/dtocreateentityintegrationmappingrequest.md)                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.DtoCreateEntityIntegrationMappingRequest](../../models/components/dto-create-entity-integration-mapping-request.md)                                                | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoEntityIntegrationMappingResponse](../../models/components/dtoentityintegrationmappingresponse.md)\>**
+**Promise\<[components.DtoEntityIntegrationMappingResponse](../../models/components/dto-entity-integration-mapping-response.md)\>**
 
 ### Errors
 
@@ -195,7 +195,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { entityIntegrationMappingsGetEntityIntegrationMappingsId } from "flexprice-sdk-test/funcs/entityIntegrationMappingsGetEntityIntegrationMappingsId.js";
+import { entityIntegrationMappingsGetEntityIntegrationMappingsId } from "flexprice-sdk-test/funcs/entity-integration-mappings-get-entity-integration-mappings-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -228,7 +228,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoEntityIntegrationMappingResponse](../../models/components/dtoentityintegrationmappingresponse.md)\>**
+**Promise\<[components.DtoEntityIntegrationMappingResponse](../../models/components/dto-entity-integration-mapping-response.md)\>**
 
 ### Errors
 
@@ -268,7 +268,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { entityIntegrationMappingsDeleteEntityIntegrationMappingsId } from "flexprice-sdk-test/funcs/entityIntegrationMappingsDeleteEntityIntegrationMappingsId.js";
+import { entityIntegrationMappingsDeleteEntityIntegrationMappingsId } from "flexprice-sdk-test/funcs/entity-integration-mappings-delete-entity-integration-mappings-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

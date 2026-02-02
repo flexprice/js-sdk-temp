@@ -4,11 +4,11 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Coupons = void 0;
-const couponsDeleteCouponsId_js_1 = require("../funcs/couponsDeleteCouponsId.js");
-const couponsGetCoupons_js_1 = require("../funcs/couponsGetCoupons.js");
-const couponsGetCouponsId_js_1 = require("../funcs/couponsGetCouponsId.js");
-const couponsPostCoupons_js_1 = require("../funcs/couponsPostCoupons.js");
-const couponsPutCouponsId_js_1 = require("../funcs/couponsPutCouponsId.js");
+const coupons_delete_coupons_id_js_1 = require("../funcs/coupons-delete-coupons-id.js");
+const coupons_get_coupons_id_js_1 = require("../funcs/coupons-get-coupons-id.js");
+const coupons_get_coupons_js_1 = require("../funcs/coupons-get-coupons.js");
+const coupons_post_coupons_js_1 = require("../funcs/coupons-post-coupons.js");
+const coupons_put_coupons_id_js_1 = require("../funcs/coupons-put-coupons-id.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
 class Coupons extends sdks_js_1.ClientSDK {
@@ -19,7 +19,7 @@ class Coupons extends sdks_js_1.ClientSDK {
      * Lists coupons with filtering
      */
     async getCoupons(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, couponsGetCoupons_js_1.couponsGetCoupons)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, coupons_get_coupons_js_1.couponsGetCoupons)(this, request, options));
     }
     /**
      * Create a new coupon
@@ -28,7 +28,7 @@ class Coupons extends sdks_js_1.ClientSDK {
      * Creates a new coupon
      */
     async postCoupons(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, couponsPostCoupons_js_1.couponsPostCoupons)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, coupons_post_coupons_js_1.couponsPostCoupons)(this, request, options));
     }
     /**
      * Get a coupon by ID
@@ -37,7 +37,7 @@ class Coupons extends sdks_js_1.ClientSDK {
      * Retrieves a coupon by ID
      */
     async getCouponsId(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, couponsGetCouponsId_js_1.couponsGetCouponsId)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, coupons_get_coupons_id_js_1.couponsGetCouponsId)(this, id, options));
     }
     /**
      * Update a coupon
@@ -46,7 +46,7 @@ class Coupons extends sdks_js_1.ClientSDK {
      * Updates an existing coupon
      */
     async putCouponsId(id, body, options) {
-        return (0, fp_js_1.unwrapAsync)((0, couponsPutCouponsId_js_1.couponsPutCouponsId)(this, id, body, options));
+        return (0, fp_js_1.unwrapAsync)((0, coupons_put_coupons_id_js_1.couponsPutCouponsId)(this, id, body, options));
     }
     /**
      * Delete a coupon
@@ -55,7 +55,7 @@ class Coupons extends sdks_js_1.ClientSDK {
      * Deletes a coupon
      */
     async deleteCouponsId(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, couponsDeleteCouponsId_js_1.couponsDeleteCouponsId)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, coupons_delete_coupons_id_js_1.couponsDeleteCouponsId)(this, id, options));
     }
 }
 exports.Coupons = Coupons;

@@ -44,7 +44,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { entitlementsGetAddonsIdEntitlements } from "flexprice-sdk-test/funcs/entitlementsGetAddonsIdEntitlements.js";
+import { entitlementsGetAddonsIdEntitlements } from "flexprice-sdk-test/funcs/entitlements-get-addons-id-entitlements.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -77,7 +77,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoListEntitlementsResponse](../../models/components/dtolistentitlementsresponse.md)\>**
+**Promise\<[components.DtoListEntitlementsResponse](../../models/components/dto-list-entitlements-response.md)\>**
 
 ### Errors
 
@@ -117,7 +117,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { entitlementsGetEntitlements } from "flexprice-sdk-test/funcs/entitlementsGetEntitlements.js";
+import { entitlementsGetEntitlements } from "flexprice-sdk-test/funcs/entitlements-get-entitlements.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -143,14 +143,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetEntitlementsRequest](../../models/operations/getentitlementsrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetEntitlementsRequest](../../models/operations/get-entitlements-request.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoListEntitlementsResponse](../../models/components/dtolistentitlementsresponse.md)\>**
+**Promise\<[components.DtoListEntitlementsResponse](../../models/components/dto-list-entitlements-response.md)\>**
 
 ### Errors
 
@@ -193,7 +193,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { entitlementsPostEntitlements } from "flexprice-sdk-test/funcs/entitlementsPostEntitlements.js";
+import { entitlementsPostEntitlements } from "flexprice-sdk-test/funcs/entitlements-post-entitlements.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -222,14 +222,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreateEntitlementRequest](../../models/components/dtocreateentitlementrequest.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.DtoCreateEntitlementRequest](../../models/components/dto-create-entitlement-request.md)                                                                            | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoEntitlementResponse](../../models/components/dtoentitlementresponse.md)\>**
+**Promise\<[components.DtoEntitlementResponse](../../models/components/dto-entitlement-response.md)\>**
 
 ### Errors
 
@@ -271,7 +271,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { entitlementsPostEntitlementsBulk } from "flexprice-sdk-test/funcs/entitlementsPostEntitlementsBulk.js";
+import { entitlementsPostEntitlementsBulk } from "flexprice-sdk-test/funcs/entitlements-post-entitlements-bulk.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -299,14 +299,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreateBulkEntitlementRequest](../../models/components/dtocreatebulkentitlementrequest.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.DtoCreateBulkEntitlementRequest](../../models/components/dto-create-bulk-entitlement-request.md)                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoCreateBulkEntitlementResponse](../../models/components/dtocreatebulkentitlementresponse.md)\>**
+**Promise\<[components.DtoCreateBulkEntitlementResponse](../../models/components/dto-create-bulk-entitlement-response.md)\>**
 
 ### Errors
 
@@ -346,7 +346,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { entitlementsPostEntitlementsSearch } from "flexprice-sdk-test/funcs/entitlementsPostEntitlementsSearch.js";
+import { entitlementsPostEntitlementsSearch } from "flexprice-sdk-test/funcs/entitlements-post-entitlements-search.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -372,14 +372,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.TypesEntitlementFilter](../../models/components/typesentitlementfilter.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.TypesEntitlementFilter](../../models/components/types-entitlement-filter.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoListEntitlementsResponse](../../models/components/dtolistentitlementsresponse.md)\>**
+**Promise\<[components.DtoListEntitlementsResponse](../../models/components/dto-list-entitlements-response.md)\>**
 
 ### Errors
 
@@ -419,7 +419,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { entitlementsGetEntitlementsId } from "flexprice-sdk-test/funcs/entitlementsGetEntitlementsId.js";
+import { entitlementsGetEntitlementsId } from "flexprice-sdk-test/funcs/entitlements-get-entitlements-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -452,7 +452,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoEntitlementResponse](../../models/components/dtoentitlementresponse.md)\>**
+**Promise\<[components.DtoEntitlementResponse](../../models/components/dto-entitlement-response.md)\>**
 
 ### Errors
 
@@ -492,7 +492,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { entitlementsPutEntitlementsId } from "flexprice-sdk-test/funcs/entitlementsPutEntitlementsId.js";
+import { entitlementsPutEntitlementsId } from "flexprice-sdk-test/funcs/entitlements-put-entitlements-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -519,14 +519,14 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Entitlement ID                                                                                                                                                                 |
-| `body`                                                                                                                                                                         | [components.DtoUpdateEntitlementRequest](../../models/components/dtoupdateentitlementrequest.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | Entitlement configuration                                                                                                                                                      |
+| `body`                                                                                                                                                                         | [components.DtoUpdateEntitlementRequest](../../models/components/dto-update-entitlement-request.md)                                                                            | :heavy_check_mark:                                                                                                                                                             | Entitlement configuration                                                                                                                                                      |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoEntitlementResponse](../../models/components/dtoentitlementresponse.md)\>**
+**Promise\<[components.DtoEntitlementResponse](../../models/components/dto-entitlement-response.md)\>**
 
 ### Errors
 
@@ -566,7 +566,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { entitlementsDeleteEntitlementsId } from "flexprice-sdk-test/funcs/entitlementsDeleteEntitlementsId.js";
+import { entitlementsDeleteEntitlementsId } from "flexprice-sdk-test/funcs/entitlements-delete-entitlements-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -599,7 +599,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoSuccessResponse](../../models/components/dtosuccessresponse.md)\>**
+**Promise\<[components.DtoSuccessResponse](../../models/components/dto-success-response.md)\>**
 
 ### Errors
 
@@ -639,7 +639,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { entitlementsGetPlansIdEntitlements } from "flexprice-sdk-test/funcs/entitlementsGetPlansIdEntitlements.js";
+import { entitlementsGetPlansIdEntitlements } from "flexprice-sdk-test/funcs/entitlements-get-plans-id-entitlements.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -672,7 +672,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoPlanResponse](../../models/components/dtoplanresponse.md)\>**
+**Promise\<[components.DtoPlanResponse](../../models/components/dto-plan-response.md)\>**
 
 ### Errors
 

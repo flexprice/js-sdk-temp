@@ -4,11 +4,11 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Connections = void 0;
-const connectionsDeleteConnectionsId_js_1 = require("../funcs/connectionsDeleteConnectionsId.js");
-const connectionsGetConnections_js_1 = require("../funcs/connectionsGetConnections.js");
-const connectionsGetConnectionsId_js_1 = require("../funcs/connectionsGetConnectionsId.js");
-const connectionsPostConnectionsSearch_js_1 = require("../funcs/connectionsPostConnectionsSearch.js");
-const connectionsPutConnectionsId_js_1 = require("../funcs/connectionsPutConnectionsId.js");
+const connections_delete_connections_id_js_1 = require("../funcs/connections-delete-connections-id.js");
+const connections_get_connections_id_js_1 = require("../funcs/connections-get-connections-id.js");
+const connections_get_connections_js_1 = require("../funcs/connections-get-connections.js");
+const connections_post_connections_search_js_1 = require("../funcs/connections-post-connections-search.js");
+const connections_put_connections_id_js_1 = require("../funcs/connections-put-connections-id.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
 class Connections extends sdks_js_1.ClientSDK {
@@ -19,7 +19,7 @@ class Connections extends sdks_js_1.ClientSDK {
      * Get a list of connections
      */
     async getConnections(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, connectionsGetConnections_js_1.connectionsGetConnections)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, connections_get_connections_js_1.connectionsGetConnections)(this, request, options));
     }
     /**
      * List connections by filter
@@ -28,7 +28,7 @@ class Connections extends sdks_js_1.ClientSDK {
      * List connections by filter
      */
     async postConnectionsSearch(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, connectionsPostConnectionsSearch_js_1.connectionsPostConnectionsSearch)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, connections_post_connections_search_js_1.connectionsPostConnectionsSearch)(this, request, options));
     }
     /**
      * Get a connection
@@ -37,7 +37,7 @@ class Connections extends sdks_js_1.ClientSDK {
      * Get a connection by ID
      */
     async getConnectionsId(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, connectionsGetConnectionsId_js_1.connectionsGetConnectionsId)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, connections_get_connections_id_js_1.connectionsGetConnectionsId)(this, id, options));
     }
     /**
      * Update a connection
@@ -46,7 +46,7 @@ class Connections extends sdks_js_1.ClientSDK {
      * Update a connection by ID
      */
     async putConnectionsId(id, body, options) {
-        return (0, fp_js_1.unwrapAsync)((0, connectionsPutConnectionsId_js_1.connectionsPutConnectionsId)(this, id, body, options));
+        return (0, fp_js_1.unwrapAsync)((0, connections_put_connections_id_js_1.connectionsPutConnectionsId)(this, id, body, options));
     }
     /**
      * Delete a connection
@@ -55,7 +55,7 @@ class Connections extends sdks_js_1.ClientSDK {
      * Delete a connection by ID
      */
     async deleteConnectionsId(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, connectionsDeleteConnectionsId_js_1.connectionsDeleteConnectionsId)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, connections_delete_connections_id_js_1.connectionsDeleteConnectionsId)(this, id, options));
     }
 }
 exports.Connections = Connections;

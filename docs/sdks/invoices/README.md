@@ -49,7 +49,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { invoicesGetCustomersIdInvoicesSummary } from "flexprice-sdk-test/funcs/invoicesGetCustomersIdInvoicesSummary.js";
+import { invoicesGetCustomersIdInvoicesSummary } from "flexprice-sdk-test/funcs/invoices-get-customers-id-invoices-summary.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -82,7 +82,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoCustomerMultiCurrencyInvoiceSummary](../../models/components/dtocustomermulticurrencyinvoicesummary.md)\>**
+**Promise\<[components.DtoCustomerMultiCurrencyInvoiceSummary](../../models/components/dto-customer-multi-currency-invoice-summary.md)\>**
 
 ### Errors
 
@@ -122,7 +122,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { invoicesGetInvoices } from "flexprice-sdk-test/funcs/invoicesGetInvoices.js";
+import { invoicesGetInvoices } from "flexprice-sdk-test/funcs/invoices-get-invoices.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -148,14 +148,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetInvoicesRequest](../../models/operations/getinvoicesrequest.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetInvoicesRequest](../../models/operations/get-invoices-request.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoListInvoicesResponse](../../models/components/dtolistinvoicesresponse.md)\>**
+**Promise\<[components.DtoListInvoicesResponse](../../models/components/dto-list-invoices-response.md)\>**
 
 ### Errors
 
@@ -201,7 +201,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { invoicesPostInvoices } from "flexprice-sdk-test/funcs/invoicesPostInvoices.js";
+import { invoicesPostInvoices } from "flexprice-sdk-test/funcs/invoices-post-invoices.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -233,14 +233,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreateInvoiceRequest](../../models/components/dtocreateinvoicerequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.DtoCreateInvoiceRequest](../../models/components/dto-create-invoice-request.md)                                                                                    | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoInvoiceResponse](../../models/components/dtoinvoiceresponse.md)\>**
+**Promise\<[components.DtoInvoiceResponse](../../models/components/dto-invoice-response.md)\>**
 
 ### Errors
 
@@ -282,7 +282,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { invoicesPostInvoicesPreview } from "flexprice-sdk-test/funcs/invoicesPostInvoicesPreview.js";
+import { invoicesPostInvoicesPreview } from "flexprice-sdk-test/funcs/invoices-post-invoices-preview.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -310,14 +310,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoGetPreviewInvoiceRequest](../../models/components/dtogetpreviewinvoicerequest.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.DtoGetPreviewInvoiceRequest](../../models/components/dto-get-preview-invoice-request.md)                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoInvoiceResponse](../../models/components/dtoinvoiceresponse.md)\>**
+**Promise\<[components.DtoInvoiceResponse](../../models/components/dto-invoice-response.md)\>**
 
 ### Errors
 
@@ -357,7 +357,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { invoicesPostInvoicesSearch } from "flexprice-sdk-test/funcs/invoicesPostInvoicesSearch.js";
+import { invoicesPostInvoicesSearch } from "flexprice-sdk-test/funcs/invoices-post-invoices-search.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -383,14 +383,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.TypesInvoiceFilter](../../models/components/typesinvoicefilter.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.TypesInvoiceFilter](../../models/components/types-invoice-filter.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoListInvoicesResponse](../../models/components/dtolistinvoicesresponse.md)\>**
+**Promise\<[components.DtoListInvoicesResponse](../../models/components/dto-list-invoices-response.md)\>**
 
 ### Errors
 
@@ -430,7 +430,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { invoicesGetInvoicesId } from "flexprice-sdk-test/funcs/invoicesGetInvoicesId.js";
+import { invoicesGetInvoicesId } from "flexprice-sdk-test/funcs/invoices-get-invoices-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -465,7 +465,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoInvoiceResponse](../../models/components/dtoinvoiceresponse.md)\>**
+**Promise\<[components.DtoInvoiceResponse](../../models/components/dto-invoice-response.md)\>**
 
 ### Errors
 
@@ -505,7 +505,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { invoicesPutInvoicesId } from "flexprice-sdk-test/funcs/invoicesPutInvoicesId.js";
+import { invoicesPutInvoicesId } from "flexprice-sdk-test/funcs/invoices-put-invoices-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -532,14 +532,14 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Invoice ID                                                                                                                                                                     |
-| `body`                                                                                                                                                                         | [components.DtoUpdateInvoiceRequest](../../models/components/dtoupdateinvoicerequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | Invoice Update Request                                                                                                                                                         |
+| `body`                                                                                                                                                                         | [components.DtoUpdateInvoiceRequest](../../models/components/dto-update-invoice-request.md)                                                                                    | :heavy_check_mark:                                                                                                                                                             | Invoice Update Request                                                                                                                                                         |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoInvoiceResponse](../../models/components/dtoinvoiceresponse.md)\>**
+**Promise\<[components.DtoInvoiceResponse](../../models/components/dto-invoice-response.md)\>**
 
 ### Errors
 
@@ -579,7 +579,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { invoicesPostInvoicesIdCommsTrigger } from "flexprice-sdk-test/funcs/invoicesPostInvoicesIdCommsTrigger.js";
+import { invoicesPostInvoicesIdCommsTrigger } from "flexprice-sdk-test/funcs/invoices-post-invoices-id-comms-trigger.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -612,7 +612,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoSuccessResponse](../../models/components/dtosuccessresponse.md)\>**
+**Promise\<[components.DtoSuccessResponse](../../models/components/dto-success-response.md)\>**
 
 ### Errors
 
@@ -652,7 +652,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { invoicesPostInvoicesIdFinalize } from "flexprice-sdk-test/funcs/invoicesPostInvoicesIdFinalize.js";
+import { invoicesPostInvoicesIdFinalize } from "flexprice-sdk-test/funcs/invoices-post-invoices-id-finalize.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -685,7 +685,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoSuccessResponse](../../models/components/dtosuccessresponse.md)\>**
+**Promise\<[components.DtoSuccessResponse](../../models/components/dto-success-response.md)\>**
 
 ### Errors
 
@@ -727,7 +727,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { invoicesPutInvoicesIdPayment } from "flexprice-sdk-test/funcs/invoicesPutInvoicesIdPayment.js";
+import { invoicesPutInvoicesIdPayment } from "flexprice-sdk-test/funcs/invoices-put-invoices-id-payment.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -756,14 +756,14 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Invoice ID                                                                                                                                                                     |
-| `body`                                                                                                                                                                         | [components.DtoUpdatePaymentStatusRequest](../../models/components/dtoupdatepaymentstatusrequest.md)                                                                           | :heavy_check_mark:                                                                                                                                                             | Payment Status Update Request                                                                                                                                                  |
+| `body`                                                                                                                                                                         | [components.DtoUpdatePaymentStatusRequest](../../models/components/dto-update-payment-status-request.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | Payment Status Update Request                                                                                                                                                  |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoInvoiceResponse](../../models/components/dtoinvoiceresponse.md)\>**
+**Promise\<[components.DtoInvoiceResponse](../../models/components/dto-invoice-response.md)\>**
 
 ### Errors
 
@@ -803,7 +803,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { invoicesPostInvoicesIdPaymentAttempt } from "flexprice-sdk-test/funcs/invoicesPostInvoicesIdPaymentAttempt.js";
+import { invoicesPostInvoicesIdPaymentAttempt } from "flexprice-sdk-test/funcs/invoices-post-invoices-id-payment-attempt.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -836,7 +836,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoSuccessResponse](../../models/components/dtosuccessresponse.md)\>**
+**Promise\<[components.DtoSuccessResponse](../../models/components/dto-success-response.md)\>**
 
 ### Errors
 
@@ -876,7 +876,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { invoicesGetInvoicesIdPdf } from "flexprice-sdk-test/funcs/invoicesGetInvoicesIdPdf.js";
+import { invoicesGetInvoicesIdPdf } from "flexprice-sdk-test/funcs/invoices-get-invoices-id-pdf.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -948,7 +948,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { invoicesPostInvoicesIdRecalculate } from "flexprice-sdk-test/funcs/invoicesPostInvoicesIdRecalculate.js";
+import { invoicesPostInvoicesIdRecalculate } from "flexprice-sdk-test/funcs/invoices-post-invoices-id-recalculate.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -982,7 +982,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoInvoiceResponse](../../models/components/dtoinvoiceresponse.md)\>**
+**Promise\<[components.DtoInvoiceResponse](../../models/components/dto-invoice-response.md)\>**
 
 ### Errors
 
@@ -1022,7 +1022,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { invoicesPostInvoicesIdVoid } from "flexprice-sdk-test/funcs/invoicesPostInvoicesIdVoid.js";
+import { invoicesPostInvoicesIdVoid } from "flexprice-sdk-test/funcs/invoices-post-invoices-id-void.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -1055,7 +1055,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoSuccessResponse](../../models/components/dtosuccessresponse.md)\>**
+**Promise\<[components.DtoSuccessResponse](../../models/components/dto-success-response.md)\>**
 
 ### Errors
 

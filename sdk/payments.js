@@ -4,12 +4,12 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Payments = void 0;
-const paymentsDeletePaymentsId_js_1 = require("../funcs/paymentsDeletePaymentsId.js");
-const paymentsGetPayments_js_1 = require("../funcs/paymentsGetPayments.js");
-const paymentsGetPaymentsId_js_1 = require("../funcs/paymentsGetPaymentsId.js");
-const paymentsPostPayments_js_1 = require("../funcs/paymentsPostPayments.js");
-const paymentsPostPaymentsIdProcess_js_1 = require("../funcs/paymentsPostPaymentsIdProcess.js");
-const paymentsPutPaymentsId_js_1 = require("../funcs/paymentsPutPaymentsId.js");
+const payments_delete_payments_id_js_1 = require("../funcs/payments-delete-payments-id.js");
+const payments_get_payments_id_js_1 = require("../funcs/payments-get-payments-id.js");
+const payments_get_payments_js_1 = require("../funcs/payments-get-payments.js");
+const payments_post_payments_id_process_js_1 = require("../funcs/payments-post-payments-id-process.js");
+const payments_post_payments_js_1 = require("../funcs/payments-post-payments.js");
+const payments_put_payments_id_js_1 = require("../funcs/payments-put-payments-id.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
 class Payments extends sdks_js_1.ClientSDK {
@@ -20,7 +20,7 @@ class Payments extends sdks_js_1.ClientSDK {
      * List payments with the specified filter
      */
     async getPayments(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, paymentsGetPayments_js_1.paymentsGetPayments)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, payments_get_payments_js_1.paymentsGetPayments)(this, request, options));
     }
     /**
      * Create a new payment
@@ -29,7 +29,7 @@ class Payments extends sdks_js_1.ClientSDK {
      * Create a new payment with the specified configuration
      */
     async postPayments(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, paymentsPostPayments_js_1.paymentsPostPayments)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, payments_post_payments_js_1.paymentsPostPayments)(this, request, options));
     }
     /**
      * Get a payment by ID
@@ -38,7 +38,7 @@ class Payments extends sdks_js_1.ClientSDK {
      * Get a payment by ID
      */
     async getPaymentsId(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, paymentsGetPaymentsId_js_1.paymentsGetPaymentsId)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, payments_get_payments_id_js_1.paymentsGetPaymentsId)(this, id, options));
     }
     /**
      * Update a payment
@@ -47,7 +47,7 @@ class Payments extends sdks_js_1.ClientSDK {
      * Update a payment with the specified configuration
      */
     async putPaymentsId(id, body, options) {
-        return (0, fp_js_1.unwrapAsync)((0, paymentsPutPaymentsId_js_1.paymentsPutPaymentsId)(this, id, body, options));
+        return (0, fp_js_1.unwrapAsync)((0, payments_put_payments_id_js_1.paymentsPutPaymentsId)(this, id, body, options));
     }
     /**
      * Delete a payment
@@ -56,7 +56,7 @@ class Payments extends sdks_js_1.ClientSDK {
      * Delete a payment
      */
     async deletePaymentsId(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, paymentsDeletePaymentsId_js_1.paymentsDeletePaymentsId)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, payments_delete_payments_id_js_1.paymentsDeletePaymentsId)(this, id, options));
     }
     /**
      * Process a payment
@@ -65,7 +65,7 @@ class Payments extends sdks_js_1.ClientSDK {
      * Process a payment
      */
     async postPaymentsIdProcess(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, paymentsPostPaymentsIdProcess_js_1.paymentsPostPaymentsIdProcess)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, payments_post_payments_id_process_js_1.paymentsPostPaymentsIdProcess)(this, id, options));
     }
 }
 exports.Payments = Payments;

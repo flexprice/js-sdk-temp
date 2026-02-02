@@ -4,8 +4,8 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Rbac = void 0;
-const rbacGetRBACRoles_js_1 = require("../funcs/rbacGetRBACRoles.js");
-const rbacGetRBACRolesId_js_1 = require("../funcs/rbacGetRBACRolesId.js");
+const rbac_get_rbac_roles_id_js_1 = require("../funcs/rbac-get-rbac-roles-id.js");
+const rbac_get_rbac_roles_js_1 = require("../funcs/rbac-get-rbac-roles.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
 class Rbac extends sdks_js_1.ClientSDK {
@@ -16,7 +16,7 @@ class Rbac extends sdks_js_1.ClientSDK {
      * Returns all available roles with their permissions, names, and descriptions
      */
     async getRbacRoles(options) {
-        return (0, fp_js_1.unwrapAsync)((0, rbacGetRBACRoles_js_1.rbacGetRBACRoles)(this, options));
+        return (0, fp_js_1.unwrapAsync)((0, rbac_get_rbac_roles_js_1.rbacGetRBACRoles)(this, options));
     }
     /**
      * Get a specific RBAC role
@@ -25,7 +25,7 @@ class Rbac extends sdks_js_1.ClientSDK {
      * Returns details of a specific role including permissions, name, and description
      */
     async getRbacRolesId(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, rbacGetRBACRolesId_js_1.rbacGetRBACRolesId)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, rbac_get_rbac_roles_id_js_1.rbacGetRBACRolesId)(this, id, options));
     }
 }
 exports.Rbac = Rbac;

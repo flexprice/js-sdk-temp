@@ -4,10 +4,10 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Groups = void 0;
-const groupsDeleteGroupsId_js_1 = require("../funcs/groupsDeleteGroupsId.js");
-const groupsGetGroupsId_js_1 = require("../funcs/groupsGetGroupsId.js");
-const groupsPostGroups_js_1 = require("../funcs/groupsPostGroups.js");
-const groupsPostGroupsSearch_js_1 = require("../funcs/groupsPostGroupsSearch.js");
+const groups_delete_groups_id_js_1 = require("../funcs/groups-delete-groups-id.js");
+const groups_get_groups_id_js_1 = require("../funcs/groups-get-groups-id.js");
+const groups_post_groups_search_js_1 = require("../funcs/groups-post-groups-search.js");
+const groups_post_groups_js_1 = require("../funcs/groups-post-groups.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
 class Groups extends sdks_js_1.ClientSDK {
@@ -18,7 +18,7 @@ class Groups extends sdks_js_1.ClientSDK {
      * Create a new group for organizing entities (prices, plans, customers, etc.)
      */
     async postGroups(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, groupsPostGroups_js_1.groupsPostGroups)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, groups_post_groups_js_1.groupsPostGroups)(this, request, options));
     }
     /**
      * Get groups
@@ -27,7 +27,7 @@ class Groups extends sdks_js_1.ClientSDK {
      * Get groups with optional filtering via query parameters
      */
     async postGroupsSearch(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, groupsPostGroupsSearch_js_1.groupsPostGroupsSearch)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, groups_post_groups_search_js_1.groupsPostGroupsSearch)(this, request, options));
     }
     /**
      * Get a group
@@ -36,7 +36,7 @@ class Groups extends sdks_js_1.ClientSDK {
      * Get a group by ID
      */
     async getGroupsId(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, groupsGetGroupsId_js_1.groupsGetGroupsId)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, groups_get_groups_id_js_1.groupsGetGroupsId)(this, id, options));
     }
     /**
      * Delete a group
@@ -45,7 +45,7 @@ class Groups extends sdks_js_1.ClientSDK {
      * Delete a group and remove all entity associations
      */
     async deleteGroupsId(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, groupsDeleteGroupsId_js_1.groupsDeleteGroupsId)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, groups_delete_groups_id_js_1.groupsDeleteGroupsId)(this, id, options));
     }
 }
 exports.Groups = Groups;

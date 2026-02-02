@@ -4,12 +4,12 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Features = void 0;
-const featuresDeleteFeaturesId_js_1 = require("../funcs/featuresDeleteFeaturesId.js");
-const featuresGetFeatures_js_1 = require("../funcs/featuresGetFeatures.js");
-const featuresGetFeaturesId_js_1 = require("../funcs/featuresGetFeaturesId.js");
-const featuresPostFeatures_js_1 = require("../funcs/featuresPostFeatures.js");
-const featuresPostFeaturesSearch_js_1 = require("../funcs/featuresPostFeaturesSearch.js");
-const featuresPutFeaturesId_js_1 = require("../funcs/featuresPutFeaturesId.js");
+const features_delete_features_id_js_1 = require("../funcs/features-delete-features-id.js");
+const features_get_features_id_js_1 = require("../funcs/features-get-features-id.js");
+const features_get_features_js_1 = require("../funcs/features-get-features.js");
+const features_post_features_search_js_1 = require("../funcs/features-post-features-search.js");
+const features_post_features_js_1 = require("../funcs/features-post-features.js");
+const features_put_features_id_js_1 = require("../funcs/features-put-features-id.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
 class Features extends sdks_js_1.ClientSDK {
@@ -20,7 +20,7 @@ class Features extends sdks_js_1.ClientSDK {
      * List features with optional filtering
      */
     async getFeatures(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, featuresGetFeatures_js_1.featuresGetFeatures)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, features_get_features_js_1.featuresGetFeatures)(this, request, options));
     }
     /**
      * Create a new feature
@@ -29,7 +29,7 @@ class Features extends sdks_js_1.ClientSDK {
      * Create a new feature
      */
     async postFeatures(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, featuresPostFeatures_js_1.featuresPostFeatures)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, features_post_features_js_1.featuresPostFeatures)(this, request, options));
     }
     /**
      * List features by filter
@@ -38,7 +38,7 @@ class Features extends sdks_js_1.ClientSDK {
      * List features by filter
      */
     async postFeaturesSearch(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, featuresPostFeaturesSearch_js_1.featuresPostFeaturesSearch)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, features_post_features_search_js_1.featuresPostFeaturesSearch)(this, request, options));
     }
     /**
      * Get a feature by ID
@@ -47,7 +47,7 @@ class Features extends sdks_js_1.ClientSDK {
      * Get a feature by ID
      */
     async getFeaturesId(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, featuresGetFeaturesId_js_1.featuresGetFeaturesId)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, features_get_features_id_js_1.featuresGetFeaturesId)(this, id, options));
     }
     /**
      * Update a feature
@@ -56,7 +56,7 @@ class Features extends sdks_js_1.ClientSDK {
      * Update a feature by ID
      */
     async putFeaturesId(id, body, options) {
-        return (0, fp_js_1.unwrapAsync)((0, featuresPutFeaturesId_js_1.featuresPutFeaturesId)(this, id, body, options));
+        return (0, fp_js_1.unwrapAsync)((0, features_put_features_id_js_1.featuresPutFeaturesId)(this, id, body, options));
     }
     /**
      * Delete a feature
@@ -65,7 +65,7 @@ class Features extends sdks_js_1.ClientSDK {
      * Delete a feature by ID
      */
     async deleteFeaturesId(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, featuresDeleteFeaturesId_js_1.featuresDeleteFeaturesId)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, features_delete_features_id_js_1.featuresDeleteFeaturesId)(this, id, options));
     }
 }
 exports.Features = Features;

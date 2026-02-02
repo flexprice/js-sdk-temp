@@ -6,17 +6,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.FlexPrice = void 0;
 const sdks_js_1 = require("../lib/sdks.js");
 const addons_js_1 = require("./addons.js");
-const alertlogs_js_1 = require("./alertlogs.js");
+const alert_logs_js_1 = require("./alert-logs.js");
 const auth_js_1 = require("./auth.js");
 const connections_js_1 = require("./connections.js");
 const costs_js_1 = require("./costs.js");
 const coupons_js_1 = require("./coupons.js");
-const creditgrants_js_1 = require("./creditgrants.js");
-const creditnotes_js_1 = require("./creditnotes.js");
-const customerportal_js_1 = require("./customerportal.js");
+const credit_grants_js_1 = require("./credit-grants.js");
+const credit_notes_js_1 = require("./credit-notes.js");
+const customer_portal_js_1 = require("./customer-portal.js");
 const customers_js_1 = require("./customers.js");
 const entitlements_js_1 = require("./entitlements.js");
-const entityintegrationmappings_js_1 = require("./entityintegrationmappings.js");
+const entity_integration_mappings_js_1 = require("./entity-integration-mappings.js");
 const environments_js_1 = require("./environments.js");
 const events_js_1 = require("./events.js");
 const features_js_1 = require("./features.js");
@@ -25,15 +25,15 @@ const integrations_js_1 = require("./integrations.js");
 const invoices_js_1 = require("./invoices.js");
 const payments_js_1 = require("./payments.js");
 const plans_js_1 = require("./plans.js");
+const price_units_js_1 = require("./price-units.js");
 const prices_js_1 = require("./prices.js");
-const priceunits_js_1 = require("./priceunits.js");
 const rbac_js_1 = require("./rbac.js");
-const scheduledtasks_js_1 = require("./scheduledtasks.js");
+const scheduled_tasks_js_1 = require("./scheduled-tasks.js");
 const secrets_js_1 = require("./secrets.js");
 const subscriptions_js_1 = require("./subscriptions.js");
 const tasks_js_1 = require("./tasks.js");
-const taxassociations_js_1 = require("./taxassociations.js");
-const taxrates_js_1 = require("./taxrates.js");
+const tax_associations_js_1 = require("./tax-associations.js");
+const tax_rates_js_1 = require("./tax-rates.js");
 const tenants_js_1 = require("./tenants.js");
 const users_js_1 = require("./users.js");
 const wallets_js_1 = require("./wallets.js");
@@ -46,7 +46,7 @@ class FlexPrice extends sdks_js_1.ClientSDK {
         return (this._entitlements ?? (this._entitlements = new entitlements_js_1.Entitlements(this._options)));
     }
     get alertLogs() {
-        return (this._alertLogs ?? (this._alertLogs = new alertlogs_js_1.AlertLogs(this._options)));
+        return (this._alertLogs ?? (this._alertLogs = new alert_logs_js_1.AlertLogs(this._options)));
     }
     get auth() {
         return (this._auth ?? (this._auth = new auth_js_1.Auth(this._options)));
@@ -61,10 +61,10 @@ class FlexPrice extends sdks_js_1.ClientSDK {
         return (this._coupons ?? (this._coupons = new coupons_js_1.Coupons(this._options)));
     }
     get creditGrants() {
-        return (this._creditGrants ?? (this._creditGrants = new creditgrants_js_1.CreditGrants(this._options)));
+        return (this._creditGrants ?? (this._creditGrants = new credit_grants_js_1.CreditGrants(this._options)));
     }
     get creditNotes() {
-        return (this._creditNotes ?? (this._creditNotes = new creditnotes_js_1.CreditNotes(this._options)));
+        return (this._creditNotes ?? (this._creditNotes = new credit_notes_js_1.CreditNotes(this._options)));
     }
     get customers() {
         return (this._customers ?? (this._customers = new customers_js_1.Customers(this._options)));
@@ -76,7 +76,7 @@ class FlexPrice extends sdks_js_1.ClientSDK {
         return (this._invoices ?? (this._invoices = new invoices_js_1.Invoices(this._options)));
     }
     get entityIntegrationMappings() {
-        return (this._entityIntegrationMappings ?? (this._entityIntegrationMappings = new entityintegrationmappings_js_1.EntityIntegrationMappings(this._options)));
+        return (this._entityIntegrationMappings ?? (this._entityIntegrationMappings = new entity_integration_mappings_js_1.EntityIntegrationMappings(this._options)));
     }
     get environments() {
         return (this._environments ?? (this._environments = new environments_js_1.Environments(this._options)));
@@ -97,13 +97,13 @@ class FlexPrice extends sdks_js_1.ClientSDK {
         return (this._plans ?? (this._plans = new plans_js_1.Plans(this._options)));
     }
     get customerPortal() {
-        return (this._customerPortal ?? (this._customerPortal = new customerportal_js_1.CustomerPortal(this._options)));
+        return (this._customerPortal ?? (this._customerPortal = new customer_portal_js_1.CustomerPortal(this._options)));
     }
     get prices() {
         return (this._prices ?? (this._prices = new prices_js_1.Prices(this._options)));
     }
     get priceUnits() {
-        return (this._priceUnits ?? (this._priceUnits = new priceunits_js_1.PriceUnits(this._options)));
+        return (this._priceUnits ?? (this._priceUnits = new price_units_js_1.PriceUnits(this._options)));
     }
     get rbac() {
         return (this._rbac ?? (this._rbac = new rbac_js_1.Rbac(this._options)));
@@ -121,13 +121,13 @@ class FlexPrice extends sdks_js_1.ClientSDK {
         return (this._tasks ?? (this._tasks = new tasks_js_1.Tasks(this._options)));
     }
     get scheduledTasks() {
-        return (this._scheduledTasks ?? (this._scheduledTasks = new scheduledtasks_js_1.ScheduledTasks(this._options)));
+        return (this._scheduledTasks ?? (this._scheduledTasks = new scheduled_tasks_js_1.ScheduledTasks(this._options)));
     }
     get taxAssociations() {
-        return (this._taxAssociations ?? (this._taxAssociations = new taxassociations_js_1.TaxAssociations(this._options)));
+        return (this._taxAssociations ?? (this._taxAssociations = new tax_associations_js_1.TaxAssociations(this._options)));
     }
     get taxRates() {
-        return (this._taxRates ?? (this._taxRates = new taxrates_js_1.TaxRates(this._options)));
+        return (this._taxRates ?? (this._taxRates = new tax_rates_js_1.TaxRates(this._options)));
     }
     get tenants() {
         return (this._tenants ?? (this._tenants = new tenants_js_1.Tenants(this._options)));

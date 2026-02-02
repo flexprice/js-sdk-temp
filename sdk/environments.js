@@ -4,10 +4,10 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Environments = void 0;
-const environmentsGetEnvironments_js_1 = require("../funcs/environmentsGetEnvironments.js");
-const environmentsGetEnvironmentsId_js_1 = require("../funcs/environmentsGetEnvironmentsId.js");
-const environmentsPostEnvironments_js_1 = require("../funcs/environmentsPostEnvironments.js");
-const environmentsPutEnvironmentsId_js_1 = require("../funcs/environmentsPutEnvironmentsId.js");
+const environments_get_environments_id_js_1 = require("../funcs/environments-get-environments-id.js");
+const environments_get_environments_js_1 = require("../funcs/environments-get-environments.js");
+const environments_post_environments_js_1 = require("../funcs/environments-post-environments.js");
+const environments_put_environments_id_js_1 = require("../funcs/environments-put-environments-id.js");
 const sdks_js_1 = require("../lib/sdks.js");
 const fp_js_1 = require("../types/fp.js");
 class Environments extends sdks_js_1.ClientSDK {
@@ -18,7 +18,7 @@ class Environments extends sdks_js_1.ClientSDK {
      * Get environments
      */
     async getEnvironments(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, environmentsGetEnvironments_js_1.environmentsGetEnvironments)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, environments_get_environments_js_1.environmentsGetEnvironments)(this, request, options));
     }
     /**
      * Create an environment
@@ -27,7 +27,7 @@ class Environments extends sdks_js_1.ClientSDK {
      * Create an environment
      */
     async postEnvironments(request, options) {
-        return (0, fp_js_1.unwrapAsync)((0, environmentsPostEnvironments_js_1.environmentsPostEnvironments)(this, request, options));
+        return (0, fp_js_1.unwrapAsync)((0, environments_post_environments_js_1.environmentsPostEnvironments)(this, request, options));
     }
     /**
      * Get an environment
@@ -36,7 +36,7 @@ class Environments extends sdks_js_1.ClientSDK {
      * Get an environment
      */
     async getEnvironmentsId(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, environmentsGetEnvironmentsId_js_1.environmentsGetEnvironmentsId)(this, id, options));
+        return (0, fp_js_1.unwrapAsync)((0, environments_get_environments_id_js_1.environmentsGetEnvironmentsId)(this, id, options));
     }
     /**
      * Update an environment
@@ -45,7 +45,7 @@ class Environments extends sdks_js_1.ClientSDK {
      * Update an environment
      */
     async putEnvironmentsId(id, body, options) {
-        return (0, fp_js_1.unwrapAsync)((0, environmentsPutEnvironmentsId_js_1.environmentsPutEnvironmentsId)(this, id, body, options));
+        return (0, fp_js_1.unwrapAsync)((0, environments_put_environments_id_js_1.environmentsPutEnvironmentsId)(this, id, body, options));
     }
 }
 exports.Environments = Environments;

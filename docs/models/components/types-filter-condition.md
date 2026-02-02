@@ -1,0 +1,18 @@
+# TypesFilterCondition
+
+## Example Usage
+
+```typescript
+import { TypesFilterCondition } from "flexprice-sdk-test/models/components";
+
+let value: TypesFilterCondition = {};
+```
+
+## Fields
+
+| Field                                                                                                                                      | Type                                                                                                                                       | Required                                                                                                                                   | Description                                                                                                                                |
+| ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `dataType`                                                                                                                                 | [components.TypesDataType](../../models/components/types-data-type.md)                                                                     | :heavy_minus_sign:                                                                                                                         | N/A                                                                                                                                        |
+| `field`                                                                                                                                    | *string*                                                                                                                                   | :heavy_minus_sign:                                                                                                                         | N/A                                                                                                                                        |
+| `operator`                                                                                                                                 | [components.TypesFilterOperatorType](../../models/components/types-filter-operator-type.md)                                                | :heavy_minus_sign:                                                                                                                         | N/A                                                                                                                                        |
+| `value`                                                                                                                                    | [components.GithubComFlexpriceFlexpriceInternalTypesValue](../../models/components/github-com-flexprice-flexprice-internal-types-value.md) | :heavy_minus_sign:                                                                                                                         | N/A                                                                                                                                        |

@@ -1,0 +1,21 @@
+# PostSubscriptionsIdResumeRequest
+
+## Example Usage
+
+```typescript
+import { PostSubscriptionsIdResumeRequest } from "flexprice-sdk-test/models/operations";
+
+let value: PostSubscriptionsIdResumeRequest = {
+  id: "<id>",
+  body: {
+    resumeMode: "auto",
+  },
+};
+```
+
+## Fields
+
+| Field                                                                                                 | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `id`                                                                                                  | *string*                                                                                              | :heavy_check_mark:                                                                                    | Subscription ID                                                                                       |
+| `body`                                                                                                | [components.DtoResumeSubscriptionRequest](../../models/components/dto-resume-subscription-request.md) | :heavy_check_mark:                                                                                    | Resume subscription request                                                                           |

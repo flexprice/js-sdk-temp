@@ -17,10 +17,10 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(require("./errorserrorresponse.js"), exports);
-__exportStar(require("./flexpriceerror.js"), exports);
-__exportStar(require("./httpclienterrors.js"), exports);
-__exportStar(require("./responsevalidationerror.js"), exports);
-__exportStar(require("./sdkerror.js"), exports);
-__exportStar(require("./sdkvalidationerror.js"), exports);
+__exportStar(require("./errors-error-response.js"), exports);
+__exportStar(require("./flex-price-error.js"), exports);
+__exportStar(require("./http-client-errors.js"), exports);
+__exportStar(require("./response-validation-error.js"), exports);
+__exportStar(require("./sdk-error.js"), exports);
+__exportStar(require("./sdk-validation-error.js"), exports);
 //# sourceMappingURL=index.js.map

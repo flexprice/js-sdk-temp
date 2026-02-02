@@ -33,7 +33,7 @@ const flexPrice = new FlexPrice({
 });
 
 async function run() {
-  const result = await flexPrice.wallets.getCustomersWallets();
+  const result = await flexPrice.wallets.getCustomersWallets({});
 
   console.log(result);
 }
@@ -47,7 +47,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { walletsGetCustomersWallets } from "flexprice-sdk-test/funcs/walletsGetCustomersWallets.js";
+import { walletsGetCustomersWallets } from "flexprice-sdk-test/funcs/wallets-get-customers-wallets.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -57,7 +57,7 @@ const flexPrice = new FlexPriceCore({
 });
 
 async function run() {
-  const res = await walletsGetCustomersWallets(flexPrice);
+  const res = await walletsGetCustomersWallets(flexPrice, {});
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -73,9 +73,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |
-| `includeRealTimeBalance`                                                                                                                                                       | *boolean*                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |
-| `lookupKey`                                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `request`                                                                                                                                                                      | [operations.GetCustomersWalletsRequest](../../models/operations/get-customers-wallets-request.md)                                                                              | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -122,7 +120,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { walletsGetCustomersIdWallets } from "flexprice-sdk-test/funcs/walletsGetCustomersIdWallets.js";
+import { walletsGetCustomersIdWallets } from "flexprice-sdk-test/funcs/wallets-get-customers-id-wallets.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -195,7 +193,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { walletsGetWallets } from "flexprice-sdk-test/funcs/walletsGetWallets.js";
+import { walletsGetWallets } from "flexprice-sdk-test/funcs/wallets-get-wallets.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -221,14 +219,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetWalletsRequest](../../models/operations/getwalletsrequest.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetWalletsRequest](../../models/operations/get-wallets-request.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.TypesListResponseDtoWalletResponse](../../models/components/typeslistresponsedtowalletresponse.md)\>**
+**Promise\<[components.TypesListResponseDtoWalletResponse](../../models/components/types-list-response-dto-wallet-response.md)\>**
 
 ### Errors
 
@@ -270,7 +268,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { walletsPostWallets } from "flexprice-sdk-test/funcs/walletsPostWallets.js";
+import { walletsPostWallets } from "flexprice-sdk-test/funcs/wallets-post-wallets.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -298,14 +296,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreateWalletRequest](../../models/components/dtocreatewalletrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.DtoCreateWalletRequest](../../models/components/dto-create-wallet-request.md)                                                                                      | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoWalletResponse](../../models/components/dtowalletresponse.md)\>**
+**Promise\<[components.DtoWalletResponse](../../models/components/dto-wallet-response.md)\>**
 
 ### Errors
 
@@ -345,7 +343,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { walletsPostWalletsSearch } from "flexprice-sdk-test/funcs/walletsPostWalletsSearch.js";
+import { walletsPostWalletsSearch } from "flexprice-sdk-test/funcs/wallets-post-wallets-search.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -371,14 +369,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.TypesWalletFilter](../../models/components/typeswalletfilter.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [components.TypesWalletFilter](../../models/components/types-wallet-filter.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.TypesListResponseDtoWalletResponse](../../models/components/typeslistresponsedtowalletresponse.md)\>**
+**Promise\<[components.TypesListResponseDtoWalletResponse](../../models/components/types-list-response-dto-wallet-response.md)\>**
 
 ### Errors
 
@@ -418,7 +416,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { walletsPostWalletsTransactionsSearch } from "flexprice-sdk-test/funcs/walletsPostWalletsTransactionsSearch.js";
+import { walletsPostWalletsTransactionsSearch } from "flexprice-sdk-test/funcs/wallets-post-wallets-transactions-search.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -445,14 +443,14 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `expand`                                                                                                                                                                       | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Expand fields (e.g., customer,created_by_user,wallet)                                                                                                                          |
-| `body`                                                                                                                                                                         | [components.TypesWalletTransactionFilter](../../models/components/typeswallettransactionfilter.md)                                                                             | :heavy_minus_sign:                                                                                                                                                             | Filter                                                                                                                                                                         |
+| `body`                                                                                                                                                                         | [components.TypesWalletTransactionFilter](../../models/components/types-wallet-transaction-filter.md)                                                                          | :heavy_minus_sign:                                                                                                                                                             | Filter                                                                                                                                                                         |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoListWalletTransactionsResponse](../../models/components/dtolistwallettransactionsresponse.md)\>**
+**Promise\<[components.DtoListWalletTransactionsResponse](../../models/components/dto-list-wallet-transactions-response.md)\>**
 
 ### Errors
 
@@ -492,7 +490,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { walletsGetWalletsId } from "flexprice-sdk-test/funcs/walletsGetWalletsId.js";
+import { walletsGetWalletsId } from "flexprice-sdk-test/funcs/wallets-get-wallets-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -525,7 +523,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoWalletResponse](../../models/components/dtowalletresponse.md)\>**
+**Promise\<[components.DtoWalletResponse](../../models/components/dto-wallet-response.md)\>**
 
 ### Errors
 
@@ -565,7 +563,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { walletsPutWalletsId } from "flexprice-sdk-test/funcs/walletsPutWalletsId.js";
+import { walletsPutWalletsId } from "flexprice-sdk-test/funcs/wallets-put-wallets-id.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -592,14 +590,14 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Wallet ID                                                                                                                                                                      |
-| `body`                                                                                                                                                                         | [components.DtoUpdateWalletRequest](../../models/components/dtoupdatewalletrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | Update wallet request                                                                                                                                                          |
+| `body`                                                                                                                                                                         | [components.DtoUpdateWalletRequest](../../models/components/dto-update-wallet-request.md)                                                                                      | :heavy_check_mark:                                                                                                                                                             | Update wallet request                                                                                                                                                          |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoWalletResponse](../../models/components/dtowalletresponse.md)\>**
+**Promise\<[components.DtoWalletResponse](../../models/components/dto-wallet-response.md)\>**
 
 ### Errors
 
@@ -639,7 +637,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { walletsGetWalletsIdBalanceRealTime } from "flexprice-sdk-test/funcs/walletsGetWalletsIdBalanceRealTime.js";
+import { walletsGetWalletsIdBalanceRealTime } from "flexprice-sdk-test/funcs/wallets-get-wallets-id-balance-real-time.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -666,13 +664,14 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Wallet ID                                                                                                                                                                      |
+| `expand`                                                                                                                                                                       | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Expand fields (e.g., credits_available_breakdown)                                                                                                                              |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoWalletBalanceResponse](../../models/components/dtowalletbalanceresponse.md)\>**
+**Promise\<[components.DtoWalletBalanceResponse](../../models/components/dto-wallet-balance-response.md)\>**
 
 ### Errors
 
@@ -712,7 +711,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { walletsPostWalletsIdTerminate } from "flexprice-sdk-test/funcs/walletsPostWalletsIdTerminate.js";
+import { walletsPostWalletsIdTerminate } from "flexprice-sdk-test/funcs/wallets-post-wallets-id-terminate.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -745,7 +744,7 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoWalletResponse](../../models/components/dtowalletresponse.md)\>**
+**Promise\<[components.DtoWalletResponse](../../models/components/dto-wallet-response.md)\>**
 
 ### Errors
 
@@ -787,7 +786,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { walletsPostWalletsIdTopUp } from "flexprice-sdk-test/funcs/walletsPostWalletsIdTopUp.js";
+import { walletsPostWalletsIdTopUp } from "flexprice-sdk-test/funcs/wallets-post-wallets-id-top-up.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -816,14 +815,14 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Wallet ID                                                                                                                                                                      |
-| `body`                                                                                                                                                                         | [components.DtoTopUpWalletRequest](../../models/components/dtotopupwalletrequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | Top up request                                                                                                                                                                 |
+| `body`                                                                                                                                                                         | [components.DtoTopUpWalletRequest](../../models/components/dto-top-up-wallet-request.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | Top up request                                                                                                                                                                 |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoTopUpWalletResponse](../../models/components/dtotopupwalletresponse.md)\>**
+**Promise\<[components.DtoTopUpWalletResponse](../../models/components/dto-top-up-wallet-response.md)\>**
 
 ### Errors
 
@@ -865,7 +864,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { walletsGetWalletsIdTransactions } from "flexprice-sdk-test/funcs/walletsGetWalletsIdTransactions.js";
+import { walletsGetWalletsIdTransactions } from "flexprice-sdk-test/funcs/wallets-get-wallets-id-transactions.js";
 
 // Use `FlexPriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -893,14 +892,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetWalletsIdTransactionsRequest](../../models/operations/getwalletsidtransactionsrequest.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetWalletsIdTransactionsRequest](../../models/operations/get-wallets-id-transactions-request.md)                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoListWalletTransactionsResponse](../../models/components/dtolistwallettransactionsresponse.md)\>**
+**Promise\<[components.DtoListWalletTransactionsResponse](../../models/components/dto-list-wallet-transactions-response.md)\>**
 
 ### Errors
 
