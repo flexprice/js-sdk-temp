@@ -1,8 +1,8 @@
 import * as z from "zod/v3";
 import { ClosedEnum } from "../../types/enums.js";
 export declare const TypesWalletType: {
-    readonly Promotional: "PROMOTIONAL";
     readonly PrePaid: "PRE_PAID";
+    readonly PostPaid: "POST_PAID";
 };
 export type TypesWalletType = ClosedEnum<typeof TypesWalletType>;
 /** @internal */

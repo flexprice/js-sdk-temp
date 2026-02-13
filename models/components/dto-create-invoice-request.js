@@ -60,7 +60,6 @@ exports.DtoCreateInvoiceRequest$outboundSchema = z.object({
     customerId: z.string(),
     description: z.string().optional(),
     dueDate: z.string().optional(),
-    environmentId: z.string().optional(),
     idempotencyKey: z.string().optional(),
     invoiceCoupons: z.array(dto_invoice_coupon_js_1.DtoInvoiceCoupon$outboundSchema).optional(),
     invoiceNumber: z.string().optional(),
@@ -79,6 +78,7 @@ exports.DtoCreateInvoiceRequest$outboundSchema = z.object({
     taxRateOverrides: z.array(dto_tax_rate_override_js_1.DtoTaxRateOverride$outboundSchema).optional(),
     taxRates: z.array(z.string()).optional(),
     total: z.string(),
+    totalPrepaidApplied: z.string().optional(),
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
         amountDue: "amount_due",
@@ -87,7 +87,6 @@ exports.DtoCreateInvoiceRequest$outboundSchema = z.object({
         billingReason: "billing_reason",
         customerId: "customer_id",
         dueDate: "due_date",
-        environmentId: "environment_id",
         idempotencyKey: "idempotency_key",
         invoiceCoupons: "invoice_coupons",
         invoiceNumber: "invoice_number",
@@ -103,6 +102,7 @@ exports.DtoCreateInvoiceRequest$outboundSchema = z.object({
         subscriptionId: "subscription_id",
         taxRateOverrides: "tax_rate_overrides",
         taxRates: "tax_rates",
+        totalPrepaidApplied: "total_prepaid_applied",
     });
 });
 function dtoCreateInvoiceRequestToJSON(dtoCreateInvoiceRequest) {

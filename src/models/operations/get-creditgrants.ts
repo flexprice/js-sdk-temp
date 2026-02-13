@@ -26,6 +26,7 @@ export const GetCreditgrantsStatus = {
 export type GetCreditgrantsStatus = ClosedEnum<typeof GetCreditgrantsStatus>;
 
 export type GetCreditgrantsRequest = {
+  creditGrantIds?: Array<string> | undefined;
   endTime?: string | undefined;
   expand?: string | undefined;
   limit?: number | undefined;
@@ -59,6 +60,7 @@ export const GetCreditgrantsStatus$outboundSchema: z.ZodNativeEnum<
 
 /** @internal */
 export type GetCreditgrantsRequest$Outbound = {
+  credit_grant_ids?: Array<string> | undefined;
   end_time?: string | undefined;
   expand?: string | undefined;
   limit?: number | undefined;
@@ -78,6 +80,7 @@ export const GetCreditgrantsRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetCreditgrantsRequest
 > = z.object({
+  creditGrantIds: z.array(z.string()).optional(),
   endTime: z.string().optional(),
   expand: z.string().optional(),
   limit: z.number().int().optional(),
@@ -91,6 +94,7 @@ export const GetCreditgrantsRequest$outboundSchema: z.ZodType<
   subscriptionIds: z.array(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    creditGrantIds: "credit_grant_ids",
     endTime: "end_time",
     planIds: "plan_ids",
     startTime: "start_time",

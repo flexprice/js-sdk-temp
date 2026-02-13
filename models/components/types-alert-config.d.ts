@@ -3,6 +3,7 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdk-validation-error.js";
 import { TypesWalletAlertThreshold } from "./types-wallet-alert-threshold.js";
 export type TypesAlertConfig = {
+    enabled?: boolean | undefined;
     threshold?: TypesWalletAlertThreshold | undefined;
 };
 /** @internal */

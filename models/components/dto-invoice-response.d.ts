@@ -9,45 +9,47 @@ import { DtoTaxAppliedResponse } from "./dto-tax-applied-response.js";
 import { TypesInvoiceStatus } from "./types-invoice-status.js";
 import { TypesInvoiceType } from "./types-invoice-type.js";
 import { TypesPaymentStatus } from "./types-payment-status.js";
+import { TypesStatus } from "./types-status.js";
 export type DtoInvoiceResponse = {
+    /**
+     * adjustment_amount is the total sum of credit notes of type "adjustment".
+     *
+     * @remarks
+     * These are non-cash reductions applied to the invoice (e.g. goodwill credit, billing correction).
+     */
+    adjustmentAmount?: number | undefined;
     /**
      * amount_due is the total amount that needs to be paid for this invoice
      */
-    amountDue?: string | undefined;
+    amountDue?: number | undefined;
     /**
-     * amount_paid is the amount that has been paid towards this invoice
+     * amount_paid is the amount that has already been paid towards this invoice
      */
-    amountPaid?: string | undefined;
+    amountPaid?: number | undefined;
     /**
-     * amount_remaining is the amount still outstanding on this invoice
+     * amount_remaining is the outstanding amount still owed on this invoice (calculated as amount_due minus amount_paid)
      */
-    amountRemaining?: string | undefined;
+    amountRemaining?: number | undefined;
     /**
-     * billing_period is the period this invoice covers (e.g., "monthly", "yearly")
+     * billing_period describes the billing period this invoice covers (e.g., "January 2024", "Q1 2024")
      */
     billingPeriod?: string | undefined;
     /**
-     * billing_reason indicates why this invoice was created (subscription_cycle, manual, etc.)
+     * billing_reason indicates why this invoice was generated (e.g., "subscription_billing", "manual_charge")
      */
     billingReason?: string | undefined;
     /**
-     * billing_sequence is the optional sequence number for billing cycles
+     * billing_sequence is the sequential number indicating the billing cycle for subscription invoices
      */
     billingSequence?: number | undefined;
     /**
-     * coupon_applications contains the coupon applications associated with this invoice
+     * coupon_applications contains the coupon applications associated with this invoice (overrides embedded field)
      */
     couponApplications?: Array<DtoCouponApplicationResponse> | undefined;
-    /**
-     * created_at is the timestamp when this invoice was created
-     */
     createdAt?: string | undefined;
-    /**
-     * created_by is the identifier of the user who created this invoice
-     */
     createdBy?: string | undefined;
     /**
-     * currency is the three-letter ISO currency code (e.g., USD, EUR) for the invoice
+     * currency is the three-letter ISO currency code (e.g., USD, EUR, GBP) that applies to all monetary amounts on this invoice
      */
     currency?: string | undefined;
     /**
@@ -55,19 +57,23 @@ export type DtoInvoiceResponse = {
      */
     customer?: DtoCustomerResponse | undefined;
     /**
-     * customer_id is the unique identifier of the customer this invoice belongs to
+     * customer_id is the ID of the customer who will receive this invoice
      */
     customerId?: string | undefined;
     /**
-     * description is the optional text description of the invoice
+     * description is an optional description or notes about this invoice
      */
     description?: string | undefined;
     /**
-     * due_date is the date by which payment is expected
+     * due_date is the date when payment for this invoice is due
      */
     dueDate?: string | undefined;
     /**
-     * finalized_at is the timestamp when this invoice was finalized
+     * environment_id is the ID of the environment this invoice belongs to (for multi-environment setups)
+     */
+    environmentId?: string | undefined;
+    /**
+     * finalized_at is the timestamp when this invoice was finalized and made ready for payment
      */
     finalizedAt?: string | undefined;
     /**
@@ -75,21 +81,21 @@ export type DtoInvoiceResponse = {
      */
     id?: string | undefined;
     /**
-     * idempotency_key is the optional key used to prevent duplicate invoice creation
+     * idempotency_key is a unique key used to prevent duplicate invoice creation when retrying API calls
      */
     idempotencyKey?: string | undefined;
     /**
-     * invoice_number is the optional human-readable identifier for the invoice
+     * invoice_number is the human-readable invoice number displayed to customers (e.g., INV-2024-001)
      */
     invoiceNumber?: string | undefined;
     /**
-     * invoice_pdf_url is the optional URL to the PDF version of this invoice
+     * invoice_pdf_url is the URL where customers can download the PDF version of this invoice
      */
     invoicePdfUrl?: string | undefined;
     invoiceStatus?: TypesInvoiceStatus | undefined;
     invoiceType?: TypesInvoiceType | undefined;
     /**
-     * line_items contains the individual items that make up this invoice
+     * line_items contains the individual items that make up this invoice (overrides embedded field)
      */
     lineItems?: Array<DtoInvoiceLineItemResponse> | undefined;
     metadata?: {
@@ -100,65 +106,64 @@ export type DtoInvoiceResponse = {
      */
     overpaidAmount?: string | undefined;
     /**
-     * paid_at is the timestamp when this invoice was paid
+     * paid_at is the timestamp when this invoice was fully paid
      */
     paidAt?: string | undefined;
     paymentStatus?: TypesPaymentStatus | undefined;
     /**
-     * period_end is the end date of the billing period
+     * period_end is the end date of the billing period covered by this invoice
      */
     periodEnd?: string | undefined;
     /**
-     * period_start is the start date of the billing period
+     * period_start is the start date of the billing period covered by this invoice
      */
     periodStart?: string | undefined;
     /**
-     * status represents the current status of this invoice
+     * refunded_amount is the total sum of credit notes of type "refund".
+     *
+     * @remarks
+     * These are actual refunds issued to the customer.
      */
-    status?: string | undefined;
+    refundedAmount?: number | undefined;
+    status?: TypesStatus | undefined;
     subscription?: DtoSubscriptionResponse | undefined;
     /**
-     * subscription_id is the optional unique identifier of the subscription associated with this invoice
+     * subscription_id is the ID of the subscription this invoice is associated with (only present for subscription-based invoices)
      */
     subscriptionId?: string | undefined;
     /**
-     * subtotal is the amount before taxes and discounts are applied
+     * subtotal is the sum of all line items before any taxes, discounts, or additional fees
      */
-    subtotal?: string | undefined;
+    subtotal?: number | undefined;
     /**
      * tax_applied_records contains the tax applied records associated with this invoice
      */
     taxes?: Array<DtoTaxAppliedResponse> | undefined;
-    /**
-     * tenant_id is the unique identifier of the tenant this invoice belongs to
-     */
     tenantId?: string | undefined;
     /**
-     * total is the total amount of the invoice including taxes and discounts
+     * total is the final amount including taxes, fees, and discounts
      */
-    total?: string | undefined;
+    total?: number | undefined;
     /**
-     * total_discount is the total discount amount from coupon applications
+     * total_discount is the sum of all coupon discounts applied to the invoice
      */
-    totalDiscount?: string | undefined;
+    totalDiscount?: number | undefined;
     /**
-     * total_tax is the total tax amount for this invoice
+     * total_prepaid_credits_applied is the total amount of prepaid credits applied to this invoice.
      */
-    totalTax?: string | undefined;
+    totalPrepaidCreditsApplied?: number | undefined;
     /**
-     * updated_at is the timestamp when this invoice was last updated
+     * total_tax is the sum of all taxes combined at the invoice level.
      */
+    totalTax?: number | undefined;
     updatedAt?: string | undefined;
-    /**
-     * updated_by is the identifier of the user who last updated this invoice
-     */
     updatedBy?: string | undefined;
     /**
-     * version is the version number of this invoice
+     * version is the version number for tracking changes to this invoice
      */
     version?: number | undefined;
     /**
-     * voided_at is the timestamp when this invoice was voided
+     * voided_at is the timestamp when this invoice was voided or cancelled
      */
     voidedAt?: string | undefined;
 };

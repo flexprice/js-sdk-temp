@@ -27,7 +27,6 @@ export type DtoUpdateWalletRequest = {
   config?: TypesWalletConfig | undefined;
   description?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
-  name?: string | undefined;
 };
 
 /** @internal */
@@ -38,7 +37,6 @@ export type DtoUpdateWalletRequest$Outbound = {
   config?: TypesWalletConfig$Outbound | undefined;
   description?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
-  name?: string | undefined;
 };
 
 /** @internal */
@@ -53,7 +51,6 @@ export const DtoUpdateWalletRequest$outboundSchema: z.ZodType<
   config: TypesWalletConfig$outboundSchema.optional(),
   description: z.string().optional(),
   metadata: z.record(z.string()).optional(),
-  name: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     alertConfig: "alert_config",

@@ -15,11 +15,6 @@ import {
   TypesAutoTopup$outboundSchema,
 } from "./types-auto-topup.js";
 import {
-  TypesWalletConfig,
-  TypesWalletConfig$Outbound,
-  TypesWalletConfig$outboundSchema,
-} from "./types-wallet-config.js";
-import {
   TypesWalletType,
   TypesWalletType$outboundSchema,
 } from "./types-wallet-type.js";
@@ -34,7 +29,6 @@ export type DtoCreateWalletRequest = {
    */
   alertEnabled?: boolean | undefined;
   autoTopup?: TypesAutoTopup | undefined;
-  config?: TypesWalletConfig | undefined;
   /**
    * amount in the currency =  number of credits * conversion_rate
    *
@@ -75,7 +69,6 @@ export type DtoCreateWalletRequest = {
    */
   initialCreditsToLoadExpiryDate?: number | undefined;
   metadata?: { [k: string]: string } | undefined;
-  name?: string | undefined;
   /**
    * price_unit is the code of the price unit to use for wallet creation
    *
@@ -102,7 +95,6 @@ export type DtoCreateWalletRequest$Outbound = {
   alert_config?: DtoAlertConfig$Outbound | undefined;
   alert_enabled?: boolean | undefined;
   auto_topup?: TypesAutoTopup$Outbound | undefined;
-  config?: TypesWalletConfig$Outbound | undefined;
   conversion_rate: string;
   currency: string;
   customer_id?: string | undefined;
@@ -112,7 +104,6 @@ export type DtoCreateWalletRequest$Outbound = {
   initial_credits_to_load: string;
   initial_credits_to_load_expiry_date?: number | undefined;
   metadata?: { [k: string]: string } | undefined;
-  name?: string | undefined;
   price_unit?: string | undefined;
   topup_conversion_rate?: string | undefined;
   wallet_type?: string | undefined;
@@ -127,7 +118,6 @@ export const DtoCreateWalletRequest$outboundSchema: z.ZodType<
   alertConfig: DtoAlertConfig$outboundSchema.optional(),
   alertEnabled: z.boolean().optional(),
   autoTopup: TypesAutoTopup$outboundSchema.optional(),
-  config: TypesWalletConfig$outboundSchema.optional(),
   conversionRate: z.string().default("1"),
   currency: z.string(),
   customerId: z.string().optional(),
@@ -137,7 +127,6 @@ export const DtoCreateWalletRequest$outboundSchema: z.ZodType<
   initialCreditsToLoad: z.string().default("0"),
   initialCreditsToLoadExpiryDate: z.number().int().optional(),
   metadata: z.record(z.string()).optional(),
-  name: z.string().optional(),
   priceUnit: z.string().optional(),
   topupConversionRate: z.string().optional(),
   walletType: TypesWalletType$outboundSchema.optional(),

@@ -88,15 +88,17 @@ export class CreditGrants extends ClientSDK {
    * Delete a credit grant
    *
    * @remarks
-   * Delete a credit grant
+   * Delete a credit grant. Plan-scoped grants are archived; subscription-scoped grants have their end date set (optional body with effective_date). Request body is optional.
    */
   async deleteCreditgrantsId(
     id: string,
+    body?: components.DtoDeleteCreditGrantRequest | undefined,
     options?: RequestOptions,
   ): Promise<components.DtoSuccessResponse> {
     return unwrapAsync(creditGrantsDeleteCreditgrantsId(
       this,
       id,
+      body,
       options,
     ));
   }

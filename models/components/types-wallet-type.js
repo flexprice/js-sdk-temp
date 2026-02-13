@@ -39,8 +39,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TypesWalletType$outboundSchema = exports.TypesWalletType$inboundSchema = exports.TypesWalletType = void 0;
 const z = __importStar(require("zod/v3"));
 exports.TypesWalletType = {
-    Promotional: "PROMOTIONAL",
     PrePaid: "PRE_PAID",
+    PostPaid: "POST_PAID",
 };
 /** @internal */
 exports.TypesWalletType$inboundSchema = z.nativeEnum(exports.TypesWalletType);

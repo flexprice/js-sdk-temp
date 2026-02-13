@@ -3,7 +3,7 @@
  */
 
 import { FlexPriceCore } from "../core.js";
-import { encodeSimple } from "../lib/encodings.js";
+import { encodeJSON, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -30,11 +30,12 @@ import { Result } from "../types/fp.js";
  * Delete a credit grant
  *
  * @remarks
- * Delete a credit grant
+ * Delete a credit grant. Plan-scoped grants are archived; subscription-scoped grants have their end date set (optional body with effective_date). Request body is optional.
  */
 export function creditGrantsDeleteCreditgrantsId(
   client: FlexPriceCore,
   id: string,
+  body?: components.DtoDeleteCreditGrantRequest | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -53,6 +54,7 @@ export function creditGrantsDeleteCreditgrantsId(
   return new APIPromise($do(
     client,
     id,
+    body,
     options,
   ));
 }
@@ -60,6 +62,7 @@ export function creditGrantsDeleteCreditgrantsId(
 async function $do(
   client: FlexPriceCore,
   id: string,
+  body?: components.DtoDeleteCreditGrantRequest | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -80,6 +83,7 @@ async function $do(
 > {
   const input: operations.DeleteCreditgrantsIdRequest = {
     id: id,
+    body: body,
   };
 
   const parsed = safeParse(
@@ -92,7 +96,7 @@ async function $do(
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = null;
+  const body$ = encodeJSON("body", payload.body, { explode: true });
 
   const pathParams = {
     id: encodeSimple("id", payload.id, {
@@ -104,6 +108,7 @@ async function $do(
   const path = pathToFunc("/creditgrants/{id}")(pathParams);
 
   const headers = new Headers(compactMap({
+    "Content-Type": "application/json",
     Accept: "application/json",
   }));
 
@@ -142,7 +147,7 @@ async function $do(
     baseURL: options?.serverURL,
     path: path,
     headers: headers,
-    body: body,
+    body: body$,
     userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);

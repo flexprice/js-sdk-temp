@@ -11,7 +11,6 @@ export type DtoUpdateWalletRequest = {
     metadata?: {
         [k: string]: string;
     } | undefined;
-    name?: string | undefined;
 };
 /** @internal */
 export type DtoUpdateWalletRequest$Outbound = {
@@ -23,7 +22,6 @@ export type DtoUpdateWalletRequest$Outbound = {
     metadata?: {
         [k: string]: string;
     } | undefined;
-    name?: string | undefined;
 };
 /** @internal */
 export declare const DtoUpdateWalletRequest$outboundSchema: z.ZodType<DtoUpdateWalletRequest$Outbound, z.ZodTypeDef, DtoUpdateWalletRequest>;

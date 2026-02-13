@@ -11,30 +11,53 @@ import {
   DtoTaxRateResponse,
   DtoTaxRateResponse$inboundSchema,
 } from "./dto-tax-rate-response.js";
+import { TypesStatus, TypesStatus$inboundSchema } from "./types-status.js";
 import {
   TypesTaxRateEntityType,
   TypesTaxRateEntityType$inboundSchema,
 } from "./types-tax-rate-entity-type.js";
 
 export type DtoTaxAssociationResponse = {
+  /**
+   * Whether this tax should be automatically applied
+   */
   autoApply?: boolean | undefined;
   createdAt?: string | undefined;
   createdBy?: string | undefined;
+  /**
+   * Currency
+   */
   currency?: string | undefined;
+  /**
+   * ID of the entity this tax rate applies to
+   */
   entityId?: string | undefined;
   entityType?: TypesTaxRateEntityType | undefined;
+  /**
+   * EnvironmentID is the ID of the environment this tax rate config belongs to
+   */
   environmentId?: string | undefined;
+  /**
+   * ID of the ent.
+   */
   id?: string | undefined;
+  /**
+   * Metadata holds the value of the "metadata" field.
+   */
   metadata?: { [k: string]: string } | undefined;
+  /**
+   * Priority for tax resolution (lower number = higher priority)
+   */
   priority?: number | undefined;
-  status?: string | undefined;
+  status?: TypesStatus | undefined;
   taxRate?: DtoTaxRateResponse | undefined;
+  /**
+   * Reference to the TaxRate entity
+   */
   taxRateId?: string | undefined;
   tenantId?: string | undefined;
   updatedAt?: string | undefined;
   updatedBy?: string | undefined;
-  validFrom?: string | undefined;
-  validTo?: string | undefined;
 };
 
 /** @internal */
@@ -53,14 +76,12 @@ export const DtoTaxAssociationResponse$inboundSchema: z.ZodType<
   id: z.string().optional(),
   metadata: z.record(z.string()).optional(),
   priority: z.number().int().optional(),
-  status: z.string().optional(),
+  status: TypesStatus$inboundSchema.optional(),
   tax_rate: DtoTaxRateResponse$inboundSchema.optional(),
   tax_rate_id: z.string().optional(),
   tenant_id: z.string().optional(),
   updated_at: z.string().optional(),
   updated_by: z.string().optional(),
-  valid_from: z.string().optional(),
-  valid_to: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     "auto_apply": "autoApply",
@@ -74,8 +95,6 @@ export const DtoTaxAssociationResponse$inboundSchema: z.ZodType<
     "tenant_id": "tenantId",
     "updated_at": "updatedAt",
     "updated_by": "updatedBy",
-    "valid_from": "validFrom",
-    "valid_to": "validTo",
   });
 });
 

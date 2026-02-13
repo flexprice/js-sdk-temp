@@ -19,117 +19,49 @@ import {
   TypesCommitmentInfo,
   TypesCommitmentInfo$inboundSchema,
 } from "./types-commitment-info.js";
+import { TypesStatus, TypesStatus$inboundSchema } from "./types-status.js";
 
 export type DtoInvoiceLineItemResponse = {
-  /**
-   * amount is the monetary amount for this line item
-   */
-  amount?: string | undefined;
+  amount?: number | undefined;
   commitmentInfo?: TypesCommitmentInfo | undefined;
-  /**
-   * created_at is the timestamp when this line item was created
-   */
   createdAt?: string | undefined;
-  /**
-   * created_by is the identifier of the user who created this line item
-   */
   createdBy?: string | undefined;
-  /**
-   * currency is the three-letter ISO currency code for this line item
-   */
   currency?: string | undefined;
-  /**
-   * customer_id is the unique identifier of the customer associated with this line item
-   */
   customerId?: string | undefined;
-  /**
-   * display_name is the optional human-readable name for this line item
-   */
   displayName?: string | undefined;
-  /**
-   * entity_id is the optional unique identifier of the entity associated with this line item
-   */
   entityId?: string | undefined;
-  /**
-   * entity_type is the optional type of the entity associated with this line item
-   */
   entityType?: string | undefined;
-  /**
-   * id is the unique identifier for this line item
-   */
+  environmentId?: string | undefined;
   id?: string | undefined;
-  /**
-   * invoice_id is the unique identifier of the invoice this line item belongs to
-   */
   invoiceId?: string | undefined;
+  /**
+   * invoice_level_discount is the discount amount in invoice currency applied to all line items on the invoice.
+   */
+  invoiceLevelDiscount?: number | undefined;
+  /**
+   * line_item_discount is the discount amount in invoice currency applied directly to this line item.
+   */
+  lineItemDiscount?: number | undefined;
   metadata?: { [k: string]: string } | undefined;
-  /**
-   * meter_display_name is the optional human-readable name of the meter
-   */
   meterDisplayName?: string | undefined;
-  /**
-   * meter_id is the optional unique identifier of the meter used for usage tracking
-   */
   meterId?: string | undefined;
-  /**
-   * period_end is the optional end date of the period this line item covers
-   */
   periodEnd?: string | undefined;
-  /**
-   * period_start is the optional start date of the period this line item covers
-   */
   periodStart?: string | undefined;
-  /**
-   * plan_display_name is the optional human-readable name of the plan
-   */
   planDisplayName?: string | undefined;
   /**
-   * plan_id is the optional unique identifier of the plan associated with this line item
+   * prepaid_credits_applied is the amount in invoice currency reduced from this line item due to prepaid credits application.
    */
-  planId?: string | undefined;
-  /**
-   * price_id is the optional unique identifier of the price associated with this line item
-   */
+  prepaidCreditsApplied?: number | undefined;
   priceId?: string | undefined;
-  /**
-   * price_type indicates the type of pricing (fixed, usage, tiered, etc.)
-   */
   priceType?: string | undefined;
-  /**
-   * price_unit is the optional 3-digit ISO code of the price unit associated with this line item
-   */
   priceUnit?: string | undefined;
-  /**
-   * price_unit_amount is the optional amount converted to the price unit currency
-   */
-  priceUnitAmount?: string | undefined;
-  /**
-   * price_unit_id is the optional unique identifier of the price unit associated with this line item
-   */
+  priceUnitAmount?: number | undefined;
   priceUnitId?: string | undefined;
-  /**
-   * quantity is the quantity of units for this line item
-   */
-  quantity?: string | undefined;
-  /**
-   * status represents the current status of this line item
-   */
-  status?: string | undefined;
-  /**
-   * subscription_id is the optional unique identifier of the subscription associated with this line item
-   */
+  quantity?: number | undefined;
+  status?: TypesStatus | undefined;
   subscriptionId?: string | undefined;
-  /**
-   * tenant_id is the unique identifier of the tenant this line item belongs to
-   */
   tenantId?: string | undefined;
-  /**
-   * updated_at is the timestamp when this line item was last updated
-   */
   updatedAt?: string | undefined;
-  /**
-   * updated_by is the identifier of the user who last updated this line item
-   */
   updatedBy?: string | undefined;
   /**
    * usage_analytics contains usage analytics for this line item (legacy - grouped by source)
@@ -147,7 +79,7 @@ export const DtoInvoiceLineItemResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  amount: z.string().optional(),
+  amount: z.number().optional(),
   commitment_info: TypesCommitmentInfo$inboundSchema.optional(),
   created_at: z.string().optional(),
   created_by: z.string().optional(),
@@ -156,22 +88,25 @@ export const DtoInvoiceLineItemResponse$inboundSchema: z.ZodType<
   display_name: z.string().optional(),
   entity_id: z.string().optional(),
   entity_type: z.string().optional(),
+  environment_id: z.string().optional(),
   id: z.string().optional(),
   invoice_id: z.string().optional(),
+  invoice_level_discount: z.number().optional(),
+  line_item_discount: z.number().optional(),
   metadata: z.record(z.string()).optional(),
   meter_display_name: z.string().optional(),
   meter_id: z.string().optional(),
   period_end: z.string().optional(),
   period_start: z.string().optional(),
   plan_display_name: z.string().optional(),
-  plan_id: z.string().optional(),
+  prepaid_credits_applied: z.number().optional(),
   price_id: z.string().optional(),
   price_type: z.string().optional(),
   price_unit: z.string().optional(),
-  price_unit_amount: z.string().optional(),
+  price_unit_amount: z.number().optional(),
   price_unit_id: z.string().optional(),
-  quantity: z.string().optional(),
-  status: z.string().optional(),
+  quantity: z.number().optional(),
+  status: TypesStatus$inboundSchema.optional(),
   subscription_id: z.string().optional(),
   tenant_id: z.string().optional(),
   updated_at: z.string().optional(),
@@ -187,13 +122,16 @@ export const DtoInvoiceLineItemResponse$inboundSchema: z.ZodType<
     "display_name": "displayName",
     "entity_id": "entityId",
     "entity_type": "entityType",
+    "environment_id": "environmentId",
     "invoice_id": "invoiceId",
+    "invoice_level_discount": "invoiceLevelDiscount",
+    "line_item_discount": "lineItemDiscount",
     "meter_display_name": "meterDisplayName",
     "meter_id": "meterId",
     "period_end": "periodEnd",
     "period_start": "periodStart",
     "plan_display_name": "planDisplayName",
-    "plan_id": "planId",
+    "prepaid_credits_applied": "prepaidCreditsApplied",
     "price_id": "priceId",
     "price_type": "priceType",
     "price_unit": "priceUnit",

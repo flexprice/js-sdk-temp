@@ -1,6 +1,7 @@
 import * as z from "zod/v3";
 import { ClosedEnum } from "../../types/enums.js";
 export declare const TypesWindowSize: {
+    readonly Month: "MONTH";
     readonly Minute: "MINUTE";
     readonly FifteenMIN: "15MIN";
     readonly ThirtyMIN: "30MIN";
@@ -10,7 +11,6 @@ export declare const TypesWindowSize: {
     readonly TwelveHOUR: "12HOUR";
     readonly Day: "DAY";
     readonly Week: "WEEK";
-    readonly Month: "MONTH";
 };
 export type TypesWindowSize = ClosedEnum<typeof TypesWindowSize>;
 /** @internal */

@@ -61,6 +61,7 @@ exports.GetCreditgrantsScope$outboundSchema = z.nativeEnum(exports.GetCreditgran
 exports.GetCreditgrantsStatus$outboundSchema = z.nativeEnum(exports.GetCreditgrantsStatus);
 /** @internal */
 exports.GetCreditgrantsRequest$outboundSchema = z.object({
+    creditGrantIds: z.array(z.string()).optional(),
     endTime: z.string().optional(),
     expand: z.string().optional(),
     limit: z.number().int().optional(),
@@ -74,6 +75,7 @@ exports.GetCreditgrantsRequest$outboundSchema = z.object({
     subscriptionIds: z.array(z.string()).optional(),
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
+        creditGrantIds: "credit_grant_ids",
         endTime: "end_time",
         planIds: "plan_ids",
         startTime: "start_time",

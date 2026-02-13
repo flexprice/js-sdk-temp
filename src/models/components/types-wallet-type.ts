@@ -6,8 +6,8 @@ import * as z from "zod/v3";
 import { ClosedEnum } from "../../types/enums.js";
 
 export const TypesWalletType = {
-  Promotional: "PROMOTIONAL",
   PrePaid: "PRE_PAID",
+  PostPaid: "POST_PAID",
 } as const;
 export type TypesWalletType = ClosedEnum<typeof TypesWalletType>;
 

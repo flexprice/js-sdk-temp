@@ -51,7 +51,6 @@ exports.DtoUpdateWalletRequest$outboundSchema = z.object({
     config: types_wallet_config_js_1.TypesWalletConfig$outboundSchema.optional(),
     description: z.string().optional(),
     metadata: z.record(z.string()).optional(),
-    name: z.string().optional(),
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
         alertConfig: "alert_config",

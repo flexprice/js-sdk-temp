@@ -18,6 +18,14 @@ export type DtoCreateInvoiceLineItemRequest = {
      * entity_type is the optional type of the entity associated with this line item
      */
     entityType?: string | undefined;
+    /**
+     * invoice_level_discount is the discount amount in invoice currency applied to all line items on the invoice.
+     */
+    invoiceLevelDiscount?: string | undefined;
+    /**
+     * line_item_discount is the discount amount in invoice currency applied directly to this line item.
+     */
+    lineItemDiscount?: string | undefined;
     metadata?: {
         [k: string]: string;
     } | undefined;
@@ -49,6 +57,10 @@ export type DtoCreateInvoiceLineItemRequest = {
      */
     planId?: string | undefined;
     /**
+     * prepaid_credits_applied is the amount in invoice currency reduced from this line item due to prepaid credits application.
+     */
+    prepaidCreditsApplied?: string | undefined;
+    /**
      * price_id is the optional unique identifier of the price associated with this line item
      */
     priceId?: string | undefined;
@@ -76,6 +88,8 @@ export type DtoCreateInvoiceLineItemRequest$Outbound = {
     display_name?: string | undefined;
     entity_id?: string | undefined;
     entity_type?: string | undefined;
+    invoice_level_discount?: string | undefined;
+    line_item_discount?: string | undefined;
     metadata?: {
         [k: string]: string;
     } | undefined;
@@ -85,6 +99,7 @@ export type DtoCreateInvoiceLineItemRequest$Outbound = {
     period_start?: string | undefined;
     plan_display_name?: string | undefined;
     plan_id?: string | undefined;
+    prepaid_credits_applied?: string | undefined;
     price_id?: string | undefined;
     price_type?: string | undefined;
     price_unit?: string | undefined;

@@ -43,6 +43,7 @@ const schemas_js_1 = require("../../lib/schemas.js");
 const types_wallet_alert_threshold_js_1 = require("./types-wallet-alert-threshold.js");
 /** @internal */
 exports.TypesAlertConfig$inboundSchema = z.object({
+    enabled: z.boolean().optional(),
     threshold: types_wallet_alert_threshold_js_1.TypesWalletAlertThreshold$inboundSchema.optional(),
 });
 function typesAlertConfigFromJSON(jsonString) {

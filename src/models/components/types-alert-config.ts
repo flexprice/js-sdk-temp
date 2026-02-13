@@ -12,6 +12,7 @@ import {
 } from "./types-wallet-alert-threshold.js";
 
 export type TypesAlertConfig = {
+  enabled?: boolean | undefined;
   threshold?: TypesWalletAlertThreshold | undefined;
 };
 
@@ -21,6 +22,7 @@ export const TypesAlertConfig$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  enabled: z.boolean().optional(),
   threshold: TypesWalletAlertThreshold$inboundSchema.optional(),
 });
 

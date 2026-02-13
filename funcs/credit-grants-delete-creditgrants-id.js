@@ -51,21 +51,22 @@ const async_js_1 = require("../types/async.js");
  * Delete a credit grant
  *
  * @remarks
- * Delete a credit grant
+ * Delete a credit grant. Plan-scoped grants are archived; subscription-scoped grants have their end date set (optional body with effective_date). Request body is optional.
  */
-function creditGrantsDeleteCreditgrantsId(client, id, options) {
-    return new async_js_1.APIPromise($do(client, id, options));
+function creditGrantsDeleteCreditgrantsId(client, id, body, options) {
+    return new async_js_1.APIPromise($do(client, id, body, options));
 }
-async function $do(client, id, options) {
+async function $do(client, id, body, options) {
     const input = {
         id: id,
+        body: body,
     };
     const parsed = (0, schemas_js_1.safeParse)(input, (value) => operations.DeleteCreditgrantsIdRequest$outboundSchema.parse(value), "Input validation failed");
     if (!parsed.ok) {
         return [parsed, { status: "invalid" }];
     }
     const payload = parsed.value;
-    const body = null;
+    const body$ = (0, encodings_js_1.encodeJSON)("body", payload.body, { explode: true });
     const pathParams = {
         id: (0, encodings_js_1.encodeSimple)("id", payload.id, {
             explode: false,
@@ -74,6 +75,7 @@ async function $do(client, id, options) {
     };
     const path = (0, url_js_1.pathToFunc)("/creditgrants/{id}")(pathParams);
     const headers = new Headers((0, primitives_js_1.compactMap)({
+        "Content-Type": "application/json",
         Accept: "application/json",
     }));
     const secConfig = await (0, security_js_1.extractSecurity)(client._options.apiKeyAuth);
@@ -107,7 +109,7 @@ async function $do(client, id, options) {
         baseURL: options?.serverURL,
         path: path,
         headers: headers,
-        body: body,
+        body: body$,
         userAgent: client._options.userAgent,
         timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
     }, options);

@@ -15,6 +15,7 @@ export const TypesTransactionReason = {
   CreditExpired: "CREDIT_EXPIRED",
   WalletTermination: "WALLET_TERMINATION",
   ManualBalanceDebit: "MANUAL_BALANCE_DEBIT",
+  CreditAdjustment: "CREDIT_ADJUSTMENT",
 } as const;
 export type TypesTransactionReason = ClosedEnum<typeof TypesTransactionReason>;
 

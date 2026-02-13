@@ -8,7 +8,7 @@ import { PostWalletsIdTopUpRequest } from "flexprice-sdk-test/models/operations"
 let value: PostWalletsIdTopUpRequest = {
   id: "<id>",
   body: {
-    transactionReason: "MANUAL_BALANCE_DEBIT",
+    transactionReason: "CREDIT_ADJUSTMENT",
   },
 };
 ```

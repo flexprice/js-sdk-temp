@@ -40,15 +40,18 @@ exports.DtoCancelSubscriptionRequest$outboundSchema = void 0;
 exports.dtoCancelSubscriptionRequestToJSON = dtoCancelSubscriptionRequestToJSON;
 const z = __importStar(require("zod/v3"));
 const primitives_js_1 = require("../../lib/primitives.js");
+const types_cancel_immediately_invoice_policy_js_1 = require("./types-cancel-immediately-invoice-policy.js");
 const types_cancellation_type_js_1 = require("./types-cancellation-type.js");
 const types_proration_behavior_js_1 = require("./types-proration-behavior.js");
 /** @internal */
 exports.DtoCancelSubscriptionRequest$outboundSchema = z.object({
+    cancelImmediatelyInovicePolicy: types_cancel_immediately_invoice_policy_js_1.TypesCancelImmediatelyInvoicePolicy$outboundSchema.optional(),
     cancellationType: types_cancellation_type_js_1.TypesCancellationType$outboundSchema,
     prorationBehavior: types_proration_behavior_js_1.TypesProrationBehavior$outboundSchema.optional(),
     reason: z.string().optional(),
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
+        cancelImmediatelyInovicePolicy: "cancel_immediately_inovice_policy",
         cancellationType: "cancellation_type",
         prorationBehavior: "proration_behavior",
     });

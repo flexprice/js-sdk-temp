@@ -95,6 +95,22 @@ export type TypesInvoiceFilter = {
    */
   paymentStatus?: Array<TypesPaymentStatus> | undefined;
   /**
+   * period_end_gte filters invoices with period_end >= value
+   */
+  periodEndGte?: string | undefined;
+  /**
+   * period_end_lte filters invoices with period_end <= value
+   */
+  periodEndLte?: string | undefined;
+  /**
+   * period_start_gte filters invoices with period_start >= value
+   */
+  periodStartGte?: string | undefined;
+  /**
+   * period_start_lte filters invoices with period_start <= value
+   */
+  periodStartLte?: string | undefined;
+  /**
    * SkipLineItems if true, will not include line items in the response
    */
   skipLineItems?: boolean | undefined;
@@ -131,6 +147,10 @@ export type TypesInvoiceFilter$Outbound = {
   offset?: number | undefined;
   order?: string | undefined;
   payment_status?: Array<string> | undefined;
+  period_end_gte?: string | undefined;
+  period_end_lte?: string | undefined;
+  period_start_gte?: string | undefined;
+  period_start_lte?: string | undefined;
   skip_line_items?: boolean | undefined;
   sort?: Array<TypesSortCondition$Outbound> | undefined;
   start_time?: string | undefined;
@@ -158,6 +178,10 @@ export const TypesInvoiceFilter$outboundSchema: z.ZodType<
   offset: z.number().int().optional(),
   order: TypesInvoiceFilterOrder$outboundSchema.optional(),
   paymentStatus: z.array(TypesPaymentStatus$outboundSchema).optional(),
+  periodEndGte: z.string().optional(),
+  periodEndLte: z.string().optional(),
+  periodStartGte: z.string().optional(),
+  periodStartLte: z.string().optional(),
   skipLineItems: z.boolean().optional(),
   sort: z.array(TypesSortCondition$outboundSchema).optional(),
   startTime: z.string().optional(),
@@ -174,6 +198,10 @@ export const TypesInvoiceFilter$outboundSchema: z.ZodType<
     invoiceStatus: "invoice_status",
     invoiceType: "invoice_type",
     paymentStatus: "payment_status",
+    periodEndGte: "period_end_gte",
+    periodEndLte: "period_end_lte",
+    periodStartGte: "period_start_gte",
+    periodStartLte: "period_start_lte",
     skipLineItems: "skip_line_items",
     startTime: "start_time",
     subscriptionId: "subscription_id",

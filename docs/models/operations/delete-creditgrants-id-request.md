@@ -12,6 +12,7 @@ let value: DeleteCreditgrantsIdRequest = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | Credit Grant ID    |
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `id`                                                                                                 | *string*                                                                                             | :heavy_check_mark:                                                                                   | Credit Grant ID                                                                                      |
+| `body`                                                                                               | [components.DtoDeleteCreditGrantRequest](../../models/components/dto-delete-credit-grant-request.md) | :heavy_minus_sign:                                                                                   | Optional: effective_date for subscription-scoped grants                                              |

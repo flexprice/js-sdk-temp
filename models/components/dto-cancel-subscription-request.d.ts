@@ -1,7 +1,9 @@
 import * as z from "zod/v3";
+import { TypesCancelImmediatelyInvoicePolicy } from "./types-cancel-immediately-invoice-policy.js";
 import { TypesCancellationType } from "./types-cancellation-type.js";
 import { TypesProrationBehavior } from "./types-proration-behavior.js";
 export type DtoCancelSubscriptionRequest = {
+    cancelImmediatelyInovicePolicy?: TypesCancelImmediatelyInvoicePolicy | undefined;
     cancellationType: TypesCancellationType;
     prorationBehavior?: TypesProrationBehavior | undefined;
     /**
@@ -11,6 +13,7 @@ export type DtoCancelSubscriptionRequest = {
 };
 /** @internal */
 export type DtoCancelSubscriptionRequest$Outbound = {
+    cancel_immediately_inovice_policy?: string | undefined;
     cancellation_type: string;
     proration_behavior?: string | undefined;
     reason?: string | undefined;

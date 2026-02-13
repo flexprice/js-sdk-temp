@@ -7,6 +7,7 @@ import { pricesGetPricesId } from "../funcs/prices-get-prices-id.js";
 import { pricesGetPricesLookupLookupKey } from "../funcs/prices-get-prices-lookup-lookup-key.js";
 import { pricesGetPrices } from "../funcs/prices-get-prices.js";
 import { pricesPostPricesBulk } from "../funcs/prices-post-prices-bulk.js";
+import { pricesPostPricesSearch } from "../funcs/prices-post-prices-search.js";
 import { pricesPostPrices } from "../funcs/prices-post-prices.js";
 import { pricesPutPricesId } from "../funcs/prices-put-prices-id.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -79,6 +80,23 @@ export class Prices extends ClientSDK {
     return unwrapAsync(pricesGetPricesLookupLookupKey(
       this,
       lookupKey,
+      options,
+    ));
+  }
+
+  /**
+   * List prices by filter
+   *
+   * @remarks
+   * List prices with filter
+   */
+  async postPricesSearch(
+    request: components.TypesPriceFilter,
+    options?: RequestOptions,
+  ): Promise<components.DtoListPricesResponse> {
+    return unwrapAsync(pricesPostPricesSearch(
+      this,
+      request,
       options,
     ));
   }

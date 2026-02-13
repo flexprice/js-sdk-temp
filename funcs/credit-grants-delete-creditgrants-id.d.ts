@@ -12,7 +12,7 @@ import { Result } from "../types/fp.js";
  * Delete a credit grant
  *
  * @remarks
- * Delete a credit grant
+ * Delete a credit grant. Plan-scoped grants are archived; subscription-scoped grants have their end date set (optional body with effective_date). Request body is optional.
  */
-export declare function creditGrantsDeleteCreditgrantsId(client: FlexPriceCore, id: string, options?: RequestOptions): APIPromise<Result<components.DtoSuccessResponse, errors.ErrorsErrorResponse | FlexPriceError | ResponseValidationError | ConnectionError | RequestAbortedError | RequestTimeoutError | InvalidRequestError | UnexpectedClientError | SDKValidationError>>;
+export declare function creditGrantsDeleteCreditgrantsId(client: FlexPriceCore, id: string, body?: components.DtoDeleteCreditGrantRequest | undefined, options?: RequestOptions): APIPromise<Result<components.DtoSuccessResponse, errors.ErrorsErrorResponse | FlexPriceError | ResponseValidationError | ConnectionError | RequestAbortedError | RequestTimeoutError | InvalidRequestError | UnexpectedClientError | SDKValidationError>>;
 //# sourceMappingURL=credit-grants-delete-creditgrants-id.d.ts.map

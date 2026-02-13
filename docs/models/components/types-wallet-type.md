@@ -5,11 +5,11 @@
 ```typescript
 import { TypesWalletType } from "flexprice-sdk-test/models/components";
 
-let value: TypesWalletType = "PRE_PAID";
+let value: TypesWalletType = "POST_PAID";
 ```
 
 ## Values
 
 ```typescript
-"PROMOTIONAL" | "PRE_PAID"
+"PRE_PAID" | "POST_PAID"
 ```

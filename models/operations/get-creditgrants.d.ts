@@ -17,6 +17,7 @@ export declare const GetCreditgrantsStatus: {
 };
 export type GetCreditgrantsStatus = ClosedEnum<typeof GetCreditgrantsStatus>;
 export type GetCreditgrantsRequest = {
+    creditGrantIds?: Array<string> | undefined;
     endTime?: string | undefined;
     expand?: string | undefined;
     limit?: number | undefined;
@@ -40,6 +41,7 @@ export declare const GetCreditgrantsScope$outboundSchema: z.ZodNativeEnum<typeof
 export declare const GetCreditgrantsStatus$outboundSchema: z.ZodNativeEnum<typeof GetCreditgrantsStatus>;
 /** @internal */
 export type GetCreditgrantsRequest$Outbound = {
+    credit_grant_ids?: Array<string> | undefined;
     end_time?: string | undefined;
     expand?: string | undefined;
     limit?: number | undefined;

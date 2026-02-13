@@ -771,7 +771,7 @@ const flexPrice = new FlexPrice({
 
 async function run() {
   const result = await flexPrice.wallets.postWalletsIdTopUp("<id>", {
-    transactionReason: "FREE_CREDIT_GRANT",
+    transactionReason: "SUBSCRIPTION_CREDIT_GRANT",
   });
 
   console.log(result);
@@ -797,7 +797,7 @@ const flexPrice = new FlexPriceCore({
 
 async function run() {
   const res = await walletsPostWalletsIdTopUp(flexPrice, "<id>", {
-    transactionReason: "FREE_CREDIT_GRANT",
+    transactionReason: "SUBSCRIPTION_CREDIT_GRANT",
   });
   if (res.ok) {
     const { value: result } = res;

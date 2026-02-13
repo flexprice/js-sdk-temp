@@ -4,6 +4,7 @@ export declare const TypesWalletTxReferenceType: {
     readonly Payment: "PAYMENT";
     readonly External: "EXTERNAL";
     readonly Request: "REQUEST";
+    readonly Invoice: "INVOICE";
 };
 export type TypesWalletTxReferenceType = ClosedEnum<typeof TypesWalletTxReferenceType>;
 /** @internal */

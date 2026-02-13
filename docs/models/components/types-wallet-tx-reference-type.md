@@ -5,11 +5,11 @@
 ```typescript
 import { TypesWalletTxReferenceType } from "flexprice-sdk-test/models/components";
 
-let value: TypesWalletTxReferenceType = "EXTERNAL";
+let value: TypesWalletTxReferenceType = "REQUEST";
 ```
 
 ## Values
 
 ```typescript
-"PAYMENT" | "EXTERNAL" | "REQUEST"
+"PAYMENT" | "EXTERNAL" | "REQUEST" | "INVOICE"
 ```

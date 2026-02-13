@@ -9,6 +9,7 @@ export const TypesWalletTxReferenceType = {
   Payment: "PAYMENT",
   External: "EXTERNAL",
   Request: "REQUEST",
+  Invoice: "INVOICE",
 } as const;
 export type TypesWalletTxReferenceType = ClosedEnum<
   typeof TypesWalletTxReferenceType

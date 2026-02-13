@@ -39,9 +39,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DeleteCreditgrantsIdRequest$outboundSchema = void 0;
 exports.deleteCreditgrantsIdRequestToJSON = deleteCreditgrantsIdRequestToJSON;
 const z = __importStar(require("zod/v3"));
+const components = __importStar(require("../components/index.js"));
 /** @internal */
 exports.DeleteCreditgrantsIdRequest$outboundSchema = z.object({
     id: z.string(),
+    body: components.DtoDeleteCreditGrantRequest$outboundSchema.optional(),
 });
 function deleteCreditgrantsIdRequestToJSON(deleteCreditgrantsIdRequest) {
     return JSON.stringify(exports.DeleteCreditgrantsIdRequest$outboundSchema.parse(deleteCreditgrantsIdRequest));

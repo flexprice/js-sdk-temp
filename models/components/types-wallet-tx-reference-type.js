@@ -42,6 +42,7 @@ exports.TypesWalletTxReferenceType = {
     Payment: "PAYMENT",
     External: "EXTERNAL",
     Request: "REQUEST",
+    Invoice: "INVOICE",
 };
 /** @internal */
 exports.TypesWalletTxReferenceType$inboundSchema = z.nativeEnum(exports.TypesWalletTxReferenceType);

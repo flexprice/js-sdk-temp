@@ -43,15 +43,11 @@ export type DtoCreateInvoiceRequest = {
      */
     dueDate?: string | undefined;
     /**
-     * environment_id is the unique identifier of the environment this invoice belongs to
-     */
-    environmentId?: string | undefined;
-    /**
      * idempotency_key is an optional key used to prevent duplicate invoice creation
      */
     idempotencyKey?: string | undefined;
     /**
-     * Invoice Coupns
+     * Invoice Coupons
      */
     invoiceCoupons?: Array<DtoInvoiceCoupon> | undefined;
     /**
@@ -86,9 +82,6 @@ export type DtoCreateInvoiceRequest = {
     periodStart?: string | undefined;
     /**
      * prepared_tax_rates contains the tax rates pre-resolved by the caller (e.g., billing service)
-     *
-     * @remarks
-     * These are applied at invoice level by the invoice service without further resolution
      */
     preparedTaxRates?: Array<DtoTaxRateResponse> | undefined;
     /**
@@ -111,6 +104,10 @@ export type DtoCreateInvoiceRequest = {
      * total is the total amount of the invoice including taxes and discounts
      */
     total: string;
+    /**
+     * total_prepaid_applied is the total amount of prepaid applied to this invoice.
+     */
+    totalPrepaidApplied?: string | undefined;
 };
 /** @internal */
 export type DtoCreateInvoiceRequest$Outbound = {
@@ -123,7 +120,6 @@ export type DtoCreateInvoiceRequest$Outbound = {
     customer_id: string;
     description?: string | undefined;
     due_date?: string | undefined;
-    environment_id?: string | undefined;
     idempotency_key?: string | undefined;
     invoice_coupons?: Array<DtoInvoiceCoupon$Outbound> | undefined;
     invoice_number?: string | undefined;
@@ -144,6 +140,7 @@ export type DtoCreateInvoiceRequest$Outbound = {
     tax_rate_overrides?: Array<DtoTaxRateOverride$Outbound> | undefined;
     tax_rates?: Array<string> | undefined;
     total: string;
+    total_prepaid_applied?: string | undefined;
 };
 /** @internal */
 export declare const DtoCreateInvoiceRequest$outboundSchema: z.ZodType<DtoCreateInvoiceRequest$Outbound, z.ZodTypeDef, DtoCreateInvoiceRequest>;

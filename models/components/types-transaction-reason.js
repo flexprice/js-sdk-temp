@@ -48,6 +48,7 @@ exports.TypesTransactionReason = {
     CreditExpired: "CREDIT_EXPIRED",
     WalletTermination: "WALLET_TERMINATION",
     ManualBalanceDebit: "MANUAL_BALANCE_DEBIT",
+    CreditAdjustment: "CREDIT_ADJUSTMENT",
 };
 /** @internal */
 exports.TypesTransactionReason$inboundSchema = z.nativeEnum(exports.TypesTransactionReason);

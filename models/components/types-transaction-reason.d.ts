@@ -10,6 +10,7 @@ export declare const TypesTransactionReason: {
     readonly CreditExpired: "CREDIT_EXPIRED";
     readonly WalletTermination: "WALLET_TERMINATION";
     readonly ManualBalanceDebit: "MANUAL_BALANCE_DEBIT";
+    readonly CreditAdjustment: "CREDIT_ADJUSTMENT";
 };
 export type TypesTransactionReason = ClosedEnum<typeof TypesTransactionReason>;
 /** @internal */

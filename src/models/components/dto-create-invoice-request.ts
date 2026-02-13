@@ -81,15 +81,11 @@ export type DtoCreateInvoiceRequest = {
    */
   dueDate?: string | undefined;
   /**
-   * environment_id is the unique identifier of the environment this invoice belongs to
-   */
-  environmentId?: string | undefined;
-  /**
    * idempotency_key is an optional key used to prevent duplicate invoice creation
    */
   idempotencyKey?: string | undefined;
   /**
-   * Invoice Coupns
+   * Invoice Coupons
    */
   invoiceCoupons?: Array<DtoInvoiceCoupon> | undefined;
   /**
@@ -122,9 +118,6 @@ export type DtoCreateInvoiceRequest = {
   periodStart?: string | undefined;
   /**
    * prepared_tax_rates contains the tax rates pre-resolved by the caller (e.g., billing service)
-   *
-   * @remarks
-   * These are applied at invoice level by the invoice service without further resolution
    */
   preparedTaxRates?: Array<DtoTaxRateResponse> | undefined;
   /**
@@ -147,6 +140,10 @@ export type DtoCreateInvoiceRequest = {
    * total is the total amount of the invoice including taxes and discounts
    */
   total: string;
+  /**
+   * total_prepaid_applied is the total amount of prepaid applied to this invoice.
+   */
+  totalPrepaidApplied?: string | undefined;
 };
 
 /** @internal */
@@ -160,7 +157,6 @@ export type DtoCreateInvoiceRequest$Outbound = {
   customer_id: string;
   description?: string | undefined;
   due_date?: string | undefined;
-  environment_id?: string | undefined;
   idempotency_key?: string | undefined;
   invoice_coupons?: Array<DtoInvoiceCoupon$Outbound> | undefined;
   invoice_number?: string | undefined;
@@ -179,6 +175,7 @@ export type DtoCreateInvoiceRequest$Outbound = {
   tax_rate_overrides?: Array<DtoTaxRateOverride$Outbound> | undefined;
   tax_rates?: Array<string> | undefined;
   total: string;
+  total_prepaid_applied?: string | undefined;
 };
 
 /** @internal */
@@ -196,7 +193,6 @@ export const DtoCreateInvoiceRequest$outboundSchema: z.ZodType<
   customerId: z.string(),
   description: z.string().optional(),
   dueDate: z.string().optional(),
-  environmentId: z.string().optional(),
   idempotencyKey: z.string().optional(),
   invoiceCoupons: z.array(DtoInvoiceCoupon$outboundSchema).optional(),
   invoiceNumber: z.string().optional(),
@@ -215,6 +211,7 @@ export const DtoCreateInvoiceRequest$outboundSchema: z.ZodType<
   taxRateOverrides: z.array(DtoTaxRateOverride$outboundSchema).optional(),
   taxRates: z.array(z.string()).optional(),
   total: z.string(),
+  totalPrepaidApplied: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     amountDue: "amount_due",
@@ -223,7 +220,6 @@ export const DtoCreateInvoiceRequest$outboundSchema: z.ZodType<
     billingReason: "billing_reason",
     customerId: "customer_id",
     dueDate: "due_date",
-    environmentId: "environment_id",
     idempotencyKey: "idempotency_key",
     invoiceCoupons: "invoice_coupons",
     invoiceNumber: "invoice_number",
@@ -239,6 +235,7 @@ export const DtoCreateInvoiceRequest$outboundSchema: z.ZodType<
     subscriptionId: "subscription_id",
     taxRateOverrides: "tax_rate_overrides",
     taxRates: "tax_rates",
+    totalPrepaidApplied: "total_prepaid_applied",
   });
 });
 

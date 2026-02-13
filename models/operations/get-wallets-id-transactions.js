@@ -59,6 +59,7 @@ exports.TransactionReason = {
     CreditExpired: "CREDIT_EXPIRED",
     WalletTermination: "WALLET_TERMINATION",
     ManualBalanceDebit: "MANUAL_BALANCE_DEBIT",
+    CreditAdjustment: "CREDIT_ADJUSTMENT",
 };
 exports.TransactionStatus = {
     Pending: "pending",

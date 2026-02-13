@@ -42,6 +42,7 @@ const z = __importStar(require("zod/v3"));
 const primitives_js_1 = require("../../lib/primitives.js");
 const schemas_js_1 = require("../../lib/schemas.js");
 const dto_tax_rate_response_js_1 = require("./dto-tax-rate-response.js");
+const types_status_js_1 = require("./types-status.js");
 const types_tax_rate_entity_type_js_1 = require("./types-tax-rate-entity-type.js");
 /** @internal */
 exports.DtoTaxAssociationResponse$inboundSchema = z.object({
@@ -55,14 +56,12 @@ exports.DtoTaxAssociationResponse$inboundSchema = z.object({
     id: z.string().optional(),
     metadata: z.record(z.string()).optional(),
     priority: z.number().int().optional(),
-    status: z.string().optional(),
+    status: types_status_js_1.TypesStatus$inboundSchema.optional(),
     tax_rate: dto_tax_rate_response_js_1.DtoTaxRateResponse$inboundSchema.optional(),
     tax_rate_id: z.string().optional(),
     tenant_id: z.string().optional(),
     updated_at: z.string().optional(),
     updated_by: z.string().optional(),
-    valid_from: z.string().optional(),
-    valid_to: z.string().optional(),
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
         "auto_apply": "autoApply",
@@ -76,8 +75,6 @@ exports.DtoTaxAssociationResponse$inboundSchema = z.object({
         "tenant_id": "tenantId",
         "updated_at": "updatedAt",
         "updated_by": "updatedBy",
-        "valid_from": "validFrom",
-        "valid_to": "validTo",
     });
 });
 function dtoTaxAssociationResponseFromJSON(jsonString) {

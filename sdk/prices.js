@@ -9,6 +9,7 @@ const prices_get_prices_id_js_1 = require("../funcs/prices-get-prices-id.js");
 const prices_get_prices_lookup_lookup_key_js_1 = require("../funcs/prices-get-prices-lookup-lookup-key.js");
 const prices_get_prices_js_1 = require("../funcs/prices-get-prices.js");
 const prices_post_prices_bulk_js_1 = require("../funcs/prices-post-prices-bulk.js");
+const prices_post_prices_search_js_1 = require("../funcs/prices-post-prices-search.js");
 const prices_post_prices_js_1 = require("../funcs/prices-post-prices.js");
 const prices_put_prices_id_js_1 = require("../funcs/prices-put-prices-id.js");
 const sdks_js_1 = require("../lib/sdks.js");
@@ -49,6 +50,15 @@ class Prices extends sdks_js_1.ClientSDK {
      */
     async getPricesLookupLookupKey(lookupKey, options) {
         return (0, fp_js_1.unwrapAsync)((0, prices_get_prices_lookup_lookup_key_js_1.pricesGetPricesLookupLookupKey)(this, lookupKey, options));
+    }
+    /**
+     * List prices by filter
+     *
+     * @remarks
+     * List prices with filter
+     */
+    async postPricesSearch(request, options) {
+        return (0, fp_js_1.unwrapAsync)((0, prices_post_prices_search_js_1.pricesPostPricesSearch)(this, request, options));
     }
     /**
      * Get a price by ID

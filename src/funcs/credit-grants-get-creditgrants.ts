@@ -93,6 +93,7 @@ async function $do(
 
   const query = queryJoin(
     encodeFormQuery({
+      "credit_grant_ids": payload.credit_grant_ids,
       "plan_ids": payload.plan_ids,
       "subscription_ids": payload.subscription_ids,
     }, { explode: false }),

@@ -331,6 +331,7 @@ run();
 * [postPrices](docs/sdks/prices/README.md#postprices) - Create a new price
 * [postPricesBulk](docs/sdks/prices/README.md#postpricesbulk) - Create multiple prices in bulk
 * [getPricesLookupLookupKey](docs/sdks/prices/README.md#getpriceslookuplookupkey) - Get price by lookup key
+* [postPricesSearch](docs/sdks/prices/README.md#postpricessearch) - List prices by filter
 * [getPricesId](docs/sdks/prices/README.md#getpricesid) - Get a price by ID
 * [putPricesId](docs/sdks/prices/README.md#putpricesid) - Update a price
 * [deletePricesId](docs/sdks/prices/README.md#deletepricesid) - Delete a price
@@ -587,6 +588,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`pricesGetPricesLookupLookupKey`](docs/sdks/prices/README.md#getpriceslookuplookupkey) - Get price by lookup key
 - [`pricesPostPrices`](docs/sdks/prices/README.md#postprices) - Create a new price
 - [`pricesPostPricesBulk`](docs/sdks/prices/README.md#postpricesbulk) - Create multiple prices in bulk
+- [`pricesPostPricesSearch`](docs/sdks/prices/README.md#postpricessearch) - List prices by filter
 - [`pricesPutPricesId`](docs/sdks/prices/README.md#putpricesid) - Update a price
 - [`priceUnitsDeletePricesUnitsId`](docs/sdks/priceunits/README.md#deletepricesunitsid) - Delete a price unit
 - [`priceUnitsGetPricesUnits`](docs/sdks/priceunits/README.md#getpricesunits) - List price units
@@ -866,19 +868,23 @@ The `HTTPClient` constructor takes an optional `fetcher` argument that can be
 used to integrate a third-party HTTP client or when writing tests to mock out
 the HTTP client and feed in fixtures.
 
-The following example shows how to use the `"beforeRequest"` hook to to add a
-custom header and a timeout to requests and how to use the `"requestError"` hook
-to log errors:
+The following example shows how to:
+- route requests through a proxy server using [undici](https://www.npmjs.com/package/undici)'s ProxyAgent
+- use the `"beforeRequest"` hook to add a custom header and a timeout to requests
+- use the `"requestError"` hook to log errors
 
 ```typescript
 import { FlexPrice } from "flexprice-sdk-test";
+import { ProxyAgent } from "undici";
 import { HTTPClient } from "flexprice-sdk-test/lib/http";
 
+const dispatcher = new ProxyAgent("http://proxy.example.com:8080");
+
 const httpClient = new HTTPClient({
-  // fetcher takes a function that has the same signature as native `fetch`.
-  fetcher: (request) => {
-    return fetch(request);
-  }
+  // 'fetcher' takes a function that has the same signature as native 'fetch'.
+  fetcher: (input, init) =>
+    // 'dispatcher' is specific to undici and not part of the standard Fetch API.
+    fetch(input, { ...init, dispatcher } as RequestInit),
 });
 
 httpClient.addHook("beforeRequest", (request) => {

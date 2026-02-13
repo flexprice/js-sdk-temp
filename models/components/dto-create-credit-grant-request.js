@@ -50,6 +50,7 @@ exports.DtoCreateCreditGrantRequest$outboundSchema = z.object({
     cadence: types_credit_grant_cadence_js_1.TypesCreditGrantCadence$outboundSchema,
     conversionRate: z.string().optional(),
     credits: z.string(),
+    endDate: z.string().optional(),
     expirationDuration: z.number().int().optional(),
     expirationDurationUnit: types_credit_grant_expiry_duration_unit_js_1.TypesCreditGrantExpiryDurationUnit$outboundSchema
         .optional(),
@@ -61,16 +62,19 @@ exports.DtoCreateCreditGrantRequest$outboundSchema = z.object({
     planId: z.string().optional(),
     priority: z.number().int().optional(),
     scope: types_credit_grant_scope_js_1.TypesCreditGrantScope$outboundSchema,
+    startDate: z.string().optional(),
     subscriptionId: z.string().optional(),
     topupConversionRate: z.string().optional(),
 }).transform((v) => {
     return (0, primitives_js_1.remap)(v, {
         conversionRate: "conversion_rate",
+        endDate: "end_date",
         expirationDuration: "expiration_duration",
         expirationDurationUnit: "expiration_duration_unit",
         expirationType: "expiration_type",
         periodCount: "period_count",
         planId: "plan_id",
+        startDate: "start_date",
         subscriptionId: "subscription_id",
         topupConversionRate: "topup_conversion_rate",
     });

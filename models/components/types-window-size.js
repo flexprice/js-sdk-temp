@@ -39,6 +39,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TypesWindowSize$outboundSchema = exports.TypesWindowSize$inboundSchema = exports.TypesWindowSize = void 0;
 const z = __importStar(require("zod/v3"));
 exports.TypesWindowSize = {
+    Month: "MONTH",
     Minute: "MINUTE",
     FifteenMIN: "15MIN",
     ThirtyMIN: "30MIN",
@@ -48,7 +49,6 @@ exports.TypesWindowSize = {
     TwelveHOUR: "12HOUR",
     Day: "DAY",
     Week: "WEEK",
-    Month: "MONTH",
 };
 /** @internal */
 exports.TypesWindowSize$inboundSchema = z.nativeEnum(exports.TypesWindowSize);

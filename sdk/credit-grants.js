@@ -53,10 +53,10 @@ class CreditGrants extends sdks_js_1.ClientSDK {
      * Delete a credit grant
      *
      * @remarks
-     * Delete a credit grant
+     * Delete a credit grant. Plan-scoped grants are archived; subscription-scoped grants have their end date set (optional body with effective_date). Request body is optional.
      */
-    async deleteCreditgrantsId(id, options) {
-        return (0, fp_js_1.unwrapAsync)((0, credit_grants_delete_creditgrants_id_js_1.creditGrantsDeleteCreditgrantsId)(this, id, options));
+    async deleteCreditgrantsId(id, body, options) {
+        return (0, fp_js_1.unwrapAsync)((0, credit_grants_delete_creditgrants_id_js_1.creditGrantsDeleteCreditgrantsId)(this, id, body, options));
     }
     /**
      * Get plan credit grants

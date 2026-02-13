@@ -42,14 +42,12 @@ const z = __importStar(require("zod/v3"));
 const primitives_js_1 = require("../../lib/primitives.js");
 const dto_alert_config_js_1 = require("./dto-alert-config.js");
 const types_auto_topup_js_1 = require("./types-auto-topup.js");
-const types_wallet_config_js_1 = require("./types-wallet-config.js");
 const types_wallet_type_js_1 = require("./types-wallet-type.js");
 /** @internal */
 exports.DtoCreateWalletRequest$outboundSchema = z.object({
     alertConfig: dto_alert_config_js_1.DtoAlertConfig$outboundSchema.optional(),
     alertEnabled: z.boolean().optional(),
     autoTopup: types_auto_topup_js_1.TypesAutoTopup$outboundSchema.optional(),
-    config: types_wallet_config_js_1.TypesWalletConfig$outboundSchema.optional(),
     conversionRate: z.string().default("1"),
     currency: z.string(),
     customerId: z.string().optional(),
@@ -59,7 +57,6 @@ exports.DtoCreateWalletRequest$outboundSchema = z.object({
     initialCreditsToLoad: z.string().default("0"),
     initialCreditsToLoadExpiryDate: z.number().int().optional(),
     metadata: z.record(z.string()).optional(),
-    name: z.string().optional(),
     priceUnit: z.string().optional(),
     topupConversionRate: z.string().optional(),
     walletType: types_wallet_type_js_1.TypesWalletType$outboundSchema.optional(),

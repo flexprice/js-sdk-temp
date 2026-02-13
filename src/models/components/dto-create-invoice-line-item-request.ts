@@ -28,6 +28,14 @@ export type DtoCreateInvoiceLineItemRequest = {
    * entity_type is the optional type of the entity associated with this line item
    */
   entityType?: string | undefined;
+  /**
+   * invoice_level_discount is the discount amount in invoice currency applied to all line items on the invoice.
+   */
+  invoiceLevelDiscount?: string | undefined;
+  /**
+   * line_item_discount is the discount amount in invoice currency applied directly to this line item.
+   */
+  lineItemDiscount?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
   /**
    * meter_display_name is the optional human-readable name of the meter
@@ -57,6 +65,10 @@ export type DtoCreateInvoiceLineItemRequest = {
    */
   planId?: string | undefined;
   /**
+   * prepaid_credits_applied is the amount in invoice currency reduced from this line item due to prepaid credits application.
+   */
+  prepaidCreditsApplied?: string | undefined;
+  /**
    * price_id is the optional unique identifier of the price associated with this line item
    */
   priceId?: string | undefined;
@@ -85,6 +97,8 @@ export type DtoCreateInvoiceLineItemRequest$Outbound = {
   display_name?: string | undefined;
   entity_id?: string | undefined;
   entity_type?: string | undefined;
+  invoice_level_discount?: string | undefined;
+  line_item_discount?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
   meter_display_name?: string | undefined;
   meter_id?: string | undefined;
@@ -92,6 +106,7 @@ export type DtoCreateInvoiceLineItemRequest$Outbound = {
   period_start?: string | undefined;
   plan_display_name?: string | undefined;
   plan_id?: string | undefined;
+  prepaid_credits_applied?: string | undefined;
   price_id?: string | undefined;
   price_type?: string | undefined;
   price_unit?: string | undefined;
@@ -110,6 +125,8 @@ export const DtoCreateInvoiceLineItemRequest$outboundSchema: z.ZodType<
   displayName: z.string().optional(),
   entityId: z.string().optional(),
   entityType: z.string().optional(),
+  invoiceLevelDiscount: z.string().optional(),
+  lineItemDiscount: z.string().optional(),
   metadata: z.record(z.string()).optional(),
   meterDisplayName: z.string().optional(),
   meterId: z.string().optional(),
@@ -117,6 +134,7 @@ export const DtoCreateInvoiceLineItemRequest$outboundSchema: z.ZodType<
   periodStart: z.string().optional(),
   planDisplayName: z.string().optional(),
   planId: z.string().optional(),
+  prepaidCreditsApplied: z.string().optional(),
   priceId: z.string().optional(),
   priceType: z.string().optional(),
   priceUnit: z.string().optional(),
@@ -128,12 +146,15 @@ export const DtoCreateInvoiceLineItemRequest$outboundSchema: z.ZodType<
     displayName: "display_name",
     entityId: "entity_id",
     entityType: "entity_type",
+    invoiceLevelDiscount: "invoice_level_discount",
+    lineItemDiscount: "line_item_discount",
     meterDisplayName: "meter_display_name",
     meterId: "meter_id",
     periodEnd: "period_end",
     periodStart: "period_start",
     planDisplayName: "plan_display_name",
     planId: "plan_id",
+    prepaidCreditsApplied: "prepaid_credits_applied",
     priceId: "price_id",
     priceType: "price_type",
     priceUnit: "price_unit",

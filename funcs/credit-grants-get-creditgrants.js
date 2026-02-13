@@ -65,6 +65,7 @@ async function $do(client, request, options) {
     const body = null;
     const path = (0, url_js_1.pathToFunc)("/creditgrants")();
     const query = (0, encodings_js_1.queryJoin)((0, encodings_js_1.encodeFormQuery)({
+        "credit_grant_ids": payload.credit_grant_ids,
         "plan_ids": payload.plan_ids,
         "subscription_ids": payload.subscription_ids,
     }, { explode: false }), (0, encodings_js_1.encodeFormQuery)({

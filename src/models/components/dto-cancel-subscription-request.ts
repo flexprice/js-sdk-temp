@@ -5,6 +5,10 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
 import {
+  TypesCancelImmediatelyInvoicePolicy,
+  TypesCancelImmediatelyInvoicePolicy$outboundSchema,
+} from "./types-cancel-immediately-invoice-policy.js";
+import {
   TypesCancellationType,
   TypesCancellationType$outboundSchema,
 } from "./types-cancellation-type.js";
@@ -14,6 +18,9 @@ import {
 } from "./types-proration-behavior.js";
 
 export type DtoCancelSubscriptionRequest = {
+  cancelImmediatelyInovicePolicy?:
+    | TypesCancelImmediatelyInvoicePolicy
+    | undefined;
   cancellationType: TypesCancellationType;
   prorationBehavior?: TypesProrationBehavior | undefined;
   /**
@@ -24,6 +31,7 @@ export type DtoCancelSubscriptionRequest = {
 
 /** @internal */
 export type DtoCancelSubscriptionRequest$Outbound = {
+  cancel_immediately_inovice_policy?: string | undefined;
   cancellation_type: string;
   proration_behavior?: string | undefined;
   reason?: string | undefined;
@@ -35,11 +43,14 @@ export const DtoCancelSubscriptionRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DtoCancelSubscriptionRequest
 > = z.object({
+  cancelImmediatelyInovicePolicy:
+    TypesCancelImmediatelyInvoicePolicy$outboundSchema.optional(),
   cancellationType: TypesCancellationType$outboundSchema,
   prorationBehavior: TypesProrationBehavior$outboundSchema.optional(),
   reason: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
+    cancelImmediatelyInovicePolicy: "cancel_immediately_inovice_policy",
     cancellationType: "cancellation_type",
     prorationBehavior: "proration_behavior",
   });

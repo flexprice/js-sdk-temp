@@ -31,6 +31,13 @@ export declare class Prices extends ClientSDK {
      */
     getPricesLookupLookupKey(lookupKey: string, options?: RequestOptions): Promise<components.DtoPriceResponse>;
     /**
+     * List prices by filter
+     *
+     * @remarks
+     * List prices with filter
+     */
+    postPricesSearch(request: components.TypesPriceFilter, options?: RequestOptions): Promise<components.DtoListPricesResponse>;
+    /**
      * Get a price by ID
      *
      * @remarks

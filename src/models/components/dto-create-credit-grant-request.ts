@@ -37,6 +37,7 @@ export type DtoCreateCreditGrantRequest = {
    */
   conversionRate?: string | undefined;
   credits: string;
+  endDate?: string | undefined;
   expirationDuration?: number | undefined;
   expirationDurationUnit?: TypesCreditGrantExpiryDurationUnit | undefined;
   expirationType?: TypesCreditGrantExpiryType | undefined;
@@ -47,6 +48,7 @@ export type DtoCreateCreditGrantRequest = {
   planId?: string | undefined;
   priority?: number | undefined;
   scope: TypesCreditGrantScope;
+  startDate?: string | undefined;
   subscriptionId?: string | undefined;
   /**
    * topup_conversion_rate is the conversion rate for the topup to the currency
@@ -64,6 +66,7 @@ export type DtoCreateCreditGrantRequest$Outbound = {
   cadence: string;
   conversion_rate?: string | undefined;
   credits: string;
+  end_date?: string | undefined;
   expiration_duration?: number | undefined;
   expiration_duration_unit?: string | undefined;
   expiration_type?: string | undefined;
@@ -74,6 +77,7 @@ export type DtoCreateCreditGrantRequest$Outbound = {
   plan_id?: string | undefined;
   priority?: number | undefined;
   scope: string;
+  start_date?: string | undefined;
   subscription_id?: string | undefined;
   topup_conversion_rate?: string | undefined;
 };
@@ -87,6 +91,7 @@ export const DtoCreateCreditGrantRequest$outboundSchema: z.ZodType<
   cadence: TypesCreditGrantCadence$outboundSchema,
   conversionRate: z.string().optional(),
   credits: z.string(),
+  endDate: z.string().optional(),
   expirationDuration: z.number().int().optional(),
   expirationDurationUnit: TypesCreditGrantExpiryDurationUnit$outboundSchema
     .optional(),
@@ -98,16 +103,19 @@ export const DtoCreateCreditGrantRequest$outboundSchema: z.ZodType<
   planId: z.string().optional(),
   priority: z.number().int().optional(),
   scope: TypesCreditGrantScope$outboundSchema,
+  startDate: z.string().optional(),
   subscriptionId: z.string().optional(),
   topupConversionRate: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     conversionRate: "conversion_rate",
+    endDate: "end_date",
     expirationDuration: "expiration_duration",
     expirationDurationUnit: "expiration_duration_unit",
     expirationType: "expiration_type",
     periodCount: "period_count",
     planId: "plan_id",
+    startDate: "start_date",
     subscriptionId: "subscription_id",
     topupConversionRate: "topup_conversion_rate",
   });

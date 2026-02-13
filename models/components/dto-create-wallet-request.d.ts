@@ -1,7 +1,6 @@
 import * as z from "zod/v3";
 import { DtoAlertConfig, DtoAlertConfig$Outbound } from "./dto-alert-config.js";
 import { TypesAutoTopup, TypesAutoTopup$Outbound } from "./types-auto-topup.js";
-import { TypesWalletConfig, TypesWalletConfig$Outbound } from "./types-wallet-config.js";
 import { TypesWalletType } from "./types-wallet-type.js";
 export type DtoCreateWalletRequest = {
     alertConfig?: DtoAlertConfig | undefined;
@@ -13,7 +12,6 @@ export type DtoCreateWalletRequest = {
      */
     alertEnabled?: boolean | undefined;
     autoTopup?: TypesAutoTopup | undefined;
-    config?: TypesWalletConfig | undefined;
     /**
      * amount in the currency =  number of credits * conversion_rate
      *
@@ -56,7 +54,6 @@ export type DtoCreateWalletRequest = {
     metadata?: {
         [k: string]: string;
     } | undefined;
-    name?: string | undefined;
     /**
      * price_unit is the code of the price unit to use for wallet creation
      *
@@ -82,7 +79,6 @@ export type DtoCreateWalletRequest$Outbound = {
     alert_config?: DtoAlertConfig$Outbound | undefined;
     alert_enabled?: boolean | undefined;
     auto_topup?: TypesAutoTopup$Outbound | undefined;
-    config?: TypesWalletConfig$Outbound | undefined;
     conversion_rate: string;
     currency: string;
     customer_id?: string | undefined;
@@ -94,7 +90,6 @@ export type DtoCreateWalletRequest$Outbound = {
     metadata?: {
         [k: string]: string;
     } | undefined;
-    name?: string | undefined;
     price_unit?: string | undefined;
     topup_conversion_rate?: string | undefined;
     wallet_type?: string | undefined;
