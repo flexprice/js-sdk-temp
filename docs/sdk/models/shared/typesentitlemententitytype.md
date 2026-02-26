@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesEntitlementEntityType } from "flexprice-ts/sdk/models/shared";
+import { TypesEntitlementEntityType } from "@flexprice/sdk-temp/sdk/models/shared";
 
 let value: TypesEntitlementEntityType = "ADDON";
 ```

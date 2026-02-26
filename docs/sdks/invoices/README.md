@@ -26,7 +26,7 @@ Use when paying an invoice with the customer's wallet balance (e.g. prepaid cred
 
 <!-- UsageSnippet language="typescript" operationID="attemptInvoicePayment" method="post" path="/invoices/{id}/payment/attempt" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -49,8 +49,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { invoicesAttemptInvoicePayment } from "flexprice-ts/funcs/invoicesAttemptInvoicePayment.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { invoicesAttemptInvoicePayment } from "@flexprice/sdk-temp/funcs/invoicesAttemptInvoicePayment.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -101,7 +101,7 @@ Use when creating a manual or one-off invoice (e.g. custom charge or non-recurri
 
 <!-- UsageSnippet language="typescript" operationID="createInvoice" method="post" path="/invoices" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -128,8 +128,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { invoicesCreateInvoice } from "flexprice-ts/funcs/invoicesCreateInvoice.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { invoicesCreateInvoice } from "@flexprice/sdk-temp/funcs/invoicesCreateInvoice.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -184,7 +184,7 @@ Use when locking an invoice for payment (e.g. after review). Once finalized, lin
 
 <!-- UsageSnippet language="typescript" operationID="finalizeInvoice" method="post" path="/invoices/{id}/finalize" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -207,8 +207,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { invoicesFinalizeInvoice } from "flexprice-ts/funcs/invoicesFinalizeInvoice.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { invoicesFinalizeInvoice } from "@flexprice/sdk-temp/funcs/invoicesFinalizeInvoice.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -259,7 +259,7 @@ Use when showing a customer's invoice overview (e.g. billing portal or balance s
 
 <!-- UsageSnippet language="typescript" operationID="getCustomerInvoiceSummary" method="get" path="/customers/{id}/invoices/summary" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -282,8 +282,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { invoicesGetCustomerInvoiceSummary } from "flexprice-ts/funcs/invoicesGetCustomerInvoiceSummary.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { invoicesGetCustomerInvoiceSummary } from "@flexprice/sdk-temp/funcs/invoicesGetCustomerInvoiceSummary.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -334,7 +334,7 @@ Use when loading an invoice for display or editing (e.g. portal or reconciliatio
 
 <!-- UsageSnippet language="typescript" operationID="getInvoice" method="get" path="/invoices/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -357,8 +357,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { invoicesGetInvoice } from "flexprice-ts/funcs/invoicesGetInvoice.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { invoicesGetInvoice } from "@flexprice/sdk-temp/funcs/invoicesGetInvoice.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -409,7 +409,7 @@ Use when delivering an invoice PDF to the customer (e.g. email attachment or dow
 
 <!-- UsageSnippet language="typescript" operationID="getInvoicePdf" method="get" path="/invoices/{id}/pdf" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -432,8 +432,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { invoicesGetInvoicePdf } from "flexprice-ts/funcs/invoicesGetInvoicePdf.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { invoicesGetInvoicePdf } from "@flexprice/sdk-temp/funcs/invoicesGetInvoicePdf.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -484,7 +484,7 @@ Use when showing a customer what they will be charged (e.g. preview before check
 
 <!-- UsageSnippet language="typescript" operationID="getInvoicePreview" method="post" path="/invoices/preview" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -507,8 +507,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { invoicesGetInvoicePreview } from "flexprice-ts/funcs/invoicesGetInvoicePreview.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { invoicesGetInvoicePreview } from "@flexprice/sdk-temp/funcs/invoicesGetInvoicePreview.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -559,7 +559,7 @@ Use when listing or searching invoices (e.g. admin view or customer history). Re
 
 <!-- UsageSnippet language="typescript" operationID="queryInvoice" method="post" path="/invoices/search" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -580,8 +580,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { invoicesQueryInvoice } from "flexprice-ts/funcs/invoicesQueryInvoice.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { invoicesQueryInvoice } from "@flexprice/sdk-temp/funcs/invoicesQueryInvoice.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -630,7 +630,7 @@ Use when subscription or usage data changed and you need to refresh a draft invo
 
 <!-- UsageSnippet language="typescript" operationID="recalculateInvoice" method="post" path="/invoices/{id}/recalculate" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -653,8 +653,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { invoicesRecalculateInvoice } from "flexprice-ts/funcs/invoicesRecalculateInvoice.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { invoicesRecalculateInvoice } from "@flexprice/sdk-temp/funcs/invoicesRecalculateInvoice.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -705,7 +705,7 @@ Use when sending an invoice to the customer (e.g. trigger email or Slack). Paylo
 
 <!-- UsageSnippet language="typescript" operationID="triggerInvoiceCommsWebhook" method="post" path="/invoices/{id}/comms/trigger" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -728,8 +728,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { invoicesTriggerInvoiceCommsWebhook } from "flexprice-ts/funcs/invoicesTriggerInvoiceCommsWebhook.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { invoicesTriggerInvoiceCommsWebhook } from "@flexprice/sdk-temp/funcs/invoicesTriggerInvoiceCommsWebhook.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -780,7 +780,7 @@ Use when updating invoice metadata or due date (e.g. PDF URL, net terms). For pa
 
 <!-- UsageSnippet language="typescript" operationID="updateInvoice" method="put" path="/invoices/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -804,8 +804,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { invoicesUpdateInvoice } from "flexprice-ts/funcs/invoicesUpdateInvoice.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { invoicesUpdateInvoice } from "@flexprice/sdk-temp/funcs/invoicesUpdateInvoice.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -857,7 +857,7 @@ Use when reconciling payment status from an external gateway or manual entry (e.
 
 <!-- UsageSnippet language="typescript" operationID="updateInvoicePaymentStatus" method="put" path="/invoices/{id}/payment" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -883,8 +883,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { invoicesUpdateInvoicePaymentStatus } from "flexprice-ts/funcs/invoicesUpdateInvoicePaymentStatus.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { invoicesUpdateInvoicePaymentStatus } from "@flexprice/sdk-temp/funcs/invoicesUpdateInvoicePaymentStatus.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -938,7 +938,7 @@ Use when cancelling an invoice (e.g. order cancelled or duplicate). Only unpaid 
 
 <!-- UsageSnippet language="typescript" operationID="voidInvoice" method="post" path="/invoices/{id}/void" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -961,8 +961,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { invoicesVoidInvoice } from "flexprice-ts/funcs/invoicesVoidInvoice.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { invoicesVoidInvoice } from "@flexprice/sdk-temp/funcs/invoicesVoidInvoice.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

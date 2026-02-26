@@ -20,7 +20,7 @@ Use when adding a new price to a plan or catalog (e.g. per-seat, flat, or metere
 
 <!-- UsageSnippet language="typescript" operationID="createPrice" method="post" path="/prices" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -51,8 +51,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { pricesCreatePrice } from "flexprice-ts/funcs/pricesCreatePrice.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { pricesCreatePrice } from "@flexprice/sdk-temp/funcs/pricesCreatePrice.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -111,7 +111,7 @@ Use when creating many prices at once (e.g. importing a catalog or setting up a 
 
 <!-- UsageSnippet language="typescript" operationID="createPricesBulk" method="post" path="/prices/bulk" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -134,8 +134,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { pricesCreatePricesBulk } from "flexprice-ts/funcs/pricesCreatePricesBulk.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { pricesCreatePricesBulk } from "@flexprice/sdk-temp/funcs/pricesCreatePricesBulk.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -186,7 +186,7 @@ Use when retiring a price (e.g. end-of-life or replacement). Optional effective 
 
 <!-- UsageSnippet language="typescript" operationID="deletePrice" method="delete" path="/prices/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -210,8 +210,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { pricesDeletePrice } from "flexprice-ts/funcs/pricesDeletePrice.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { pricesDeletePrice } from "@flexprice/sdk-temp/funcs/pricesDeletePrice.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -263,7 +263,7 @@ Use when you need to load a single price (e.g. for display or editing). Response
 
 <!-- UsageSnippet language="typescript" operationID="getPrice" method="get" path="/prices/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -286,8 +286,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { pricesGetPrice } from "flexprice-ts/funcs/pricesGetPrice.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { pricesGetPrice } from "@flexprice/sdk-temp/funcs/pricesGetPrice.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -338,7 +338,7 @@ Use when resolving a price by external id (e.g. from your catalog or CMS). Ideal
 
 <!-- UsageSnippet language="typescript" operationID="getPriceByLookupKey" method="get" path="/prices/lookup/{lookup_key}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -361,8 +361,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { pricesGetPriceByLookupKey } from "flexprice-ts/funcs/pricesGetPriceByLookupKey.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { pricesGetPriceByLookupKey } from "@flexprice/sdk-temp/funcs/pricesGetPriceByLookupKey.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -413,7 +413,7 @@ Use when listing or searching prices (e.g. plan builder or catalog). Returns a p
 
 <!-- UsageSnippet language="typescript" operationID="queryPrice" method="post" path="/prices/search" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -434,8 +434,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { pricesQueryPrice } from "flexprice-ts/funcs/pricesQueryPrice.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { pricesQueryPrice } from "@flexprice/sdk-temp/funcs/pricesQueryPrice.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -484,7 +484,7 @@ Use when changing price configuration (e.g. amount, billing scheme, or metadata)
 
 <!-- UsageSnippet language="typescript" operationID="updatePrice" method="put" path="/prices/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -508,8 +508,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { pricesUpdatePrice } from "flexprice-ts/funcs/pricesUpdatePrice.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { pricesUpdatePrice } from "@flexprice/sdk-temp/funcs/pricesUpdatePrice.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

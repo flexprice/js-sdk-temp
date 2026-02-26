@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesPaymentBehavior } from "flexprice-ts/sdk/models/shared";
+import { TypesPaymentBehavior } from "@flexprice/sdk-temp/sdk/models/shared";
 
 let value: TypesPaymentBehavior = "default_active";
 ```

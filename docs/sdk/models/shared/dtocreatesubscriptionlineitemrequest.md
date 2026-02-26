@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoCreateSubscriptionLineItemRequest } from "flexprice-ts/sdk/models/shared";
+import { DtoCreateSubscriptionLineItemRequest } from "@flexprice/sdk-temp/sdk/models/shared";
 
 let value: DtoCreateSubscriptionLineItemRequest = {};
 ```

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoUpdateScheduledTaskRequest } from "flexprice-ts/sdk/models/shared";
+import { DtoUpdateScheduledTaskRequest } from "@flexprice/sdk-temp/sdk/models/shared";
 
 let value: DtoUpdateScheduledTaskRequest = {
   enabled: false,

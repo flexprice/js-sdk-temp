@@ -21,7 +21,7 @@ Use when setting up a new pricing configuration (e.g. a new product or region). 
 
 <!-- UsageSnippet language="typescript" operationID="createCostsheet" method="post" path="/costs" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -44,8 +44,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { costsCreateCostsheet } from "flexprice-ts/funcs/costsCreateCostsheet.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { costsCreateCostsheet } from "@flexprice/sdk-temp/funcs/costsCreateCostsheet.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -96,7 +96,7 @@ Use when retiring a costsheet (e.g. end-of-life product). Soft-deletes; status s
 
 <!-- UsageSnippet language="typescript" operationID="deleteCostsheet" method="delete" path="/costs/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -119,8 +119,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { costsDeleteCostsheet } from "flexprice-ts/funcs/costsDeleteCostsheet.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { costsDeleteCostsheet } from "@flexprice/sdk-temp/funcs/costsDeleteCostsheet.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -171,7 +171,7 @@ Use when you need the tenant's default pricing configuration (e.g. for checkout 
 
 <!-- UsageSnippet language="typescript" operationID="getActiveCostsheet" method="get" path="/costs/active" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -192,8 +192,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { costsGetActiveCostsheet } from "flexprice-ts/funcs/costsGetActiveCostsheet.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { costsGetActiveCostsheet } from "@flexprice/sdk-temp/funcs/costsGetActiveCostsheet.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -241,7 +241,7 @@ Use when you need to load a single costsheet (e.g. for editing or display). Supp
 
 <!-- UsageSnippet language="typescript" operationID="getCostsheet" method="get" path="/costs/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -264,8 +264,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { costsGetCostsheet } from "flexprice-ts/funcs/costsGetCostsheet.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { costsGetCostsheet } from "@flexprice/sdk-temp/funcs/costsGetCostsheet.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -316,7 +316,7 @@ Use when building dashboards or reports that need revenue vs cost, ROI, and marg
 
 <!-- UsageSnippet language="typescript" operationID="getDetailedCostAnalytics" method="post" path="/costs/analytics" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -337,8 +337,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { costsGetDetailedCostAnalytics } from "flexprice-ts/funcs/costsGetDetailedCostAnalytics.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { costsGetDetailedCostAnalytics } from "@flexprice/sdk-temp/funcs/costsGetDetailedCostAnalytics.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -387,7 +387,7 @@ Use when you need the same revenue/cost/ROI analytics but computed from the cost
 
 <!-- UsageSnippet language="typescript" operationID="getDetailedCostAnalyticsV2" method="post" path="/costs/analytics-v2" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -408,8 +408,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { costsGetDetailedCostAnalyticsV2 } from "flexprice-ts/funcs/costsGetDetailedCostAnalyticsV2.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { costsGetDetailedCostAnalyticsV2 } from "@flexprice/sdk-temp/funcs/costsGetDetailedCostAnalyticsV2.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -458,7 +458,7 @@ Use when listing or searching costsheets (e.g. admin catalog). Returns a paginat
 
 <!-- UsageSnippet language="typescript" operationID="queryCostsheet" method="post" path="/costs/search" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -479,8 +479,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { costsQueryCostsheet } from "flexprice-ts/funcs/costsQueryCostsheet.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { costsQueryCostsheet } from "@flexprice/sdk-temp/funcs/costsQueryCostsheet.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -529,7 +529,7 @@ Use when changing costsheet name or metadata.
 
 <!-- UsageSnippet language="typescript" operationID="updateCostsheet" method="put" path="/costs/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -553,8 +553,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { costsUpdateCostsheet } from "flexprice-ts/funcs/costsUpdateCostsheet.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { costsUpdateCostsheet } from "@flexprice/sdk-temp/funcs/costsUpdateCostsheet.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

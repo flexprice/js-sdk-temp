@@ -38,7 +38,7 @@ Use when turning a draft subscription live (e.g. after collecting payment or com
 
 <!-- UsageSnippet language="typescript" operationID="activateSubscription" method="post" path="/subscriptions/{id}/activate" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -64,8 +64,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { subscriptionsActivateSubscription } from "flexprice-ts/funcs/subscriptionsActivateSubscription.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { subscriptionsActivateSubscription } from "@flexprice/sdk-temp/funcs/subscriptionsActivateSubscription.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -119,7 +119,7 @@ Use when adding an optional product or add-on to an existing subscription (e.g. 
 
 <!-- UsageSnippet language="typescript" operationID="addSubscriptionAddon" method="post" path="/subscriptions/addon" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -143,8 +143,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { subscriptionsAddSubscriptionAddon } from "flexprice-ts/funcs/subscriptionsAddSubscriptionAddon.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { subscriptionsAddSubscriptionAddon } from "@flexprice/sdk-temp/funcs/subscriptionsAddSubscriptionAddon.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -196,7 +196,7 @@ Use when a customer churns or downgrades. Supports immediate or end-of-period ca
 
 <!-- UsageSnippet language="typescript" operationID="cancelSubscription" method="post" path="/subscriptions/{id}/cancel" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -222,8 +222,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { subscriptionsCancelSubscription } from "flexprice-ts/funcs/subscriptionsCancelSubscription.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { subscriptionsCancelSubscription } from "@flexprice/sdk-temp/funcs/subscriptionsCancelSubscription.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -277,7 +277,7 @@ Use when cancelling a scheduled change (e.g. customer changed mind). Identify by
 
 <!-- UsageSnippet language="typescript" operationID="cancelSubscriptionSchedule" method="post" path="/v1/subscriptions/schedules/{schedule_id}/cancel" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -300,8 +300,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { subscriptionsCancelSubscriptionSchedule } from "flexprice-ts/funcs/subscriptionsCancelSubscriptionSchedule.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { subscriptionsCancelSubscriptionSchedule } from "@flexprice/sdk-temp/funcs/subscriptionsCancelSubscriptionSchedule.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -352,7 +352,7 @@ Use when onboarding a customer to a plan or starting a new subscription. Ideal f
 
 <!-- UsageSnippet language="typescript" operationID="createSubscription" method="post" path="/subscriptions" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -378,8 +378,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { subscriptionsCreateSubscription } from "flexprice-ts/funcs/subscriptionsCreateSubscription.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { subscriptionsCreateSubscription } from "@flexprice/sdk-temp/funcs/subscriptionsCreateSubscription.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -433,7 +433,7 @@ Use when adding a new charge or seat to a subscription (e.g. extra seat or one-t
 
 <!-- UsageSnippet language="typescript" operationID="createSubscriptionLineItem" method="post" path="/subscriptions/{id}/lineitems" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -457,8 +457,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { subscriptionsCreateSubscriptionLineItem } from "flexprice-ts/funcs/subscriptionsCreateSubscriptionLineItem.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { subscriptionsCreateSubscriptionLineItem } from "@flexprice/sdk-temp/funcs/subscriptionsCreateSubscriptionLineItem.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -510,7 +510,7 @@ Use when removing a charge or seat from a subscription (e.g. downgrade). Line it
 
 <!-- UsageSnippet language="typescript" operationID="deleteSubscriptionLineItem" method="delete" path="/subscriptions/lineitems/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -534,8 +534,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { subscriptionsDeleteSubscriptionLineItem } from "flexprice-ts/funcs/subscriptionsDeleteSubscriptionLineItem.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { subscriptionsDeleteSubscriptionLineItem } from "@flexprice/sdk-temp/funcs/subscriptionsDeleteSubscriptionLineItem.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -587,7 +587,7 @@ Use when applying a plan change (e.g. upgrade or downgrade). Executes proration 
 
 <!-- UsageSnippet language="typescript" operationID="executeSubscriptionChange" method="post" path="/subscriptions/{id}/change/execute" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -617,8 +617,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { subscriptionsExecuteSubscriptionChange } from "flexprice-ts/funcs/subscriptionsExecuteSubscriptionChange.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { subscriptionsExecuteSubscriptionChange } from "@flexprice/sdk-temp/funcs/subscriptionsExecuteSubscriptionChange.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -676,7 +676,7 @@ Use when you need to load a single subscription (e.g. for a billing portal or to
 
 <!-- UsageSnippet language="typescript" operationID="getSubscription" method="get" path="/subscriptions/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -699,8 +699,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { subscriptionsGetSubscription } from "flexprice-ts/funcs/subscriptionsGetSubscription.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { subscriptionsGetSubscription } from "@flexprice/sdk-temp/funcs/subscriptionsGetSubscription.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -751,7 +751,7 @@ Use when listing which add-ons are currently attached to a subscription (e.g. fo
 
 <!-- UsageSnippet language="typescript" operationID="getSubscriptionAddonAssociations" method="get" path="/subscriptions/{id}/addons/associations" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -774,8 +774,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { subscriptionsGetSubscriptionAddonAssociations } from "flexprice-ts/funcs/subscriptionsGetSubscriptionAddonAssociations.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { subscriptionsGetSubscriptionAddonAssociations } from "@flexprice/sdk-temp/funcs/subscriptionsGetSubscriptionAddonAssociations.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -826,7 +826,7 @@ Use when checking what features or limits a subscription has (e.g. entitlement c
 
 <!-- UsageSnippet language="typescript" operationID="getSubscriptionEntitlements" method="get" path="/subscriptions/{id}/entitlements" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -849,8 +849,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { subscriptionsGetSubscriptionEntitlements } from "flexprice-ts/funcs/subscriptionsGetSubscriptionEntitlements.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { subscriptionsGetSubscriptionEntitlements } from "@flexprice/sdk-temp/funcs/subscriptionsGetSubscriptionEntitlements.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -901,7 +901,7 @@ Use when you need to load a single scheduled change (e.g. to show when a plan ch
 
 <!-- UsageSnippet language="typescript" operationID="getSubscriptionSchedule" method="get" path="/v1/subscription-schedules/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -924,8 +924,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { subscriptionsGetSubscriptionSchedule } from "flexprice-ts/funcs/subscriptionsGetSubscriptionSchedule.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { subscriptionsGetSubscriptionSchedule } from "@flexprice/sdk-temp/funcs/subscriptionsGetSubscriptionSchedule.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -976,7 +976,7 @@ Use when showing upcoming or pending credits for a subscription (e.g. in a porta
 
 <!-- UsageSnippet language="typescript" operationID="getSubscriptionUpcomingGrants" method="get" path="/subscriptions/{id}/grants/upcoming" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -999,8 +999,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { subscriptionsGetSubscriptionUpcomingGrants } from "flexprice-ts/funcs/subscriptionsGetSubscriptionUpcomingGrants.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { subscriptionsGetSubscriptionUpcomingGrants } from "@flexprice/sdk-temp/funcs/subscriptionsGetSubscriptionUpcomingGrants.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -1051,7 +1051,7 @@ Use when showing usage for a subscription (e.g. in a portal or for overage check
 
 <!-- UsageSnippet language="typescript" operationID="getSubscriptionUsage" method="post" path="/subscriptions/usage" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -1077,8 +1077,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { subscriptionsGetSubscriptionUsage } from "flexprice-ts/funcs/subscriptionsGetSubscriptionUsage.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { subscriptionsGetSubscriptionUsage } from "@flexprice/sdk-temp/funcs/subscriptionsGetSubscriptionUsage.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -1132,7 +1132,7 @@ Use when you need a subscription with related data (line items, prices, plan). S
 
 <!-- UsageSnippet language="typescript" operationID="getSubscriptionV2" method="get" path="/subscriptions/{id}/v2" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -1155,8 +1155,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { subscriptionsGetSubscriptionV2 } from "flexprice-ts/funcs/subscriptionsGetSubscriptionV2.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { subscriptionsGetSubscriptionV2 } from "@flexprice/sdk-temp/funcs/subscriptionsGetSubscriptionV2.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -1207,7 +1207,7 @@ Use when listing or searching scheduled changes across subscriptions (e.g. admin
 
 <!-- UsageSnippet language="typescript" operationID="listAllSubscriptionSchedules" method="get" path="/v1/subscription-schedules" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -1228,8 +1228,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { subscriptionsListAllSubscriptionSchedules } from "flexprice-ts/funcs/subscriptionsListAllSubscriptionSchedules.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { subscriptionsListAllSubscriptionSchedules } from "@flexprice/sdk-temp/funcs/subscriptionsListAllSubscriptionSchedules.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -1278,7 +1278,7 @@ Use when showing pause history for a subscription (e.g. support or audit). Retur
 
 <!-- UsageSnippet language="typescript" operationID="listSubscriptionPauses" method="get" path="/subscriptions/{id}/pauses" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -1301,8 +1301,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { subscriptionsListSubscriptionPauses } from "flexprice-ts/funcs/subscriptionsListSubscriptionPauses.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { subscriptionsListSubscriptionPauses } from "@flexprice/sdk-temp/funcs/subscriptionsListSubscriptionPauses.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -1353,7 +1353,7 @@ Use when listing scheduled changes for a subscription (e.g. upcoming plan change
 
 <!-- UsageSnippet language="typescript" operationID="listSubscriptionSchedules" method="get" path="/v1/subscriptions/{subscription_id}/schedules" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -1376,8 +1376,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { subscriptionsListSubscriptionSchedules } from "flexprice-ts/funcs/subscriptionsListSubscriptionSchedules.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { subscriptionsListSubscriptionSchedules } from "@flexprice/sdk-temp/funcs/subscriptionsListSubscriptionSchedules.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -1428,7 +1428,7 @@ Use when temporarily stopping a subscription (e.g. customer hold or seasonal pau
 
 <!-- UsageSnippet language="typescript" operationID="pauseSubscription" method="post" path="/subscriptions/{id}/pause" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -1454,8 +1454,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { subscriptionsPauseSubscription } from "flexprice-ts/funcs/subscriptionsPauseSubscription.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { subscriptionsPauseSubscription } from "@flexprice/sdk-temp/funcs/subscriptionsPauseSubscription.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -1509,7 +1509,7 @@ Use when showing a customer the cost of a plan change before they confirm (e.g. 
 
 <!-- UsageSnippet language="typescript" operationID="previewSubscriptionChange" method="post" path="/subscriptions/{id}/change/preview" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -1539,8 +1539,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { subscriptionsPreviewSubscriptionChange } from "flexprice-ts/funcs/subscriptionsPreviewSubscriptionChange.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { subscriptionsPreviewSubscriptionChange } from "@flexprice/sdk-temp/funcs/subscriptionsPreviewSubscriptionChange.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -1598,7 +1598,7 @@ Use when listing or searching subscriptions (e.g. admin view or customer subscri
 
 <!-- UsageSnippet language="typescript" operationID="querySubscription" method="post" path="/subscriptions/search" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -1619,8 +1619,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { subscriptionsQuerySubscription } from "flexprice-ts/funcs/subscriptionsQuerySubscription.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { subscriptionsQuerySubscription } from "@flexprice/sdk-temp/funcs/subscriptionsQuerySubscription.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -1669,7 +1669,7 @@ Use when removing an add-on from a subscription (e.g. downgrade or opt-out).
 
 <!-- UsageSnippet language="typescript" operationID="removeSubscriptionAddon" method="delete" path="/subscriptions/addon" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -1692,8 +1692,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { subscriptionsRemoveSubscriptionAddon } from "flexprice-ts/funcs/subscriptionsRemoveSubscriptionAddon.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { subscriptionsRemoveSubscriptionAddon } from "@flexprice/sdk-temp/funcs/subscriptionsRemoveSubscriptionAddon.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -1744,7 +1744,7 @@ Use when reactivating a paused subscription (e.g. end of hold). Billing and acce
 
 <!-- UsageSnippet language="typescript" operationID="resumeSubscription" method="post" path="/subscriptions/{id}/resume" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -1770,8 +1770,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { subscriptionsResumeSubscription } from "flexprice-ts/funcs/subscriptionsResumeSubscription.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { subscriptionsResumeSubscription } from "@flexprice/sdk-temp/funcs/subscriptionsResumeSubscription.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -1825,7 +1825,7 @@ Use when changing subscription details (e.g. quantity, billing anchor, or parent
 
 <!-- UsageSnippet language="typescript" operationID="updateSubscription" method="put" path="/subscriptions/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -1849,8 +1849,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { subscriptionsUpdateSubscription } from "flexprice-ts/funcs/subscriptionsUpdateSubscription.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { subscriptionsUpdateSubscription } from "@flexprice/sdk-temp/funcs/subscriptionsUpdateSubscription.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -1902,7 +1902,7 @@ Use when changing a subscription line item (e.g. quantity or price). Implemented
 
 <!-- UsageSnippet language="typescript" operationID="updateSubscriptionLineItem" method="put" path="/subscriptions/lineitems/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -1926,8 +1926,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { subscriptionsUpdateSubscriptionLineItem } from "flexprice-ts/funcs/subscriptionsUpdateSubscriptionLineItem.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { subscriptionsUpdateSubscriptionLineItem } from "@flexprice/sdk-temp/funcs/subscriptionsUpdateSubscriptionLineItem.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

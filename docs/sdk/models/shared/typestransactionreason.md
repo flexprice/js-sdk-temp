@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesTransactionReason } from "flexprice-ts/sdk/models/shared";
+import { TypesTransactionReason } from "@flexprice/sdk-temp/sdk/models/shared";
 
 let value: TypesTransactionReason = "MANUAL_BALANCE_DEBIT";
 ```

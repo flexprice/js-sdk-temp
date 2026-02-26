@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesAlertState } from "flexprice-ts/sdk/models/shared";
+import { TypesAlertState } from "@flexprice/sdk-temp/sdk/models/shared";
 
 let value: TypesAlertState = "in_alarm";
 ```

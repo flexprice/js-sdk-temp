@@ -5,7 +5,7 @@ Request object for changing a subscription plan (upgrade/downgrade)
 ## Example Usage
 
 ```typescript
-import { DtoSubscriptionChangeRequest } from "flexprice-ts/sdk/models/shared";
+import { DtoSubscriptionChangeRequest } from "@flexprice/sdk-temp/sdk/models/shared";
 
 let value: DtoSubscriptionChangeRequest = {
   billingCadence: "ONETIME",

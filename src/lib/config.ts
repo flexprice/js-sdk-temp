@@ -60,5 +60,5 @@ export const SDK_METADATA = {
   openapiDocVersion: "1.0",
   sdkVersion: "0.0.35",
   genVersion: "2.844.3",
-  userAgent: "speakeasy-sdk/typescript 0.0.35 2.844.3 1.0 flexprice-ts",
+  userAgent: "speakeasy-sdk/typescript 0.0.35 2.844.3 1.0 @flexprice/sdk-temp",
 } as const;

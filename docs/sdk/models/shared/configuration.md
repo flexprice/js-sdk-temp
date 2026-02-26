@@ -5,7 +5,7 @@ configuration contains type-specific configuration (e.g., target_plan_id for pla
 ## Example Usage
 
 ```typescript
-import { Configuration } from "flexprice-ts/sdk/models/shared";
+import { Configuration } from "@flexprice/sdk-temp/sdk/models/shared";
 
 let value: Configuration = {};
 ```

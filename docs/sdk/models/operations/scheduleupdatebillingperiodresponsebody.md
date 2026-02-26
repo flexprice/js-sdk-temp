@@ -5,7 +5,7 @@ OK
 ## Example Usage
 
 ```typescript
-import { ScheduleUpdateBillingPeriodResponseBody } from "flexprice-ts/sdk/models/operations";
+import { ScheduleUpdateBillingPeriodResponseBody } from "@flexprice/sdk-temp/sdk/models/operations";
 
 let value: ScheduleUpdateBillingPeriodResponseBody = {};
 ```

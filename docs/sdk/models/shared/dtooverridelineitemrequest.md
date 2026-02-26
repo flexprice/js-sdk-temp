@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoOverrideLineItemRequest } from "flexprice-ts/sdk/models/shared";
+import { DtoOverrideLineItemRequest } from "@flexprice/sdk-temp/sdk/models/shared";
 
 let value: DtoOverrideLineItemRequest = {
   priceId: "<id>",

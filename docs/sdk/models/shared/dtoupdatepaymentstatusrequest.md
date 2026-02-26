@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoUpdatePaymentStatusRequest } from "flexprice-ts/sdk/models/shared";
+import { DtoUpdatePaymentStatusRequest } from "@flexprice/sdk-temp/sdk/models/shared";
 
 let value: DtoUpdatePaymentStatusRequest = {
   paymentStatus: "INITIATED",

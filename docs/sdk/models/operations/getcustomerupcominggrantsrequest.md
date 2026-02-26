@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetCustomerUpcomingGrantsRequest } from "flexprice-ts/sdk/models/operations";
+import { GetCustomerUpcomingGrantsRequest } from "@flexprice/sdk-temp/sdk/models/operations";
 
 let value: GetCustomerUpcomingGrantsRequest = {
   id: "<id>",

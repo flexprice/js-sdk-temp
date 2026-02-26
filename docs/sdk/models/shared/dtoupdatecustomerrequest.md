@@ -5,7 +5,7 @@ Request object for updating an existing customer. All fields are optional - only
 ## Example Usage
 
 ```typescript
-import { DtoUpdateCustomerRequest } from "flexprice-ts/sdk/models/shared";
+import { DtoUpdateCustomerRequest } from "@flexprice/sdk-temp/sdk/models/shared";
 
 let value: DtoUpdateCustomerRequest = {};
 ```

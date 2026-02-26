@@ -19,7 +19,7 @@ Use when submitting a file or job for async processing (e.g. export or import). 
 
 <!-- UsageSnippet language="typescript" operationID="createTask" method="post" path="/tasks" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -45,8 +45,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { tasksCreateTask } from "flexprice-ts/funcs/tasksCreateTask.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { tasksCreateTask } from "@flexprice/sdk-temp/funcs/tasksCreateTask.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -100,7 +100,7 @@ Use when letting a user download an exported file (e.g. report or data export). 
 
 <!-- UsageSnippet language="typescript" operationID="downloadTaskExport" method="get" path="/tasks/{id}/download" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -123,8 +123,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { tasksDownloadTaskExport } from "flexprice-ts/funcs/tasksDownloadTaskExport.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { tasksDownloadTaskExport } from "@flexprice/sdk-temp/funcs/tasksDownloadTaskExport.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -175,7 +175,7 @@ Use when checking task status or progress (e.g. polling after create). Returns t
 
 <!-- UsageSnippet language="typescript" operationID="getTask" method="get" path="/tasks/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -198,8 +198,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { tasksGetTask } from "flexprice-ts/funcs/tasksGetTask.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { tasksGetTask } from "@flexprice/sdk-temp/funcs/tasksGetTask.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -250,7 +250,7 @@ Use when fetching the outcome of a completed task (e.g. export URL or error mess
 
 <!-- UsageSnippet language="typescript" operationID="getTaskResult" method="get" path="/tasks/result" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -273,8 +273,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { tasksGetTaskResult } from "flexprice-ts/funcs/tasksGetTaskResult.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { tasksGetTaskResult } from "@flexprice/sdk-temp/funcs/tasksGetTaskResult.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -325,7 +325,7 @@ Use when listing or searching async tasks (e.g. admin queue view). Returns list 
 
 <!-- UsageSnippet language="typescript" operationID="listTasks" method="get" path="/tasks" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -346,8 +346,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { tasksListTasks } from "flexprice-ts/funcs/tasksListTasks.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { tasksListTasks } from "@flexprice/sdk-temp/funcs/tasksListTasks.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -396,7 +396,7 @@ Use when updating task status (e.g. marking complete or failed from a worker). T
 
 <!-- UsageSnippet language="typescript" operationID="updateTaskStatus" method="put" path="/tasks/{id}/status" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -422,8 +422,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { tasksUpdateTaskStatus } from "flexprice-ts/funcs/tasksUpdateTaskStatus.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { tasksUpdateTaskStatus } from "@flexprice/sdk-temp/funcs/tasksUpdateTaskStatus.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

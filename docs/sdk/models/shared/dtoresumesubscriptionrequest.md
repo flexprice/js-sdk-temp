@@ -5,7 +5,7 @@ Request object for resuming a paused subscription
 ## Example Usage
 
 ```typescript
-import { DtoResumeSubscriptionRequest } from "flexprice-ts/sdk/models/shared";
+import { DtoResumeSubscriptionRequest } from "@flexprice/sdk-temp/sdk/models/shared";
 
 let value: DtoResumeSubscriptionRequest = {
   resumeMode: "auto",

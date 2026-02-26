@@ -22,7 +22,7 @@ Use when onboarding a new billing customer (e.g. sign-up or CRM sync). Ideal for
 
 <!-- UsageSnippet language="typescript" operationID="createCustomer" method="post" path="/customers" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -45,8 +45,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { customersCreateCustomer } from "flexprice-ts/funcs/customersCreateCustomer.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { customersCreateCustomer } from "@flexprice/sdk-temp/funcs/customersCreateCustomer.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -97,7 +97,7 @@ Use when removing a customer (e.g. GDPR or churn). Returns 204 No Content on suc
 
 <!-- UsageSnippet language="typescript" operationID="deleteCustomer" method="delete" path="/customers/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -120,8 +120,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { customersDeleteCustomer } from "flexprice-ts/funcs/customersDeleteCustomer.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { customersDeleteCustomer } from "@flexprice/sdk-temp/funcs/customersDeleteCustomer.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -172,7 +172,7 @@ Use when you need to load a single customer (e.g. for a billing portal or to att
 
 <!-- UsageSnippet language="typescript" operationID="getCustomer" method="get" path="/customers/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -195,8 +195,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { customersGetCustomer } from "flexprice-ts/funcs/customersGetCustomer.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { customersGetCustomer } from "@flexprice/sdk-temp/funcs/customersGetCustomer.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -247,7 +247,7 @@ Use when resolving a customer by your app's id (e.g. from your user table). Idea
 
 <!-- UsageSnippet language="typescript" operationID="getCustomerByExternalId" method="get" path="/customers/external/{external_id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -270,8 +270,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { customersGetCustomerByExternalId } from "flexprice-ts/funcs/customersGetCustomerByExternalId.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { customersGetCustomerByExternalId } from "@flexprice/sdk-temp/funcs/customersGetCustomerByExternalId.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -322,7 +322,7 @@ Use when checking what a customer can access (e.g. feature gating or usage limit
 
 <!-- UsageSnippet language="typescript" operationID="getCustomerEntitlements" method="get" path="/customers/{id}/entitlements" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -345,8 +345,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { customersGetCustomerEntitlements } from "flexprice-ts/funcs/customersGetCustomerEntitlements.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { customersGetCustomerEntitlements } from "@flexprice/sdk-temp/funcs/customersGetCustomerEntitlements.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -397,7 +397,7 @@ Use when showing upcoming or pending credits for a customer (e.g. in a portal or
 
 <!-- UsageSnippet language="typescript" operationID="getCustomerUpcomingGrants" method="get" path="/customers/{id}/grants/upcoming" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -420,8 +420,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { customersGetCustomerUpcomingGrants } from "flexprice-ts/funcs/customersGetCustomerUpcomingGrants.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { customersGetCustomerUpcomingGrants } from "@flexprice/sdk-temp/funcs/customersGetCustomerUpcomingGrants.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -472,7 +472,7 @@ Use when showing a customer's usage (e.g. portal or overage alerts). Identify by
 
 <!-- UsageSnippet language="typescript" operationID="getCustomerUsageSummary" method="get" path="/customers/usage" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -493,8 +493,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { customersGetCustomerUsageSummary } from "flexprice-ts/funcs/customersGetCustomerUsageSummary.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { customersGetCustomerUsageSummary } from "@flexprice/sdk-temp/funcs/customersGetCustomerUsageSummary.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -543,7 +543,7 @@ Use when listing or searching customers (e.g. admin CRM or reporting). Returns a
 
 <!-- UsageSnippet language="typescript" operationID="queryCustomer" method="post" path="/customers/search" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -564,8 +564,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { customersQueryCustomer } from "flexprice-ts/funcs/customersQueryCustomer.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { customersQueryCustomer } from "@flexprice/sdk-temp/funcs/customersQueryCustomer.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -614,7 +614,7 @@ Use when updating customer details (e.g. name, email, or metadata). Identify by 
 
 <!-- UsageSnippet language="typescript" operationID="updateCustomer" method="put" path="/customers" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -637,8 +637,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { customersUpdateCustomer } from "flexprice-ts/funcs/customersUpdateCustomer.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { customersUpdateCustomer } from "@flexprice/sdk-temp/funcs/customersUpdateCustomer.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

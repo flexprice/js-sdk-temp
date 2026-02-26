@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoCreateGroupRequest } from "flexprice-ts/sdk/models/shared";
+import { DtoCreateGroupRequest } from "@flexprice/sdk-temp/sdk/models/shared";
 
 let value: DtoCreateGroupRequest = {
   entityType: "<value>",

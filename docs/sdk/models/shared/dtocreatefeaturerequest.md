@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoCreateFeatureRequest } from "flexprice-ts/sdk/models/shared";
+import { DtoCreateFeatureRequest } from "@flexprice/sdk-temp/sdk/models/shared";
 
 let value: DtoCreateFeatureRequest = {
   meter: {

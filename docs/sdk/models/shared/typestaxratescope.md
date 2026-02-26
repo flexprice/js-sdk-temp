@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesTaxRateScope } from "flexprice-ts/sdk/models/shared";
+import { TypesTaxRateScope } from "@flexprice/sdk-temp/sdk/models/shared";
 
 let value: TypesTaxRateScope = "ONETIME";
 ```

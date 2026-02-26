@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoEntityIntegrationMappingResponse } from "flexprice-ts/sdk/models/shared";
+import { DtoEntityIntegrationMappingResponse } from "@flexprice/sdk-temp/sdk/models/shared";
 
 let value: DtoEntityIntegrationMappingResponse = {};
 ```

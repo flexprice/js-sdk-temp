@@ -20,7 +20,7 @@ Use when defining a new pricing plan (e.g. Free, Pro, Enterprise). Attach prices
 
 <!-- UsageSnippet language="typescript" operationID="createPlan" method="post" path="/plans" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -43,8 +43,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { plansCreatePlan } from "flexprice-ts/funcs/plansCreatePlan.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { plansCreatePlan } from "@flexprice/sdk-temp/funcs/plansCreatePlan.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -95,7 +95,7 @@ Use when retiring a plan (e.g. end-of-life). Existing subscriptions may be affec
 
 <!-- UsageSnippet language="typescript" operationID="deletePlan" method="delete" path="/plans/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -118,8 +118,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { plansDeletePlan } from "flexprice-ts/funcs/plansDeletePlan.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { plansDeletePlan } from "@flexprice/sdk-temp/funcs/plansDeletePlan.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -170,7 +170,7 @@ Use when you need to load a single plan (e.g. for display or to create a subscri
 
 <!-- UsageSnippet language="typescript" operationID="getPlan" method="get" path="/plans/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -193,8 +193,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { plansGetPlan } from "flexprice-ts/funcs/plansGetPlan.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { plansGetPlan } from "@flexprice/sdk-temp/funcs/plansGetPlan.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -245,7 +245,7 @@ Clone an existing plan, copying its active prices, published entitlements, and p
 
 <!-- UsageSnippet language="typescript" operationID="post_/plans/{id}/clone" method="post" path="/plans/{id}/clone" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -269,8 +269,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { plansPostPlansIdClone } from "flexprice-ts/funcs/plansPostPlansIdClone.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { plansPostPlansIdClone } from "@flexprice/sdk-temp/funcs/plansPostPlansIdClone.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -322,7 +322,7 @@ Use when listing or searching plans (e.g. plan picker or admin catalog). Returns
 
 <!-- UsageSnippet language="typescript" operationID="queryPlan" method="post" path="/plans/search" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -343,8 +343,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { plansQueryPlan } from "flexprice-ts/funcs/plansQueryPlan.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { plansQueryPlan } from "@flexprice/sdk-temp/funcs/plansQueryPlan.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -393,7 +393,7 @@ Use when you have changed plan prices and need to push them to all active subscr
 
 <!-- UsageSnippet language="typescript" operationID="syncPlanPrices" method="post" path="/plans/{id}/sync/subscriptions" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -416,8 +416,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { plansSyncPlanPrices } from "flexprice-ts/funcs/plansSyncPlanPrices.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { plansSyncPlanPrices } from "@flexprice/sdk-temp/funcs/plansSyncPlanPrices.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -468,7 +468,7 @@ Use when changing plan details (e.g. name, interval, or metadata). Partial updat
 
 <!-- UsageSnippet language="typescript" operationID="updatePlan" method="put" path="/plans/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -492,8 +492,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { plansUpdatePlan } from "flexprice-ts/funcs/plansUpdatePlan.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { plansUpdatePlan } from "@flexprice/sdk-temp/funcs/plansUpdatePlan.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

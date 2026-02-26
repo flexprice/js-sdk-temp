@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoCostsheetResponse } from "flexprice-ts/sdk/models/shared";
+import { DtoCostsheetResponse } from "@flexprice/sdk-temp/sdk/models/shared";
 
 let value: DtoCostsheetResponse = {
   prices: [

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Scope } from "flexprice-ts/sdk/models/operations";
+import { Scope } from "@flexprice/sdk-temp/sdk/models/operations";
 
 let value: Scope = "INTERNAL";
 ```

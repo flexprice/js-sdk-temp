@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetPriceByLookupKeyRequest } from "flexprice-ts/sdk/models/operations";
+import { GetPriceByLookupKeyRequest } from "@flexprice/sdk-temp/sdk/models/operations";
 
 let value: GetPriceByLookupKeyRequest = {
   lookupKey: "<value>",

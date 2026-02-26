@@ -17,7 +17,7 @@ Use when defining a new feature or capability to gate or meter (e.g. feature fla
 
 <!-- UsageSnippet language="typescript" operationID="createFeature" method="post" path="/features" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -47,8 +47,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { featuresCreateFeature } from "flexprice-ts/funcs/featuresCreateFeature.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { featuresCreateFeature } from "@flexprice/sdk-temp/funcs/featuresCreateFeature.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -106,7 +106,7 @@ Use when retiring a feature (e.g. deprecated capability). Returns 200 with succe
 
 <!-- UsageSnippet language="typescript" operationID="deleteFeature" method="delete" path="/features/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -129,8 +129,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { featuresDeleteFeature } from "flexprice-ts/funcs/featuresDeleteFeature.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { featuresDeleteFeature } from "@flexprice/sdk-temp/funcs/featuresDeleteFeature.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -181,7 +181,7 @@ Use when listing or searching features (e.g. catalog or entitlement setup). Retu
 
 <!-- UsageSnippet language="typescript" operationID="queryFeature" method="post" path="/features/search" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -202,8 +202,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { featuresQueryFeature } from "flexprice-ts/funcs/featuresQueryFeature.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { featuresQueryFeature } from "@flexprice/sdk-temp/funcs/featuresQueryFeature.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -252,7 +252,7 @@ Use when changing feature definition (e.g. name, type, or meter). Request body c
 
 <!-- UsageSnippet language="typescript" operationID="updateFeature" method="put" path="/features/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -276,8 +276,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { featuresUpdateFeature } from "flexprice-ts/funcs/featuresUpdateFeature.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { featuresUpdateFeature } from "@flexprice/sdk-temp/funcs/featuresUpdateFeature.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoCreateIntegrationRequest } from "flexprice-ts/sdk/models/shared";
+import { DtoCreateIntegrationRequest } from "@flexprice/sdk-temp/sdk/models/shared";
 
 let value: DtoCreateIntegrationRequest = {
   credentials: {},

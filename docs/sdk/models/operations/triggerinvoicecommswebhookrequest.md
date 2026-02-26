@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TriggerInvoiceCommsWebhookRequest } from "flexprice-ts/sdk/models/operations";
+import { TriggerInvoiceCommsWebhookRequest } from "@flexprice/sdk-temp/sdk/models/operations";
 
 let value: TriggerInvoiceCommsWebhookRequest = {
   id: "<id>",

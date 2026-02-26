@@ -15,7 +15,7 @@ Use when you need to show or edit a single role (e.g. role detail page). Include
 
 <!-- UsageSnippet language="typescript" operationID="getRbacRole" method="get" path="/rbac/roles/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -38,8 +38,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { rbacGetRBACRole } from "flexprice-ts/funcs/rbacGetRBACRole.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { rbacGetRBACRole } from "@flexprice/sdk-temp/funcs/rbacGetRBACRole.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -90,7 +90,7 @@ Use when building role pickers or permission UIs. Returns all roles with permiss
 
 <!-- UsageSnippet language="typescript" operationID="listRbacRoles" method="get" path="/rbac/roles" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -111,8 +111,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { rbacListRBACRoles } from "flexprice-ts/funcs/rbacListRBACRoles.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { rbacListRBACRoles } from "@flexprice/sdk-temp/funcs/rbacListRBACRoles.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

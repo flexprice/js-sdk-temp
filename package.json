@@ -1,11 +1,11 @@
 {
-  "name": "flexprice-ts",
+  "name": "@flexprice/sdk-temp",
   "version": "0.0.35",
   "author": "Speakeasy",
   "type": "module",
   "tshy": {
     "sourceDialects": [
-      "flexprice-ts/source"
+      "@flexprice/sdk-temp/source"
     ],
     "exports": {
       ".": "./src/index.ts",

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoTopUpWalletRequest } from "flexprice-ts/sdk/models/shared";
+import { DtoTopUpWalletRequest } from "@flexprice/sdk-temp/sdk/models/shared";
 
 let value: DtoTopUpWalletRequest = {
   transactionReason: "FREE_CREDIT_GRANT",

@@ -24,7 +24,7 @@ Use when giving a customer a prepaid or credit balance (e.g. prepaid plans or pr
 
 <!-- UsageSnippet language="typescript" operationID="createWallet" method="post" path="/wallets" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -47,8 +47,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { walletsCreateWallet } from "flexprice-ts/funcs/walletsCreateWallet.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { walletsCreateWallet } from "@flexprice/sdk-temp/funcs/walletsCreateWallet.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -99,7 +99,7 @@ Use when resolving wallets by external customer id or lookup key (e.g. from your
 
 <!-- UsageSnippet language="typescript" operationID="getCustomerWallets" method="get" path="/customers/wallets" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -120,8 +120,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { walletsGetCustomerWallets } from "flexprice-ts/funcs/walletsGetCustomerWallets.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { walletsGetCustomerWallets } from "@flexprice/sdk-temp/funcs/walletsGetCustomerWallets.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -170,7 +170,7 @@ Use when you need to load a single wallet (e.g. for a balance or settings view).
 
 <!-- UsageSnippet language="typescript" operationID="getWallet" method="get" path="/wallets/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -193,8 +193,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { walletsGetWallet } from "flexprice-ts/funcs/walletsGetWallet.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { walletsGetWallet } from "@flexprice/sdk-temp/funcs/walletsGetWallet.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -245,7 +245,7 @@ Use when displaying or checking current wallet balance (e.g. before charging or 
 
 <!-- UsageSnippet language="typescript" operationID="getWalletBalance" method="get" path="/wallets/{id}/balance/real-time" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -268,8 +268,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { walletsGetWalletBalance } from "flexprice-ts/funcs/walletsGetWalletBalance.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { walletsGetWalletBalance } from "@flexprice/sdk-temp/funcs/walletsGetWalletBalance.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -320,7 +320,7 @@ Use when showing transaction history for a wallet (e.g. credit/debit log or audi
 
 <!-- UsageSnippet language="typescript" operationID="getWalletTransactions" method="get" path="/wallets/{id}/transactions" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -343,8 +343,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { walletsGetWalletTransactions } from "flexprice-ts/funcs/walletsGetWalletTransactions.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { walletsGetWalletTransactions } from "@flexprice/sdk-temp/funcs/walletsGetWalletTransactions.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -395,7 +395,7 @@ Use when showing a customer's wallets (e.g. balance overview by currency or in a
 
 <!-- UsageSnippet language="typescript" operationID="getWalletsByCustomerId" method="get" path="/customers/{id}/wallets" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -418,8 +418,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { walletsGetWalletsByCustomerId } from "flexprice-ts/funcs/walletsGetWalletsByCustomerId.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { walletsGetWalletsByCustomerId } from "@flexprice/sdk-temp/funcs/walletsGetWalletsByCustomerId.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -470,7 +470,7 @@ Use when listing or searching wallets (e.g. admin view or reporting). Returns a 
 
 <!-- UsageSnippet language="typescript" operationID="queryWallet" method="post" path="/wallets/search" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -491,8 +491,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { walletsQueryWallet } from "flexprice-ts/funcs/walletsQueryWallet.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { walletsQueryWallet } from "@flexprice/sdk-temp/funcs/walletsQueryWallet.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -541,7 +541,7 @@ Use when searching or reporting on wallet transactions (e.g. cross-wallet histor
 
 <!-- UsageSnippet language="typescript" operationID="queryWalletTransaction" method="post" path="/wallets/transactions/search" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -562,8 +562,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { walletsQueryWalletTransaction } from "flexprice-ts/funcs/walletsQueryWalletTransaction.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { walletsQueryWalletTransaction } from "@flexprice/sdk-temp/funcs/walletsQueryWalletTransaction.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -612,7 +612,7 @@ Use when closing a customer wallet (e.g. churn or migration). Closes the wallet 
 
 <!-- UsageSnippet language="typescript" operationID="terminateWallet" method="post" path="/wallets/{id}/terminate" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -635,8 +635,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { walletsTerminateWallet } from "flexprice-ts/funcs/walletsTerminateWallet.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { walletsTerminateWallet } from "@flexprice/sdk-temp/funcs/walletsTerminateWallet.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -687,7 +687,7 @@ Use when adding funds to a wallet (e.g. top-up, refund, or manual credit). Suppo
 
 <!-- UsageSnippet language="typescript" operationID="topUpWallet" method="post" path="/wallets/{id}/top-up" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -713,8 +713,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { walletsTopUpWallet } from "flexprice-ts/funcs/walletsTopUpWallet.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { walletsTopUpWallet } from "@flexprice/sdk-temp/funcs/walletsTopUpWallet.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -768,7 +768,7 @@ Use when changing wallet settings (e.g. enabling or updating auto top-up thresho
 
 <!-- UsageSnippet language="typescript" operationID="updateWallet" method="put" path="/wallets/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "@flexprice/sdk-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -792,8 +792,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { walletsUpdateWallet } from "flexprice-ts/funcs/walletsUpdateWallet.js";
+import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
+import { walletsUpdateWallet } from "@flexprice/sdk-temp/funcs/walletsUpdateWallet.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

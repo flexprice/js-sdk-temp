@@ -1,6 +1,6 @@
-# flexprice-ts Examples
+# @flexprice/sdk-temp Examples
 
-This directory contains example scripts demonstrating how to use the flexprice-ts SDK.
+This directory contains example scripts demonstrating how to use the @flexprice/sdk-temp SDK.
 
 ## Prerequisites
 

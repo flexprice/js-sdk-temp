@@ -5,7 +5,7 @@ Response showing the financial impact of a subscription plan change
 ## Example Usage
 
 ```typescript
-import { DtoSubscriptionChangePreviewResponse } from "flexprice-ts/sdk/models/shared";
+import { DtoSubscriptionChangePreviewResponse } from "@flexprice/sdk-temp/sdk/models/shared";
 
 let value: DtoSubscriptionChangePreviewResponse = {};
 ```

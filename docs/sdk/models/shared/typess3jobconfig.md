@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesS3JobConfig } from "flexprice-ts/sdk/models/shared";
+import { TypesS3JobConfig } from "@flexprice/sdk-temp/sdk/models/shared";
 
 let value: TypesS3JobConfig = {};
 ```

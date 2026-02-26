@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesAddonAssociationEntityType } from "flexprice-ts/sdk/models/shared";
+import { TypesAddonAssociationEntityType } from "@flexprice/sdk-temp/sdk/models/shared";
 
 let value: TypesAddonAssociationEntityType = "addon";
 ```

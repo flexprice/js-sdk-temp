@@ -5,7 +5,7 @@ List of pending schedules for a subscription
 ## Example Usage
 
 ```typescript
-import { DtoGetPendingSchedulesResponse } from "flexprice-ts/sdk/models/shared";
+import { DtoGetPendingSchedulesResponse } from "@flexprice/sdk-temp/sdk/models/shared";
 
 let value: DtoGetPendingSchedulesResponse = {};
 ```

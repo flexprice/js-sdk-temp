@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { TypesWindowSize } from "flexprice-ts/sdk/models/shared";
+import { TypesWindowSize } from "@flexprice/sdk-temp/sdk/models/shared";
 
-let value: TypesWindowSize = "3HOUR";
+let value: TypesWindowSize = "6HOUR";
 ```
 
 ## Values
 
 ```typescript
-"MONTH" | "MINUTE" | "15MIN" | "30MIN" | "HOUR" | "3HOUR" | "6HOUR" | "12HOUR" | "DAY" | "WEEK"
+"MINUTE" | "15MIN" | "30MIN" | "HOUR" | "3HOUR" | "6HOUR" | "12HOUR" | "DAY" | "WEEK" | "MONTH"
 ```

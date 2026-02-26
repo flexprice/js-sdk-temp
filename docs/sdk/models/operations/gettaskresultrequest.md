@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetTaskResultRequest } from "flexprice-ts/sdk/models/operations";
+import { GetTaskResultRequest } from "@flexprice/sdk-temp/sdk/models/operations";
 
 let value: GetTaskResultRequest = {
   workflowId: "<id>",

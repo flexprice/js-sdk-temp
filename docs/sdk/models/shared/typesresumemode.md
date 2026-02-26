@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesResumeMode } from "flexprice-ts/sdk/models/shared";
+import { TypesResumeMode } from "@flexprice/sdk-temp/sdk/models/shared";
 
 let value: TypesResumeMode = "immediate";
 ```

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoCreateWalletRequest } from "flexprice-ts/sdk/models/shared";
+import { DtoCreateWalletRequest } from "@flexprice/sdk-temp/sdk/models/shared";
 
 let value: DtoCreateWalletRequest = {
   currency: "New Israeli Sheqel",

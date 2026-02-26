@@ -5,7 +5,7 @@ Request to cancel a subscription schedule (supports two modes)
 ## Example Usage
 
 ```typescript
-import { DtoCancelScheduleRequest } from "flexprice-ts/sdk/models/shared";
+import { DtoCancelScheduleRequest } from "@flexprice/sdk-temp/sdk/models/shared";
 
 let value: DtoCancelScheduleRequest = {};
 ```
