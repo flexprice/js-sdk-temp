@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { HandleStripeWebhookRequest } from "@flexprice/sdk-temp/sdk/models/operations";
+import { HandleStripeWebhookRequest } from "flexprice-ts/sdk/models/operations";
 
 let value: HandleStripeWebhookRequest = {
   tenantId: "<id>",

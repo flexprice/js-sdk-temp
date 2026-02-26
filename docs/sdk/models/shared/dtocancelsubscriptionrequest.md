@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoCancelSubscriptionRequest } from "@flexprice/sdk-temp/sdk/models/shared";
+import { DtoCancelSubscriptionRequest } from "flexprice-ts/sdk/models/shared";
 
 let value: DtoCancelSubscriptionRequest = {
   cancellationType: "immediate",

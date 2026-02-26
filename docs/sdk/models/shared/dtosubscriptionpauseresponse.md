@@ -5,7 +5,7 @@ Response object containing subscription pause information
 ## Example Usage
 
 ```typescript
-import { DtoSubscriptionPauseResponse } from "@flexprice/sdk-temp/sdk/models/shared";
+import { DtoSubscriptionPauseResponse } from "flexprice-ts/sdk/models/shared";
 
 let value: DtoSubscriptionPauseResponse = {};
 ```

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesPaginationResponse } from "@flexprice/sdk-temp/sdk/models/shared";
+import { TypesPaginationResponse } from "flexprice-ts/sdk/models/shared";
 
 let value: TypesPaginationResponse = {};
 ```

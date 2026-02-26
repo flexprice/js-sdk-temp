@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoGetUsageBySubscriptionResponse } from "@flexprice/sdk-temp/sdk/models/shared";
+import { DtoGetUsageBySubscriptionResponse } from "flexprice-ts/sdk/models/shared";
 
 let value: DtoGetUsageBySubscriptionResponse = {};
 ```

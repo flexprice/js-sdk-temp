@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoGetEventsRequest } from "@flexprice/sdk-temp/sdk/models/shared";
+import { DtoGetEventsRequest } from "flexprice-ts/sdk/models/shared";
 
 let value: DtoGetEventsRequest = {
   endTime: "2024-12-09T00:00:00Z",

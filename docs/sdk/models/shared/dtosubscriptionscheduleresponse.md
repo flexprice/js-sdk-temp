@@ -5,7 +5,7 @@ Full details of a subscription schedule
 ## Example Usage
 
 ```typescript
-import { DtoSubscriptionScheduleResponse } from "@flexprice/sdk-temp/sdk/models/shared";
+import { DtoSubscriptionScheduleResponse } from "flexprice-ts/sdk/models/shared";
 
 let value: DtoSubscriptionScheduleResponse = {};
 ```

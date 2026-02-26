@@ -21,7 +21,7 @@ Use when debugging a specific event (e.g. why it failed or how it was aggregated
 
 <!-- UsageSnippet language="typescript" operationID="getEvent" method="get" path="/events/{id}" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -44,8 +44,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { eventsGetEvent } from "@flexprice/sdk-temp/funcs/eventsGetEvent.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { eventsGetEvent } from "flexprice-ts/funcs/eventsGetEvent.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -96,7 +96,7 @@ Use when fetching Hugging Face inference usage or billing data (e.g. for HF-spec
 
 <!-- UsageSnippet language="typescript" operationID="getHuggingfaceInferenceData" method="post" path="/events/huggingface-inference" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -117,8 +117,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { eventsGetHuggingfaceInferenceData } from "@flexprice/sdk-temp/funcs/eventsGetHuggingfaceInferenceData.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { eventsGetHuggingfaceInferenceData } from "flexprice-ts/funcs/eventsGetHuggingfaceInferenceData.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -166,7 +166,7 @@ Use when building analytics views (e.g. usage by feature or customer over time).
 
 <!-- UsageSnippet language="typescript" operationID="getUsageAnalytics" method="post" path="/events/analytics" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -189,8 +189,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { eventsGetUsageAnalytics } from "@flexprice/sdk-temp/funcs/eventsGetUsageAnalytics.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { eventsGetUsageAnalytics } from "flexprice-ts/funcs/eventsGetUsageAnalytics.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -241,7 +241,7 @@ Use when showing usage for a specific meter (e.g. dashboard or overage check). S
 
 <!-- UsageSnippet language="typescript" operationID="getUsageByMeter" method="post" path="/events/usage/meter" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -269,8 +269,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { eventsGetUsageByMeter } from "@flexprice/sdk-temp/funcs/eventsGetUsageByMeter.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { eventsGetUsageByMeter } from "flexprice-ts/funcs/eventsGetUsageByMeter.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -326,7 +326,7 @@ Use when building usage reports or dashboards across events. Supports filters an
 
 <!-- UsageSnippet language="typescript" operationID="getUsageStatistics" method="post" path="/events/usage" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -356,8 +356,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { eventsGetUsageStatistics } from "@flexprice/sdk-temp/funcs/eventsGetUsageStatistics.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { eventsGetUsageStatistics } from "flexprice-ts/funcs/eventsGetUsageStatistics.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -415,7 +415,7 @@ Use when sending a single usage event from your app (e.g. one API call or one GB
 
 <!-- UsageSnippet language="typescript" operationID="ingestEvent" method="post" path="/events" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -447,8 +447,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { eventsIngestEvent } from "@flexprice/sdk-temp/funcs/eventsIngestEvent.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { eventsIngestEvent } from "flexprice-ts/funcs/eventsIngestEvent.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -508,7 +508,7 @@ Use when batching usage events (e.g. backfill or high-volume ingestion). More ef
 
 <!-- UsageSnippet language="typescript" operationID="ingestEventsBulk" method="post" path="/events/bulk" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -531,8 +531,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { eventsIngestEventsBulk } from "@flexprice/sdk-temp/funcs/eventsIngestEventsBulk.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { eventsIngestEventsBulk } from "flexprice-ts/funcs/eventsIngestEventsBulk.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -583,7 +583,7 @@ Use when debugging ingestion or exporting raw event data (e.g. support or audit)
 
 <!-- UsageSnippet language="typescript" operationID="listRawEvents" method="post" path="/events/query" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -609,8 +609,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { eventsListRawEvents } from "@flexprice/sdk-temp/funcs/eventsListRawEvents.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { eventsListRawEvents } from "flexprice-ts/funcs/eventsListRawEvents.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

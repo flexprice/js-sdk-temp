@@ -17,7 +17,7 @@ Use when issuing a refund or adjustment (e.g. customer dispute or proration). Li
 
 <!-- UsageSnippet language="typescript" operationID="createCreditNote" method="post" path="/creditnotes" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -41,8 +41,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { creditNotesCreateCreditNote } from "@flexprice/sdk-temp/funcs/creditNotesCreateCreditNote.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { creditNotesCreateCreditNote } from "flexprice-ts/funcs/creditNotesCreateCreditNote.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -94,7 +94,7 @@ Use when you need to load a single credit note (e.g. for display or reconciliati
 
 <!-- UsageSnippet language="typescript" operationID="getCreditNote" method="get" path="/creditnotes/{id}" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -117,8 +117,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { creditNotesGetCreditNote } from "@flexprice/sdk-temp/funcs/creditNotesGetCreditNote.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { creditNotesGetCreditNote } from "flexprice-ts/funcs/creditNotesGetCreditNote.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -169,7 +169,7 @@ Use when locking a draft credit note and applying the credit (e.g. after approva
 
 <!-- UsageSnippet language="typescript" operationID="processCreditNote" method="post" path="/creditnotes/{id}/finalize" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -192,8 +192,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { creditNotesProcessCreditNote } from "@flexprice/sdk-temp/funcs/creditNotesProcessCreditNote.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { creditNotesProcessCreditNote } from "flexprice-ts/funcs/creditNotesProcessCreditNote.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -244,7 +244,7 @@ Use when cancelling a draft credit note (e.g. created by mistake). Only draft cr
 
 <!-- UsageSnippet language="typescript" operationID="voidCreditNote" method="post" path="/creditnotes/{id}/void" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -267,8 +267,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { creditNotesVoidCreditNote } from "@flexprice/sdk-temp/funcs/creditNotesVoidCreditNote.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { creditNotesVoidCreditNote } from "flexprice-ts/funcs/creditNotesVoidCreditNote.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

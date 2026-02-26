@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetAddonByLookupKeyRequest } from "@flexprice/sdk-temp/sdk/models/operations";
+import { GetAddonByLookupKeyRequest } from "flexprice-ts/sdk/models/operations";
 
 let value: GetAddonByLookupKeyRequest = {
   lookupKey: "<value>",

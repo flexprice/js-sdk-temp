@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DeleteApiKeyRequest } from "@flexprice/sdk-temp/sdk/models/operations";
+import { DeleteApiKeyRequest } from "flexprice-ts/sdk/models/operations";
 
 let value: DeleteApiKeyRequest = {
   id: "<id>",

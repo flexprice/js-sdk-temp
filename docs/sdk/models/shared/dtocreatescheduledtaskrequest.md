@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoCreateScheduledTaskRequest } from "@flexprice/sdk-temp/sdk/models/shared";
+import { DtoCreateScheduledTaskRequest } from "flexprice-ts/sdk/models/shared";
 
 let value: DtoCreateScheduledTaskRequest = {
   connectionId: "<id>",

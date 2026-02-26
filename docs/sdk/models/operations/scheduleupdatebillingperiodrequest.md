@@ -5,7 +5,7 @@ Schedule Update Billing Period Request
 ## Example Usage
 
 ```typescript
-import { ScheduleUpdateBillingPeriodRequest } from "@flexprice/sdk-temp/sdk/models/operations";
+import { ScheduleUpdateBillingPeriodRequest } from "flexprice-ts/sdk/models/operations";
 
 let value: ScheduleUpdateBillingPeriodRequest = {};
 ```

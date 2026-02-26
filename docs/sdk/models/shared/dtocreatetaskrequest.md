@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoCreateTaskRequest } from "@flexprice/sdk-temp/sdk/models/shared";
+import { DtoCreateTaskRequest } from "flexprice-ts/sdk/models/shared";
 
 let value: DtoCreateTaskRequest = {
   entityType: "FEATURES",

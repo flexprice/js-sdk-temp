@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesAggregationType } from "@flexprice/sdk-temp/sdk/models/shared";
+import { TypesAggregationType } from "flexprice-ts/sdk/models/shared";
 
 let value: TypesAggregationType = "SUM";
 ```

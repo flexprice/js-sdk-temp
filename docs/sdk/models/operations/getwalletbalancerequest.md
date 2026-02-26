@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetWalletBalanceRequest } from "@flexprice/sdk-temp/sdk/models/operations";
+import { GetWalletBalanceRequest } from "flexprice-ts/sdk/models/operations";
 
 let value: GetWalletBalanceRequest = {
   id: "<id>",

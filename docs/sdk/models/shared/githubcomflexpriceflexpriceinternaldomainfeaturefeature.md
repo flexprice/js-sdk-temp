@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GithubComFlexpriceFlexpriceInternalDomainFeatureFeature } from "@flexprice/sdk-temp/sdk/models/shared";
+import { GithubComFlexpriceFlexpriceInternalDomainFeatureFeature } from "flexprice-ts/sdk/models/shared";
 
 let value: GithubComFlexpriceFlexpriceInternalDomainFeatureFeature = {};
 ```

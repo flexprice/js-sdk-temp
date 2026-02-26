@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoCreateBulkEntitlementResponse } from "@flexprice/sdk-temp/sdk/models/shared";
+import { DtoCreateBulkEntitlementResponse } from "flexprice-ts/sdk/models/shared";
 
 let value: DtoCreateBulkEntitlementResponse = {
   items: [

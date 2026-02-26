@@ -19,8 +19,8 @@ specific category of applications.
 ## Example
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { addonsCreateAddon } from "@flexprice/sdk-temp/funcs/addonsCreateAddon.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { addonsCreateAddon } from "flexprice-ts/funcs/addonsCreateAddon.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

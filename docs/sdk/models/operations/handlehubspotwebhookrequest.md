@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { HandleHubspotWebhookRequest } from "@flexprice/sdk-temp/sdk/models/operations";
+import { HandleHubspotWebhookRequest } from "flexprice-ts/sdk/models/operations";
 
 let value: HandleHubspotWebhookRequest = {
   tenantId: "<id>",

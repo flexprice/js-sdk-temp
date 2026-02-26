@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoUpdateTaskStatusRequest } from "@flexprice/sdk-temp/sdk/models/shared";
+import { DtoUpdateTaskStatusRequest } from "flexprice-ts/sdk/models/shared";
 
 let value: DtoUpdateTaskStatusRequest = {
   taskStatus: "COMPLETED",

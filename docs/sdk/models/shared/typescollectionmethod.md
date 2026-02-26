@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesCollectionMethod } from "@flexprice/sdk-temp/sdk/models/shared";
+import { TypesCollectionMethod } from "flexprice-ts/sdk/models/shared";
 
 let value: TypesCollectionMethod = "send_invoice";
 ```

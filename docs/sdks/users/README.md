@@ -16,7 +16,7 @@ Use when provisioning API access for automation, CI/CD pipelines, or headless in
 
 <!-- UsageSnippet language="typescript" operationID="createUser" method="post" path="/users" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -40,8 +40,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { usersCreateUser } from "@flexprice/sdk-temp/funcs/usersCreateUser.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { usersCreateUser } from "flexprice-ts/funcs/usersCreateUser.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -93,7 +93,7 @@ Use to show the logged-in user's profile in the UI or to check permissions and r
 
 <!-- UsageSnippet language="typescript" operationID="getUserInfo" method="get" path="/users/me" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -114,8 +114,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { usersGetUserInfo } from "@flexprice/sdk-temp/funcs/usersGetUserInfo.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { usersGetUserInfo } from "flexprice-ts/funcs/usersGetUserInfo.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -163,7 +163,7 @@ Use when listing or searching service accounts in an admin UI, or when auditing 
 
 <!-- UsageSnippet language="typescript" operationID="queryUser" method="post" path="/users/search" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -184,8 +184,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { usersQueryUser } from "@flexprice/sdk-temp/funcs/usersQueryUser.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { usersQueryUser } from "flexprice-ts/funcs/usersQueryUser.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

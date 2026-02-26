@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesS3CompressionType } from "@flexprice/sdk-temp/sdk/models/shared";
+import { TypesS3CompressionType } from "flexprice-ts/sdk/models/shared";
 
 let value: TypesS3CompressionType = "gzip";
 ```

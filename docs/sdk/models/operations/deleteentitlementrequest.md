@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DeleteEntitlementRequest } from "@flexprice/sdk-temp/sdk/models/operations";
+import { DeleteEntitlementRequest } from "flexprice-ts/sdk/models/operations";
 
 let value: DeleteEntitlementRequest = {
   id: "<id>",

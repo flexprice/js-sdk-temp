@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoGetUsageBySubscriptionRequest } from "@flexprice/sdk-temp/sdk/models/shared";
+import { DtoGetUsageBySubscriptionRequest } from "flexprice-ts/sdk/models/shared";
 
 let value: DtoGetUsageBySubscriptionRequest = {
   endTime: "2024-03-20T00:00:00Z",

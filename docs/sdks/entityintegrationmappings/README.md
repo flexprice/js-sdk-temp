@@ -15,7 +15,7 @@ Use when linking a FlexPrice entity to an external system (e.g. CRM or payment p
 
 <!-- UsageSnippet language="typescript" operationID="createEntityIntegrationMapping" method="post" path="/entity-integration-mappings" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -41,8 +41,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { entityIntegrationMappingsCreateEntityIntegrationMapping } from "@flexprice/sdk-temp/funcs/entityIntegrationMappingsCreateEntityIntegrationMapping.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { entityIntegrationMappingsCreateEntityIntegrationMapping } from "flexprice-ts/funcs/entityIntegrationMappingsCreateEntityIntegrationMapping.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -96,7 +96,7 @@ Use when unlinking a FlexPrice entity from an external system or cleaning up sta
 
 <!-- UsageSnippet language="typescript" operationID="deleteEntityIntegrationMapping" method="delete" path="/entity-integration-mappings/{id}" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -119,8 +119,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { entityIntegrationMappingsDeleteEntityIntegrationMapping } from "@flexprice/sdk-temp/funcs/entityIntegrationMappingsDeleteEntityIntegrationMapping.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { entityIntegrationMappingsDeleteEntityIntegrationMapping } from "flexprice-ts/funcs/entityIntegrationMappingsDeleteEntityIntegrationMapping.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

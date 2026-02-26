@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoCreateCouponRequest } from "@flexprice/sdk-temp/sdk/models/shared";
+import { DtoCreateCouponRequest } from "flexprice-ts/sdk/models/shared";
 
 let value: DtoCreateCouponRequest = {
   cadence: "repeated",

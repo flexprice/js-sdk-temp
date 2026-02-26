@@ -5,7 +5,7 @@ Confirmation of schedule cancellation
 ## Example Usage
 
 ```typescript
-import { DtoCancelScheduleResponse } from "@flexprice/sdk-temp/sdk/models/shared";
+import { DtoCancelScheduleResponse } from "flexprice-ts/sdk/models/shared";
 
 let value: DtoCancelScheduleResponse = {};
 ```

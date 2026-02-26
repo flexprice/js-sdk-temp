@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoSubscriptionUsageByMetersResponse } from "@flexprice/sdk-temp/sdk/models/shared";
+import { DtoSubscriptionUsageByMetersResponse } from "flexprice-ts/sdk/models/shared";
 
 let value: DtoSubscriptionUsageByMetersResponse = {};
 ```

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoFeatureUsageInfo } from "@flexprice/sdk-temp/sdk/models/shared";
+import { DtoFeatureUsageInfo } from "flexprice-ts/sdk/models/shared";
 
 let value: DtoFeatureUsageInfo = {};
 ```

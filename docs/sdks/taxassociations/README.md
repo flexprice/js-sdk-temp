@@ -18,7 +18,7 @@ Use when linking a tax rate to an entity (e.g. customer, product, or region) so 
 
 <!-- UsageSnippet language="typescript" operationID="createTaxAssociation" method="post" path="/taxes/associations" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -43,8 +43,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { taxAssociationsCreateTaxAssociation } from "@flexprice/sdk-temp/funcs/taxAssociationsCreateTaxAssociation.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { taxAssociationsCreateTaxAssociation } from "flexprice-ts/funcs/taxAssociationsCreateTaxAssociation.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -97,7 +97,7 @@ Use when removing a tax association (e.g. entity no longer subject to that rate)
 
 <!-- UsageSnippet language="typescript" operationID="deleteTaxAssociation" method="delete" path="/taxes/associations/{id}" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -120,8 +120,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { taxAssociationsDeleteTaxAssociation } from "@flexprice/sdk-temp/funcs/taxAssociationsDeleteTaxAssociation.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { taxAssociationsDeleteTaxAssociation } from "flexprice-ts/funcs/taxAssociationsDeleteTaxAssociation.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -172,7 +172,7 @@ Use when you need to load a single tax association (e.g. for display or editing)
 
 <!-- UsageSnippet language="typescript" operationID="getTaxAssociation" method="get" path="/taxes/associations/{id}" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -195,8 +195,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { taxAssociationsGetTaxAssociation } from "@flexprice/sdk-temp/funcs/taxAssociationsGetTaxAssociation.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { taxAssociationsGetTaxAssociation } from "flexprice-ts/funcs/taxAssociationsGetTaxAssociation.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -247,7 +247,7 @@ Use when listing tax associations (e.g. tax config or audit). Returns list with 
 
 <!-- UsageSnippet language="typescript" operationID="listTaxAssociations" method="get" path="/taxes/associations" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -268,8 +268,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { taxAssociationsListTaxAssociations } from "@flexprice/sdk-temp/funcs/taxAssociationsListTaxAssociations.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { taxAssociationsListTaxAssociations } from "flexprice-ts/funcs/taxAssociationsListTaxAssociations.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -318,7 +318,7 @@ Use when changing a tax association (e.g. switch rate or entity). Request body c
 
 <!-- UsageSnippet language="typescript" operationID="updateTaxAssociation" method="put" path="/taxes/associations/{id}" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -342,8 +342,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { taxAssociationsUpdateTaxAssociation } from "@flexprice/sdk-temp/funcs/taxAssociationsUpdateTaxAssociation.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { taxAssociationsUpdateTaxAssociation } from "flexprice-ts/funcs/taxAssociationsUpdateTaxAssociation.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

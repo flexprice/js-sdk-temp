@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TransactionReason } from "@flexprice/sdk-temp/sdk/models/operations";
+import { TransactionReason } from "flexprice-ts/sdk/models/operations";
 
 let value: TransactionReason = "SUBSCRIPTION_CREDIT_GRANT";
 ```

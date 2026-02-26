@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoBulkIngestEventRequest } from "@flexprice/sdk-temp/sdk/models/shared";
+import { DtoBulkIngestEventRequest } from "flexprice-ts/sdk/models/shared";
 
 let value: DtoBulkIngestEventRequest = {
   events: [],

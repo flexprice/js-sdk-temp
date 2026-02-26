@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesEntitlementUsageResetPeriod } from "@flexprice/sdk-temp/sdk/models/shared";
+import { TypesEntitlementUsageResetPeriod } from "flexprice-ts/sdk/models/shared";
 
 let value: TypesEntitlementUsageResetPeriod = "HALF_YEARLY";
 ```

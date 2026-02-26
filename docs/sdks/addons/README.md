@@ -19,7 +19,7 @@ Use when defining an optional purchasable item (e.g. extra storage or support ti
 
 <!-- UsageSnippet language="typescript" operationID="createAddon" method="post" path="/addons" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -44,8 +44,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { addonsCreateAddon } from "@flexprice/sdk-temp/funcs/addonsCreateAddon.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { addonsCreateAddon } from "flexprice-ts/funcs/addonsCreateAddon.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -98,7 +98,7 @@ Use when retiring an addon (e.g. end-of-life). Returns 200 with success message.
 
 <!-- UsageSnippet language="typescript" operationID="deleteAddon" method="delete" path="/addons/{id}" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -121,8 +121,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { addonsDeleteAddon } from "@flexprice/sdk-temp/funcs/addonsDeleteAddon.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { addonsDeleteAddon } from "flexprice-ts/funcs/addonsDeleteAddon.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -173,7 +173,7 @@ Use when you need to load a single addon (e.g. for display or to attach to a sub
 
 <!-- UsageSnippet language="typescript" operationID="getAddon" method="get" path="/addons/{id}" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -196,8 +196,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { addonsGetAddon } from "@flexprice/sdk-temp/funcs/addonsGetAddon.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { addonsGetAddon } from "flexprice-ts/funcs/addonsGetAddon.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -248,7 +248,7 @@ Use when resolving an addon by external id (e.g. from your product catalog). Ide
 
 <!-- UsageSnippet language="typescript" operationID="getAddonByLookupKey" method="get" path="/addons/lookup/{lookup_key}" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -271,8 +271,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { addonsGetAddonByLookupKey } from "@flexprice/sdk-temp/funcs/addonsGetAddonByLookupKey.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { addonsGetAddonByLookupKey } from "flexprice-ts/funcs/addonsGetAddonByLookupKey.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -323,7 +323,7 @@ Use when listing or searching addons (e.g. catalog or subscription builder). Ret
 
 <!-- UsageSnippet language="typescript" operationID="queryAddon" method="post" path="/addons/search" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -344,8 +344,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { addonsQueryAddon } from "@flexprice/sdk-temp/funcs/addonsQueryAddon.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { addonsQueryAddon } from "flexprice-ts/funcs/addonsQueryAddon.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -394,7 +394,7 @@ Use when changing addon details (e.g. name, pricing, or metadata).
 
 <!-- UsageSnippet language="typescript" operationID="updateAddon" method="put" path="/addons/{id}" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -418,8 +418,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { addonsUpdateAddon } from "@flexprice/sdk-temp/funcs/addonsUpdateAddon.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { addonsUpdateAddon } from "flexprice-ts/funcs/addonsUpdateAddon.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

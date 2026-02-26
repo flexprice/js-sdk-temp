@@ -5,7 +5,7 @@ Request object for creating a new customer in the system
 ## Example Usage
 
 ```typescript
-import { DtoCreateCustomerRequest } from "@flexprice/sdk-temp/sdk/models/shared";
+import { DtoCreateCustomerRequest } from "flexprice-ts/sdk/models/shared";
 
 let value: DtoCreateCustomerRequest = {
   externalId: "<id>",

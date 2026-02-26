@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesFilterOperatorType } from "@flexprice/sdk-temp/sdk/models/shared";
+import { TypesFilterOperatorType } from "flexprice-ts/sdk/models/shared";
 
 let value: TypesFilterOperatorType = "before";
 ```

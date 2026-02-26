@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesS3EncryptionType } from "@flexprice/sdk-temp/sdk/models/shared";
+import { TypesS3EncryptionType } from "flexprice-ts/sdk/models/shared";
 
 let value: TypesS3EncryptionType = "AES256";
 ```

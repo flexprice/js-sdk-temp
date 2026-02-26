@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesFailurePointType } from "@flexprice/sdk-temp/sdk/models/shared";
+import { TypesFailurePointType } from "flexprice-ts/sdk/models/shared";
 
 let value: TypesFailurePointType = "customer_lookup";
 ```

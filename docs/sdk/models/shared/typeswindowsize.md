@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesWindowSize } from "@flexprice/sdk-temp/sdk/models/shared";
+import { TypesWindowSize } from "flexprice-ts/sdk/models/shared";
 
 let value: TypesWindowSize = "6HOUR";
 ```

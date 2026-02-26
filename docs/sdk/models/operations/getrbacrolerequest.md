@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetRbacRoleRequest } from "@flexprice/sdk-temp/sdk/models/operations";
+import { GetRbacRoleRequest } from "flexprice-ts/sdk/models/operations";
 
 let value: GetRbacRoleRequest = {
   id: "<id>",

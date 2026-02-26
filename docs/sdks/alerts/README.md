@@ -14,7 +14,7 @@ Use when viewing or searching alert history (e.g. support triage or customer-fac
 
 <!-- UsageSnippet language="typescript" operationID="queryAlertLog" method="post" path="/alerts/search" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -35,8 +35,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { alertsQueryAlertLog } from "@flexprice/sdk-temp/funcs/alertsQueryAlertLog.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { alertsQueryAlertLog } from "flexprice-ts/funcs/alertsQueryAlertLog.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesCreditNoteStatus } from "@flexprice/sdk-temp/sdk/models/shared";
+import { TypesCreditNoteStatus } from "flexprice-ts/sdk/models/shared";
 
 let value: TypesCreditNoteStatus = "FINALIZED";
 ```

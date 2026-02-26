@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoCreateTaxAssociationRequest } from "@flexprice/sdk-temp/sdk/models/shared";
+import { DtoCreateTaxAssociationRequest } from "flexprice-ts/sdk/models/shared";
 
 let value: DtoCreateTaxAssociationRequest = {
   entityId: "<id>",

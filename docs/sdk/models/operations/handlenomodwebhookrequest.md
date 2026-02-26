@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { HandleNomodWebhookRequest } from "@flexprice/sdk-temp/sdk/models/operations";
+import { HandleNomodWebhookRequest } from "flexprice-ts/sdk/models/operations";
 
 let value: HandleNomodWebhookRequest = {
   tenantId: "<id>",

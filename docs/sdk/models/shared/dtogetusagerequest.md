@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoGetUsageRequest } from "@flexprice/sdk-temp/sdk/models/shared";
+import { DtoGetUsageRequest } from "flexprice-ts/sdk/models/shared";
 
 let value: DtoGetUsageRequest = {
   aggregationType: "COUNT_UNIQUE",

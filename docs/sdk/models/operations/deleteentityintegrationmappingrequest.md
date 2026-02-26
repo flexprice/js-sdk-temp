@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DeleteEntityIntegrationMappingRequest } from "@flexprice/sdk-temp/sdk/models/operations";
+import { DeleteEntityIntegrationMappingRequest } from "flexprice-ts/sdk/models/operations";
 
 let value: DeleteEntityIntegrationMappingRequest = {
   id: "<id>",

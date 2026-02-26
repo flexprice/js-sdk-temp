@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesCustomerFilter } from "@flexprice/sdk-temp/sdk/models/shared";
+import { TypesCustomerFilter } from "flexprice-ts/sdk/models/shared";
 
 let value: TypesCustomerFilter = {};
 ```

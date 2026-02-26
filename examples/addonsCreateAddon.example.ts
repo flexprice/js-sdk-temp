@@ -5,13 +5,13 @@
 import dotenv from "dotenv";
 dotenv.config();
 /**
- * Example usage of the @flexprice/sdk-temp SDK
+ * Example usage of the flexprice-ts SDK
  *
  * To run this example from the examples directory:
  * npm run build && npx tsx addonsCreateAddon.example.ts
  */
 
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",

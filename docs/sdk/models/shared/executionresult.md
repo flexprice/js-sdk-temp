@@ -5,7 +5,7 @@ execution_result contains type-specific execution result
 ## Example Usage
 
 ```typescript
-import { ExecutionResult } from "@flexprice/sdk-temp/sdk/models/shared";
+import { ExecutionResult } from "flexprice-ts/sdk/models/shared";
 
 let value: ExecutionResult = {};
 ```

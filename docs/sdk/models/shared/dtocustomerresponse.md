@@ -5,7 +5,7 @@ Customer response object containing all customer information
 ## Example Usage
 
 ```typescript
-import { DtoCustomerResponse } from "@flexprice/sdk-temp/sdk/models/shared";
+import { DtoCustomerResponse } from "flexprice-ts/sdk/models/shared";
 
 let value: DtoCustomerResponse = {};
 ```

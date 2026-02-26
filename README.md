@@ -9,15 +9,15 @@ Type-safe TypeScript/JavaScript client for the FlexPrice API: billing, metering,
 ## Installation
 
 ```bash
-npm add @flexprice/sdk-temp
+npm add flexprice-ts
 ```
 
 With pnpm, bun, or yarn:
 
 ```bash
-pnpm add @flexprice/sdk-temp
-bun add @flexprice/sdk-temp
-yarn add @flexprice/sdk-temp
+pnpm add flexprice-ts
+bun add flexprice-ts
+yarn add flexprice-ts
 ```
 
 The package supports both CommonJS and ESM.
@@ -27,7 +27,7 @@ The package supports both CommonJS and ESM.
 Initialize the client with your server URL and API key, then create a customer and ingest an event:
 
 ```typescript
-import { FlexPrice } from "@flexprice/sdk-temp";
+import { FlexPrice } from "flexprice-ts";
 
 const flexPrice = new FlexPrice({
   serverURL: "https://api.cloud.flexprice.io",
@@ -70,7 +70,7 @@ Check the [API reference](https://docs.flexprice.io) or generated types for the 
 The package ships with TypeScript definitions. Use the client with full type safety:
 
 ```typescript
-import { FlexPrice } from "@flexprice/sdk-temp";
+import { FlexPrice } from "flexprice-ts";
 
 const flexPrice = new FlexPrice({
   serverURL: "https://api.cloud.flexprice.io",

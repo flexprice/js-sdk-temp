@@ -15,7 +15,7 @@ Use when setting up a new environment (e.g. production, staging) for the tenant.
 
 <!-- UsageSnippet language="typescript" operationID="createEnvironment" method="post" path="/environments" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -39,8 +39,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { environmentsCreateEnvironment } from "@flexprice/sdk-temp/funcs/environmentsCreateEnvironment.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { environmentsCreateEnvironment } from "flexprice-ts/funcs/environmentsCreateEnvironment.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -92,7 +92,7 @@ Use when changing environment name or settings (e.g. renaming or updating metada
 
 <!-- UsageSnippet language="typescript" operationID="updateEnvironment" method="put" path="/environments/{id}" -->
 ```typescript
-import { Flexprice } from "@flexprice/sdk-temp";
+import { Flexprice } from "flexprice-ts";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -116,8 +116,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "@flexprice/sdk-temp/core.js";
-import { environmentsUpdateEnvironment } from "@flexprice/sdk-temp/funcs/environmentsUpdateEnvironment.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { environmentsUpdateEnvironment } from "flexprice-ts/funcs/environmentsUpdateEnvironment.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
