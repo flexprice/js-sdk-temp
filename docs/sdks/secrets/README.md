@@ -4,104 +4,29 @@
 
 ### Available Operations
 
-* [getSecretsApiKeys](#getsecretsapikeys) - List API keys
-* [postSecretsApiKeys](#postsecretsapikeys) - Create a new API key
-* [deleteSecretsApiKeysId](#deletesecretsapikeysid) - Delete an API key
+* [createApiKey](#createapikey) - Create a new API key
+* [deleteApiKey](#deleteapikey) - Delete an API key
+* [listApiKeys](#listapikeys) - List API keys
 
-## getSecretsApiKeys
+## createApiKey
 
-Get a paginated list of API keys
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="get_/secrets/api/keys" method="get" path="/secrets/api/keys" -->
-```typescript
-import { FlexPrice } from "flexprice-sdk-test";
-
-const flexPrice = new FlexPrice({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const result = await flexPrice.secrets.getSecretsApiKeys();
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { secretsGetSecretsApiKeys } from "flexprice-sdk-test/funcs/secrets-get-secrets-api-keys.js";
-
-// Use `FlexPriceCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const res = await secretsGetSecretsApiKeys(flexPrice);
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("secretsGetSecretsApiKeys failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `limit`                                                                                                                                                                        | *number*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Limit                                                                                                                                                                          |
-| `offset`                                                                                                                                                                       | *number*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Offset                                                                                                                                                                         |
-| `status`                                                                                                                                                                       | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Status (published/archived)                                                                                                                                                    |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.DtoListSecretsResponse](../../models/components/dto-list-secrets-response.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## postSecretsApiKeys
-
-Create a new API key. Provide 'service_account_id' in body to create API key for a service account, otherwise creates for authenticated user.
+Use when issuing a new API key (e.g. for a service account or for the current user). Provide service_account_id to create for a service account.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="post_/secrets/api/keys" method="post" path="/secrets/api/keys" -->
+<!-- UsageSnippet language="typescript" operationID="createApiKey" method="post" path="/secrets/api/keys" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.secrets.postSecretsApiKeys({
+  const result = await flexprice.secrets.createApiKey({
     name: "<value>",
-    type: "integration",
+    type: "publishable_key",
   });
 
   console.log(result);
@@ -115,26 +40,26 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { secretsPostSecretsApiKeys } from "flexprice-sdk-test/funcs/secrets-post-secrets-api-keys.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { secretsCreateApiKey } from "flexprice-ts/funcs/secretsCreateApiKey.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await secretsPostSecretsApiKeys(flexPrice, {
+  const res = await secretsCreateApiKey(flexprice, {
     name: "<value>",
-    type: "integration",
+    type: "publishable_key",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("secretsPostSecretsApiKeys failed:", res.error);
+    console.log("secretsCreateApiKey failed:", res.error);
   }
 }
 
@@ -145,42 +70,42 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreateAPIKeyRequest](../../models/components/dto-create-api-key-request.md)                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [shared.DtoCreateAPIKeyRequest](../../sdk/models/shared/dtocreateapikeyrequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoCreateAPIKeyResponse](../../models/components/dto-create-api-key-response.md)\>**
+**Promise\<[operations.CreateApiKeyResponse](../../sdk/models/operations/createapikeyresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## deleteSecretsApiKeysId
+## deleteApiKey
 
-Delete an API key by ID
+Use when revoking an API key (e.g. rotation or compromise). Permanently invalidates the key.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="delete_/secrets/api/keys/{id}" method="delete" path="/secrets/api/keys/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="deleteApiKey" method="delete" path="/secrets/api/keys/{id}" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  await flexPrice.secrets.deleteSecretsApiKeysId("<id>");
+  const result = await flexprice.secrets.deleteApiKey({
+    id: "<id>",
+  });
 
-
+  console.log(result);
 }
 
 run();
@@ -191,23 +116,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { secretsDeleteSecretsApiKeysId } from "flexprice-sdk-test/funcs/secrets-delete-secrets-api-keys-id.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { secretsDeleteApiKey } from "flexprice-ts/funcs/secretsDeleteApiKey.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await secretsDeleteSecretsApiKeysId(flexPrice, "<id>");
+  const res = await secretsDeleteApiKey(flexprice, {
+    id: "<id>",
+  });
   if (res.ok) {
     const { value: result } = res;
-    
+    console.log(result);
   } else {
-    console.log("secretsDeleteSecretsApiKeysId failed:", res.error);
+    console.log("secretsDeleteApiKey failed:", res.error);
   }
 }
 
@@ -218,19 +145,88 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | API key ID                                                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.DeleteApiKeyRequest](../../sdk/models/operations/deleteapikeyrequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<void\>**
+**Promise\<[shared.ErrorsErrorResponse](../../sdk/models/shared/errorserrorresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 404                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## listApiKeys
+
+Use when listing API keys (e.g. admin view or rotating keys). Returns a paginated list.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="listApiKeys" method="get" path="/secrets/api/keys" -->
+```typescript
+import { Flexprice } from "flexprice-ts";
+
+const flexprice = new Flexprice({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const result = await flexprice.secrets.listApiKeys();
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { secretsListApiKeys } from "flexprice-ts/funcs/secretsListApiKeys.js";
+
+// Use `FlexpriceCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const flexprice = new FlexpriceCore({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await secretsListApiKeys(flexprice);
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("secretsListApiKeys failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.ListApiKeysRequest](../../sdk/models/operations/listapikeysrequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.ListApiKeysResponse](../../sdk/models/operations/listapikeysresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |

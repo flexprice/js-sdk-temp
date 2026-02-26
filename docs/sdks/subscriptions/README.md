@@ -4,125 +4,53 @@
 
 ### Available Operations
 
-* [getSubscriptions](#getsubscriptions) - List subscriptions
-* [postSubscriptions](#postsubscriptions) - Create subscription
-* [postSubscriptionsAddon](#postsubscriptionsaddon) - Add addon to subscription
-* [deleteSubscriptionsAddon](#deletesubscriptionsaddon) - Remove addon from subscription
-* [putSubscriptionsLineitemsId](#putsubscriptionslineitemsid) - Update subscription line item
-* [deleteSubscriptionsLineitemsId](#deletesubscriptionslineitemsid) - Delete subscription line item
-* [postSubscriptionsSearch](#postsubscriptionssearch) - List subscriptions by filter
-* [postSubscriptionsUsage](#postsubscriptionsusage) - Get usage by subscription
-* [getSubscriptionsId](#getsubscriptionsid) - Get subscription
-* [postSubscriptionsIdActivate](#postsubscriptionsidactivate) - Activate draft subscription
-* [getSubscriptionsIdAddonsAssociations](#getsubscriptionsidaddonsassociations) - Get active addon associations
-* [postSubscriptionsIdCancel](#postsubscriptionsidcancel) - Cancel subscription
-* [postSubscriptionsIdChangeExecute](#postsubscriptionsidchangeexecute) - Execute subscription plan change
-* [postSubscriptionsIdChangePreview](#postsubscriptionsidchangepreview) - Preview subscription plan change
-* [getSubscriptionsIdEntitlements](#getsubscriptionsidentitlements) - Get subscription entitlements
-* [getSubscriptionsIdGrantsUpcoming](#getsubscriptionsidgrantsupcoming) - Get upcoming credit grant applications
-* [postSubscriptionsIdPause](#postsubscriptionsidpause) - Pause a subscription
-* [getSubscriptionsIdPauses](#getsubscriptionsidpauses) - List all pauses for a subscription
-* [postSubscriptionsIdResume](#postsubscriptionsidresume) - Resume a paused subscription
-* [getSubscriptionsIdV2](#getsubscriptionsidv2) - Get subscription V2
-* [getV1SubscriptionSchedules](#getv1subscriptionschedules) - List all subscription schedules
-* [getV1SubscriptionSchedulesId](#getv1subscriptionschedulesid) - Get subscription schedule
-* [postV1SubscriptionsSchedulesScheduleIdCancel](#postv1subscriptionsschedulesscheduleidcancel) - Cancel subscription schedule
-* [getV1SubscriptionsSubscriptionIdSchedules](#getv1subscriptionssubscriptionidschedules) - List subscription schedules
+* [activateSubscription](#activatesubscription) - Activate draft subscription
+* [addSubscriptionAddon](#addsubscriptionaddon) - Add addon to subscription
+* [cancelSubscription](#cancelsubscription) - Cancel subscription
+* [cancelSubscriptionSchedule](#cancelsubscriptionschedule) - Cancel subscription schedule
+* [createSubscription](#createsubscription) - Create subscription
+* [createSubscriptionLineItem](#createsubscriptionlineitem) - Create subscription line item
+* [deleteSubscriptionLineItem](#deletesubscriptionlineitem) - Delete subscription line item
+* [executeSubscriptionChange](#executesubscriptionchange) - Execute subscription plan change
+* [getSubscription](#getsubscription) - Get subscription
+* [getSubscriptionAddonAssociations](#getsubscriptionaddonassociations) - Get active addon associations
+* [getSubscriptionEntitlements](#getsubscriptionentitlements) - Get subscription entitlements
+* [getSubscriptionSchedule](#getsubscriptionschedule) - Get subscription schedule
+* [getSubscriptionUpcomingGrants](#getsubscriptionupcominggrants) - Get upcoming credit grant applications
+* [getSubscriptionUsage](#getsubscriptionusage) - Get usage by subscription
+* [getSubscriptionV2](#getsubscriptionv2) - Get subscription (V2)
+* [listAllSubscriptionSchedules](#listallsubscriptionschedules) - List all subscription schedules
+* [listSubscriptionPauses](#listsubscriptionpauses) - List all pauses for a subscription
+* [listSubscriptionSchedules](#listsubscriptionschedules) - List subscription schedules
+* [pauseSubscription](#pausesubscription) - Pause a subscription
+* [previewSubscriptionChange](#previewsubscriptionchange) - Preview subscription plan change
+* [querySubscription](#querysubscription) - Query subscriptions
+* [removeSubscriptionAddon](#removesubscriptionaddon) - Remove addon from subscription
+* [resumeSubscription](#resumesubscription) - Resume a paused subscription
+* [updateSubscription](#updatesubscription) - Update subscription
+* [updateSubscriptionLineItem](#updatesubscriptionlineitem) - Update subscription line item
 
-## getSubscriptions
+## activateSubscription
 
-Get subscriptions with optional filtering
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="get_/subscriptions" method="get" path="/subscriptions" -->
-```typescript
-import { FlexPrice } from "flexprice-sdk-test";
-
-const flexPrice = new FlexPrice({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const result = await flexPrice.subscriptions.getSubscriptions({});
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { subscriptionsGetSubscriptions } from "flexprice-sdk-test/funcs/subscriptions-get-subscriptions.js";
-
-// Use `FlexPriceCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const res = await subscriptionsGetSubscriptions(flexPrice, {});
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("subscriptionsGetSubscriptions failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetSubscriptionsRequest](../../models/operations/get-subscriptions-request.md)                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.DtoListSubscriptionsResponse](../../models/components/dto-list-subscriptions-response.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## postSubscriptions
-
-Create a new subscription
+Use when turning a draft subscription live (e.g. after collecting payment or completing setup). Once activated, billing and entitlements apply.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="post_/subscriptions" method="post" path="/subscriptions" -->
+<!-- UsageSnippet language="typescript" operationID="activateSubscription" method="post" path="/subscriptions/{id}/activate" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.subscriptions.postSubscriptions({
-    billingCadence: "RECURRING",
-    billingPeriod: "HALF_YEARLY",
-    currency: "Nakfa",
-    planId: "<id>",
+  const result = await flexprice.subscriptions.activateSubscription({
+    id: "<id>",
+    dtoActivateDraftSubscriptionRequest: {
+      startDate: "<value>",
+    },
   });
 
   console.log(result);
@@ -136,28 +64,28 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { subscriptionsPostSubscriptions } from "flexprice-sdk-test/funcs/subscriptions-post-subscriptions.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { subscriptionsActivateSubscription } from "flexprice-ts/funcs/subscriptionsActivateSubscription.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await subscriptionsPostSubscriptions(flexPrice, {
-    billingCadence: "RECURRING",
-    billingPeriod: "HALF_YEARLY",
-    currency: "Nakfa",
-    planId: "<id>",
+  const res = await subscriptionsActivateSubscription(flexprice, {
+    id: "<id>",
+    dtoActivateDraftSubscriptionRequest: {
+      startDate: "<value>",
+    },
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("subscriptionsPostSubscriptions failed:", res.error);
+    console.log("subscriptionsActivateSubscription failed:", res.error);
   }
 }
 
@@ -168,40 +96,38 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreateSubscriptionRequest](../../models/components/dto-create-subscription-request.md)                                                                          | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.ActivateSubscriptionRequest](../../sdk/models/operations/activatesubscriptionrequest.md)                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoSubscriptionResponse](../../models/components/dto-subscription-response.md)\>**
+**Promise\<[operations.ActivateSubscriptionResponse](../../sdk/models/operations/activatesubscriptionresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## postSubscriptionsAddon
+## addSubscriptionAddon
 
-Add an addon to a subscription
+Use when adding an optional product or add-on to an existing subscription (e.g. extra storage or support tier).
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="post_/subscriptions/addon" method="post" path="/subscriptions/addon" -->
+<!-- UsageSnippet language="typescript" operationID="addSubscriptionAddon" method="post" path="/subscriptions/addon" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.subscriptions.postSubscriptionsAddon({
+  const result = await flexprice.subscriptions.addSubscriptionAddon({
     addonId: "<id>",
     subscriptionId: "<id>",
   });
@@ -217,18 +143,18 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { subscriptionsPostSubscriptionsAddon } from "flexprice-sdk-test/funcs/subscriptions-post-subscriptions-addon.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { subscriptionsAddSubscriptionAddon } from "flexprice-ts/funcs/subscriptionsAddSubscriptionAddon.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await subscriptionsPostSubscriptionsAddon(flexPrice, {
+  const res = await subscriptionsAddSubscriptionAddon(flexprice, {
     addonId: "<id>",
     subscriptionId: "<id>",
   });
@@ -236,7 +162,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("subscriptionsPostSubscriptionsAddon failed:", res.error);
+    console.log("subscriptionsAddSubscriptionAddon failed:", res.error);
   }
 }
 
@@ -247,41 +173,42 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoAddAddonRequest](../../models/components/dto-add-addon-request.md)                                                                                              | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [shared.DtoAddAddonRequest](../../sdk/models/shared/dtoaddaddonrequest.md)                                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoAddonAssociationResponse](../../models/components/dto-addon-association-response.md)\>**
+**Promise\<[operations.AddSubscriptionAddonResponse](../../sdk/models/operations/addsubscriptionaddonresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## deleteSubscriptionsAddon
+## cancelSubscription
 
-Remove an addon from a subscription
+Use when a customer churns or downgrades. Supports immediate or end-of-period cancellation and proration. Ideal for self-serve or support-driven cancellations.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="delete_/subscriptions/addon" method="delete" path="/subscriptions/addon" -->
+<!-- UsageSnippet language="typescript" operationID="cancelSubscription" method="post" path="/subscriptions/{id}/cancel" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.subscriptions.deleteSubscriptionsAddon({
-    addonAssociationId: "<id>",
+  const result = await flexprice.subscriptions.cancelSubscription({
+    id: "<id>",
+    dtoCancelSubscriptionRequest: {
+      cancellationType: "immediate",
+    },
   });
 
   console.log(result);
@@ -295,25 +222,28 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { subscriptionsDeleteSubscriptionsAddon } from "flexprice-sdk-test/funcs/subscriptions-delete-subscriptions-addon.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { subscriptionsCancelSubscription } from "flexprice-ts/funcs/subscriptionsCancelSubscription.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await subscriptionsDeleteSubscriptionsAddon(flexPrice, {
-    addonAssociationId: "<id>",
+  const res = await subscriptionsCancelSubscription(flexprice, {
+    id: "<id>",
+    dtoCancelSubscriptionRequest: {
+      cancellationType: "immediate",
+    },
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("subscriptionsDeleteSubscriptionsAddon failed:", res.error);
+    console.log("subscriptionsCancelSubscription failed:", res.error);
   }
 }
 
@@ -324,40 +254,40 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoRemoveAddonRequest](../../models/components/dto-remove-addon-request.md)                                                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.CancelSubscriptionRequest](../../sdk/models/operations/cancelsubscriptionrequest.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoSuccessResponse](../../models/components/dto-success-response.md)\>**
+**Promise\<[operations.CancelSubscriptionResponse](../../sdk/models/operations/cancelsubscriptionresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## putSubscriptionsLineitemsId
+## cancelSubscriptionSchedule
 
-Update a subscription line item by terminating the existing one and creating a new one
+Use when cancelling a scheduled change (e.g. customer changed mind). Identify by schedule ID in path or by subscription ID + schedule type in body.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="put_/subscriptions/lineitems/{id}" method="put" path="/subscriptions/lineitems/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="cancelSubscriptionSchedule" method="post" path="/v1/subscriptions/schedules/{schedule_id}/cancel" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.subscriptions.putSubscriptionsLineitemsId("<id>", {});
+  const result = await flexprice.subscriptions.cancelSubscriptionSchedule({
+    scheduleId: "<id>",
+  });
 
   console.log(result);
 }
@@ -370,23 +300,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { subscriptionsPutSubscriptionsLineitemsId } from "flexprice-sdk-test/funcs/subscriptions-put-subscriptions-lineitems-id.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { subscriptionsCancelSubscriptionSchedule } from "flexprice-ts/funcs/subscriptionsCancelSubscriptionSchedule.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await subscriptionsPutSubscriptionsLineitemsId(flexPrice, "<id>", {});
+  const res = await subscriptionsCancelSubscriptionSchedule(flexprice, {
+    scheduleId: "<id>",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("subscriptionsPutSubscriptionsLineitemsId failed:", res.error);
+    console.log("subscriptionsCancelSubscriptionSchedule failed:", res.error);
   }
 }
 
@@ -397,41 +329,43 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Line Item ID                                                                                                                                                                   |
-| `body`                                                                                                                                                                         | [components.DtoUpdateSubscriptionLineItemRequest](../../models/components/dto-update-subscription-line-item-request.md)                                                        | :heavy_check_mark:                                                                                                                                                             | Update Line Item Request                                                                                                                                                       |
+| `request`                                                                                                                                                                      | [operations.CancelSubscriptionScheduleRequest](../../sdk/models/operations/cancelsubscriptionschedulerequest.md)                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoSubscriptionLineItemResponse](../../models/components/dto-subscription-line-item-response.md)\>**
+**Promise\<[shared.DtoCancelScheduleResponse](../../sdk/models/shared/dtocancelscheduleresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## deleteSubscriptionsLineitemsId
+## createSubscription
 
-Delete a subscription line item by setting its end date
+Use when onboarding a customer to a plan or starting a new subscription. Ideal for draft subscriptions (activate later) or active from start.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="delete_/subscriptions/lineitems/{id}" method="delete" path="/subscriptions/lineitems/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="createSubscription" method="post" path="/subscriptions" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.subscriptions.deleteSubscriptionsLineitemsId("<id>", {});
+  const result = await flexprice.subscriptions.createSubscription({
+    billingCadence: "ONETIME",
+    billingPeriod: "DAILY",
+    currency: "New Leu",
+    planId: "<id>",
+  });
 
   console.log(result);
 }
@@ -444,23 +378,28 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { subscriptionsDeleteSubscriptionsLineitemsId } from "flexprice-sdk-test/funcs/subscriptions-delete-subscriptions-lineitems-id.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { subscriptionsCreateSubscription } from "flexprice-ts/funcs/subscriptionsCreateSubscription.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await subscriptionsDeleteSubscriptionsLineitemsId(flexPrice, "<id>", {});
+  const res = await subscriptionsCreateSubscription(flexprice, {
+    billingCadence: "ONETIME",
+    billingPeriod: "DAILY",
+    currency: "New Leu",
+    planId: "<id>",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("subscriptionsDeleteSubscriptionsLineitemsId failed:", res.error);
+    console.log("subscriptionsCreateSubscription failed:", res.error);
   }
 }
 
@@ -471,41 +410,41 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Line Item ID                                                                                                                                                                   |
-| `body`                                                                                                                                                                         | [components.DtoDeleteSubscriptionLineItemRequest](../../models/components/dto-delete-subscription-line-item-request.md)                                                        | :heavy_check_mark:                                                                                                                                                             | Delete Line Item Request                                                                                                                                                       |
+| `request`                                                                                                                                                                      | [shared.DtoCreateSubscriptionRequest](../../sdk/models/shared/dtocreatesubscriptionrequest.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoSubscriptionLineItemResponse](../../models/components/dto-subscription-line-item-response.md)\>**
+**Promise\<[operations.CreateSubscriptionResponse](../../sdk/models/operations/createsubscriptionresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## postSubscriptionsSearch
+## createSubscriptionLineItem
 
-List subscriptions by filter
+Use when adding a new charge or seat to a subscription (e.g. extra seat or one-time add). Supports price_id or inline price.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="post_/subscriptions/search" method="post" path="/subscriptions/search" -->
+<!-- UsageSnippet language="typescript" operationID="createSubscriptionLineItem" method="post" path="/subscriptions/{id}/lineitems" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.subscriptions.postSubscriptionsSearch({});
+  const result = await flexprice.subscriptions.createSubscriptionLineItem({
+    id: "<id>",
+    dtoCreateSubscriptionLineItemRequest: {},
+  });
 
   console.log(result);
 }
@@ -518,23 +457,26 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { subscriptionsPostSubscriptionsSearch } from "flexprice-sdk-test/funcs/subscriptions-post-subscriptions-search.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { subscriptionsCreateSubscriptionLineItem } from "flexprice-ts/funcs/subscriptionsCreateSubscriptionLineItem.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await subscriptionsPostSubscriptionsSearch(flexPrice, {});
+  const res = await subscriptionsCreateSubscriptionLineItem(flexprice, {
+    id: "<id>",
+    dtoCreateSubscriptionLineItemRequest: {},
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("subscriptionsPostSubscriptionsSearch failed:", res.error);
+    console.log("subscriptionsCreateSubscriptionLineItem failed:", res.error);
   }
 }
 
@@ -545,40 +487,579 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.TypesSubscriptionFilter](../../models/components/types-subscription-filter.md)                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.CreateSubscriptionLineItemRequest](../../sdk/models/operations/createsubscriptionlineitemrequest.md)                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoListSubscriptionsResponse](../../models/components/dto-list-subscriptions-response.md)\>**
+**Promise\<[operations.CreateSubscriptionLineItemResponse](../../sdk/models/operations/createsubscriptionlineitemresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## postSubscriptionsUsage
+## deleteSubscriptionLineItem
 
-Get usage for a subscription
+Use when removing a charge or seat from a subscription (e.g. downgrade). Line item ends; retained for history but no longer billed.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="post_/subscriptions/usage" method="post" path="/subscriptions/usage" -->
+<!-- UsageSnippet language="typescript" operationID="deleteSubscriptionLineItem" method="delete" path="/subscriptions/lineitems/{id}" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.subscriptions.postSubscriptionsUsage({
+  const result = await flexprice.subscriptions.deleteSubscriptionLineItem({
+    id: "<id>",
+    dtoDeleteSubscriptionLineItemRequest: {},
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { subscriptionsDeleteSubscriptionLineItem } from "flexprice-ts/funcs/subscriptionsDeleteSubscriptionLineItem.js";
+
+// Use `FlexpriceCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const flexprice = new FlexpriceCore({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await subscriptionsDeleteSubscriptionLineItem(flexprice, {
+    id: "<id>",
+    dtoDeleteSubscriptionLineItemRequest: {},
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("subscriptionsDeleteSubscriptionLineItem failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.DeleteSubscriptionLineItemRequest](../../sdk/models/operations/deletesubscriptionlineitemrequest.md)                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.DeleteSubscriptionLineItemResponse](../../sdk/models/operations/deletesubscriptionlineitemresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## executeSubscriptionChange
+
+Use when applying a plan change (e.g. upgrade or downgrade). Executes proration and generates invoice or credit as needed.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="executeSubscriptionChange" method="post" path="/subscriptions/{id}/change/execute" -->
+```typescript
+import { Flexprice } from "flexprice-ts";
+
+const flexprice = new Flexprice({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const result = await flexprice.subscriptions.executeSubscriptionChange({
+    id: "<id>",
+    dtoSubscriptionChangeRequest: {
+      billingCadence: "RECURRING",
+      billingCycle: "anniversary",
+      billingPeriod: "QUARTERLY",
+      prorationBehavior: "create_prorations",
+      targetPlanId: "<id>",
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { subscriptionsExecuteSubscriptionChange } from "flexprice-ts/funcs/subscriptionsExecuteSubscriptionChange.js";
+
+// Use `FlexpriceCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const flexprice = new FlexpriceCore({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await subscriptionsExecuteSubscriptionChange(flexprice, {
+    id: "<id>",
+    dtoSubscriptionChangeRequest: {
+      billingCadence: "RECURRING",
+      billingCycle: "anniversary",
+      billingPeriod: "QUARTERLY",
+      prorationBehavior: "create_prorations",
+      targetPlanId: "<id>",
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("subscriptionsExecuteSubscriptionChange failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.ExecuteSubscriptionChangeRequest](../../sdk/models/operations/executesubscriptionchangerequest.md)                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.ExecuteSubscriptionChangeResponse](../../sdk/models/operations/executesubscriptionchangeresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## getSubscription
+
+Use when you need to load a single subscription (e.g. for a billing portal or to check status).
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="getSubscription" method="get" path="/subscriptions/{id}" -->
+```typescript
+import { Flexprice } from "flexprice-ts";
+
+const flexprice = new Flexprice({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const result = await flexprice.subscriptions.getSubscription({
+    id: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { subscriptionsGetSubscription } from "flexprice-ts/funcs/subscriptionsGetSubscription.js";
+
+// Use `FlexpriceCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const flexprice = new FlexpriceCore({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await subscriptionsGetSubscription(flexprice, {
+    id: "<id>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("subscriptionsGetSubscription failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.GetSubscriptionRequest](../../sdk/models/operations/getsubscriptionrequest.md)                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.GetSubscriptionResponse](../../sdk/models/operations/getsubscriptionresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## getSubscriptionAddonAssociations
+
+Use when listing which add-ons are currently attached to a subscription (e.g. for display or editing).
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="getSubscriptionAddonAssociations" method="get" path="/subscriptions/{id}/addons/associations" -->
+```typescript
+import { Flexprice } from "flexprice-ts";
+
+const flexprice = new Flexprice({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const result = await flexprice.subscriptions.getSubscriptionAddonAssociations({
+    id: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { subscriptionsGetSubscriptionAddonAssociations } from "flexprice-ts/funcs/subscriptionsGetSubscriptionAddonAssociations.js";
+
+// Use `FlexpriceCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const flexprice = new FlexpriceCore({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await subscriptionsGetSubscriptionAddonAssociations(flexprice, {
+    id: "<id>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("subscriptionsGetSubscriptionAddonAssociations failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.GetSubscriptionAddonAssociationsRequest](../../sdk/models/operations/getsubscriptionaddonassociationsrequest.md)                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.GetSubscriptionAddonAssociationsResponse](../../sdk/models/operations/getsubscriptionaddonassociationsresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## getSubscriptionEntitlements
+
+Use when checking what features or limits a subscription has (e.g. entitlement checks or feature gating). Optional feature_ids to filter.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="getSubscriptionEntitlements" method="get" path="/subscriptions/{id}/entitlements" -->
+```typescript
+import { Flexprice } from "flexprice-ts";
+
+const flexprice = new Flexprice({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const result = await flexprice.subscriptions.getSubscriptionEntitlements({
+    id: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { subscriptionsGetSubscriptionEntitlements } from "flexprice-ts/funcs/subscriptionsGetSubscriptionEntitlements.js";
+
+// Use `FlexpriceCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const flexprice = new FlexpriceCore({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await subscriptionsGetSubscriptionEntitlements(flexprice, {
+    id: "<id>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("subscriptionsGetSubscriptionEntitlements failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.GetSubscriptionEntitlementsRequest](../../sdk/models/operations/getsubscriptionentitlementsrequest.md)                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.GetSubscriptionEntitlementsResponse](../../sdk/models/operations/getsubscriptionentitlementsresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## getSubscriptionSchedule
+
+Use when you need to load a single scheduled change (e.g. to show when a plan change or renewal takes effect).
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="getSubscriptionSchedule" method="get" path="/v1/subscription-schedules/{id}" -->
+```typescript
+import { Flexprice } from "flexprice-ts";
+
+const flexprice = new Flexprice({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const result = await flexprice.subscriptions.getSubscriptionSchedule({
+    id: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { subscriptionsGetSubscriptionSchedule } from "flexprice-ts/funcs/subscriptionsGetSubscriptionSchedule.js";
+
+// Use `FlexpriceCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const flexprice = new FlexpriceCore({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await subscriptionsGetSubscriptionSchedule(flexprice, {
+    id: "<id>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("subscriptionsGetSubscriptionSchedule failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.GetSubscriptionScheduleRequest](../../sdk/models/operations/getsubscriptionschedulerequest.md)                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[shared.DtoSubscriptionScheduleResponse](../../sdk/models/shared/dtosubscriptionscheduleresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## getSubscriptionUpcomingGrants
+
+Use when showing upcoming or pending credits for a subscription (e.g. in a portal or for forecasting).
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="getSubscriptionUpcomingGrants" method="get" path="/subscriptions/{id}/grants/upcoming" -->
+```typescript
+import { Flexprice } from "flexprice-ts";
+
+const flexprice = new Flexprice({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const result = await flexprice.subscriptions.getSubscriptionUpcomingGrants({
+    id: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { subscriptionsGetSubscriptionUpcomingGrants } from "flexprice-ts/funcs/subscriptionsGetSubscriptionUpcomingGrants.js";
+
+// Use `FlexpriceCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const flexprice = new FlexpriceCore({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await subscriptionsGetSubscriptionUpcomingGrants(flexprice, {
+    id: "<id>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("subscriptionsGetSubscriptionUpcomingGrants failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.GetSubscriptionUpcomingGrantsRequest](../../sdk/models/operations/getsubscriptionupcominggrantsrequest.md)                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.GetSubscriptionUpcomingGrantsResponse](../../sdk/models/operations/getsubscriptionupcominggrantsresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## getSubscriptionUsage
+
+Use when showing usage for a subscription (e.g. in a portal or for overage checks). Supports time range and filters.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="getSubscriptionUsage" method="post" path="/subscriptions/usage" -->
+```typescript
+import { Flexprice } from "flexprice-ts";
+
+const flexprice = new Flexprice({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const result = await flexprice.subscriptions.getSubscriptionUsage({
     endTime: "2024-03-20T00:00:00Z",
     lifetimeUsage: false,
     startTime: "2024-03-13T00:00:00Z",
@@ -596,18 +1077,18 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { subscriptionsPostSubscriptionsUsage } from "flexprice-sdk-test/funcs/subscriptions-post-subscriptions-usage.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { subscriptionsGetSubscriptionUsage } from "flexprice-ts/funcs/subscriptionsGetSubscriptionUsage.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await subscriptionsPostSubscriptionsUsage(flexPrice, {
+  const res = await subscriptionsGetSubscriptionUsage(flexprice, {
     endTime: "2024-03-20T00:00:00Z",
     lifetimeUsage: false,
     startTime: "2024-03-13T00:00:00Z",
@@ -617,7 +1098,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("subscriptionsPostSubscriptionsUsage failed:", res.error);
+    console.log("subscriptionsGetSubscriptionUsage failed:", res.error);
   }
 }
 
@@ -628,1014 +1109,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoGetUsageBySubscriptionRequest](../../models/components/dto-get-usage-by-subscription-request.md)                                                                | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [shared.DtoGetUsageBySubscriptionRequest](../../sdk/models/shared/dtogetusagebysubscriptionrequest.md)                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoGetUsageBySubscriptionResponse](../../models/components/dto-get-usage-by-subscription-response.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## getSubscriptionsId
-
-Get a subscription by ID
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="get_/subscriptions/{id}" method="get" path="/subscriptions/{id}" -->
-```typescript
-import { FlexPrice } from "flexprice-sdk-test";
-
-const flexPrice = new FlexPrice({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const result = await flexPrice.subscriptions.getSubscriptionsId("<id>");
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { subscriptionsGetSubscriptionsId } from "flexprice-sdk-test/funcs/subscriptions-get-subscriptions-id.js";
-
-// Use `FlexPriceCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const res = await subscriptionsGetSubscriptionsId(flexPrice, "<id>");
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("subscriptionsGetSubscriptionsId failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Subscription ID                                                                                                                                                                |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.DtoSubscriptionResponse](../../models/components/dto-subscription-response.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## postSubscriptionsIdActivate
-
-Activate a draft subscription with a new start date
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="post_/subscriptions/{id}/activate" method="post" path="/subscriptions/{id}/activate" -->
-```typescript
-import { FlexPrice } from "flexprice-sdk-test";
-
-const flexPrice = new FlexPrice({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const result = await flexPrice.subscriptions.postSubscriptionsIdActivate("<id>", {
-    startDate: "<value>",
-  });
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { subscriptionsPostSubscriptionsIdActivate } from "flexprice-sdk-test/funcs/subscriptions-post-subscriptions-id-activate.js";
-
-// Use `FlexPriceCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const res = await subscriptionsPostSubscriptionsIdActivate(flexPrice, "<id>", {
-    startDate: "<value>",
-  });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("subscriptionsPostSubscriptionsIdActivate failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Subscription ID                                                                                                                                                                |
-| `body`                                                                                                                                                                         | [components.DtoActivateDraftSubscriptionRequest](../../models/components/dto-activate-draft-subscription-request.md)                                                           | :heavy_check_mark:                                                                                                                                                             | Activate Draft Subscription Request                                                                                                                                            |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.DtoSubscriptionResponse](../../models/components/dto-subscription-response.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## getSubscriptionsIdAddonsAssociations
-
-Get active addon associations for a subscription
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="get_/subscriptions/{id}/addons/associations" method="get" path="/subscriptions/{id}/addons/associations" -->
-```typescript
-import { FlexPrice } from "flexprice-sdk-test";
-
-const flexPrice = new FlexPrice({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const result = await flexPrice.subscriptions.getSubscriptionsIdAddonsAssociations("<id>");
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { subscriptionsGetSubscriptionsIdAddonsAssociations } from "flexprice-sdk-test/funcs/subscriptions-get-subscriptions-id-addons-associations.js";
-
-// Use `FlexPriceCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const res = await subscriptionsGetSubscriptionsIdAddonsAssociations(flexPrice, "<id>");
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("subscriptionsGetSubscriptionsIdAddonsAssociations failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Subscription ID                                                                                                                                                                |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.DtoAddonAssociationResponse[]](../../models/.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400, 404                   | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## postSubscriptionsIdCancel
-
-Cancel a subscription with enhanced proration support
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="post_/subscriptions/{id}/cancel" method="post" path="/subscriptions/{id}/cancel" -->
-```typescript
-import { FlexPrice } from "flexprice-sdk-test";
-
-const flexPrice = new FlexPrice({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const result = await flexPrice.subscriptions.postSubscriptionsIdCancel("<id>", {
-    cancellationType: "end_of_period",
-  });
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { subscriptionsPostSubscriptionsIdCancel } from "flexprice-sdk-test/funcs/subscriptions-post-subscriptions-id-cancel.js";
-
-// Use `FlexPriceCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const res = await subscriptionsPostSubscriptionsIdCancel(flexPrice, "<id>", {
-    cancellationType: "end_of_period",
-  });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("subscriptionsPostSubscriptionsIdCancel failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Subscription ID                                                                                                                                                                |
-| `body`                                                                                                                                                                         | [components.DtoCancelSubscriptionRequest](../../models/components/dto-cancel-subscription-request.md)                                                                          | :heavy_check_mark:                                                                                                                                                             | Cancel Subscription Request                                                                                                                                                    |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.DtoCancelSubscriptionResponse](../../models/components/dto-cancel-subscription-response.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## postSubscriptionsIdChangeExecute
-
-Execute a subscription plan change, including proration and invoice generation
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="post_/subscriptions/{id}/change/execute" method="post" path="/subscriptions/{id}/change/execute" -->
-```typescript
-import { FlexPrice } from "flexprice-sdk-test";
-
-const flexPrice = new FlexPrice({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const result = await flexPrice.subscriptions.postSubscriptionsIdChangeExecute("<id>", {
-    billingCadence: "ONETIME",
-    billingCycle: "anniversary",
-    billingPeriod: "HALF_YEARLY",
-    prorationBehavior: "none",
-    targetPlanId: "<id>",
-  });
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { subscriptionsPostSubscriptionsIdChangeExecute } from "flexprice-sdk-test/funcs/subscriptions-post-subscriptions-id-change-execute.js";
-
-// Use `FlexPriceCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const res = await subscriptionsPostSubscriptionsIdChangeExecute(flexPrice, "<id>", {
-    billingCadence: "ONETIME",
-    billingCycle: "anniversary",
-    billingPeriod: "HALF_YEARLY",
-    prorationBehavior: "none",
-    targetPlanId: "<id>",
-  });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("subscriptionsPostSubscriptionsIdChangeExecute failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Subscription ID                                                                                                                                                                |
-| `body`                                                                                                                                                                         | [components.DtoSubscriptionChangeRequest](../../models/components/dto-subscription-change-request.md)                                                                          | :heavy_check_mark:                                                                                                                                                             | Subscription change request                                                                                                                                                    |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.DtoSubscriptionChangeExecuteResponse](../../models/components/dto-subscription-change-execute-response.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400, 404                   | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## postSubscriptionsIdChangePreview
-
-Preview the impact of changing a subscription's plan, including proration calculations
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="post_/subscriptions/{id}/change/preview" method="post" path="/subscriptions/{id}/change/preview" -->
-```typescript
-import { FlexPrice } from "flexprice-sdk-test";
-
-const flexPrice = new FlexPrice({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const result = await flexPrice.subscriptions.postSubscriptionsIdChangePreview("<id>", {
-    billingCadence: "RECURRING",
-    billingCycle: "anniversary",
-    billingPeriod: "WEEKLY",
-    prorationBehavior: "create_prorations",
-    targetPlanId: "<id>",
-  });
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { subscriptionsPostSubscriptionsIdChangePreview } from "flexprice-sdk-test/funcs/subscriptions-post-subscriptions-id-change-preview.js";
-
-// Use `FlexPriceCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const res = await subscriptionsPostSubscriptionsIdChangePreview(flexPrice, "<id>", {
-    billingCadence: "RECURRING",
-    billingCycle: "anniversary",
-    billingPeriod: "WEEKLY",
-    prorationBehavior: "create_prorations",
-    targetPlanId: "<id>",
-  });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("subscriptionsPostSubscriptionsIdChangePreview failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Subscription ID                                                                                                                                                                |
-| `body`                                                                                                                                                                         | [components.DtoSubscriptionChangeRequest](../../models/components/dto-subscription-change-request.md)                                                                          | :heavy_check_mark:                                                                                                                                                             | Subscription change preview request                                                                                                                                            |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.DtoSubscriptionChangePreviewResponse](../../models/components/dto-subscription-change-preview-response.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400, 404                   | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## getSubscriptionsIdEntitlements
-
-Get all entitlements for a subscription
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="get_/subscriptions/{id}/entitlements" method="get" path="/subscriptions/{id}/entitlements" -->
-```typescript
-import { FlexPrice } from "flexprice-sdk-test";
-
-const flexPrice = new FlexPrice({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const result = await flexPrice.subscriptions.getSubscriptionsIdEntitlements("<id>");
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { subscriptionsGetSubscriptionsIdEntitlements } from "flexprice-sdk-test/funcs/subscriptions-get-subscriptions-id-entitlements.js";
-
-// Use `FlexPriceCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const res = await subscriptionsGetSubscriptionsIdEntitlements(flexPrice, "<id>");
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("subscriptionsGetSubscriptionsIdEntitlements failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Subscription ID                                                                                                                                                                |
-| `featureIds`                                                                                                                                                                   | *string*[]                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                             | Feature IDs to filter by                                                                                                                                                       |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.DtoSubscriptionEntitlementsResponse](../../models/components/dto-subscription-entitlements-response.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400, 404                   | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## getSubscriptionsIdGrantsUpcoming
-
-Get upcoming credit grant applications for a subscription
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="get_/subscriptions/{id}/grants/upcoming" method="get" path="/subscriptions/{id}/grants/upcoming" -->
-```typescript
-import { FlexPrice } from "flexprice-sdk-test";
-
-const flexPrice = new FlexPrice({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const result = await flexPrice.subscriptions.getSubscriptionsIdGrantsUpcoming("<id>");
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { subscriptionsGetSubscriptionsIdGrantsUpcoming } from "flexprice-sdk-test/funcs/subscriptions-get-subscriptions-id-grants-upcoming.js";
-
-// Use `FlexPriceCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const res = await subscriptionsGetSubscriptionsIdGrantsUpcoming(flexPrice, "<id>");
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("subscriptionsGetSubscriptionsIdGrantsUpcoming failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Subscription ID                                                                                                                                                                |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.DtoListCreditGrantApplicationsResponse](../../models/components/dto-list-credit-grant-applications-response.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400, 404                   | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## postSubscriptionsIdPause
-
-Pause a subscription with the specified parameters
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="post_/subscriptions/{id}/pause" method="post" path="/subscriptions/{id}/pause" -->
-```typescript
-import { FlexPrice } from "flexprice-sdk-test";
-
-const flexPrice = new FlexPrice({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const result = await flexPrice.subscriptions.postSubscriptionsIdPause("<id>", {
-    pauseMode: "period_end",
-  });
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { subscriptionsPostSubscriptionsIdPause } from "flexprice-sdk-test/funcs/subscriptions-post-subscriptions-id-pause.js";
-
-// Use `FlexPriceCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const res = await subscriptionsPostSubscriptionsIdPause(flexPrice, "<id>", {
-    pauseMode: "period_end",
-  });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("subscriptionsPostSubscriptionsIdPause failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Subscription ID                                                                                                                                                                |
-| `body`                                                                                                                                                                         | [components.DtoPauseSubscriptionRequest](../../models/components/dto-pause-subscription-request.md)                                                                            | :heavy_check_mark:                                                                                                                                                             | Pause subscription request                                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.DtoSubscriptionPauseResponse](../../models/components/dto-subscription-pause-response.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400, 404                   | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## getSubscriptionsIdPauses
-
-List all pauses for a subscription
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="get_/subscriptions/{id}/pauses" method="get" path="/subscriptions/{id}/pauses" -->
-```typescript
-import { FlexPrice } from "flexprice-sdk-test";
-
-const flexPrice = new FlexPrice({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const result = await flexPrice.subscriptions.getSubscriptionsIdPauses("<id>");
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { subscriptionsGetSubscriptionsIdPauses } from "flexprice-sdk-test/funcs/subscriptions-get-subscriptions-id-pauses.js";
-
-// Use `FlexPriceCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const res = await subscriptionsGetSubscriptionsIdPauses(flexPrice, "<id>");
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("subscriptionsGetSubscriptionsIdPauses failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Subscription ID                                                                                                                                                                |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.DtoListSubscriptionPausesResponse[]](../../models/.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400, 404                   | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## postSubscriptionsIdResume
-
-Resume a paused subscription with the specified parameters
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="post_/subscriptions/{id}/resume" method="post" path="/subscriptions/{id}/resume" -->
-```typescript
-import { FlexPrice } from "flexprice-sdk-test";
-
-const flexPrice = new FlexPrice({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const result = await flexPrice.subscriptions.postSubscriptionsIdResume("<id>", {
-    resumeMode: "scheduled",
-  });
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { subscriptionsPostSubscriptionsIdResume } from "flexprice-sdk-test/funcs/subscriptions-post-subscriptions-id-resume.js";
-
-// Use `FlexPriceCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const res = await subscriptionsPostSubscriptionsIdResume(flexPrice, "<id>", {
-    resumeMode: "scheduled",
-  });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("subscriptionsPostSubscriptionsIdResume failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Subscription ID                                                                                                                                                                |
-| `body`                                                                                                                                                                         | [components.DtoResumeSubscriptionRequest](../../models/components/dto-resume-subscription-request.md)                                                                          | :heavy_check_mark:                                                                                                                                                             | Resume subscription request                                                                                                                                                    |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.DtoSubscriptionPauseResponse](../../models/components/dto-subscription-pause-response.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400, 404                   | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## getSubscriptionsIdV2
-
-Get a subscription by ID with optional expand parameters
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="get_/subscriptions/{id}/v2" method="get" path="/subscriptions/{id}/v2" -->
-```typescript
-import { FlexPrice } from "flexprice-sdk-test";
-
-const flexPrice = new FlexPrice({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const result = await flexPrice.subscriptions.getSubscriptionsIdV2("<id>");
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { subscriptionsGetSubscriptionsIdV2 } from "flexprice-sdk-test/funcs/subscriptions-get-subscriptions-id-v2.js";
-
-// Use `FlexPriceCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const res = await subscriptionsGetSubscriptionsIdV2(flexPrice, "<id>");
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("subscriptionsGetSubscriptionsIdV2 failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Subscription ID                                                                                                                                                                |
-| `expand`                                                                                                                                                                       | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Comma-separated list of fields to expand (e.g., 'subscription_line_items,prices,plan')                                                                                         |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.DtoSubscriptionResponseV2](../../models/components/dto-subscription-response-v2.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## getV1SubscriptionSchedules
-
-Retrieves subscription schedules with optional filtering
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="get_/v1/subscription-schedules" method="get" path="/v1/subscription-schedules" -->
-```typescript
-import { FlexPrice } from "flexprice-sdk-test";
-
-const flexPrice = new FlexPrice({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const result = await flexPrice.subscriptions.getV1SubscriptionSchedules();
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { subscriptionsGetV1SubscriptionSchedules } from "flexprice-sdk-test/funcs/subscriptions-get-v1-subscription-schedules.js";
-
-// Use `FlexPriceCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const res = await subscriptionsGetV1SubscriptionSchedules(flexPrice);
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("subscriptionsGetV1SubscriptionSchedules failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `pendingOnly`                                                                                                                                                                  | *boolean*                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                             | Filter to pending schedules only                                                                                                                                               |
-| `subscriptionId`                                                                                                                                                               | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Filter by subscription ID                                                                                                                                                      |
-| `limit`                                                                                                                                                                        | *number*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Limit results                                                                                                                                                                  |
-| `offset`                                                                                                                                                                       | *number*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | Offset for pagination                                                                                                                                                          |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.DtoGetPendingSchedulesResponse](../../models/components/dto-get-pending-schedules-response.md)\>**
+**Promise\<[operations.GetSubscriptionUsageResponse](../../sdk/models/operations/getsubscriptionusageresponse.md)\>**
 
 ### Errors
 
@@ -1643,23 +1124,25 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## getV1SubscriptionSchedulesId
+## getSubscriptionV2
 
-Retrieves details of a specific subscription schedule
+Use when you need a subscription with related data (line items, prices, plan). Supports expand for detailed payloads without extra round-trips.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="get_/v1/subscription-schedules/{id}" method="get" path="/v1/subscription-schedules/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="getSubscriptionV2" method="get" path="/subscriptions/{id}/v2" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.subscriptions.getV1SubscriptionSchedulesId("<id>");
+  const result = await flexprice.subscriptions.getSubscriptionV2({
+    id: "<id>",
+  });
 
   console.log(result);
 }
@@ -1672,23 +1155,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { subscriptionsGetV1SubscriptionSchedulesId } from "flexprice-sdk-test/funcs/subscriptions-get-v1-subscription-schedules-id.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { subscriptionsGetSubscriptionV2 } from "flexprice-ts/funcs/subscriptionsGetSubscriptionV2.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await subscriptionsGetV1SubscriptionSchedulesId(flexPrice, "<id>");
+  const res = await subscriptionsGetSubscriptionV2(flexprice, {
+    id: "<id>",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("subscriptionsGetV1SubscriptionSchedulesId failed:", res.error);
+    console.log("subscriptionsGetSubscriptionV2 failed:", res.error);
   }
 }
 
@@ -1699,14 +1184,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Schedule ID                                                                                                                                                                    |
+| `request`                                                                                                                                                                      | [operations.GetSubscriptionV2Request](../../sdk/models/operations/getsubscriptionv2request.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoSubscriptionScheduleResponse](../../models/components/dto-subscription-schedule-response.md)\>**
+**Promise\<[operations.GetSubscriptionV2Response](../../sdk/models/operations/getsubscriptionv2response.md)\>**
 
 ### Errors
 
@@ -1714,23 +1199,23 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## postV1SubscriptionsSchedulesScheduleIdCancel
+## listAllSubscriptionSchedules
 
-Cancels a pending subscription schedule. Supports two modes: 1) By schedule ID in path, or 2) By subscription ID + schedule type in request body
+Use when listing or searching scheduled changes across subscriptions (e.g. admin view). Returns schedules with optional filtering.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="post_/v1/subscriptions/schedules/{schedule_id}/cancel" method="post" path="/v1/subscriptions/schedules/{schedule_id}/cancel" -->
+<!-- UsageSnippet language="typescript" operationID="listAllSubscriptionSchedules" method="get" path="/v1/subscription-schedules" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.subscriptions.postV1SubscriptionsSchedulesScheduleIdCancel("<id>");
+  const result = await flexprice.subscriptions.listAllSubscriptionSchedules();
 
   console.log(result);
 }
@@ -1743,23 +1228,23 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { subscriptionsPostV1SubscriptionsSchedulesScheduleIdCancel } from "flexprice-sdk-test/funcs/subscriptions-post-v1-subscriptions-schedules-schedule-id-cancel.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { subscriptionsListAllSubscriptionSchedules } from "flexprice-ts/funcs/subscriptionsListAllSubscriptionSchedules.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await subscriptionsPostV1SubscriptionsSchedulesScheduleIdCancel(flexPrice, "<id>");
+  const res = await subscriptionsListAllSubscriptionSchedules(flexprice);
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("subscriptionsPostV1SubscriptionsSchedulesScheduleIdCancel failed:", res.error);
+    console.log("subscriptionsListAllSubscriptionSchedules failed:", res.error);
   }
 }
 
@@ -1770,15 +1255,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `scheduleId`                                                                                                                                                                   | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Schedule ID (optional if using request body)                                                                                                                                   |
-| `body`                                                                                                                                                                         | [components.DtoCancelScheduleRequest](../../models/components/dto-cancel-schedule-request.md)                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Cancel request (optional if using path parameter)                                                                                                                              |
+| `request`                                                                                                                                                                      | [operations.ListAllSubscriptionSchedulesRequest](../../sdk/models/operations/listallsubscriptionschedulesrequest.md)                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoCancelScheduleResponse](../../models/components/dto-cancel-schedule-response.md)\>**
+**Promise\<[shared.DtoGetPendingSchedulesResponse](../../sdk/models/shared/dtogetpendingschedulesresponse.md)\>**
 
 ### Errors
 
@@ -1786,23 +1270,25 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## getV1SubscriptionsSubscriptionIdSchedules
+## listSubscriptionPauses
 
-Retrieves all schedules for a specific subscription
+Use when showing pause history for a subscription (e.g. support or audit). Returns all past and future pauses.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="get_/v1/subscriptions/{subscription_id}/schedules" method="get" path="/v1/subscriptions/{subscription_id}/schedules" -->
+<!-- UsageSnippet language="typescript" operationID="listSubscriptionPauses" method="get" path="/subscriptions/{id}/pauses" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.subscriptions.getV1SubscriptionsSubscriptionIdSchedules("<id>");
+  const result = await flexprice.subscriptions.listSubscriptionPauses({
+    id: "<id>",
+  });
 
   console.log(result);
 }
@@ -1815,23 +1301,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { subscriptionsGetV1SubscriptionsSubscriptionIdSchedules } from "flexprice-sdk-test/funcs/subscriptions-get-v1-subscriptions-subscription-id-schedules.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { subscriptionsListSubscriptionPauses } from "flexprice-ts/funcs/subscriptionsListSubscriptionPauses.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await subscriptionsGetV1SubscriptionsSubscriptionIdSchedules(flexPrice, "<id>");
+  const res = await subscriptionsListSubscriptionPauses(flexprice, {
+    id: "<id>",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("subscriptionsGetV1SubscriptionsSubscriptionIdSchedules failed:", res.error);
+    console.log("subscriptionsListSubscriptionPauses failed:", res.error);
   }
 }
 
@@ -1842,14 +1330,640 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `subscriptionId`                                                                                                                                                               | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Subscription ID                                                                                                                                                                |
+| `request`                                                                                                                                                                      | [operations.ListSubscriptionPausesRequest](../../sdk/models/operations/listsubscriptionpausesrequest.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoGetPendingSchedulesResponse](../../models/components/dto-get-pending-schedules-response.md)\>**
+**Promise\<[operations.ListSubscriptionPausesResponse](../../sdk/models/operations/listsubscriptionpausesresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## listSubscriptionSchedules
+
+Use when listing scheduled changes for a subscription (e.g. upcoming plan change or renewal). Returns all schedules for that subscription.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="listSubscriptionSchedules" method="get" path="/v1/subscriptions/{subscription_id}/schedules" -->
+```typescript
+import { Flexprice } from "flexprice-ts";
+
+const flexprice = new Flexprice({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const result = await flexprice.subscriptions.listSubscriptionSchedules({
+    subscriptionId: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { subscriptionsListSubscriptionSchedules } from "flexprice-ts/funcs/subscriptionsListSubscriptionSchedules.js";
+
+// Use `FlexpriceCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const flexprice = new FlexpriceCore({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await subscriptionsListSubscriptionSchedules(flexprice, {
+    subscriptionId: "<id>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("subscriptionsListSubscriptionSchedules failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.ListSubscriptionSchedulesRequest](../../sdk/models/operations/listsubscriptionschedulesrequest.md)                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[shared.DtoGetPendingSchedulesResponse](../../sdk/models/shared/dtogetpendingschedulesresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## pauseSubscription
+
+Use when temporarily stopping a subscription (e.g. customer hold or seasonal pause). Billing and access pause; resume when ready.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="pauseSubscription" method="post" path="/subscriptions/{id}/pause" -->
+```typescript
+import { Flexprice } from "flexprice-ts";
+
+const flexprice = new Flexprice({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const result = await flexprice.subscriptions.pauseSubscription({
+    id: "<id>",
+    dtoPauseSubscriptionRequest: {
+      pauseMode: "scheduled",
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { subscriptionsPauseSubscription } from "flexprice-ts/funcs/subscriptionsPauseSubscription.js";
+
+// Use `FlexpriceCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const flexprice = new FlexpriceCore({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await subscriptionsPauseSubscription(flexprice, {
+    id: "<id>",
+    dtoPauseSubscriptionRequest: {
+      pauseMode: "scheduled",
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("subscriptionsPauseSubscription failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.PauseSubscriptionRequest](../../sdk/models/operations/pausesubscriptionrequest.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.PauseSubscriptionResponse](../../sdk/models/operations/pausesubscriptionresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## previewSubscriptionChange
+
+Use when showing a customer the cost of a plan change before they confirm (e.g. upgrade/downgrade preview with proration).
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="previewSubscriptionChange" method="post" path="/subscriptions/{id}/change/preview" -->
+```typescript
+import { Flexprice } from "flexprice-ts";
+
+const flexprice = new Flexprice({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const result = await flexprice.subscriptions.previewSubscriptionChange({
+    id: "<id>",
+    dtoSubscriptionChangeRequest: {
+      billingCadence: "RECURRING",
+      billingCycle: "calendar",
+      billingPeriod: "HALF_YEARLY",
+      prorationBehavior: "create_prorations",
+      targetPlanId: "<id>",
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { subscriptionsPreviewSubscriptionChange } from "flexprice-ts/funcs/subscriptionsPreviewSubscriptionChange.js";
+
+// Use `FlexpriceCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const flexprice = new FlexpriceCore({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await subscriptionsPreviewSubscriptionChange(flexprice, {
+    id: "<id>",
+    dtoSubscriptionChangeRequest: {
+      billingCadence: "RECURRING",
+      billingCycle: "calendar",
+      billingPeriod: "HALF_YEARLY",
+      prorationBehavior: "create_prorations",
+      targetPlanId: "<id>",
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("subscriptionsPreviewSubscriptionChange failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.PreviewSubscriptionChangeRequest](../../sdk/models/operations/previewsubscriptionchangerequest.md)                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.PreviewSubscriptionChangeResponse](../../sdk/models/operations/previewsubscriptionchangeresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## querySubscription
+
+Use when listing or searching subscriptions (e.g. admin view or customer subscription list). Returns a paginated list; supports filtering by customer, plan, status.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="querySubscription" method="post" path="/subscriptions/search" -->
+```typescript
+import { Flexprice } from "flexprice-ts";
+
+const flexprice = new Flexprice({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const result = await flexprice.subscriptions.querySubscription({});
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { subscriptionsQuerySubscription } from "flexprice-ts/funcs/subscriptionsQuerySubscription.js";
+
+// Use `FlexpriceCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const flexprice = new FlexpriceCore({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await subscriptionsQuerySubscription(flexprice, {});
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("subscriptionsQuerySubscription failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [shared.TypesSubscriptionFilter](../../sdk/models/shared/typessubscriptionfilter.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.QuerySubscriptionResponse](../../sdk/models/operations/querysubscriptionresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## removeSubscriptionAddon
+
+Use when removing an add-on from a subscription (e.g. downgrade or opt-out).
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="removeSubscriptionAddon" method="delete" path="/subscriptions/addon" -->
+```typescript
+import { Flexprice } from "flexprice-ts";
+
+const flexprice = new Flexprice({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const result = await flexprice.subscriptions.removeSubscriptionAddon({
+    addonAssociationId: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { subscriptionsRemoveSubscriptionAddon } from "flexprice-ts/funcs/subscriptionsRemoveSubscriptionAddon.js";
+
+// Use `FlexpriceCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const flexprice = new FlexpriceCore({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await subscriptionsRemoveSubscriptionAddon(flexprice, {
+    addonAssociationId: "<id>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("subscriptionsRemoveSubscriptionAddon failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [shared.DtoRemoveAddonRequest](../../sdk/models/shared/dtoremoveaddonrequest.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.RemoveSubscriptionAddonResponse](../../sdk/models/operations/removesubscriptionaddonresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## resumeSubscription
+
+Use when reactivating a paused subscription (e.g. end of hold). Billing and access resume from the resume date.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="resumeSubscription" method="post" path="/subscriptions/{id}/resume" -->
+```typescript
+import { Flexprice } from "flexprice-ts";
+
+const flexprice = new Flexprice({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const result = await flexprice.subscriptions.resumeSubscription({
+    id: "<id>",
+    dtoResumeSubscriptionRequest: {
+      resumeMode: "auto",
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { subscriptionsResumeSubscription } from "flexprice-ts/funcs/subscriptionsResumeSubscription.js";
+
+// Use `FlexpriceCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const flexprice = new FlexpriceCore({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await subscriptionsResumeSubscription(flexprice, {
+    id: "<id>",
+    dtoResumeSubscriptionRequest: {
+      resumeMode: "auto",
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("subscriptionsResumeSubscription failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.ResumeSubscriptionRequest](../../sdk/models/operations/resumesubscriptionrequest.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.ResumeSubscriptionResponse](../../sdk/models/operations/resumesubscriptionresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## updateSubscription
+
+Use when changing subscription details (e.g. quantity, billing anchor, or parent). Supports partial update; send "" to clear parent_subscription_id.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="updateSubscription" method="put" path="/subscriptions/{id}" -->
+```typescript
+import { Flexprice } from "flexprice-ts";
+
+const flexprice = new Flexprice({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const result = await flexprice.subscriptions.updateSubscription({
+    id: "<id>",
+    dtoUpdateSubscriptionRequest: {},
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { subscriptionsUpdateSubscription } from "flexprice-ts/funcs/subscriptionsUpdateSubscription.js";
+
+// Use `FlexpriceCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const flexprice = new FlexpriceCore({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await subscriptionsUpdateSubscription(flexprice, {
+    id: "<id>",
+    dtoUpdateSubscriptionRequest: {},
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("subscriptionsUpdateSubscription failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.UpdateSubscriptionRequest](../../sdk/models/operations/updatesubscriptionrequest.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.UpdateSubscriptionResponse](../../sdk/models/operations/updatesubscriptionresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## updateSubscriptionLineItem
+
+Use when changing a subscription line item (e.g. quantity or price). Implemented by ending the current line and creating a new one for clean billing.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="updateSubscriptionLineItem" method="put" path="/subscriptions/lineitems/{id}" -->
+```typescript
+import { Flexprice } from "flexprice-ts";
+
+const flexprice = new Flexprice({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const result = await flexprice.subscriptions.updateSubscriptionLineItem({
+    id: "<id>",
+    dtoUpdateSubscriptionLineItemRequest: {},
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { subscriptionsUpdateSubscriptionLineItem } from "flexprice-ts/funcs/subscriptionsUpdateSubscriptionLineItem.js";
+
+// Use `FlexpriceCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const flexprice = new FlexpriceCore({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await subscriptionsUpdateSubscriptionLineItem(flexprice, {
+    id: "<id>",
+    dtoUpdateSubscriptionLineItemRequest: {},
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("subscriptionsUpdateSubscriptionLineItem failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.UpdateSubscriptionLineItemRequest](../../sdk/models/operations/updatesubscriptionlineitemrequest.md)                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.UpdateSubscriptionLineItemResponse](../../sdk/models/operations/updatesubscriptionlineitemresponse.md)\>**
 
 ### Errors
 

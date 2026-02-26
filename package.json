@@ -1,21 +1,35 @@
 {
-  "name": "flexprice-sdk-test",
-  "version": "1.0.61",
-  "author": "FlexPrice",
-  "main": "./index.js",
+  "name": "flexprice-ts",
+  "version": "0.0.32",
+  "author": "Speakeasy",
+  "type": "module",
+  "tshy": {
+    "sourceDialects": [
+      "flexprice-ts/source"
+    ],
+    "exports": {
+      ".": "./src/index.ts",
+      "./package.json": "./package.json",
+      "./sdk/types": "./src/sdk/types/index.ts",
+      "./sdk/models/errors": "./src/sdk/models/errors/index.ts",
+      "./sdk/models/shared": "./src/sdk/models/shared/index.ts",
+      "./sdk/models/operations": "./src/sdk/models/operations/index.ts",
+      "./*.js": "./src/*.ts",
+      "./*": "./src/*.ts"
+    }
+  },
   "sideEffects": false,
   "scripts": {
     "lint": "eslint --cache --max-warnings=0 src",
-    "build": "tsc",
+    "build": "tshy",
     "prepublishOnly": "npm run build"
   },
-  "peerDependencies": {
-    
-  },
+  "peerDependencies": {},
   "devDependencies": {
     "@eslint/js": "^9.26.0",
     "eslint": "^9.26.0",
     "globals": "^15.14.0",
+    "tshy": "^2.0.0",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.26.0"
   },

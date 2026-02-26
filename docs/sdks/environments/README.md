@@ -4,101 +4,26 @@
 
 ### Available Operations
 
-* [getEnvironments](#getenvironments) - Get environments
-* [postEnvironments](#postenvironments) - Create an environment
-* [getEnvironmentsId](#getenvironmentsid) - Get an environment
-* [putEnvironmentsId](#putenvironmentsid) - Update an environment
+* [createEnvironment](#createenvironment) - Create environment
+* [updateEnvironment](#updateenvironment) - Update environment
 
-## getEnvironments
+## createEnvironment
 
-Get environments
+Use when setting up a new environment (e.g. production, staging) for the tenant. Ideal for separating billing or config per environment.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="get_/environments" method="get" path="/environments" -->
+<!-- UsageSnippet language="typescript" operationID="createEnvironment" method="post" path="/environments" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.environments.getEnvironments({});
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { environmentsGetEnvironments } from "flexprice-sdk-test/funcs/environments-get-environments.js";
-
-// Use `FlexPriceCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const res = await environmentsGetEnvironments(flexPrice, {});
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("environmentsGetEnvironments failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetEnvironmentsRequest](../../models/operations/get-environments-request.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.DtoListEnvironmentsResponse](../../models/components/dto-list-environments-response.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## postEnvironments
-
-Create an environment
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="post_/environments" method="post" path="/environments" -->
-```typescript
-import { FlexPrice } from "flexprice-sdk-test";
-
-const flexPrice = new FlexPrice({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const result = await flexPrice.environments.postEnvironments({
+  const result = await flexprice.environments.createEnvironment({
     name: "<value>",
     type: "<value>",
   });
@@ -114,18 +39,18 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { environmentsPostEnvironments } from "flexprice-sdk-test/funcs/environments-post-environments.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { environmentsCreateEnvironment } from "flexprice-ts/funcs/environmentsCreateEnvironment.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await environmentsPostEnvironments(flexPrice, {
+  const res = await environmentsCreateEnvironment(flexprice, {
     name: "<value>",
     type: "<value>",
   });
@@ -133,7 +58,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("environmentsPostEnvironments failed:", res.error);
+    console.log("environmentsCreateEnvironment failed:", res.error);
   }
 }
 
@@ -144,40 +69,41 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreateEnvironmentRequest](../../models/components/dto-create-environment-request.md)                                                                            | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [shared.DtoCreateEnvironmentRequest](../../sdk/models/shared/dtocreateenvironmentrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoEnvironmentResponse](../../models/components/dto-environment-response.md)\>**
+**Promise\<[operations.CreateEnvironmentResponse](../../sdk/models/operations/createenvironmentresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## getEnvironmentsId
+## updateEnvironment
 
-Get an environment
+Use when changing environment name or settings (e.g. renaming or updating metadata).
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="get_/environments/{id}" method="get" path="/environments/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="updateEnvironment" method="put" path="/environments/{id}" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.environments.getEnvironmentsId("<id>");
+  const result = await flexprice.environments.updateEnvironment({
+    id: "<id>",
+    dtoUpdateEnvironmentRequest: {},
+  });
 
   console.log(result);
 }
@@ -190,23 +116,26 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { environmentsGetEnvironmentsId } from "flexprice-sdk-test/funcs/environments-get-environments-id.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { environmentsUpdateEnvironment } from "flexprice-ts/funcs/environmentsUpdateEnvironment.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await environmentsGetEnvironmentsId(flexPrice, "<id>");
+  const res = await environmentsUpdateEnvironment(flexprice, {
+    id: "<id>",
+    dtoUpdateEnvironmentRequest: {},
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("environmentsGetEnvironmentsId failed:", res.error);
+    console.log("environmentsUpdateEnvironment failed:", res.error);
   }
 }
 
@@ -217,93 +146,17 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Environment ID                                                                                                                                                                 |
+| `request`                                                                                                                                                                      | [operations.UpdateEnvironmentRequest](../../sdk/models/operations/updateenvironmentrequest.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoEnvironmentResponse](../../models/components/dto-environment-response.md)\>**
+**Promise\<[operations.UpdateEnvironmentResponse](../../sdk/models/operations/updateenvironmentresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400, 404                   | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## putEnvironmentsId
-
-Update an environment
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="put_/environments/{id}" method="put" path="/environments/{id}" -->
-```typescript
-import { FlexPrice } from "flexprice-sdk-test";
-
-const flexPrice = new FlexPrice({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const result = await flexPrice.environments.putEnvironmentsId("<id>", {});
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { environmentsPutEnvironmentsId } from "flexprice-sdk-test/funcs/environments-put-environments-id.js";
-
-// Use `FlexPriceCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const res = await environmentsPutEnvironmentsId(flexPrice, "<id>", {});
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("environmentsPutEnvironmentsId failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Environment ID                                                                                                                                                                 |
-| `body`                                                                                                                                                                         | [components.DtoUpdateEnvironmentRequest](../../models/components/dto-update-environment-request.md)                                                                            | :heavy_check_mark:                                                                                                                                                             | Environment                                                                                                                                                                    |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.DtoEnvironmentResponse](../../models/components/dto-environment-response.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400, 404                   | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |

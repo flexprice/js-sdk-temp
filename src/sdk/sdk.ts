@@ -4,17 +4,14 @@
 
 import { ClientSDK } from "../lib/sdks.js";
 import { Addons } from "./addons.js";
-import { AlertLogs } from "./alert-logs.js";
-import { Auth } from "./auth.js";
-import { Connections } from "./connections.js";
+import { Alerts } from "./alerts.js";
 import { Costs } from "./costs.js";
 import { Coupons } from "./coupons.js";
-import { CreditGrants } from "./credit-grants.js";
-import { CreditNotes } from "./credit-notes.js";
-import { CustomerPortal } from "./customer-portal.js";
+import { CreditGrants } from "./creditgrants.js";
+import { CreditNotes } from "./creditnotes.js";
 import { Customers } from "./customers.js";
 import { Entitlements } from "./entitlements.js";
-import { EntityIntegrationMappings } from "./entity-integration-mappings.js";
+import { EntityIntegrationMappings } from "./entityintegrationmappings.js";
 import { Environments } from "./environments.js";
 import { Events } from "./events.js";
 import { Features } from "./features.js";
@@ -23,21 +20,22 @@ import { Integrations } from "./integrations.js";
 import { Invoices } from "./invoices.js";
 import { Payments } from "./payments.js";
 import { Plans } from "./plans.js";
-import { PriceUnits } from "./price-units.js";
 import { Prices } from "./prices.js";
+import { PriceUnits } from "./priceunits.js";
 import { Rbac } from "./rbac.js";
-import { ScheduledTasks } from "./scheduled-tasks.js";
+import { ScheduledTasks } from "./scheduledtasks.js";
 import { Secrets } from "./secrets.js";
 import { Subscriptions } from "./subscriptions.js";
 import { Tasks } from "./tasks.js";
-import { TaxAssociations } from "./tax-associations.js";
-import { TaxRates } from "./tax-rates.js";
+import { TaxAssociations } from "./taxassociations.js";
+import { TaxRates } from "./taxrates.js";
 import { Tenants } from "./tenants.js";
 import { Users } from "./users.js";
 import { Wallets } from "./wallets.js";
 import { Webhooks } from "./webhooks.js";
+import { Workflows } from "./workflows.js";
 
-export class FlexPrice extends ClientSDK {
+export class Flexprice extends ClientSDK {
   private _addons?: Addons;
   get addons(): Addons {
     return (this._addons ??= new Addons(this._options));
@@ -48,19 +46,9 @@ export class FlexPrice extends ClientSDK {
     return (this._entitlements ??= new Entitlements(this._options));
   }
 
-  private _alertLogs?: AlertLogs;
-  get alertLogs(): AlertLogs {
-    return (this._alertLogs ??= new AlertLogs(this._options));
-  }
-
-  private _auth?: Auth;
-  get auth(): Auth {
-    return (this._auth ??= new Auth(this._options));
-  }
-
-  private _connections?: Connections;
-  get connections(): Connections {
-    return (this._connections ??= new Connections(this._options));
+  private _alerts?: Alerts;
+  get alerts(): Alerts {
+    return (this._alerts ??= new Alerts(this._options));
   }
 
   private _costs?: Costs;
@@ -135,11 +123,6 @@ export class FlexPrice extends ClientSDK {
     return (this._plans ??= new Plans(this._options));
   }
 
-  private _customerPortal?: CustomerPortal;
-  get customerPortal(): CustomerPortal {
-    return (this._customerPortal ??= new CustomerPortal(this._options));
-  }
-
   private _prices?: Prices;
   get prices(): Prices {
     return (this._prices ??= new Prices(this._options));
@@ -203,5 +186,10 @@ export class FlexPrice extends ClientSDK {
   private _webhooks?: Webhooks;
   get webhooks(): Webhooks {
     return (this._webhooks ??= new Webhooks(this._options));
+  }
+
+  private _workflows?: Workflows;
+  get workflows(): Workflows {
+    return (this._workflows ??= new Workflows(this._options));
   }
 }

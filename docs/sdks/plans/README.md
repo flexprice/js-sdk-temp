@@ -4,104 +4,31 @@
 
 ### Available Operations
 
-* [getPlans](#getplans) - Get plans
-* [postPlans](#postplans) - Create a new plan
-* [postPlansSearch](#postplanssearch) - List plans by filter
-* [getPlansId](#getplansid) - Get a plan
-* [putPlansId](#putplansid) - Update a plan
-* [deletePlansId](#deleteplansid) - Delete a plan
-* [postPlansIdSyncSubscriptions](#postplansidsyncsubscriptions) - Synchronize plan prices
+* [createPlan](#createplan) - Create plan
+* [deletePlan](#deleteplan) - Delete plan
+* [getPlan](#getplan) - Get plan
+* [postPlansIdClone](#postplansidclone) - Clone a plan
+* [queryPlan](#queryplan) - Query plans
+* [syncPlanPrices](#syncplanprices) - Synchronize plan prices
+* [updatePlan](#updateplan) - Update plan
 
-## getPlans
+## createPlan
 
-Get plans with optional filtering
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="get_/plans" method="get" path="/plans" -->
-```typescript
-import { FlexPrice } from "flexprice-sdk-test";
-
-const flexPrice = new FlexPrice({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const result = await flexPrice.plans.getPlans({});
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { plansGetPlans } from "flexprice-sdk-test/funcs/plans-get-plans.js";
-
-// Use `FlexPriceCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const res = await plansGetPlans(flexPrice, {});
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("plansGetPlans failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetPlansRequest](../../models/operations/get-plans-request.md)                                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.DtoListPlansResponse](../../models/components/dto-list-plans-response.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## postPlans
-
-Create a new plan with the specified configuration
+Use when defining a new pricing plan (e.g. Free, Pro, Enterprise). Attach prices and entitlements; customers subscribe to plans.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="post_/plans" method="post" path="/plans" -->
+<!-- UsageSnippet language="typescript" operationID="createPlan" method="post" path="/plans" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.plans.postPlans({
+  const result = await flexprice.plans.createPlan({
     name: "<value>",
   });
 
@@ -116,25 +43,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { plansPostPlans } from "flexprice-sdk-test/funcs/plans-post-plans.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { plansCreatePlan } from "flexprice-ts/funcs/plansCreatePlan.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await plansPostPlans(flexPrice, {
+  const res = await plansCreatePlan(flexprice, {
     name: "<value>",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("plansPostPlans failed:", res.error);
+    console.log("plansCreatePlan failed:", res.error);
   }
 }
 
@@ -145,40 +72,40 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreatePlanRequest](../../models/components/dto-create-plan-request.md)                                                                                          | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [shared.DtoCreatePlanRequest](../../sdk/models/shared/dtocreateplanrequest.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoPlanResponse](../../models/components/dto-plan-response.md)\>**
+**Promise\<[operations.CreatePlanResponse](../../sdk/models/operations/createplanresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## postPlansSearch
+## deletePlan
 
-List plans by filter
+Use when retiring a plan (e.g. end-of-life). Existing subscriptions may be affected. Returns 200 with success message.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="post_/plans/search" method="post" path="/plans/search" -->
+<!-- UsageSnippet language="typescript" operationID="deletePlan" method="delete" path="/plans/{id}" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.plans.postPlansSearch({});
+  const result = await flexprice.plans.deletePlan({
+    id: "<id>",
+  });
 
   console.log(result);
 }
@@ -191,23 +118,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { plansPostPlansSearch } from "flexprice-sdk-test/funcs/plans-post-plans-search.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { plansDeletePlan } from "flexprice-ts/funcs/plansDeletePlan.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await plansPostPlansSearch(flexPrice, {});
+  const res = await plansDeletePlan(flexprice, {
+    id: "<id>",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("plansPostPlansSearch failed:", res.error);
+    console.log("plansDeletePlan failed:", res.error);
   }
 }
 
@@ -218,40 +147,40 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.TypesPlanFilter](../../models/components/types-plan-filter.md)                                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.DeletePlanRequest](../../sdk/models/operations/deleteplanrequest.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoListPlansResponse](../../models/components/dto-list-plans-response.md)\>**
+**Promise\<[operations.DeletePlanResponse](../../sdk/models/operations/deleteplanresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## getPlansId
+## getPlan
 
-Get a plan by ID
+Use when you need to load a single plan (e.g. for display or to create a subscription).
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="get_/plans/{id}" method="get" path="/plans/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="getPlan" method="get" path="/plans/{id}" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.plans.getPlansId("<id>");
+  const result = await flexprice.plans.getPlan({
+    id: "<id>",
+  });
 
   console.log(result);
 }
@@ -264,23 +193,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { plansGetPlansId } from "flexprice-sdk-test/funcs/plans-get-plans-id.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { plansGetPlan } from "flexprice-ts/funcs/plansGetPlan.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await plansGetPlansId(flexPrice, "<id>");
+  const res = await plansGetPlan(flexprice, {
+    id: "<id>",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("plansGetPlansId failed:", res.error);
+    console.log("plansGetPlan failed:", res.error);
   }
 }
 
@@ -291,40 +222,41 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Plan ID                                                                                                                                                                        |
+| `request`                                                                                                                                                                      | [operations.GetPlanRequest](../../sdk/models/operations/getplanrequest.md)                                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoPlanResponse](../../models/components/dto-plan-response.md)\>**
+**Promise\<[operations.GetPlanResponse](../../sdk/models/operations/getplanresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400, 404                   | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## putPlansId
+## postPlansIdClone
 
-Update a plan by ID
+Clone an existing plan, copying its active prices, published entitlements, and published credit grants
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="put_/plans/{id}" method="put" path="/plans/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="post_/plans/{id}/clone" method="post" path="/plans/{id}/clone" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.plans.putPlansId("<id>", {});
+  const result = await flexprice.plans.postPlansIdClone({
+    id: "<id>",
+    dtoClonePlanRequest: {},
+  });
 
   console.log(result);
 }
@@ -337,23 +269,26 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { plansPutPlansId } from "flexprice-sdk-test/funcs/plans-put-plans-id.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { plansPostPlansIdClone } from "flexprice-ts/funcs/plansPostPlansIdClone.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await plansPutPlansId(flexPrice, "<id>", {});
+  const res = await plansPostPlansIdClone(flexprice, {
+    id: "<id>",
+    dtoClonePlanRequest: {},
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("plansPutPlansId failed:", res.error);
+    console.log("plansPostPlansIdClone failed:", res.error);
   }
 }
 
@@ -364,41 +299,38 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Plan ID                                                                                                                                                                        |
-| `body`                                                                                                                                                                         | [components.DtoUpdatePlanRequest](../../models/components/dto-update-plan-request.md)                                                                                          | :heavy_check_mark:                                                                                                                                                             | Plan update                                                                                                                                                                    |
+| `request`                                                                                                                                                                      | [operations.PostPlansIdCloneRequest](../../sdk/models/operations/postplansidclonerequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoPlanResponse](../../models/components/dto-plan-response.md)\>**
+**Promise\<[operations.PostPlansIdCloneResponse](../../sdk/models/operations/postplansidcloneresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400, 404                   | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## deletePlansId
+## queryPlan
 
-Delete a plan by ID
+Use when listing or searching plans (e.g. plan picker or admin catalog). Returns a paginated list; supports filtering and sorting.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="delete_/plans/{id}" method="delete" path="/plans/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="queryPlan" method="post" path="/plans/search" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.plans.deletePlansId("<id>");
+  const result = await flexprice.plans.queryPlan({});
 
   console.log(result);
 }
@@ -411,23 +343,23 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { plansDeletePlansId } from "flexprice-sdk-test/funcs/plans-delete-plans-id.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { plansQueryPlan } from "flexprice-ts/funcs/plansQueryPlan.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await plansDeletePlansId(flexPrice, "<id>");
+  const res = await plansQueryPlan(flexprice, {});
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("plansDeletePlansId failed:", res.error);
+    console.log("plansQueryPlan failed:", res.error);
   }
 }
 
@@ -438,40 +370,40 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Plan ID                                                                                                                                                                        |
+| `request`                                                                                                                                                                      | [shared.TypesPlanFilter](../../sdk/models/shared/typesplanfilter.md)                                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoSuccessResponse](../../models/components/dto-success-response.md)\>**
+**Promise\<[operations.QueryPlanResponse](../../sdk/models/operations/queryplanresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400, 404                   | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## postPlansIdSyncSubscriptions
+## syncPlanPrices
 
-Synchronize current plan prices with all existing active subscriptions
+Use when you have changed plan prices and need to push them to all active subscriptions (e.g. global price update). Returns workflow ID.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="post_/plans/{id}/sync/subscriptions" method="post" path="/plans/{id}/sync/subscriptions" -->
+<!-- UsageSnippet language="typescript" operationID="syncPlanPrices" method="post" path="/plans/{id}/sync/subscriptions" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.plans.postPlansIdSyncSubscriptions("<id>");
+  const result = await flexprice.plans.syncPlanPrices({
+    id: "<id>",
+  });
 
   console.log(result);
 }
@@ -484,23 +416,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { plansPostPlansIdSyncSubscriptions } from "flexprice-sdk-test/funcs/plans-post-plans-id-sync-subscriptions.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { plansSyncPlanPrices } from "flexprice-ts/funcs/plansSyncPlanPrices.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await plansPostPlansIdSyncSubscriptions(flexPrice, "<id>");
+  const res = await plansSyncPlanPrices(flexprice, {
+    id: "<id>",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("plansPostPlansIdSyncSubscriptions failed:", res.error);
+    console.log("plansSyncPlanPrices failed:", res.error);
   }
 }
 
@@ -511,19 +445,94 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Plan ID                                                                                                                                                                        |
+| `request`                                                                                                                                                                      | [operations.SyncPlanPricesRequest](../../sdk/models/operations/syncplanpricesrequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.ModelsTemporalWorkflowResult](../../models/components/models-temporal-workflow-result.md)\>**
+**Promise\<[operations.SyncPlanPricesResponse](../../sdk/models/operations/syncplanpricesresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400, 404, 422              | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## updatePlan
+
+Use when changing plan details (e.g. name, interval, or metadata). Partial update supported.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="updatePlan" method="put" path="/plans/{id}" -->
+```typescript
+import { Flexprice } from "flexprice-ts";
+
+const flexprice = new Flexprice({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const result = await flexprice.plans.updatePlan({
+    id: "<id>",
+    dtoUpdatePlanRequest: {},
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { plansUpdatePlan } from "flexprice-ts/funcs/plansUpdatePlan.js";
+
+// Use `FlexpriceCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const flexprice = new FlexpriceCore({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await plansUpdatePlan(flexprice, {
+    id: "<id>",
+    dtoUpdatePlanRequest: {},
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("plansUpdatePlan failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.UpdatePlanRequest](../../sdk/models/operations/updateplanrequest.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.UpdatePlanResponse](../../sdk/models/operations/updateplanresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |

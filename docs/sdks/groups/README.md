@@ -4,28 +4,28 @@
 
 ### Available Operations
 
-* [postGroups](#postgroups) - Create a group
-* [postGroupsSearch](#postgroupssearch) - Get groups
-* [getGroupsId](#getgroupsid) - Get a group
-* [deleteGroupsId](#deletegroupsid) - Delete a group
+* [createGroup](#creategroup) - Create group
+* [deleteGroup](#deletegroup) - Delete group
+* [getGroup](#getgroup) - Get group
+* [queryGroup](#querygroup) - Query groups
 
-## postGroups
+## createGroup
 
-Create a new group for organizing entities (prices, plans, customers, etc.)
+Use when organizing entities into a group (e.g. for filtering prices or plans by product line or region).
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="post_/groups" method="post" path="/groups" -->
+<!-- UsageSnippet language="typescript" operationID="createGroup" method="post" path="/groups" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.groups.postGroups({
+  const result = await flexprice.groups.createGroup({
     entityType: "<value>",
     lookupKey: "<value>",
     name: "<value>",
@@ -42,18 +42,18 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { groupsPostGroups } from "flexprice-sdk-test/funcs/groups-post-groups.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { groupsCreateGroup } from "flexprice-ts/funcs/groupsCreateGroup.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await groupsPostGroups(flexPrice, {
+  const res = await groupsCreateGroup(flexprice, {
     entityType: "<value>",
     lookupKey: "<value>",
     name: "<value>",
@@ -62,7 +62,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("groupsPostGroups failed:", res.error);
+    console.log("groupsCreateGroup failed:", res.error);
   }
 }
 
@@ -73,40 +73,40 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreateGroupRequest](../../models/components/dto-create-group-request.md)                                                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [shared.DtoCreateGroupRequest](../../sdk/models/shared/dtocreategrouprequest.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoGroupResponse](../../models/components/dto-group-response.md)\>**
+**Promise\<[operations.CreateGroupResponse](../../sdk/models/operations/creategroupresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## postGroupsSearch
+## deleteGroup
 
-Get groups with optional filtering via query parameters
+Use when removing a group and clearing its entity associations (e.g. retiring a product line). Returns 204 or 200 on success.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="post_/groups/search" method="post" path="/groups/search" -->
+<!-- UsageSnippet language="typescript" operationID="deleteGroup" method="delete" path="/groups/{id}" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.groups.postGroupsSearch({});
+  const result = await flexprice.groups.deleteGroup({
+    id: "<id>",
+  });
 
   console.log(result);
 }
@@ -119,23 +119,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { groupsPostGroupsSearch } from "flexprice-sdk-test/funcs/groups-post-groups-search.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { groupsDeleteGroup } from "flexprice-ts/funcs/groupsDeleteGroup.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await groupsPostGroupsSearch(flexPrice, {});
+  const res = await groupsDeleteGroup(flexprice, {
+    id: "<id>",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("groupsPostGroupsSearch failed:", res.error);
+    console.log("groupsDeleteGroup failed:", res.error);
   }
 }
 
@@ -146,40 +148,40 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PostGroupsSearchRequest](../../models/operations/post-groups-search-request.md)                                                                                    | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.DeleteGroupRequest](../../sdk/models/operations/deletegrouprequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoListGroupsResponse](../../models/components/dto-list-groups-response.md)\>**
+**Promise\<[shared.ErrorsErrorResponse](../../sdk/models/shared/errorserrorresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## getGroupsId
+## getGroup
 
-Get a group by ID
+Use when you need to load a single group (e.g. for display or to assign entities).
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="get_/groups/{id}" method="get" path="/groups/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="getGroup" method="get" path="/groups/{id}" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.groups.getGroupsId("<id>");
+  const result = await flexprice.groups.getGroup({
+    id: "<id>",
+  });
 
   console.log(result);
 }
@@ -192,23 +194,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { groupsGetGroupsId } from "flexprice-sdk-test/funcs/groups-get-groups-id.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { groupsGetGroup } from "flexprice-ts/funcs/groupsGetGroup.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await groupsGetGroupsId(flexPrice, "<id>");
+  const res = await groupsGetGroup(flexprice, {
+    id: "<id>",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("groupsGetGroupsId failed:", res.error);
+    console.log("groupsGetGroup failed:", res.error);
   }
 }
 
@@ -219,42 +223,40 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Group ID                                                                                                                                                                       |
+| `request`                                                                                                                                                                      | [operations.GetGroupRequest](../../sdk/models/operations/getgrouprequest.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoGroupResponse](../../models/components/dto-group-response.md)\>**
+**Promise\<[operations.GetGroupResponse](../../sdk/models/operations/getgroupresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400, 404                   | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## deleteGroupsId
+## queryGroup
 
-Delete a group and remove all entity associations
+Use when listing or searching groups (e.g. admin catalog). Returns a paginated list; supports filtering and sorting.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="delete_/groups/{id}" method="delete" path="/groups/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="queryGroup" method="post" path="/groups/search" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  await flexPrice.groups.deleteGroupsId("<id>");
+  const result = await flexprice.groups.queryGroup({});
 
-
+  console.log(result);
 }
 
 run();
@@ -265,23 +267,23 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { groupsDeleteGroupsId } from "flexprice-sdk-test/funcs/groups-delete-groups-id.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { groupsQueryGroup } from "flexprice-ts/funcs/groupsQueryGroup.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await groupsDeleteGroupsId(flexPrice, "<id>");
+  const res = await groupsQueryGroup(flexprice, {});
   if (res.ok) {
     const { value: result } = res;
-    
+    console.log(result);
   } else {
-    console.log("groupsDeleteGroupsId failed:", res.error);
+    console.log("groupsQueryGroup failed:", res.error);
   }
 }
 
@@ -292,19 +294,17 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Group ID                                                                                                                                                                       |
+| `request`                                                                                                                                                                      | [shared.TypesGroupFilter](../../sdk/models/shared/typesgroupfilter.md)                                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<void\>**
+**Promise\<[operations.QueryGroupResponse](../../sdk/models/operations/querygroupresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400, 404                   | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |

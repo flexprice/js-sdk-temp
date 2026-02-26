@@ -4,181 +4,34 @@
 
 ### Available Operations
 
-* [getAddonsIdEntitlements](#getaddonsidentitlements) - Get addon entitlements
-* [getEntitlements](#getentitlements) - Get entitlements
-* [postEntitlements](#postentitlements) - Create a new entitlement
-* [postEntitlementsBulk](#postentitlementsbulk) - Create multiple entitlements in bulk
-* [postEntitlementsSearch](#postentitlementssearch) - List entitlements by filter
-* [getEntitlementsId](#getentitlementsid) - Get an entitlement by ID
-* [putEntitlementsId](#putentitlementsid) - Update an entitlement
-* [deleteEntitlementsId](#deleteentitlementsid) - Delete an entitlement
-* [getPlansIdEntitlements](#getplansidentitlements) - Get plan entitlements
+* [createEntitlement](#createentitlement) - Create entitlement
+* [createEntitlementsBulk](#createentitlementsbulk) - Create entitlements in bulk
+* [deleteEntitlement](#deleteentitlement) - Delete entitlement
+* [getAddonEntitlements](#getaddonentitlements) - Get addon entitlements
+* [getEntitlement](#getentitlement) - Get entitlement
+* [getPlanEntitlements](#getplanentitlements) - Get plan entitlements
+* [queryEntitlement](#queryentitlement) - Query entitlements
+* [updateEntitlement](#updateentitlement) - Update entitlement
 
-## getAddonsIdEntitlements
+## createEntitlement
 
-Get all entitlements for an addon
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="get_/addons/{id}/entitlements" method="get" path="/addons/{id}/entitlements" -->
-```typescript
-import { FlexPrice } from "flexprice-sdk-test";
-
-const flexPrice = new FlexPrice({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const result = await flexPrice.entitlements.getAddonsIdEntitlements("<id>");
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { entitlementsGetAddonsIdEntitlements } from "flexprice-sdk-test/funcs/entitlements-get-addons-id-entitlements.js";
-
-// Use `FlexPriceCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const res = await entitlementsGetAddonsIdEntitlements(flexPrice, "<id>");
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("entitlementsGetAddonsIdEntitlements failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Addon ID                                                                                                                                                                       |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.DtoListEntitlementsResponse](../../models/components/dto-list-entitlements-response.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400, 404                   | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## getEntitlements
-
-Get entitlements with the specified filter
+Use when attaching a feature (and its limit) to a plan or addon (e.g. "10 seats" or "1000 API calls"). Defines what the plan/addon includes.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="get_/entitlements" method="get" path="/entitlements" -->
+<!-- UsageSnippet language="typescript" operationID="createEntitlement" method="post" path="/entitlements" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.entitlements.getEntitlements({});
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { entitlementsGetEntitlements } from "flexprice-sdk-test/funcs/entitlements-get-entitlements.js";
-
-// Use `FlexPriceCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const res = await entitlementsGetEntitlements(flexPrice, {});
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("entitlementsGetEntitlements failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetEntitlementsRequest](../../models/operations/get-entitlements-request.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.DtoListEntitlementsResponse](../../models/components/dto-list-entitlements-response.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## postEntitlements
-
-Create a new entitlement with the specified configuration
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="post_/entitlements" method="post" path="/entitlements" -->
-```typescript
-import { FlexPrice } from "flexprice-sdk-test";
-
-const flexPrice = new FlexPrice({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const result = await flexPrice.entitlements.postEntitlements({
+  const result = await flexprice.entitlements.createEntitlement({
     featureId: "<id>",
-    featureType: "boolean",
+    featureType: "metered",
   });
 
   console.log(result);
@@ -192,26 +45,26 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { entitlementsPostEntitlements } from "flexprice-sdk-test/funcs/entitlements-post-entitlements.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { entitlementsCreateEntitlement } from "flexprice-ts/funcs/entitlementsCreateEntitlement.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await entitlementsPostEntitlements(flexPrice, {
+  const res = await entitlementsCreateEntitlement(flexprice, {
     featureId: "<id>",
-    featureType: "boolean",
+    featureType: "metered",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("entitlementsPostEntitlements failed:", res.error);
+    console.log("entitlementsCreateEntitlement failed:", res.error);
   }
 }
 
@@ -222,41 +75,44 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreateEntitlementRequest](../../models/components/dto-create-entitlement-request.md)                                                                            | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [shared.DtoCreateEntitlementRequest](../../sdk/models/shared/dtocreateentitlementrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoEntitlementResponse](../../models/components/dto-entitlement-response.md)\>**
+**Promise\<[operations.CreateEntitlementResponse](../../sdk/models/operations/createentitlementresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## postEntitlementsBulk
+## createEntitlementsBulk
 
-Create multiple entitlements with the specified configurations
+Use when attaching many features to a plan or addon at once (e.g. initial plan setup or import). Bulk version of create entitlement.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="post_/entitlements/bulk" method="post" path="/entitlements/bulk" -->
+<!-- UsageSnippet language="typescript" operationID="createEntitlementsBulk" method="post" path="/entitlements/bulk" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.entitlements.postEntitlementsBulk({
-    items: [],
+  const result = await flexprice.entitlements.createEntitlementsBulk({
+    items: [
+      {
+        featureId: "<id>",
+        featureType: "static",
+      },
+    ],
   });
 
   console.log(result);
@@ -270,25 +126,30 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { entitlementsPostEntitlementsBulk } from "flexprice-sdk-test/funcs/entitlements-post-entitlements-bulk.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { entitlementsCreateEntitlementsBulk } from "flexprice-ts/funcs/entitlementsCreateEntitlementsBulk.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await entitlementsPostEntitlementsBulk(flexPrice, {
-    items: [],
+  const res = await entitlementsCreateEntitlementsBulk(flexprice, {
+    items: [
+      {
+        featureId: "<id>",
+        featureType: "static",
+      },
+    ],
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("entitlementsPostEntitlementsBulk failed:", res.error);
+    console.log("entitlementsCreateEntitlementsBulk failed:", res.error);
   }
 }
 
@@ -299,40 +160,40 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreateBulkEntitlementRequest](../../models/components/dto-create-bulk-entitlement-request.md)                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [shared.DtoCreateBulkEntitlementRequest](../../sdk/models/shared/dtocreatebulkentitlementrequest.md)                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoCreateBulkEntitlementResponse](../../models/components/dto-create-bulk-entitlement-response.md)\>**
+**Promise\<[operations.CreateEntitlementsBulkResponse](../../sdk/models/operations/createentitlementsbulkresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## postEntitlementsSearch
+## deleteEntitlement
 
-List entitlements by filter
+Use when removing a feature from a plan or addon (e.g. deprecating a capability). Returns 200 with success message.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="post_/entitlements/search" method="post" path="/entitlements/search" -->
+<!-- UsageSnippet language="typescript" operationID="deleteEntitlement" method="delete" path="/entitlements/{id}" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.entitlements.postEntitlementsSearch({});
+  const result = await flexprice.entitlements.deleteEntitlement({
+    id: "<id>",
+  });
 
   console.log(result);
 }
@@ -345,23 +206,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { entitlementsPostEntitlementsSearch } from "flexprice-sdk-test/funcs/entitlements-post-entitlements-search.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { entitlementsDeleteEntitlement } from "flexprice-ts/funcs/entitlementsDeleteEntitlement.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await entitlementsPostEntitlementsSearch(flexPrice, {});
+  const res = await entitlementsDeleteEntitlement(flexprice, {
+    id: "<id>",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("entitlementsPostEntitlementsSearch failed:", res.error);
+    console.log("entitlementsDeleteEntitlement failed:", res.error);
   }
 }
 
@@ -372,40 +235,40 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.TypesEntitlementFilter](../../models/components/types-entitlement-filter.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.DeleteEntitlementRequest](../../sdk/models/operations/deleteentitlementrequest.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoListEntitlementsResponse](../../models/components/dto-list-entitlements-response.md)\>**
+**Promise\<[operations.DeleteEntitlementResponse](../../sdk/models/operations/deleteentitlementresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## getEntitlementsId
+## getAddonEntitlements
 
-Get an entitlement by ID
+Use when checking what features or limits an addon grants (e.g. for display or entitlement logic).
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="get_/entitlements/{id}" method="get" path="/entitlements/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="getAddonEntitlements" method="get" path="/addons/{id}/entitlements" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.entitlements.getEntitlementsId("<id>");
+  const result = await flexprice.entitlements.getAddonEntitlements({
+    id: "<id>",
+  });
 
   console.log(result);
 }
@@ -418,23 +281,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { entitlementsGetEntitlementsId } from "flexprice-sdk-test/funcs/entitlements-get-entitlements-id.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { entitlementsGetAddonEntitlements } from "flexprice-ts/funcs/entitlementsGetAddonEntitlements.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await entitlementsGetEntitlementsId(flexPrice, "<id>");
+  const res = await entitlementsGetAddonEntitlements(flexprice, {
+    id: "<id>",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("entitlementsGetEntitlementsId failed:", res.error);
+    console.log("entitlementsGetAddonEntitlements failed:", res.error);
   }
 }
 
@@ -445,40 +310,40 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Entitlement ID                                                                                                                                                                 |
+| `request`                                                                                                                                                                      | [operations.GetAddonEntitlementsRequest](../../sdk/models/operations/getaddonentitlementsrequest.md)                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoEntitlementResponse](../../models/components/dto-entitlement-response.md)\>**
+**Promise\<[operations.GetAddonEntitlementsResponse](../../sdk/models/operations/getaddonentitlementsresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## putEntitlementsId
+## getEntitlement
 
-Update an entitlement with the specified configuration
+Use when you need to load a single entitlement (e.g. to display or edit a feature limit).
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="put_/entitlements/{id}" method="put" path="/entitlements/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="getEntitlement" method="get" path="/entitlements/{id}" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.entitlements.putEntitlementsId("<id>", {});
+  const result = await flexprice.entitlements.getEntitlement({
+    id: "<id>",
+  });
 
   console.log(result);
 }
@@ -491,23 +356,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { entitlementsPutEntitlementsId } from "flexprice-sdk-test/funcs/entitlements-put-entitlements-id.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { entitlementsGetEntitlement } from "flexprice-ts/funcs/entitlementsGetEntitlement.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await entitlementsPutEntitlementsId(flexPrice, "<id>", {});
+  const res = await entitlementsGetEntitlement(flexprice, {
+    id: "<id>",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("entitlementsPutEntitlementsId failed:", res.error);
+    console.log("entitlementsGetEntitlement failed:", res.error);
   }
 }
 
@@ -518,41 +385,40 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Entitlement ID                                                                                                                                                                 |
-| `body`                                                                                                                                                                         | [components.DtoUpdateEntitlementRequest](../../models/components/dto-update-entitlement-request.md)                                                                            | :heavy_check_mark:                                                                                                                                                             | Entitlement configuration                                                                                                                                                      |
+| `request`                                                                                                                                                                      | [operations.GetEntitlementRequest](../../sdk/models/operations/getentitlementrequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoEntitlementResponse](../../models/components/dto-entitlement-response.md)\>**
+**Promise\<[operations.GetEntitlementResponse](../../sdk/models/operations/getentitlementresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## deleteEntitlementsId
+## getPlanEntitlements
 
-Delete an entitlement
+Use when checking what a plan includes (e.g. feature list or limits for display or gating).
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="delete_/entitlements/{id}" method="delete" path="/entitlements/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="getPlanEntitlements" method="get" path="/plans/{id}/entitlements" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.entitlements.deleteEntitlementsId("<id>");
+  const result = await flexprice.entitlements.getPlanEntitlements({
+    id: "<id>",
+  });
 
   console.log(result);
 }
@@ -565,23 +431,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { entitlementsDeleteEntitlementsId } from "flexprice-sdk-test/funcs/entitlements-delete-entitlements-id.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { entitlementsGetPlanEntitlements } from "flexprice-ts/funcs/entitlementsGetPlanEntitlements.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await entitlementsDeleteEntitlementsId(flexPrice, "<id>");
+  const res = await entitlementsGetPlanEntitlements(flexprice, {
+    id: "<id>",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("entitlementsDeleteEntitlementsId failed:", res.error);
+    console.log("entitlementsGetPlanEntitlements failed:", res.error);
   }
 }
 
@@ -592,40 +460,38 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Entitlement ID                                                                                                                                                                 |
+| `request`                                                                                                                                                                      | [operations.GetPlanEntitlementsRequest](../../sdk/models/operations/getplanentitlementsrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoSuccessResponse](../../models/components/dto-success-response.md)\>**
+**Promise\<[operations.GetPlanEntitlementsResponse](../../sdk/models/operations/getplanentitlementsresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## getPlansIdEntitlements
+## queryEntitlement
 
-Get all entitlements for a plan
+Use when listing or searching entitlements (e.g. plan editor or audit). Returns a paginated list; supports filtering by plan, addon, feature.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="get_/plans/{id}/entitlements" method="get" path="/plans/{id}/entitlements" -->
+<!-- UsageSnippet language="typescript" operationID="queryEntitlement" method="post" path="/entitlements/search" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.entitlements.getPlansIdEntitlements("<id>");
+  const result = await flexprice.entitlements.queryEntitlement({});
 
   console.log(result);
 }
@@ -638,23 +504,23 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { entitlementsGetPlansIdEntitlements } from "flexprice-sdk-test/funcs/entitlements-get-plans-id-entitlements.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { entitlementsQueryEntitlement } from "flexprice-ts/funcs/entitlementsQueryEntitlement.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await entitlementsGetPlansIdEntitlements(flexPrice, "<id>");
+  const res = await entitlementsQueryEntitlement(flexprice, {});
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("entitlementsGetPlansIdEntitlements failed:", res.error);
+    console.log("entitlementsQueryEntitlement failed:", res.error);
   }
 }
 
@@ -665,19 +531,94 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Plan ID                                                                                                                                                                        |
+| `request`                                                                                                                                                                      | [shared.TypesEntitlementFilter](../../sdk/models/shared/typesentitlementfilter.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoPlanResponse](../../models/components/dto-plan-response.md)\>**
+**Promise\<[operations.QueryEntitlementResponse](../../sdk/models/operations/queryentitlementresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400, 404                   | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## updateEntitlement
+
+Use when changing an entitlement (e.g. increasing or decreasing a limit). Request body contains the fields to update.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="updateEntitlement" method="put" path="/entitlements/{id}" -->
+```typescript
+import { Flexprice } from "flexprice-ts";
+
+const flexprice = new Flexprice({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const result = await flexprice.entitlements.updateEntitlement({
+    id: "<id>",
+    dtoUpdateEntitlementRequest: {},
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { entitlementsUpdateEntitlement } from "flexprice-ts/funcs/entitlementsUpdateEntitlement.js";
+
+// Use `FlexpriceCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const flexprice = new FlexpriceCore({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await entitlementsUpdateEntitlement(flexprice, {
+    id: "<id>",
+    dtoUpdateEntitlementRequest: {},
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("entitlementsUpdateEntitlement failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.UpdateEntitlementRequest](../../sdk/models/operations/updateentitlementrequest.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.UpdateEntitlementResponse](../../sdk/models/operations/updateentitlementresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |

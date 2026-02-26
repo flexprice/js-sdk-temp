@@ -4,104 +4,30 @@
 
 ### Available Operations
 
-* [getCreditgrants](#getcreditgrants) - Get credit grants
-* [postCreditgrants](#postcreditgrants) - Create a new credit grant
-* [getCreditgrantsId](#getcreditgrantsid) - Get a credit grant by ID
-* [putCreditgrantsId](#putcreditgrantsid) - Update a credit grant
-* [deleteCreditgrantsId](#deletecreditgrantsid) - Delete a credit grant
-* [getPlansIdCreditgrants](#getplansidcreditgrants) - Get plan credit grants
+* [createCreditGrant](#createcreditgrant) - Create credit grant
+* [deleteCreditGrant](#deletecreditgrant) - Delete credit grant
+* [getCreditGrant](#getcreditgrant) - Get credit grant
+* [getPlanCreditGrants](#getplancreditgrants) - Get plan credit grants
+* [updateCreditGrant](#updatecreditgrant) - Update credit grant
 
-## getCreditgrants
+## createCreditGrant
 
-Get credit grants with the specified filter
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="get_/creditgrants" method="get" path="/creditgrants" -->
-```typescript
-import { FlexPrice } from "flexprice-sdk-test";
-
-const flexPrice = new FlexPrice({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const result = await flexPrice.creditGrants.getCreditgrants({});
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { creditGrantsGetCreditgrants } from "flexprice-sdk-test/funcs/credit-grants-get-creditgrants.js";
-
-// Use `FlexPriceCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const res = await creditGrantsGetCreditgrants(flexPrice, {});
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("creditGrantsGetCreditgrants failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetCreditgrantsRequest](../../models/operations/get-creditgrants-request.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.DtoListCreditGrantsResponse](../../models/components/dto-list-credit-grants-response.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## postCreditgrants
-
-Create a new credit grant with the specified configuration
+Use when giving a customer or plan credits (e.g. prepaid balance or promotional credits). Scope can be plan or subscription; supports start/end dates.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="post_/creditgrants" method="post" path="/creditgrants" -->
+<!-- UsageSnippet language="typescript" operationID="createCreditGrant" method="post" path="/creditgrants" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.creditGrants.postCreditgrants({
-    cadence: "RECURRING",
+  const result = await flexprice.creditGrants.createCreditGrant({
+    cadence: "ONETIME",
     credits: "<value>",
     name: "<value>",
     scope: "PLAN",
@@ -118,19 +44,19 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { creditGrantsPostCreditgrants } from "flexprice-sdk-test/funcs/credit-grants-post-creditgrants.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { creditGrantsCreateCreditGrant } from "flexprice-ts/funcs/creditGrantsCreateCreditGrant.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await creditGrantsPostCreditgrants(flexPrice, {
-    cadence: "RECURRING",
+  const res = await creditGrantsCreateCreditGrant(flexprice, {
+    cadence: "ONETIME",
     credits: "<value>",
     name: "<value>",
     scope: "PLAN",
@@ -139,7 +65,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("creditGrantsPostCreditgrants failed:", res.error);
+    console.log("creditGrantsCreateCreditGrant failed:", res.error);
   }
 }
 
@@ -150,40 +76,40 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreateCreditGrantRequest](../../models/components/dto-create-credit-grant-request.md)                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [shared.DtoCreateCreditGrantRequest](../../sdk/models/shared/dtocreatecreditgrantrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoCreditGrantResponse](../../models/components/dto-credit-grant-response.md)\>**
+**Promise\<[operations.CreateCreditGrantResponse](../../sdk/models/operations/createcreditgrantresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## getCreditgrantsId
+## deleteCreditGrant
 
-Get a credit grant by ID
+Use when removing or ending a credit grant (e.g. revoke promo or close prepaid). Plan-scoped grants are archived; subscription-scoped supports optional effective_date in body.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="get_/creditgrants/{id}" method="get" path="/creditgrants/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="deleteCreditGrant" method="delete" path="/creditgrants/{id}" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.creditGrants.getCreditgrantsId("<id>");
+  const result = await flexprice.creditGrants.deleteCreditGrant({
+    id: "<id>",
+  });
 
   console.log(result);
 }
@@ -196,23 +122,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { creditGrantsGetCreditgrantsId } from "flexprice-sdk-test/funcs/credit-grants-get-creditgrants-id.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { creditGrantsDeleteCreditGrant } from "flexprice-ts/funcs/creditGrantsDeleteCreditGrant.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await creditGrantsGetCreditgrantsId(flexPrice, "<id>");
+  const res = await creditGrantsDeleteCreditGrant(flexprice, {
+    id: "<id>",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("creditGrantsGetCreditgrantsId failed:", res.error);
+    console.log("creditGrantsDeleteCreditGrant failed:", res.error);
   }
 }
 
@@ -223,40 +151,40 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Credit Grant ID                                                                                                                                                                |
+| `request`                                                                                                                                                                      | [operations.DeleteCreditGrantRequest](../../sdk/models/operations/deletecreditgrantrequest.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoCreditGrantResponse](../../models/components/dto-credit-grant-response.md)\>**
+**Promise\<[operations.DeleteCreditGrantResponse](../../sdk/models/operations/deletecreditgrantresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## putCreditgrantsId
+## getCreditGrant
 
-Update a credit grant with the specified configuration
+Use when you need to load a single credit grant (e.g. for display or to check balance).
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="put_/creditgrants/{id}" method="put" path="/creditgrants/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="getCreditGrant" method="get" path="/creditgrants/{id}" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.creditGrants.putCreditgrantsId("<id>", {});
+  const result = await flexprice.creditGrants.getCreditGrant({
+    id: "<id>",
+  });
 
   console.log(result);
 }
@@ -269,23 +197,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { creditGrantsPutCreditgrantsId } from "flexprice-sdk-test/funcs/credit-grants-put-creditgrants-id.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { creditGrantsGetCreditGrant } from "flexprice-ts/funcs/creditGrantsGetCreditGrant.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await creditGrantsPutCreditgrantsId(flexPrice, "<id>", {});
+  const res = await creditGrantsGetCreditGrant(flexprice, {
+    id: "<id>",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("creditGrantsPutCreditgrantsId failed:", res.error);
+    console.log("creditGrantsGetCreditGrant failed:", res.error);
   }
 }
 
@@ -296,41 +226,40 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Credit Grant ID                                                                                                                                                                |
-| `body`                                                                                                                                                                         | [components.DtoUpdateCreditGrantRequest](../../models/components/dto-update-credit-grant-request.md)                                                                           | :heavy_check_mark:                                                                                                                                                             | Credit Grant configuration                                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetCreditGrantRequest](../../sdk/models/operations/getcreditgrantrequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoCreditGrantResponse](../../models/components/dto-credit-grant-response.md)\>**
+**Promise\<[operations.GetCreditGrantResponse](../../sdk/models/operations/getcreditgrantresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## deleteCreditgrantsId
+## getPlanCreditGrants
 
-Delete a credit grant. Plan-scoped grants are archived; subscription-scoped grants have their end date set (optional body with effective_date). Request body is optional.
+Use when listing credits attached to a plan (e.g. included prepaid or promo credits).
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="delete_/creditgrants/{id}" method="delete" path="/creditgrants/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="getPlanCreditGrants" method="get" path="/plans/{id}/creditgrants" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.creditGrants.deleteCreditgrantsId("<id>");
+  const result = await flexprice.creditGrants.getPlanCreditGrants({
+    id: "<id>",
+  });
 
   console.log(result);
 }
@@ -343,23 +272,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { creditGrantsDeleteCreditgrantsId } from "flexprice-sdk-test/funcs/credit-grants-delete-creditgrants-id.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { creditGrantsGetPlanCreditGrants } from "flexprice-ts/funcs/creditGrantsGetPlanCreditGrants.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await creditGrantsDeleteCreditgrantsId(flexPrice, "<id>");
+  const res = await creditGrantsGetPlanCreditGrants(flexprice, {
+    id: "<id>",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("creditGrantsDeleteCreditgrantsId failed:", res.error);
+    console.log("creditGrantsGetPlanCreditGrants failed:", res.error);
   }
 }
 
@@ -370,41 +301,41 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Credit Grant ID                                                                                                                                                                |
-| `body`                                                                                                                                                                         | [components.DtoDeleteCreditGrantRequest](../../models/components/dto-delete-credit-grant-request.md)                                                                           | :heavy_minus_sign:                                                                                                                                                             | Optional: effective_date for subscription-scoped grants                                                                                                                        |
+| `request`                                                                                                                                                                      | [operations.GetPlanCreditGrantsRequest](../../sdk/models/operations/getplancreditgrantsrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoSuccessResponse](../../models/components/dto-success-response.md)\>**
+**Promise\<[operations.GetPlanCreditGrantsResponse](../../sdk/models/operations/getplancreditgrantsresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## getPlansIdCreditgrants
+## updateCreditGrant
 
-Get all credit grants for a plan
+Use when changing a credit grant (e.g. amount or end date). Request body contains the fields to update.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="get_/plans/{id}/creditgrants" method="get" path="/plans/{id}/creditgrants" -->
+<!-- UsageSnippet language="typescript" operationID="updateCreditGrant" method="put" path="/creditgrants/{id}" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.creditGrants.getPlansIdCreditgrants("<id>");
+  const result = await flexprice.creditGrants.updateCreditGrant({
+    id: "<id>",
+    dtoUpdateCreditGrantRequest: {},
+  });
 
   console.log(result);
 }
@@ -417,23 +348,26 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { creditGrantsGetPlansIdCreditgrants } from "flexprice-sdk-test/funcs/credit-grants-get-plans-id-creditgrants.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { creditGrantsUpdateCreditGrant } from "flexprice-ts/funcs/creditGrantsUpdateCreditGrant.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await creditGrantsGetPlansIdCreditgrants(flexPrice, "<id>");
+  const res = await creditGrantsUpdateCreditGrant(flexprice, {
+    id: "<id>",
+    dtoUpdateCreditGrantRequest: {},
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("creditGrantsGetPlansIdCreditgrants failed:", res.error);
+    console.log("creditGrantsUpdateCreditGrant failed:", res.error);
   }
 }
 
@@ -444,19 +378,17 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Plan ID                                                                                                                                                                        |
+| `request`                                                                                                                                                                      | [operations.UpdateCreditGrantRequest](../../sdk/models/operations/updatecreditgrantrequest.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoListCreditGrantsResponse](../../models/components/dto-list-credit-grants-response.md)\>**
+**Promise\<[operations.UpdateCreditGrantResponse](../../sdk/models/operations/updatecreditgrantresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400, 404                   | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |

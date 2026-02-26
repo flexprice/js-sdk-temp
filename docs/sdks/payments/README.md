@@ -4,108 +4,35 @@
 
 ### Available Operations
 
-* [getPayments](#getpayments) - List payments
-* [postPayments](#postpayments) - Create a new payment
-* [getPaymentsId](#getpaymentsid) - Get a payment by ID
-* [putPaymentsId](#putpaymentsid) - Update a payment
-* [deletePaymentsId](#deletepaymentsid) - Delete a payment
-* [postPaymentsIdProcess](#postpaymentsidprocess) - Process a payment
+* [createPayment](#createpayment) - Create payment
+* [deletePayment](#deletepayment) - Delete payment
+* [getPayment](#getpayment) - Get payment
+* [listPayments](#listpayments) - List payments
+* [processPayment](#processpayment) - Process payment
+* [updatePayment](#updatepayment) - Update payment
 
-## getPayments
+## createPayment
 
-List payments with the specified filter
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="get_/payments" method="get" path="/payments" -->
-```typescript
-import { FlexPrice } from "flexprice-sdk-test";
-
-const flexPrice = new FlexPrice({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const result = await flexPrice.payments.getPayments({});
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { paymentsGetPayments } from "flexprice-sdk-test/funcs/payments-get-payments.js";
-
-// Use `FlexPriceCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const res = await paymentsGetPayments(flexPrice, {});
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("paymentsGetPayments failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetPaymentsRequest](../../models/operations/get-payments-request.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.DtoListPaymentsResponse](../../models/components/dto-list-payments-response.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## postPayments
-
-Create a new payment with the specified configuration
+Use when recording a payment against an invoice (e.g. after receiving funds via a gateway or manual entry).
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="post_/payments" method="post" path="/payments" -->
+<!-- UsageSnippet language="typescript" operationID="createPayment" method="post" path="/payments" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.payments.postPayments({
-    amount: "910.96",
-    currency: "Costa Rican Colon",
+  const result = await flexprice.payments.createPayment({
+    amount: "883.46",
+    currency: "CFP Franc",
     destinationId: "<id>",
     destinationType: "INVOICE",
-    paymentMethodType: "CREDITS",
+    paymentMethodType: "OFFLINE",
   });
 
   console.log(result);
@@ -119,29 +46,29 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { paymentsPostPayments } from "flexprice-sdk-test/funcs/payments-post-payments.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { paymentsCreatePayment } from "flexprice-ts/funcs/paymentsCreatePayment.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await paymentsPostPayments(flexPrice, {
-    amount: "910.96",
-    currency: "Costa Rican Colon",
+  const res = await paymentsCreatePayment(flexprice, {
+    amount: "883.46",
+    currency: "CFP Franc",
     destinationId: "<id>",
     destinationType: "INVOICE",
-    paymentMethodType: "CREDITS",
+    paymentMethodType: "OFFLINE",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("paymentsPostPayments failed:", res.error);
+    console.log("paymentsCreatePayment failed:", res.error);
   }
 }
 
@@ -152,40 +79,40 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreatePaymentRequest](../../models/components/dto-create-payment-request.md)                                                                                    | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [shared.DtoCreatePaymentRequest](../../sdk/models/shared/dtocreatepaymentrequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoPaymentResponse](../../models/components/dto-payment-response.md)\>**
+**Promise\<[operations.CreatePaymentResponse](../../sdk/models/operations/createpaymentresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## getPaymentsId
+## deletePayment
 
-Get a payment by ID
+Use when removing or voiding a payment record (e.g. correcting erroneous entries). Returns 200 with success message.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="get_/payments/{id}" method="get" path="/payments/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="deletePayment" method="delete" path="/payments/{id}" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.payments.getPaymentsId("<id>");
+  const result = await flexprice.payments.deletePayment({
+    id: "<id>",
+  });
 
   console.log(result);
 }
@@ -198,23 +125,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { paymentsGetPaymentsId } from "flexprice-sdk-test/funcs/payments-get-payments-id.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { paymentsDeletePayment } from "flexprice-ts/funcs/paymentsDeletePayment.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await paymentsGetPaymentsId(flexPrice, "<id>");
+  const res = await paymentsDeletePayment(flexprice, {
+    id: "<id>",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("paymentsGetPaymentsId failed:", res.error);
+    console.log("paymentsDeletePayment failed:", res.error);
   }
 }
 
@@ -225,40 +154,40 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Payment ID                                                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.DeletePaymentRequest](../../sdk/models/operations/deletepaymentrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoPaymentResponse](../../models/components/dto-payment-response.md)\>**
+**Promise\<[operations.DeletePaymentResponse](../../sdk/models/operations/deletepaymentresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## putPaymentsId
+## getPayment
 
-Update a payment with the specified configuration
+Use when you need to load a single payment (e.g. for a receipt view or reconciliation).
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="put_/payments/{id}" method="put" path="/payments/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="getPayment" method="get" path="/payments/{id}" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.payments.putPaymentsId("<id>", {});
+  const result = await flexprice.payments.getPayment({
+    id: "<id>",
+  });
 
   console.log(result);
 }
@@ -271,23 +200,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { paymentsPutPaymentsId } from "flexprice-sdk-test/funcs/payments-put-payments-id.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { paymentsGetPayment } from "flexprice-ts/funcs/paymentsGetPayment.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await paymentsPutPaymentsId(flexPrice, "<id>", {});
+  const res = await paymentsGetPayment(flexprice, {
+    id: "<id>",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("paymentsPutPaymentsId failed:", res.error);
+    console.log("paymentsGetPayment failed:", res.error);
   }
 }
 
@@ -298,41 +229,38 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Payment ID                                                                                                                                                                     |
-| `body`                                                                                                                                                                         | [components.DtoUpdatePaymentRequest](../../models/components/dto-update-payment-request.md)                                                                                    | :heavy_check_mark:                                                                                                                                                             | Payment configuration                                                                                                                                                          |
+| `request`                                                                                                                                                                      | [operations.GetPaymentRequest](../../sdk/models/operations/getpaymentrequest.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoPaymentResponse](../../models/components/dto-payment-response.md)\>**
+**Promise\<[operations.GetPaymentResponse](../../sdk/models/operations/getpaymentresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## deletePaymentsId
+## listPayments
 
-Delete a payment
+Use when listing or searching payments (e.g. reconciliation UI or customer payment history). Returns a paginated list; supports filtering by customer, invoice, status.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="delete_/payments/{id}" method="delete" path="/payments/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="listPayments" method="get" path="/payments" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.payments.deletePaymentsId("<id>");
+  const result = await flexprice.payments.listPayments();
 
   console.log(result);
 }
@@ -345,23 +273,23 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { paymentsDeletePaymentsId } from "flexprice-sdk-test/funcs/payments-delete-payments-id.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { paymentsListPayments } from "flexprice-ts/funcs/paymentsListPayments.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await paymentsDeletePaymentsId(flexPrice, "<id>");
+  const res = await paymentsListPayments(flexprice);
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("paymentsDeletePaymentsId failed:", res.error);
+    console.log("paymentsListPayments failed:", res.error);
   }
 }
 
@@ -372,40 +300,40 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Payment ID                                                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.ListPaymentsRequest](../../sdk/models/operations/listpaymentsrequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoSuccessResponse](../../models/components/dto-success-response.md)\>**
+**Promise\<[operations.ListPaymentsResponse](../../sdk/models/operations/listpaymentsresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## postPaymentsIdProcess
+## processPayment
 
-Process a payment
+Use when you need to charge or process a payment (e.g. trigger the payment provider to capture funds). Returns updated payment with status.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="post_/payments/{id}/process" method="post" path="/payments/{id}/process" -->
+<!-- UsageSnippet language="typescript" operationID="processPayment" method="post" path="/payments/{id}/process" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.payments.postPaymentsIdProcess("<id>");
+  const result = await flexprice.payments.processPayment({
+    id: "<id>",
+  });
 
   console.log(result);
 }
@@ -418,23 +346,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { paymentsPostPaymentsIdProcess } from "flexprice-sdk-test/funcs/payments-post-payments-id-process.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { paymentsProcessPayment } from "flexprice-ts/funcs/paymentsProcessPayment.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await paymentsPostPaymentsIdProcess(flexPrice, "<id>");
+  const res = await paymentsProcessPayment(flexprice, {
+    id: "<id>",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("paymentsPostPaymentsIdProcess failed:", res.error);
+    console.log("paymentsProcessPayment failed:", res.error);
   }
 }
 
@@ -445,19 +375,94 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Payment ID                                                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.ProcessPaymentRequest](../../sdk/models/operations/processpaymentrequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoPaymentResponse](../../models/components/dto-payment-response.md)\>**
+**Promise\<[operations.ProcessPaymentResponse](../../sdk/models/operations/processpaymentresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## updatePayment
+
+Use when updating payment status or metadata (e.g. after reconciliation or adding a reference).
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="updatePayment" method="put" path="/payments/{id}" -->
+```typescript
+import { Flexprice } from "flexprice-ts";
+
+const flexprice = new Flexprice({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const result = await flexprice.payments.updatePayment({
+    id: "<id>",
+    dtoUpdatePaymentRequest: {},
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { paymentsUpdatePayment } from "flexprice-ts/funcs/paymentsUpdatePayment.js";
+
+// Use `FlexpriceCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const flexprice = new FlexpriceCore({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await paymentsUpdatePayment(flexprice, {
+    id: "<id>",
+    dtoUpdatePaymentRequest: {},
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("paymentsUpdatePayment failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.UpdatePaymentRequest](../../sdk/models/operations/updatepaymentrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.UpdatePaymentResponse](../../sdk/models/operations/updatepaymentresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |

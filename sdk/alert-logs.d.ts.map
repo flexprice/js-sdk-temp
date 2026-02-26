@@ -1,1 +1,0 @@
-{"version":3,"file":"alert-logs.d.ts","sourceRoot":"","sources":["../src/sdk/alert-logs.ts"],"names":[],"mappings":"AAKA,OAAO,EAAE,SAAS,EAAE,cAAc,EAAE,MAAM,gBAAgB,CAAC;AAC3D,OAAO,KAAK,UAAU,MAAM,+BAA+B,CAAC;AAG5D,qBAAa,SAAU,SAAQ,SAAS;IACtC;;;;;OAKG;IACG,eAAe,CACnB,OAAO,EAAE,UAAU,CAAC,mBAAmB,EACvC,OAAO,CAAC,EAAE,cAAc,GACvB,OAAO,CAAC,UAAU,CAAC,wBAAwB,CAAC;CAOhD"}

@@ -4,103 +4,31 @@
 
 ### Available Operations
 
-* [getPricesUnits](#getpricesunits) - List price units
-* [postPricesUnits](#postpricesunits) - Create a new price unit
-* [getPricesUnitsCodeCode](#getpricesunitscodecode) - Get a price unit by code
-* [postPricesUnitsSearch](#postpricesunitssearch) - List price units by filter
-* [getPricesUnitsId](#getpricesunitsid) - Get a price unit by ID
-* [putPricesUnitsId](#putpricesunitsid) - Update a price unit
-* [deletePricesUnitsId](#deletepricesunitsid) - Delete a price unit
+* [createPriceUnit](#createpriceunit) - Create price unit
+* [deletePriceUnit](#deletepriceunit) - Delete price unit
+* [getPriceUnit](#getpriceunit) - Get price unit
+* [getPriceUnitByCode](#getpriceunitbycode) - Get price unit by code
+* [listPriceUnits](#listpriceunits) - List price units
+* [queryPriceUnit](#querypriceunit) - Query price units
+* [updatePriceUnit](#updatepriceunit) - Update price unit
 
-## getPricesUnits
+## createPriceUnit
 
-Get a paginated list of price units with optional filtering
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="get_/prices/units" method="get" path="/prices/units" -->
-```typescript
-import { FlexPrice } from "flexprice-sdk-test";
-
-const flexPrice = new FlexPrice({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const result = await flexPrice.priceUnits.getPricesUnits({});
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { priceUnitsGetPricesUnits } from "flexprice-sdk-test/funcs/price-units-get-prices-units.js";
-
-// Use `FlexPriceCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const res = await priceUnitsGetPricesUnits(flexPrice, {});
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("priceUnitsGetPricesUnits failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetPricesUnitsRequest](../../models/operations/get-prices-units-request.md)                                                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.DtoListPriceUnitsResponse](../../models/components/dto-list-price-units-response.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## postPricesUnits
-
-Create a new price unit with the provided details
+Use when defining a new unit of measure for pricing (e.g. GB, API call, seat). Ideal for metered or usage-based prices.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="post_/prices/units" method="post" path="/prices/units" -->
+<!-- UsageSnippet language="typescript" operationID="createPriceUnit" method="post" path="/prices/units" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.priceUnits.postPricesUnits({
+  const result = await flexprice.priceUnits.createPriceUnit({
     baseCurrency: "<value>",
     code: "<value>",
     conversionRate: "<value>",
@@ -119,18 +47,18 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { priceUnitsPostPricesUnits } from "flexprice-sdk-test/funcs/price-units-post-prices-units.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { priceUnitsCreatePriceUnit } from "flexprice-ts/funcs/priceUnitsCreatePriceUnit.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await priceUnitsPostPricesUnits(flexPrice, {
+  const res = await priceUnitsCreatePriceUnit(flexprice, {
     baseCurrency: "<value>",
     code: "<value>",
     conversionRate: "<value>",
@@ -141,7 +69,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("priceUnitsPostPricesUnits failed:", res.error);
+    console.log("priceUnitsCreatePriceUnit failed:", res.error);
   }
 }
 
@@ -152,39 +80,40 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreatePriceUnitRequest](../../models/components/dto-create-price-unit-request.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [shared.DtoCreatePriceUnitRequest](../../sdk/models/shared/dtocreatepriceunitrequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoCreatePriceUnitResponse](../../models/components/dto-create-price-unit-response.md)\>**
+**Promise\<[operations.CreatePriceUnitResponse](../../sdk/models/operations/createpriceunitresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## getPricesUnitsCodeCode
+## deletePriceUnit
 
-Get a price unit by code
+Use when removing a price unit that is no longer needed. Fails if any price references this unit.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="get_/prices/units/code/{code}" method="get" path="/prices/units/code/{code}" -->
+<!-- UsageSnippet language="typescript" operationID="deletePriceUnit" method="delete" path="/prices/units/{id}" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.priceUnits.getPricesUnitsCodeCode("<value>");
+  const result = await flexprice.priceUnits.deletePriceUnit({
+    id: "<id>",
+  });
 
   console.log(result);
 }
@@ -197,23 +126,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { priceUnitsGetPricesUnitsCodeCode } from "flexprice-sdk-test/funcs/price-units-get-prices-units-code-code.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { priceUnitsDeletePriceUnit } from "flexprice-ts/funcs/priceUnitsDeletePriceUnit.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await priceUnitsGetPricesUnitsCodeCode(flexPrice, "<value>");
+  const res = await priceUnitsDeletePriceUnit(flexprice, {
+    id: "<id>",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("priceUnitsGetPricesUnitsCodeCode failed:", res.error);
+    console.log("priceUnitsDeletePriceUnit failed:", res.error);
   }
 }
 
@@ -224,40 +155,40 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `code`                                                                                                                                                                         | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Price unit code                                                                                                                                                                |
+| `request`                                                                                                                                                                      | [operations.DeletePriceUnitRequest](../../sdk/models/operations/deletepriceunitrequest.md)                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoPriceUnitResponse](../../models/components/dto-price-unit-response.md)\>**
+**Promise\<[operations.DeletePriceUnitResponse](../../sdk/models/operations/deletepriceunitresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400, 404                   | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## postPricesUnitsSearch
+## getPriceUnit
 
-List price units by filter
+Use when you need to load a single price unit (e.g. for display or when creating a price).
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="post_/prices/units/search" method="post" path="/prices/units/search" -->
+<!-- UsageSnippet language="typescript" operationID="getPriceUnit" method="get" path="/prices/units/{id}" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.priceUnits.postPricesUnitsSearch({});
+  const result = await flexprice.priceUnits.getPriceUnit({
+    id: "<id>",
+  });
 
   console.log(result);
 }
@@ -270,23 +201,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { priceUnitsPostPricesUnitsSearch } from "flexprice-sdk-test/funcs/price-units-post-prices-units-search.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { priceUnitsGetPriceUnit } from "flexprice-ts/funcs/priceUnitsGetPriceUnit.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await priceUnitsPostPricesUnitsSearch(flexPrice, {});
+  const res = await priceUnitsGetPriceUnit(flexprice, {
+    id: "<id>",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("priceUnitsPostPricesUnitsSearch failed:", res.error);
+    console.log("priceUnitsGetPriceUnit failed:", res.error);
   }
 }
 
@@ -297,40 +230,40 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.TypesFilter](../../models/components/types-filter.md)                                                                                                              | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetPriceUnitRequest](../../sdk/models/operations/getpriceunitrequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoListPriceUnitsResponse](../../models/components/dto-list-price-units-response.md)\>**
+**Promise\<[operations.GetPriceUnitResponse](../../sdk/models/operations/getpriceunitresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## getPricesUnitsId
+## getPriceUnitByCode
 
-Get a price unit by ID
+Use when resolving a price unit by code (e.g. from an external catalog or config). Ideal for integrations.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="get_/prices/units/{id}" method="get" path="/prices/units/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="getPriceUnitByCode" method="get" path="/prices/units/code/{code}" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.priceUnits.getPricesUnitsId("<id>");
+  const result = await flexprice.priceUnits.getPriceUnitByCode({
+    code: "<value>",
+  });
 
   console.log(result);
 }
@@ -343,23 +276,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { priceUnitsGetPricesUnitsId } from "flexprice-sdk-test/funcs/price-units-get-prices-units-id.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { priceUnitsGetPriceUnitByCode } from "flexprice-ts/funcs/priceUnitsGetPriceUnitByCode.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await priceUnitsGetPricesUnitsId(flexPrice, "<id>");
+  const res = await priceUnitsGetPriceUnitByCode(flexprice, {
+    code: "<value>",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("priceUnitsGetPricesUnitsId failed:", res.error);
+    console.log("priceUnitsGetPriceUnitByCode failed:", res.error);
   }
 }
 
@@ -370,39 +305,38 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Price unit ID                                                                                                                                                                  |
+| `request`                                                                                                                                                                      | [operations.GetPriceUnitByCodeRequest](../../sdk/models/operations/getpriceunitbycoderequest.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoPriceUnitResponse](../../models/components/dto-price-unit-response.md)\>**
+**Promise\<[operations.GetPriceUnitByCodeResponse](../../sdk/models/operations/getpriceunitbycoderesponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400, 404                   | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## putPricesUnitsId
+## listPriceUnits
 
-Update an existing price unit with the provided details. Only name and metadata can be updated.
+Use when listing price units (e.g. in a catalog or when creating prices). Returns a paginated list; supports status, sort, and pagination.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="put_/prices/units/{id}" method="put" path="/prices/units/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="listPriceUnits" method="get" path="/prices/units" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.priceUnits.putPricesUnitsId("<id>", {});
+  const result = await flexprice.priceUnits.listPriceUnits({});
 
   console.log(result);
 }
@@ -415,23 +349,23 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { priceUnitsPutPricesUnitsId } from "flexprice-sdk-test/funcs/price-units-put-prices-units-id.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { priceUnitsListPriceUnits } from "flexprice-ts/funcs/priceUnitsListPriceUnits.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await priceUnitsPutPricesUnitsId(flexPrice, "<id>", {});
+  const res = await priceUnitsListPriceUnits(flexprice, {});
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("priceUnitsPutPricesUnitsId failed:", res.error);
+    console.log("priceUnitsListPriceUnits failed:", res.error);
   }
 }
 
@@ -442,40 +376,38 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Price unit ID                                                                                                                                                                  |
-| `body`                                                                                                                                                                         | [components.DtoUpdatePriceUnitRequest](../../models/components/dto-update-price-unit-request.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | Price unit details to update                                                                                                                                                   |
+| `request`                                                                                                                                                                      | [operations.ListPriceUnitsRequest](../../sdk/models/operations/listpriceunitsrequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoPriceUnitResponse](../../models/components/dto-price-unit-response.md)\>**
+**Promise\<[operations.ListPriceUnitsResponse](../../sdk/models/operations/listpriceunitsresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400, 404                   | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## deletePricesUnitsId
+## queryPriceUnit
 
-Delete an existing price unit.
+Use when searching or listing price units (e.g. admin catalog). Returns a paginated list; supports filtering and sorting.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="delete_/prices/units/{id}" method="delete" path="/prices/units/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="queryPriceUnit" method="post" path="/prices/units/search" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.priceUnits.deletePricesUnitsId("<id>");
+  const result = await flexprice.priceUnits.queryPriceUnit({});
 
   console.log(result);
 }
@@ -488,23 +420,23 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { priceUnitsDeletePricesUnitsId } from "flexprice-sdk-test/funcs/price-units-delete-prices-units-id.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { priceUnitsQueryPriceUnit } from "flexprice-ts/funcs/priceUnitsQueryPriceUnit.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await priceUnitsDeletePricesUnitsId(flexPrice, "<id>");
+  const res = await priceUnitsQueryPriceUnit(flexprice, {});
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("priceUnitsDeletePricesUnitsId failed:", res.error);
+    console.log("priceUnitsQueryPriceUnit failed:", res.error);
   }
 }
 
@@ -515,18 +447,94 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Price unit ID                                                                                                                                                                  |
+| `request`                                                                                                                                                                      | [shared.TypesPriceUnitFilter](../../sdk/models/shared/typespriceunitfilter.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoSuccessResponse](../../models/components/dto-success-response.md)\>**
+**Promise\<[operations.QueryPriceUnitResponse](../../sdk/models/operations/querypriceunitresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400, 404                   | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## updatePriceUnit
+
+Use when renaming or updating metadata for a price unit. Code is immutable once created.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="updatePriceUnit" method="put" path="/prices/units/{id}" -->
+```typescript
+import { Flexprice } from "flexprice-ts";
+
+const flexprice = new Flexprice({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const result = await flexprice.priceUnits.updatePriceUnit({
+    id: "<id>",
+    dtoUpdatePriceUnitRequest: {},
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { priceUnitsUpdatePriceUnit } from "flexprice-ts/funcs/priceUnitsUpdatePriceUnit.js";
+
+// Use `FlexpriceCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const flexprice = new FlexpriceCore({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await priceUnitsUpdatePriceUnit(flexprice, {
+    id: "<id>",
+    dtoUpdatePriceUnitRequest: {},
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("priceUnitsUpdatePriceUnit failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.UpdatePriceUnitRequest](../../sdk/models/operations/updatepriceunitrequest.md)                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.UpdatePriceUnitResponse](../../sdk/models/operations/updatepriceunitresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |

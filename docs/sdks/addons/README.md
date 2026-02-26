@@ -4,107 +4,33 @@
 
 ### Available Operations
 
-* [getAddons](#getaddons) - List addons
-* [postAddons](#postaddons) - Create addon
-* [getAddonsLookupLookupKey](#getaddonslookuplookupkey) - Get addon by lookup key
-* [postAddonsSearch](#postaddonssearch) - List addons by filter
-* [getAddonsId](#getaddonsid) - Get addon
-* [putAddonsId](#putaddonsid) - Update addon
-* [deleteAddonsId](#deleteaddonsid) - Delete addon
+* [createAddon](#createaddon) - Create addon
+* [deleteAddon](#deleteaddon) - Delete addon
+* [getAddon](#getaddon) - Get addon
+* [getAddonByLookupKey](#getaddonbylookupkey) - Get addon by lookup key
+* [queryAddon](#queryaddon) - Query addons
+* [updateAddon](#updateaddon) - Update addon
 
-## getAddons
+## createAddon
 
-Get addons with optional filtering
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="get_/addons" method="get" path="/addons" -->
-```typescript
-import { FlexPrice } from "flexprice-sdk-test";
-
-const flexPrice = new FlexPrice({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const result = await flexPrice.addons.getAddons({});
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { addonsGetAddons } from "flexprice-sdk-test/funcs/addons-get-addons.js";
-
-// Use `FlexPriceCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const res = await addonsGetAddons(flexPrice, {});
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("addonsGetAddons failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetAddonsRequest](../../models/operations/get-addons-request.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.DtoListAddonsResponse](../../models/components/dto-list-addons-response.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## postAddons
-
-Create a new addon
+Use when defining an optional purchasable item (e.g. extra storage or support tier). Ideal for add-ons that customers can attach to a subscription.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="post_/addons" method="post" path="/addons" -->
+<!-- UsageSnippet language="typescript" operationID="createAddon" method="post" path="/addons" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.addons.postAddons({
+  const result = await flexprice.addons.createAddon({
     lookupKey: "<value>",
     name: "<value>",
-    type: "onetime",
+    type: "multiple_instance",
   });
 
   console.log(result);
@@ -118,27 +44,27 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { addonsPostAddons } from "flexprice-sdk-test/funcs/addons-post-addons.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { addonsCreateAddon } from "flexprice-ts/funcs/addonsCreateAddon.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await addonsPostAddons(flexPrice, {
+  const res = await addonsCreateAddon(flexprice, {
     lookupKey: "<value>",
     name: "<value>",
-    type: "onetime",
+    type: "multiple_instance",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("addonsPostAddons failed:", res.error);
+    console.log("addonsCreateAddon failed:", res.error);
   }
 }
 
@@ -149,40 +75,40 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreateAddonRequest](../../models/components/dto-create-addon-request.md)                                                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [shared.DtoCreateAddonRequest](../../sdk/models/shared/dtocreateaddonrequest.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoCreateAddonResponse](../../models/components/dto-create-addon-response.md)\>**
+**Promise\<[operations.CreateAddonResponse](../../sdk/models/operations/createaddonresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## getAddonsLookupLookupKey
+## deleteAddon
 
-Get an addon by lookup key
+Use when retiring an addon (e.g. end-of-life). Returns 200 with success message.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="get_/addons/lookup/{lookup_key}" method="get" path="/addons/lookup/{lookup_key}" -->
+<!-- UsageSnippet language="typescript" operationID="deleteAddon" method="delete" path="/addons/{id}" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.addons.getAddonsLookupLookupKey("<value>");
+  const result = await flexprice.addons.deleteAddon({
+    id: "<id>",
+  });
 
   console.log(result);
 }
@@ -195,23 +121,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { addonsGetAddonsLookupLookupKey } from "flexprice-sdk-test/funcs/addons-get-addons-lookup-lookup-key.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { addonsDeleteAddon } from "flexprice-ts/funcs/addonsDeleteAddon.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await addonsGetAddonsLookupLookupKey(flexPrice, "<value>");
+  const res = await addonsDeleteAddon(flexprice, {
+    id: "<id>",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("addonsGetAddonsLookupLookupKey failed:", res.error);
+    console.log("addonsDeleteAddon failed:", res.error);
   }
 }
 
@@ -222,40 +150,40 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `lookupKey`                                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Addon Lookup Key                                                                                                                                                               |
+| `request`                                                                                                                                                                      | [operations.DeleteAddonRequest](../../sdk/models/operations/deleteaddonrequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoAddonResponse](../../models/components/dto-addon-response.md)\>**
+**Promise\<[operations.DeleteAddonResponse](../../sdk/models/operations/deleteaddonresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## postAddonsSearch
+## getAddon
 
-List addons by filter
+Use when you need to load a single addon (e.g. for display or to attach to a subscription).
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="post_/addons/search" method="post" path="/addons/search" -->
+<!-- UsageSnippet language="typescript" operationID="getAddon" method="get" path="/addons/{id}" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.addons.postAddonsSearch({});
+  const result = await flexprice.addons.getAddon({
+    id: "<id>",
+  });
 
   console.log(result);
 }
@@ -268,23 +196,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { addonsPostAddonsSearch } from "flexprice-sdk-test/funcs/addons-post-addons-search.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { addonsGetAddon } from "flexprice-ts/funcs/addonsGetAddon.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await addonsPostAddonsSearch(flexPrice, {});
+  const res = await addonsGetAddon(flexprice, {
+    id: "<id>",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("addonsPostAddonsSearch failed:", res.error);
+    console.log("addonsGetAddon failed:", res.error);
   }
 }
 
@@ -295,40 +225,40 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.TypesAddonFilter](../../models/components/types-addon-filter.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetAddonRequest](../../sdk/models/operations/getaddonrequest.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoListAddonsResponse](../../models/components/dto-list-addons-response.md)\>**
+**Promise\<[operations.GetAddonResponse](../../sdk/models/operations/getaddonresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## getAddonsId
+## getAddonByLookupKey
 
-Get an addon by ID
+Use when resolving an addon by external id (e.g. from your product catalog). Ideal for integrations.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="get_/addons/{id}" method="get" path="/addons/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="getAddonByLookupKey" method="get" path="/addons/lookup/{lookup_key}" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.addons.getAddonsId("<id>");
+  const result = await flexprice.addons.getAddonByLookupKey({
+    lookupKey: "<value>",
+  });
 
   console.log(result);
 }
@@ -341,23 +271,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { addonsGetAddonsId } from "flexprice-sdk-test/funcs/addons-get-addons-id.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { addonsGetAddonByLookupKey } from "flexprice-ts/funcs/addonsGetAddonByLookupKey.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await addonsGetAddonsId(flexPrice, "<id>");
+  const res = await addonsGetAddonByLookupKey(flexprice, {
+    lookupKey: "<value>",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("addonsGetAddonsId failed:", res.error);
+    console.log("addonsGetAddonByLookupKey failed:", res.error);
   }
 }
 
@@ -368,40 +300,38 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Addon ID                                                                                                                                                                       |
+| `request`                                                                                                                                                                      | [operations.GetAddonByLookupKeyRequest](../../sdk/models/operations/getaddonbylookupkeyrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoAddonResponse](../../models/components/dto-addon-response.md)\>**
+**Promise\<[operations.GetAddonByLookupKeyResponse](../../sdk/models/operations/getaddonbylookupkeyresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## putAddonsId
+## queryAddon
 
-Update an existing addon
+Use when listing or searching addons (e.g. catalog or subscription builder). Returns a paginated list; supports filtering and sorting.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="put_/addons/{id}" method="put" path="/addons/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="queryAddon" method="post" path="/addons/search" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.addons.putAddonsId("<id>", {});
+  const result = await flexprice.addons.queryAddon({});
 
   console.log(result);
 }
@@ -414,23 +344,23 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { addonsPutAddonsId } from "flexprice-sdk-test/funcs/addons-put-addons-id.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { addonsQueryAddon } from "flexprice-ts/funcs/addonsQueryAddon.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await addonsPutAddonsId(flexPrice, "<id>", {});
+  const res = await addonsQueryAddon(flexprice, {});
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("addonsPutAddonsId failed:", res.error);
+    console.log("addonsQueryAddon failed:", res.error);
   }
 }
 
@@ -441,41 +371,41 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Addon ID                                                                                                                                                                       |
-| `body`                                                                                                                                                                         | [components.DtoUpdateAddonRequest](../../models/components/dto-update-addon-request.md)                                                                                        | :heavy_check_mark:                                                                                                                                                             | Update Addon Request                                                                                                                                                           |
+| `request`                                                                                                                                                                      | [shared.TypesAddonFilter](../../sdk/models/shared/typesaddonfilter.md)                                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoAddonResponse](../../models/components/dto-addon-response.md)\>**
+**Promise\<[operations.QueryAddonResponse](../../sdk/models/operations/queryaddonresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## deleteAddonsId
+## updateAddon
 
-Delete an addon
+Use when changing addon details (e.g. name, pricing, or metadata).
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="delete_/addons/{id}" method="delete" path="/addons/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="updateAddon" method="put" path="/addons/{id}" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.addons.deleteAddonsId("<id>");
+  const result = await flexprice.addons.updateAddon({
+    id: "<id>",
+    dtoUpdateAddonRequest: {},
+  });
 
   console.log(result);
 }
@@ -488,23 +418,26 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { addonsDeleteAddonsId } from "flexprice-sdk-test/funcs/addons-delete-addons-id.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { addonsUpdateAddon } from "flexprice-ts/funcs/addonsUpdateAddon.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await addonsDeleteAddonsId(flexPrice, "<id>");
+  const res = await addonsUpdateAddon(flexprice, {
+    id: "<id>",
+    dtoUpdateAddonRequest: {},
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("addonsDeleteAddonsId failed:", res.error);
+    console.log("addonsUpdateAddon failed:", res.error);
   }
 }
 
@@ -515,19 +448,17 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Addon ID                                                                                                                                                                       |
+| `request`                                                                                                                                                                      | [operations.UpdateAddonRequest](../../sdk/models/operations/updateaddonrequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoSuccessResponse](../../models/components/dto-success-response.md)\>**
+**Promise\<[operations.UpdateAddonResponse](../../sdk/models/operations/updateaddonresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |

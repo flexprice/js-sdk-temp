@@ -4,29 +4,29 @@
 
 ### Available Operations
 
-* [postUsers](#postusers) - Create service account
-* [getUsersMe](#getusersme) - Get user info
-* [postUsersSearch](#postuserssearch) - List users with filters
+* [createUser](#createuser) - Create service account
+* [getUserInfo](#getuserinfo) - Get current user
+* [queryUser](#queryuser) - Query users
 
-## postUsers
+## createUser
 
-Create a new service account with required roles. Only service accounts can be created via this endpoint.
+Use when provisioning API access for automation, CI/CD pipelines, or headless integrations that need scoped API keys.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="post_/users" method="post" path="/users" -->
+<!-- UsageSnippet language="typescript" operationID="createUser" method="post" path="/users" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.users.postUsers({
+  const result = await flexprice.users.createUser({
     roles: [],
-    type: "service_account",
+    type: "user",
   });
 
   console.log(result);
@@ -40,26 +40,26 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { usersPostUsers } from "flexprice-sdk-test/funcs/users-post-users.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { usersCreateUser } from "flexprice-ts/funcs/usersCreateUser.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await usersPostUsers(flexPrice, {
+  const res = await usersCreateUser(flexprice, {
     roles: [],
-    type: "service_account",
+    type: "user",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("usersPostUsers failed:", res.error);
+    console.log("usersCreateUser failed:", res.error);
   }
 }
 
@@ -70,40 +70,38 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreateUserRequest](../../models/components/dto-create-user-request.md)                                                                                          | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [shared.DtoCreateUserRequest](../../sdk/models/shared/dtocreateuserrequest.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoUserResponse](../../models/components/dto-user-response.md)\>**
+**Promise\<[operations.CreateUserResponse](../../sdk/models/operations/createuserresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## getUsersMe
+## getUserInfo
 
-Get the current user's information
+Use to show the logged-in user's profile in the UI or to check permissions and roles for the current session.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="get_/users/me" method="get" path="/users/me" -->
+<!-- UsageSnippet language="typescript" operationID="getUserInfo" method="get" path="/users/me" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.users.getUsersMe();
+  const result = await flexprice.users.getUserInfo();
 
   console.log(result);
 }
@@ -116,23 +114,23 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { usersGetUsersMe } from "flexprice-sdk-test/funcs/users-get-users-me.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { usersGetUserInfo } from "flexprice-ts/funcs/usersGetUserInfo.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await usersGetUsersMe(flexPrice);
+  const res = await usersGetUserInfo(flexprice);
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("usersGetUsersMe failed:", res.error);
+    console.log("usersGetUserInfo failed:", res.error);
   }
 }
 
@@ -149,33 +147,31 @@ run();
 
 ### Response
 
-**Promise\<[components.DtoUserResponse](../../models/components/dto-user-response.md)\>**
+**Promise\<[operations.GetUserInfoResponse](../../sdk/models/operations/getuserinforesponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 401                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## postUsersSearch
+## queryUser
 
-Search and filter users by type (user/service_account), roles, etc.
+Use when listing or searching service accounts in an admin UI, or when auditing who has API access and which roles they have.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="post_/users/search" method="post" path="/users/search" -->
+<!-- UsageSnippet language="typescript" operationID="queryUser" method="post" path="/users/search" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.users.postUsersSearch({});
+  const result = await flexprice.users.queryUser({});
 
   console.log(result);
 }
@@ -188,23 +184,23 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { usersPostUsersSearch } from "flexprice-sdk-test/funcs/users-post-users-search.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { usersQueryUser } from "flexprice-ts/funcs/usersQueryUser.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await usersPostUsersSearch(flexPrice, {});
+  const res = await usersQueryUser(flexprice, {});
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("usersPostUsersSearch failed:", res.error);
+    console.log("usersQueryUser failed:", res.error);
   }
 }
 
@@ -215,19 +211,17 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.TypesUserFilter](../../models/components/types-user-filter.md)                                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [shared.TypesUserFilter](../../sdk/models/shared/typesuserfilter.md)                                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoListUsersResponse](../../models/components/dto-list-users-response.md)\>**
+**Promise\<[operations.QueryUserResponse](../../sdk/models/operations/queryuserresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |

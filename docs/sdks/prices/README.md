@@ -4,112 +4,38 @@
 
 ### Available Operations
 
-* [getPrices](#getprices) - Get prices
-* [postPrices](#postprices) - Create a new price
-* [postPricesBulk](#postpricesbulk) - Create multiple prices in bulk
-* [getPricesLookupLookupKey](#getpriceslookuplookupkey) - Get price by lookup key
-* [postPricesSearch](#postpricessearch) - List prices by filter
-* [getPricesId](#getpricesid) - Get a price by ID
-* [putPricesId](#putpricesid) - Update a price
-* [deletePricesId](#deletepricesid) - Delete a price
+* [createPrice](#createprice) - Create price
+* [createPricesBulk](#createpricesbulk) - Create prices in bulk
+* [deletePrice](#deleteprice) - Delete price
+* [getPrice](#getprice) - Get price
+* [getPriceByLookupKey](#getpricebylookupkey) - Get price by lookup key
+* [queryPrice](#queryprice) - Query prices
+* [updatePrice](#updateprice) - Update price
 
-## getPrices
+## createPrice
 
-Get prices with the specified filter
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="get_/prices" method="get" path="/prices" -->
-```typescript
-import { FlexPrice } from "flexprice-sdk-test";
-
-const flexPrice = new FlexPrice({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const result = await flexPrice.prices.getPrices({});
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { pricesGetPrices } from "flexprice-sdk-test/funcs/prices-get-prices.js";
-
-// Use `FlexPriceCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const res = await pricesGetPrices(flexPrice, {});
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("pricesGetPrices failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetPricesRequest](../../models/operations/get-prices-request.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[components.DtoListPricesResponse](../../models/components/dto-list-prices-response.md)\>**
-
-### Errors
-
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
-
-## postPrices
-
-Create a new price with the specified configuration. Supports both regular and price unit configurations.
+Use when adding a new price to a plan or catalog (e.g. per-seat, flat, or metered). Ideal for both simple and usage-based pricing.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="post_/prices" method="post" path="/prices" -->
+<!-- UsageSnippet language="typescript" operationID="createPrice" method="post" path="/prices" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.prices.postPrices({
+  const result = await flexprice.prices.createPrice({
     billingCadence: "RECURRING",
-    billingModel: "TIERED",
-    billingPeriod: "DAILY",
-    currency: "Iceland Krona",
+    billingModel: "PACKAGE",
+    billingPeriod: "HALF_YEARLY",
+    currency: "Serbian Dinar",
     entityId: "<id>",
-    entityType: "COSTSHEET",
-    invoiceCadence: "ADVANCE",
+    entityType: "PRICE",
+    invoiceCadence: "ARREAR",
     priceUnitType: "CUSTOM",
     type: "USAGE",
   });
@@ -125,25 +51,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { pricesPostPrices } from "flexprice-sdk-test/funcs/prices-post-prices.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { pricesCreatePrice } from "flexprice-ts/funcs/pricesCreatePrice.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await pricesPostPrices(flexPrice, {
+  const res = await pricesCreatePrice(flexprice, {
     billingCadence: "RECURRING",
-    billingModel: "TIERED",
-    billingPeriod: "DAILY",
-    currency: "Iceland Krona",
+    billingModel: "PACKAGE",
+    billingPeriod: "HALF_YEARLY",
+    currency: "Serbian Dinar",
     entityId: "<id>",
-    entityType: "COSTSHEET",
-    invoiceCadence: "ADVANCE",
+    entityType: "PRICE",
+    invoiceCadence: "ARREAR",
     priceUnitType: "CUSTOM",
     type: "USAGE",
   });
@@ -151,7 +77,7 @@ async function run() {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("pricesPostPrices failed:", res.error);
+    console.log("pricesCreatePrice failed:", res.error);
   }
 }
 
@@ -162,40 +88,38 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreatePriceRequest](../../models/components/dto-create-price-request.md)                                                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [shared.DtoCreatePriceRequest](../../sdk/models/shared/dtocreatepricerequest.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoPriceResponse](../../models/components/dto-price-response.md)\>**
+**Promise\<[operations.CreatePriceResponse](../../sdk/models/operations/createpriceresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## postPricesBulk
+## createPricesBulk
 
-Create multiple prices with the specified configurations. Supports both regular and price unit configurations.
+Use when creating many prices at once (e.g. importing a catalog or setting up a plan with multiple tiers).
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="post_/prices/bulk" method="post" path="/prices/bulk" -->
+<!-- UsageSnippet language="typescript" operationID="createPricesBulk" method="post" path="/prices/bulk" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.prices.postPricesBulk({
+  const result = await flexprice.prices.createPricesBulk({
     items: [],
   });
 
@@ -210,25 +134,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { pricesPostPricesBulk } from "flexprice-sdk-test/funcs/prices-post-prices-bulk.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { pricesCreatePricesBulk } from "flexprice-ts/funcs/pricesCreatePricesBulk.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await pricesPostPricesBulk(flexPrice, {
+  const res = await pricesCreatePricesBulk(flexprice, {
     items: [],
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("pricesPostPricesBulk failed:", res.error);
+    console.log("pricesCreatePricesBulk failed:", res.error);
   }
 }
 
@@ -239,40 +163,41 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.DtoCreateBulkPriceRequest](../../models/components/dto-create-bulk-price-request.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [shared.DtoCreateBulkPriceRequest](../../sdk/models/shared/dtocreatebulkpricerequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoCreateBulkPriceResponse](../../models/components/dto-create-bulk-price-response.md)\>**
+**Promise\<[operations.CreatePricesBulkResponse](../../sdk/models/operations/createpricesbulkresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## getPricesLookupLookupKey
+## deletePrice
 
-Get price by lookup key
+Use when retiring a price (e.g. end-of-life or replacement). Optional effective date or cascade for subscriptions.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="get_/prices/lookup/{lookup_key}" method="get" path="/prices/lookup/{lookup_key}" -->
+<!-- UsageSnippet language="typescript" operationID="deletePrice" method="delete" path="/prices/{id}" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.prices.getPricesLookupLookupKey("<value>");
+  const result = await flexprice.prices.deletePrice({
+    id: "<id>",
+    dtoDeletePriceRequest: {},
+  });
 
   console.log(result);
 }
@@ -285,23 +210,26 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { pricesGetPricesLookupLookupKey } from "flexprice-sdk-test/funcs/prices-get-prices-lookup-lookup-key.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { pricesDeletePrice } from "flexprice-ts/funcs/pricesDeletePrice.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await pricesGetPricesLookupLookupKey(flexPrice, "<value>");
+  const res = await pricesDeletePrice(flexprice, {
+    id: "<id>",
+    dtoDeletePriceRequest: {},
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("pricesGetPricesLookupLookupKey failed:", res.error);
+    console.log("pricesDeletePrice failed:", res.error);
   }
 }
 
@@ -312,40 +240,40 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `lookupKey`                                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Lookup key                                                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.DeletePriceRequest](../../sdk/models/operations/deletepricerequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoPriceResponse](../../models/components/dto-price-response.md)\>**
+**Promise\<[operations.DeletePriceResponse](../../sdk/models/operations/deletepriceresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## postPricesSearch
+## getPrice
 
-List prices with filter
+Use when you need to load a single price (e.g. for display or editing). Response includes expanded meter and price unit when applicable.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="post_/prices/search" method="post" path="/prices/search" -->
+<!-- UsageSnippet language="typescript" operationID="getPrice" method="get" path="/prices/{id}" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.prices.postPricesSearch({});
+  const result = await flexprice.prices.getPrice({
+    id: "<id>",
+  });
 
   console.log(result);
 }
@@ -358,23 +286,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { pricesPostPricesSearch } from "flexprice-sdk-test/funcs/prices-post-prices-search.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { pricesGetPrice } from "flexprice-ts/funcs/pricesGetPrice.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await pricesPostPricesSearch(flexPrice, {});
+  const res = await pricesGetPrice(flexprice, {
+    id: "<id>",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("pricesPostPricesSearch failed:", res.error);
+    console.log("pricesGetPrice failed:", res.error);
   }
 }
 
@@ -385,40 +315,40 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [components.TypesPriceFilter](../../models/components/types-price-filter.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetPriceRequest](../../sdk/models/operations/getpricerequest.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoListPricesResponse](../../models/components/dto-list-prices-response.md)\>**
+**Promise\<[operations.GetPriceResponse](../../sdk/models/operations/getpriceresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## getPricesId
+## getPriceByLookupKey
 
-Get a price by ID with expanded meter and price unit information
+Use when resolving a price by external id (e.g. from your catalog or CMS). Ideal for integrations.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="get_/prices/{id}" method="get" path="/prices/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="getPriceByLookupKey" method="get" path="/prices/lookup/{lookup_key}" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.prices.getPricesId("<id>");
+  const result = await flexprice.prices.getPriceByLookupKey({
+    lookupKey: "<value>",
+  });
 
   console.log(result);
 }
@@ -431,23 +361,25 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { pricesGetPricesId } from "flexprice-sdk-test/funcs/prices-get-prices-id.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { pricesGetPriceByLookupKey } from "flexprice-ts/funcs/pricesGetPriceByLookupKey.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await pricesGetPricesId(flexPrice, "<id>");
+  const res = await pricesGetPriceByLookupKey(flexprice, {
+    lookupKey: "<value>",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("pricesGetPricesId failed:", res.error);
+    console.log("pricesGetPriceByLookupKey failed:", res.error);
   }
 }
 
@@ -458,40 +390,38 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Price ID                                                                                                                                                                       |
+| `request`                                                                                                                                                                      | [operations.GetPriceByLookupKeyRequest](../../sdk/models/operations/getpricebylookupkeyrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoPriceResponse](../../models/components/dto-price-response.md)\>**
+**Promise\<[operations.GetPriceByLookupKeyResponse](../../sdk/models/operations/getpricebylookupkeyresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## putPricesId
+## queryPrice
 
-Update a price with the specified configuration
+Use when listing or searching prices (e.g. plan builder or catalog). Returns a paginated list; supports filtering and sorting.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="put_/prices/{id}" method="put" path="/prices/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="queryPrice" method="post" path="/prices/search" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.prices.putPricesId("<id>", {});
+  const result = await flexprice.prices.queryPrice({});
 
   console.log(result);
 }
@@ -504,23 +434,23 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { pricesPutPricesId } from "flexprice-sdk-test/funcs/prices-put-prices-id.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { pricesQueryPrice } from "flexprice-ts/funcs/pricesQueryPrice.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await pricesPutPricesId(flexPrice, "<id>", {});
+  const res = await pricesQueryPrice(flexprice, {});
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("pricesPutPricesId failed:", res.error);
+    console.log("pricesQueryPrice failed:", res.error);
   }
 }
 
@@ -531,41 +461,41 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Price ID                                                                                                                                                                       |
-| `body`                                                                                                                                                                         | [components.DtoUpdatePriceRequest](../../models/components/dto-update-price-request.md)                                                                                        | :heavy_check_mark:                                                                                                                                                             | Price configuration                                                                                                                                                            |
+| `request`                                                                                                                                                                      | [shared.TypesPriceFilter](../../sdk/models/shared/typespricefilter.md)                                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoPriceResponse](../../models/components/dto-price-response.md)\>**
+**Promise\<[operations.QueryPriceResponse](../../sdk/models/operations/querypriceresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## deletePricesId
+## updatePrice
 
-Delete a price
+Use when changing price configuration (e.g. amount, billing scheme, or metadata).
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="delete_/prices/{id}" method="delete" path="/prices/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="updatePrice" method="put" path="/prices/{id}" -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.prices.deletePricesId("<id>", {});
+  const result = await flexprice.prices.updatePrice({
+    id: "<id>",
+    dtoUpdatePriceRequest: {},
+  });
 
   console.log(result);
 }
@@ -578,23 +508,26 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexPriceCore } from "flexprice-sdk-test/core.js";
-import { pricesDeletePricesId } from "flexprice-sdk-test/funcs/prices-delete-prices-id.js";
+import { FlexpriceCore } from "flexprice-ts/core.js";
+import { pricesUpdatePrice } from "flexprice-ts/funcs/pricesUpdatePrice.js";
 
-// Use `FlexPriceCore` for best tree-shaking performance.
+// Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
-const flexPrice = new FlexPriceCore({
+const flexprice = new FlexpriceCore({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const res = await pricesDeletePricesId(flexPrice, "<id>", {});
+  const res = await pricesUpdatePrice(flexprice, {
+    id: "<id>",
+    dtoUpdatePriceRequest: {},
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("pricesDeletePricesId failed:", res.error);
+    console.log("pricesUpdatePrice failed:", res.error);
   }
 }
 
@@ -605,20 +538,17 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `id`                                                                                                                                                                           | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | Price ID                                                                                                                                                                       |
-| `body`                                                                                                                                                                         | [components.DtoDeletePriceRequest](../../models/components/dto-delete-price-request.md)                                                                                        | :heavy_check_mark:                                                                                                                                                             | Delete Price Request                                                                                                                                                           |
+| `request`                                                                                                                                                                      | [operations.UpdatePriceRequest](../../sdk/models/operations/updatepricerequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[components.DtoSuccessResponse](../../models/components/dto-success-response.md)\>**
+**Promise\<[operations.UpdatePriceResponse](../../sdk/models/operations/updatepriceresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.ErrorsErrorResponse | 400                        | application/json           |
-| errors.ErrorsErrorResponse | 500                        | application/json           |
-| errors.SDKError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |

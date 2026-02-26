@@ -1,14 +1,18 @@
 <!-- Start SDK Example Usage [usage] -->
 ```typescript
-import { FlexPrice } from "flexprice-sdk-test";
+import { Flexprice } from "flexprice-ts";
 
-const flexPrice = new FlexPrice({
+const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
   apiKeyAuth: "<YOUR_API_KEY_HERE>",
 });
 
 async function run() {
-  const result = await flexPrice.addons.getAddons({});
+  const result = await flexprice.addons.createAddon({
+    lookupKey: "<value>",
+    name: "<value>",
+    type: "multiple_instance",
+  });
 
   console.log(result);
 }
