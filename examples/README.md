@@ -1,31 +1,5 @@
-# flexprice-ts-temp Examples
+# TypeScript SDK examples
 
-This directory contains example scripts demonstrating how to use the flexprice-ts-temp SDK.
-
-## Prerequisites
-
-- Node.js (v18 or higher)
-- npm
-
-## Setup
-
-1. Copy `.env.template` to `.env`:
-   ```bash
-   cp .env.template .env
-   ```
-
-2. Edit `.env` and add your actual credentials
-
-## Running the Examples
-
-To run an example file from the examples directory:
-
-```bash
-npm run build && npx tsx example.ts
-```
-
-## Creating new examples
-
-Duplicate an existing example file, they won't be overwritten by the generation process.
-
-
+1. Install the SDK: `npm i @flexprice/sdk`.
+2. Copy `.env.sample` to `.env` and set `FLEXPRICE_API_KEY` (optionally `FLEXPRICE_API_HOST`).
+3. Run the example: from the package root, `npx tsx examples/quick-start.ts`; or from the `examples/` directory, `npx tsx quick-start.ts`.
