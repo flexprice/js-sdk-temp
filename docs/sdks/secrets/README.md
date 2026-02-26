@@ -16,7 +16,7 @@ Use when issuing a new API key (e.g. for a service account or for the current us
 
 <!-- UsageSnippet language="typescript" operationID="createApiKey" method="post" path="/secrets/api/keys" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -40,8 +40,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { secretsCreateApiKey } from "flexprice-ts/funcs/secretsCreateApiKey.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { secretsCreateApiKey } from "flexprice-ts-temp/funcs/secretsCreateApiKey.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -93,7 +93,7 @@ Use when revoking an API key (e.g. rotation or compromise). Permanently invalida
 
 <!-- UsageSnippet language="typescript" operationID="deleteApiKey" method="delete" path="/secrets/api/keys/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -116,8 +116,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { secretsDeleteApiKey } from "flexprice-ts/funcs/secretsDeleteApiKey.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { secretsDeleteApiKey } from "flexprice-ts-temp/funcs/secretsDeleteApiKey.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -168,7 +168,7 @@ Use when listing API keys (e.g. admin view or rotating keys). Returns a paginate
 
 <!-- UsageSnippet language="typescript" operationID="listApiKeys" method="get" path="/secrets/api/keys" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -189,8 +189,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { secretsListApiKeys } from "flexprice-ts/funcs/secretsListApiKeys.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { secretsListApiKeys } from "flexprice-ts-temp/funcs/secretsListApiKeys.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

@@ -19,7 +19,7 @@ Use when recording a payment against an invoice (e.g. after receiving funds via 
 
 <!-- UsageSnippet language="typescript" operationID="createPayment" method="post" path="/payments" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -46,8 +46,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { paymentsCreatePayment } from "flexprice-ts/funcs/paymentsCreatePayment.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { paymentsCreatePayment } from "flexprice-ts-temp/funcs/paymentsCreatePayment.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -102,7 +102,7 @@ Use when removing or voiding a payment record (e.g. correcting erroneous entries
 
 <!-- UsageSnippet language="typescript" operationID="deletePayment" method="delete" path="/payments/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -125,8 +125,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { paymentsDeletePayment } from "flexprice-ts/funcs/paymentsDeletePayment.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { paymentsDeletePayment } from "flexprice-ts-temp/funcs/paymentsDeletePayment.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -177,7 +177,7 @@ Use when you need to load a single payment (e.g. for a receipt view or reconcili
 
 <!-- UsageSnippet language="typescript" operationID="getPayment" method="get" path="/payments/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -200,8 +200,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { paymentsGetPayment } from "flexprice-ts/funcs/paymentsGetPayment.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { paymentsGetPayment } from "flexprice-ts-temp/funcs/paymentsGetPayment.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -252,7 +252,7 @@ Use when listing or searching payments (e.g. reconciliation UI or customer payme
 
 <!-- UsageSnippet language="typescript" operationID="listPayments" method="get" path="/payments" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -273,8 +273,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { paymentsListPayments } from "flexprice-ts/funcs/paymentsListPayments.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { paymentsListPayments } from "flexprice-ts-temp/funcs/paymentsListPayments.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -323,7 +323,7 @@ Use when you need to charge or process a payment (e.g. trigger the payment provi
 
 <!-- UsageSnippet language="typescript" operationID="processPayment" method="post" path="/payments/{id}/process" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -346,8 +346,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { paymentsProcessPayment } from "flexprice-ts/funcs/paymentsProcessPayment.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { paymentsProcessPayment } from "flexprice-ts-temp/funcs/paymentsProcessPayment.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -398,7 +398,7 @@ Use when updating payment status or metadata (e.g. after reconciliation or addin
 
 <!-- UsageSnippet language="typescript" operationID="updatePayment" method="put" path="/payments/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -422,8 +422,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { paymentsUpdatePayment } from "flexprice-ts/funcs/paymentsUpdatePayment.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { paymentsUpdatePayment } from "flexprice-ts-temp/funcs/paymentsUpdatePayment.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

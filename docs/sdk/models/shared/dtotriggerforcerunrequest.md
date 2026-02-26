@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoTriggerForceRunRequest } from "flexprice-ts/sdk/models/shared";
+import { DtoTriggerForceRunRequest } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: DtoTriggerForceRunRequest = {};
 ```

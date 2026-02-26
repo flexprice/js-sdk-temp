@@ -17,7 +17,7 @@ Use when storing or updating credentials for an external integration (e.g. Strip
 
 <!-- UsageSnippet language="typescript" operationID="createOrUpdateIntegration" method="post" path="/secrets/integrations/create/{provider}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -47,8 +47,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { integrationsCreateOrUpdateIntegration } from "flexprice-ts/funcs/integrationsCreateOrUpdateIntegration.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { integrationsCreateOrUpdateIntegration } from "flexprice-ts-temp/funcs/integrationsCreateOrUpdateIntegration.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -106,7 +106,7 @@ Use when disconnecting an integration (e.g. switching provider or removing OAuth
 
 <!-- UsageSnippet language="typescript" operationID="deleteIntegration" method="delete" path="/secrets/integrations/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -129,8 +129,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { integrationsDeleteIntegration } from "flexprice-ts/funcs/integrationsDeleteIntegration.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { integrationsDeleteIntegration } from "flexprice-ts-temp/funcs/integrationsDeleteIntegration.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -181,7 +181,7 @@ Use when you need to check or display integration config (e.g. which provider is
 
 <!-- UsageSnippet language="typescript" operationID="getIntegration" method="get" path="/secrets/integrations/by-provider/{provider}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -204,8 +204,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { integrationsGetIntegration } from "flexprice-ts/funcs/integrationsGetIntegration.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { integrationsGetIntegration } from "flexprice-ts-temp/funcs/integrationsGetIntegration.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -256,7 +256,7 @@ Use when showing which integrations are connected (e.g. settings page). Returns 
 
 <!-- UsageSnippet language="typescript" operationID="listLinkedIntegrations" method="get" path="/secrets/integrations/linked" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -277,8 +277,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { integrationsListLinkedIntegrations } from "flexprice-ts/funcs/integrationsListLinkedIntegrations.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { integrationsListLinkedIntegrations } from "flexprice-ts-temp/funcs/integrationsListLinkedIntegrations.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

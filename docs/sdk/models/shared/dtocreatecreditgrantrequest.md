@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoCreateCreditGrantRequest } from "flexprice-ts/sdk/models/shared";
+import { DtoCreateCreditGrantRequest } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: DtoCreateCreditGrantRequest = {
   cadence: "RECURRING",

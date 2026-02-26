@@ -1,6 +1,6 @@
 <!-- Start SDK Example Usage [usage] -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TriggerScheduledTaskRunRequest } from "flexprice-ts/sdk/models/operations";
+import { TriggerScheduledTaskRunRequest } from "flexprice-ts-temp/sdk/models/operations";
 
 let value: TriggerScheduledTaskRunRequest = {
   id: "<id>",

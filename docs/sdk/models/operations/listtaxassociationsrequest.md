@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ListTaxAssociationsRequest } from "flexprice-ts/sdk/models/operations";
+import { ListTaxAssociationsRequest } from "flexprice-ts-temp/sdk/models/operations";
 
 let value: ListTaxAssociationsRequest = {};
 ```

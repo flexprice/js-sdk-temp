@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoCreateEntitlementRequest } from "flexprice-ts/sdk/models/shared";
+import { DtoCreateEntitlementRequest } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: DtoCreateEntitlementRequest = {
   featureId: "<id>",

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateOrUpdateIntegrationRequest } from "flexprice-ts/sdk/models/operations";
+import { CreateOrUpdateIntegrationRequest } from "flexprice-ts-temp/sdk/models/operations";
 
 let value: CreateOrUpdateIntegrationRequest = {
   provider: "<value>",

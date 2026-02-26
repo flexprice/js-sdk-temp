@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesCancellationType } from "flexprice-ts/sdk/models/shared";
+import { TypesCancellationType } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: TypesCancellationType = "immediate";
 ```

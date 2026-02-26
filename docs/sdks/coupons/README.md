@@ -18,7 +18,7 @@ Use when creating a discount (e.g. promo code or referral). Ideal for percent or
 
 <!-- UsageSnippet language="typescript" operationID="createCoupon" method="post" path="/coupons" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -43,8 +43,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { couponsCreateCoupon } from "flexprice-ts/funcs/couponsCreateCoupon.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { couponsCreateCoupon } from "flexprice-ts-temp/funcs/couponsCreateCoupon.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -97,7 +97,7 @@ Use when retiring a coupon (e.g. campaign ended). Returns 200 with success messa
 
 <!-- UsageSnippet language="typescript" operationID="deleteCoupon" method="delete" path="/coupons/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -120,8 +120,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { couponsDeleteCoupon } from "flexprice-ts/funcs/couponsDeleteCoupon.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { couponsDeleteCoupon } from "flexprice-ts-temp/funcs/couponsDeleteCoupon.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -172,7 +172,7 @@ Use when you need to load a single coupon (e.g. for display or to validate a cod
 
 <!-- UsageSnippet language="typescript" operationID="getCoupon" method="get" path="/coupons/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -195,8 +195,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { couponsGetCoupon } from "flexprice-ts/funcs/couponsGetCoupon.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { couponsGetCoupon } from "flexprice-ts-temp/funcs/couponsGetCoupon.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -247,7 +247,7 @@ Use when listing or searching coupons (e.g. promo management). Returns a paginat
 
 <!-- UsageSnippet language="typescript" operationID="queryCoupon" method="post" path="/coupons/search" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -268,8 +268,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { couponsQueryCoupon } from "flexprice-ts/funcs/couponsQueryCoupon.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { couponsQueryCoupon } from "flexprice-ts-temp/funcs/couponsQueryCoupon.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -318,7 +318,7 @@ Use when changing coupon config (e.g. value, validity, or usage limits).
 
 <!-- UsageSnippet language="typescript" operationID="updateCoupon" method="put" path="/coupons/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -342,8 +342,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { couponsUpdateCoupon } from "flexprice-ts/funcs/couponsUpdateCoupon.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { couponsUpdateCoupon } from "flexprice-ts-temp/funcs/couponsUpdateCoupon.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

@@ -20,7 +20,7 @@ Use when setting up recurring data exports or other scheduled jobs. Ideal for re
 
 <!-- UsageSnippet language="typescript" operationID="createScheduledTask" method="post" path="/tasks/scheduled" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -46,8 +46,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { scheduledTasksCreateScheduledTask } from "flexprice-ts/funcs/scheduledTasksCreateScheduledTask.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { scheduledTasksCreateScheduledTask } from "flexprice-ts-temp/funcs/scheduledTasksCreateScheduledTask.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -101,7 +101,7 @@ Use when removing a scheduled task from the active roster. Archives the task and
 
 <!-- UsageSnippet language="typescript" operationID="deleteScheduledTask" method="delete" path="/tasks/scheduled/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -124,8 +124,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { scheduledTasksDeleteScheduledTask } from "flexprice-ts/funcs/scheduledTasksDeleteScheduledTask.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { scheduledTasksDeleteScheduledTask } from "flexprice-ts-temp/funcs/scheduledTasksDeleteScheduledTask.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -176,7 +176,7 @@ Use when you need to load a single scheduled task (e.g. to show details in a UI 
 
 <!-- UsageSnippet language="typescript" operationID="getScheduledTask" method="get" path="/tasks/scheduled/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -199,8 +199,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { scheduledTasksGetScheduledTask } from "flexprice-ts/funcs/scheduledTasksGetScheduledTask.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { scheduledTasksGetScheduledTask } from "flexprice-ts-temp/funcs/scheduledTasksGetScheduledTask.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -251,7 +251,7 @@ Use when listing or managing scheduled tasks in an admin UI. Returns a list; sup
 
 <!-- UsageSnippet language="typescript" operationID="listScheduledTasks" method="get" path="/tasks/scheduled" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -272,8 +272,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { scheduledTasksListScheduledTasks } from "flexprice-ts/funcs/scheduledTasksListScheduledTasks.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { scheduledTasksListScheduledTasks } from "flexprice-ts-temp/funcs/scheduledTasksListScheduledTasks.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -322,7 +322,7 @@ Use when you need to trigger a billing-period update workflow (e.g. to recalcula
 
 <!-- UsageSnippet language="typescript" operationID="scheduleUpdateBillingPeriod" method="post" path="/tasks/scheduled/schedule-update-billing-period" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -343,8 +343,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { scheduledTasksScheduleUpdateBillingPeriod } from "flexprice-ts/funcs/scheduledTasksScheduleUpdateBillingPeriod.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { scheduledTasksScheduleUpdateBillingPeriod } from "flexprice-ts-temp/funcs/scheduledTasksScheduleUpdateBillingPeriod.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -393,7 +393,7 @@ Use when you need to run a scheduled export immediately (e.g. on-demand report o
 
 <!-- UsageSnippet language="typescript" operationID="triggerScheduledTaskRun" method="post" path="/tasks/scheduled/{id}/run" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -416,8 +416,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { scheduledTasksTriggerScheduledTaskRun } from "flexprice-ts/funcs/scheduledTasksTriggerScheduledTaskRun.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { scheduledTasksTriggerScheduledTaskRun } from "flexprice-ts-temp/funcs/scheduledTasksTriggerScheduledTaskRun.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -468,7 +468,7 @@ Use when pausing or resuming a scheduled task. Only the enabled field can be cha
 
 <!-- UsageSnippet language="typescript" operationID="updateScheduledTask" method="put" path="/tasks/scheduled/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -494,8 +494,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { scheduledTasksUpdateScheduledTask } from "flexprice-ts/funcs/scheduledTasksUpdateScheduledTask.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { scheduledTasksUpdateScheduledTask } from "flexprice-ts-temp/funcs/scheduledTasksUpdateScheduledTask.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

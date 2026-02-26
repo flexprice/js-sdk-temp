@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoUsageAnalyticItem } from "flexprice-ts/sdk/models/shared";
+import { DtoUsageAnalyticItem } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: DtoUsageAnalyticItem = {
   price: {

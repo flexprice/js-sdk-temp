@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoCreateMeterRequest } from "flexprice-ts/sdk/models/shared";
+import { DtoCreateMeterRequest } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: DtoCreateMeterRequest = {
   aggregation: {},

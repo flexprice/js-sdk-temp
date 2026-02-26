@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetCustomerByExternalIdRequest } from "flexprice-ts/sdk/models/operations";
+import { GetCustomerByExternalIdRequest } from "flexprice-ts-temp/sdk/models/operations";
 
 let value: GetCustomerByExternalIdRequest = {
   externalId: "<id>",

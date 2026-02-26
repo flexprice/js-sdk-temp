@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoCreateAPIKeyRequest } from "flexprice-ts/sdk/models/shared";
+import { DtoCreateAPIKeyRequest } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: DtoCreateAPIKeyRequest = {
   name: "<value>",

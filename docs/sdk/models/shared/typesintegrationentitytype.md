@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesIntegrationEntityType } from "flexprice-ts/sdk/models/shared";
+import { TypesIntegrationEntityType } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: TypesIntegrationEntityType = "price";
 ```

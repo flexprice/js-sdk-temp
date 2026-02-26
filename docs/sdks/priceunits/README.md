@@ -20,7 +20,7 @@ Use when defining a new unit of measure for pricing (e.g. GB, API call, seat). I
 
 <!-- UsageSnippet language="typescript" operationID="createPriceUnit" method="post" path="/prices/units" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -47,8 +47,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { priceUnitsCreatePriceUnit } from "flexprice-ts/funcs/priceUnitsCreatePriceUnit.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { priceUnitsCreatePriceUnit } from "flexprice-ts-temp/funcs/priceUnitsCreatePriceUnit.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -103,7 +103,7 @@ Use when removing a price unit that is no longer needed. Fails if any price refe
 
 <!-- UsageSnippet language="typescript" operationID="deletePriceUnit" method="delete" path="/prices/units/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -126,8 +126,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { priceUnitsDeletePriceUnit } from "flexprice-ts/funcs/priceUnitsDeletePriceUnit.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { priceUnitsDeletePriceUnit } from "flexprice-ts-temp/funcs/priceUnitsDeletePriceUnit.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -178,7 +178,7 @@ Use when you need to load a single price unit (e.g. for display or when creating
 
 <!-- UsageSnippet language="typescript" operationID="getPriceUnit" method="get" path="/prices/units/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -201,8 +201,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { priceUnitsGetPriceUnit } from "flexprice-ts/funcs/priceUnitsGetPriceUnit.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { priceUnitsGetPriceUnit } from "flexprice-ts-temp/funcs/priceUnitsGetPriceUnit.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -253,7 +253,7 @@ Use when resolving a price unit by code (e.g. from an external catalog or config
 
 <!-- UsageSnippet language="typescript" operationID="getPriceUnitByCode" method="get" path="/prices/units/code/{code}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -276,8 +276,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { priceUnitsGetPriceUnitByCode } from "flexprice-ts/funcs/priceUnitsGetPriceUnitByCode.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { priceUnitsGetPriceUnitByCode } from "flexprice-ts-temp/funcs/priceUnitsGetPriceUnitByCode.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -328,7 +328,7 @@ Use when listing price units (e.g. in a catalog or when creating prices). Return
 
 <!-- UsageSnippet language="typescript" operationID="listPriceUnits" method="get" path="/prices/units" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -349,8 +349,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { priceUnitsListPriceUnits } from "flexprice-ts/funcs/priceUnitsListPriceUnits.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { priceUnitsListPriceUnits } from "flexprice-ts-temp/funcs/priceUnitsListPriceUnits.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -399,7 +399,7 @@ Use when searching or listing price units (e.g. admin catalog). Returns a pagina
 
 <!-- UsageSnippet language="typescript" operationID="queryPriceUnit" method="post" path="/prices/units/search" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -420,8 +420,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { priceUnitsQueryPriceUnit } from "flexprice-ts/funcs/priceUnitsQueryPriceUnit.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { priceUnitsQueryPriceUnit } from "flexprice-ts-temp/funcs/priceUnitsQueryPriceUnit.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -470,7 +470,7 @@ Use when renaming or updating metadata for a price unit. Code is immutable once 
 
 <!-- UsageSnippet language="typescript" operationID="updatePriceUnit" method="put" path="/prices/units/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -494,8 +494,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { priceUnitsUpdatePriceUnit } from "flexprice-ts/funcs/priceUnitsUpdatePriceUnit.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { priceUnitsUpdatePriceUnit } from "flexprice-ts-temp/funcs/priceUnitsUpdatePriceUnit.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

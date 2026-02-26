@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesScheduledTaskInterval } from "flexprice-ts/sdk/models/shared";
+import { TypesScheduledTaskInterval } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: TypesScheduledTaskInterval = "daily";
 ```

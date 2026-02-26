@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoCreateEnvironmentRequest } from "flexprice-ts/sdk/models/shared";
+import { DtoCreateEnvironmentRequest } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: DtoCreateEnvironmentRequest = {
   name: "<value>",

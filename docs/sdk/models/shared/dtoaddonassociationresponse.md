@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoAddonAssociationResponse } from "flexprice-ts/sdk/models/shared";
+import { DtoAddonAssociationResponse } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: DtoAddonAssociationResponse = {
   addon: {

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoLineItemCommitmentConfig } from "flexprice-ts/sdk/models/shared";
+import { DtoLineItemCommitmentConfig } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: DtoLineItemCommitmentConfig = {};
 ```

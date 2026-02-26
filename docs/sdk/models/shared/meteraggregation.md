@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { MeterAggregation } from "flexprice-ts/sdk/models/shared";
+import { MeterAggregation } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: MeterAggregation = {};
 ```

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoUsageBreakdownItem } from "flexprice-ts/sdk/models/shared";
+import { DtoUsageBreakdownItem } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: DtoUsageBreakdownItem = {};
 ```

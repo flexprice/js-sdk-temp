@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ProcessCreditNoteRequest } from "flexprice-ts/sdk/models/operations";
+import { ProcessCreditNoteRequest } from "flexprice-ts-temp/sdk/models/operations";
 
 let value: ProcessCreditNoteRequest = {
   id: "<id>",

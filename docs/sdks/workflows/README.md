@@ -14,7 +14,7 @@ Use when listing or auditing workflow runs (e.g. ops dashboard or debugging). Re
 
 <!-- UsageSnippet language="typescript" operationID="queryWorkflow" method="post" path="/workflows/search" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -35,8 +35,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { workflowsQueryWorkflow } from "flexprice-ts/funcs/workflowsQueryWorkflow.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { workflowsQueryWorkflow } from "flexprice-ts-temp/funcs/workflowsQueryWorkflow.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesInvoiceFilterOrder } from "flexprice-ts/sdk/models/shared";
+import { TypesInvoiceFilterOrder } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: TypesInvoiceFilterOrder = "desc";
 ```

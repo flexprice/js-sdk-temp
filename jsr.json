@@ -1,7 +1,7 @@
 
 
 {
-  "name": "flexprice-ts",
+  "name": "flexprice-ts-temp",
   "version": "0.0.41",
   "exports": {
     ".": "./src/index.ts",    

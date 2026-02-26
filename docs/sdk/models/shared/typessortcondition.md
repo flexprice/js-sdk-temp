@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesSortCondition } from "flexprice-ts/sdk/models/shared";
+import { TypesSortCondition } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: TypesSortCondition = {};
 ```

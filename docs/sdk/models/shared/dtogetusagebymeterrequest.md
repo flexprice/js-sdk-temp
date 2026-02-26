@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoGetUsageByMeterRequest } from "flexprice-ts/sdk/models/shared";
+import { DtoGetUsageByMeterRequest } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: DtoGetUsageByMeterRequest = {
   billingAnchor: "2024-03-05T14:30:45Z",

@@ -5,7 +5,7 @@ Response after successfully executing a subscription plan change
 ## Example Usage
 
 ```typescript
-import { DtoSubscriptionChangeExecuteResponse } from "flexprice-ts/sdk/models/shared";
+import { DtoSubscriptionChangeExecuteResponse } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: DtoSubscriptionChangeExecuteResponse = {
   invoice: {

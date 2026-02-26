@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesProrationBehavior } from "flexprice-ts/sdk/models/shared";
+import { TypesProrationBehavior } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: TypesProrationBehavior = "none";
 ```

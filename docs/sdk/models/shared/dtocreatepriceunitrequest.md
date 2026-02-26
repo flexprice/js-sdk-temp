@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoCreatePriceUnitRequest } from "flexprice-ts/sdk/models/shared";
+import { DtoCreatePriceUnitRequest } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: DtoCreatePriceUnitRequest = {
   baseCurrency: "<value>",

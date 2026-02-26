@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoSubscriptionPhaseCreateRequest } from "flexprice-ts/sdk/models/shared";
+import { DtoSubscriptionPhaseCreateRequest } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: DtoSubscriptionPhaseCreateRequest = {
   startDate: "<value>",

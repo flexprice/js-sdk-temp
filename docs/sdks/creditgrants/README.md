@@ -18,7 +18,7 @@ Use when giving a customer or plan credits (e.g. prepaid balance or promotional 
 
 <!-- UsageSnippet language="typescript" operationID="createCreditGrant" method="post" path="/creditgrants" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -44,8 +44,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { creditGrantsCreateCreditGrant } from "flexprice-ts/funcs/creditGrantsCreateCreditGrant.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { creditGrantsCreateCreditGrant } from "flexprice-ts-temp/funcs/creditGrantsCreateCreditGrant.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -99,7 +99,7 @@ Use when removing or ending a credit grant (e.g. revoke promo or close prepaid).
 
 <!-- UsageSnippet language="typescript" operationID="deleteCreditGrant" method="delete" path="/creditgrants/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -122,8 +122,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { creditGrantsDeleteCreditGrant } from "flexprice-ts/funcs/creditGrantsDeleteCreditGrant.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { creditGrantsDeleteCreditGrant } from "flexprice-ts-temp/funcs/creditGrantsDeleteCreditGrant.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -174,7 +174,7 @@ Use when you need to load a single credit grant (e.g. for display or to check ba
 
 <!-- UsageSnippet language="typescript" operationID="getCreditGrant" method="get" path="/creditgrants/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -197,8 +197,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { creditGrantsGetCreditGrant } from "flexprice-ts/funcs/creditGrantsGetCreditGrant.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { creditGrantsGetCreditGrant } from "flexprice-ts-temp/funcs/creditGrantsGetCreditGrant.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -249,7 +249,7 @@ Use when listing credits attached to a plan (e.g. included prepaid or promo cred
 
 <!-- UsageSnippet language="typescript" operationID="getPlanCreditGrants" method="get" path="/plans/{id}/creditgrants" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -272,8 +272,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { creditGrantsGetPlanCreditGrants } from "flexprice-ts/funcs/creditGrantsGetPlanCreditGrants.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { creditGrantsGetPlanCreditGrants } from "flexprice-ts-temp/funcs/creditGrantsGetPlanCreditGrants.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -324,7 +324,7 @@ Use when changing a credit grant (e.g. amount or end date). Request body contain
 
 <!-- UsageSnippet language="typescript" operationID="updateCreditGrant" method="put" path="/creditgrants/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -348,8 +348,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { creditGrantsUpdateCreditGrant } from "flexprice-ts/funcs/creditGrantsUpdateCreditGrant.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { creditGrantsUpdateCreditGrant } from "flexprice-ts-temp/funcs/creditGrantsUpdateCreditGrant.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

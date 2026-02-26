@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoMeterResponse } from "flexprice-ts/sdk/models/shared";
+import { DtoMeterResponse } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: DtoMeterResponse = {
   createdAt: "2024-03-20T15:04:05Z",

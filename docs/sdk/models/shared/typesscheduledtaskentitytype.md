@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesScheduledTaskEntityType } from "flexprice-ts/sdk/models/shared";
+import { TypesScheduledTaskEntityType } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: TypesScheduledTaskEntityType = "credit_topups";
 ```

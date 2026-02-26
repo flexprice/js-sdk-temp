@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesWorkflowExecutionFilterOrder } from "flexprice-ts/sdk/models/shared";
+import { TypesWorkflowExecutionFilterOrder } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: TypesWorkflowExecutionFilterOrder = "asc";
 ```

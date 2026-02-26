@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoCreateUserRequest } from "flexprice-ts/sdk/models/shared";
+import { DtoCreateUserRequest } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: DtoCreateUserRequest = {
   roles: [

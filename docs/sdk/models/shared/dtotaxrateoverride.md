@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoTaxRateOverride } from "flexprice-ts/sdk/models/shared";
+import { DtoTaxRateOverride } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: DtoTaxRateOverride = {
   currency: "Kenyan Shilling",

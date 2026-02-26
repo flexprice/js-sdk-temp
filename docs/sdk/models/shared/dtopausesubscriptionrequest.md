@@ -5,7 +5,7 @@ Request object for pausing an active subscription with various pause modes and o
 ## Example Usage
 
 ```typescript
-import { DtoPauseSubscriptionRequest } from "flexprice-ts/sdk/models/shared";
+import { DtoPauseSubscriptionRequest } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: DtoPauseSubscriptionRequest = {
   pauseMode: "period_end",

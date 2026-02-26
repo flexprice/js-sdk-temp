@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesAutoTopup } from "flexprice-ts/sdk/models/shared";
+import { TypesAutoTopup } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: TypesAutoTopup = {};
 ```

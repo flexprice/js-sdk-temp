@@ -21,7 +21,7 @@ Use when attaching a feature (and its limit) to a plan or addon (e.g. "10 seats"
 
 <!-- UsageSnippet language="typescript" operationID="createEntitlement" method="post" path="/entitlements" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -45,8 +45,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { entitlementsCreateEntitlement } from "flexprice-ts/funcs/entitlementsCreateEntitlement.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { entitlementsCreateEntitlement } from "flexprice-ts-temp/funcs/entitlementsCreateEntitlement.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -98,7 +98,7 @@ Use when attaching many features to a plan or addon at once (e.g. initial plan s
 
 <!-- UsageSnippet language="typescript" operationID="createEntitlementsBulk" method="post" path="/entitlements/bulk" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -126,8 +126,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { entitlementsCreateEntitlementsBulk } from "flexprice-ts/funcs/entitlementsCreateEntitlementsBulk.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { entitlementsCreateEntitlementsBulk } from "flexprice-ts-temp/funcs/entitlementsCreateEntitlementsBulk.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -183,7 +183,7 @@ Use when removing a feature from a plan or addon (e.g. deprecating a capability)
 
 <!-- UsageSnippet language="typescript" operationID="deleteEntitlement" method="delete" path="/entitlements/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -206,8 +206,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { entitlementsDeleteEntitlement } from "flexprice-ts/funcs/entitlementsDeleteEntitlement.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { entitlementsDeleteEntitlement } from "flexprice-ts-temp/funcs/entitlementsDeleteEntitlement.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -258,7 +258,7 @@ Use when checking what features or limits an addon grants (e.g. for display or e
 
 <!-- UsageSnippet language="typescript" operationID="getAddonEntitlements" method="get" path="/addons/{id}/entitlements" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -281,8 +281,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { entitlementsGetAddonEntitlements } from "flexprice-ts/funcs/entitlementsGetAddonEntitlements.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { entitlementsGetAddonEntitlements } from "flexprice-ts-temp/funcs/entitlementsGetAddonEntitlements.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -333,7 +333,7 @@ Use when you need to load a single entitlement (e.g. to display or edit a featur
 
 <!-- UsageSnippet language="typescript" operationID="getEntitlement" method="get" path="/entitlements/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -356,8 +356,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { entitlementsGetEntitlement } from "flexprice-ts/funcs/entitlementsGetEntitlement.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { entitlementsGetEntitlement } from "flexprice-ts-temp/funcs/entitlementsGetEntitlement.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -408,7 +408,7 @@ Use when checking what a plan includes (e.g. feature list or limits for display 
 
 <!-- UsageSnippet language="typescript" operationID="getPlanEntitlements" method="get" path="/plans/{id}/entitlements" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -431,8 +431,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { entitlementsGetPlanEntitlements } from "flexprice-ts/funcs/entitlementsGetPlanEntitlements.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { entitlementsGetPlanEntitlements } from "flexprice-ts-temp/funcs/entitlementsGetPlanEntitlements.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -483,7 +483,7 @@ Use when listing or searching entitlements (e.g. plan editor or audit). Returns 
 
 <!-- UsageSnippet language="typescript" operationID="queryEntitlement" method="post" path="/entitlements/search" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -504,8 +504,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { entitlementsQueryEntitlement } from "flexprice-ts/funcs/entitlementsQueryEntitlement.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { entitlementsQueryEntitlement } from "flexprice-ts-temp/funcs/entitlementsQueryEntitlement.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -554,7 +554,7 @@ Use when changing an entitlement (e.g. increasing or decreasing a limit). Reques
 
 <!-- UsageSnippet language="typescript" operationID="updateEntitlement" method="put" path="/entitlements/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -578,8 +578,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { entitlementsUpdateEntitlement } from "flexprice-ts/funcs/entitlementsUpdateEntitlement.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { entitlementsUpdateEntitlement } from "flexprice-ts-temp/funcs/entitlementsUpdateEntitlement.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

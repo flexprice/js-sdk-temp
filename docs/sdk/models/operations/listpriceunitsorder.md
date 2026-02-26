@@ -5,7 +5,7 @@ Sort order
 ## Example Usage
 
 ```typescript
-import { ListPriceUnitsOrder } from "flexprice-ts/sdk/models/operations";
+import { ListPriceUnitsOrder } from "flexprice-ts-temp/sdk/models/operations";
 
 let value: ListPriceUnitsOrder = "desc";
 ```

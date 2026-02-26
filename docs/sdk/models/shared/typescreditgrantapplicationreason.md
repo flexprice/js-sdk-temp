@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesCreditGrantApplicationReason } from "flexprice-ts/sdk/models/shared";
+import { TypesCreditGrantApplicationReason } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: TypesCreditGrantApplicationReason = "onetime_credit_grant";
 ```

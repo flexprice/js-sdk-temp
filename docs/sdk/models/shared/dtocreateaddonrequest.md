@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoCreateAddonRequest } from "flexprice-ts/sdk/models/shared";
+import { DtoCreateAddonRequest } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: DtoCreateAddonRequest = {
   lookupKey: "<value>",

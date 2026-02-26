@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoAddAddonToSubscriptionRequest } from "flexprice-ts/sdk/models/shared";
+import { DtoAddAddonToSubscriptionRequest } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: DtoAddAddonToSubscriptionRequest = {
   addonId: "<id>",

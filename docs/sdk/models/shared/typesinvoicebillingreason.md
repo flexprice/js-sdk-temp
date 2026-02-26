@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesInvoiceBillingReason } from "flexprice-ts/sdk/models/shared";
+import { TypesInvoiceBillingReason } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: TypesInvoiceBillingReason = "PRORATION";
 ```

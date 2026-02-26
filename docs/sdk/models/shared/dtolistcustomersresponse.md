@@ -5,7 +5,7 @@ Response object for listing customers with pagination
 ## Example Usage
 
 ```typescript
-import { DtoListCustomersResponse } from "flexprice-ts/sdk/models/shared";
+import { DtoListCustomersResponse } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: DtoListCustomersResponse = {};
 ```

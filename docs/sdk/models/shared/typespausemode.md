@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesPauseMode } from "flexprice-ts/sdk/models/shared";
+import { TypesPauseMode } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: TypesPauseMode = "scheduled";
 ```

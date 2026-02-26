@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetWalletTransactionsRequest } from "flexprice-ts/sdk/models/operations";
+import { GetWalletTransactionsRequest } from "flexprice-ts-temp/sdk/models/operations";
 
 let value: GetWalletTransactionsRequest = {
   idPathParameter: "<value>",

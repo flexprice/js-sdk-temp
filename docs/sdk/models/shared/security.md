@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Security } from "flexprice-ts/sdk/models/shared";
+import { Security } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: Security = {
   apiKeyAuth: "<value>",

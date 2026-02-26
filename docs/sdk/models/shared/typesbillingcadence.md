@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesBillingCadence } from "flexprice-ts/sdk/models/shared";
+import { TypesBillingCadence } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: TypesBillingCadence = "RECURRING";
 ```

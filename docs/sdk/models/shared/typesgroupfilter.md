@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesGroupFilter } from "flexprice-ts/sdk/models/shared";
+import { TypesGroupFilter } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: TypesGroupFilter = {};
 ```

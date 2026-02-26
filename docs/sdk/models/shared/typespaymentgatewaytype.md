@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesPaymentGatewayType } from "flexprice-ts/sdk/models/shared";
+import { TypesPaymentGatewayType } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: TypesPaymentGatewayType = "razorpay";
 ```

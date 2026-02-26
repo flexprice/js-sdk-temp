@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoCreatePriceRequest } from "flexprice-ts/sdk/models/shared";
+import { DtoCreatePriceRequest } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: DtoCreatePriceRequest = {
   billingCadence: "RECURRING",

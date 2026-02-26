@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesWalletType } from "flexprice-ts/sdk/models/shared";
+import { TypesWalletType } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: TypesWalletType = "POST_PAID";
 ```

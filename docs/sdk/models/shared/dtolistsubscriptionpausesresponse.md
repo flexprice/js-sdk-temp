@@ -5,7 +5,7 @@ Response object for listing subscription pauses with total count
 ## Example Usage
 
 ```typescript
-import { DtoListSubscriptionPausesResponse } from "flexprice-ts/sdk/models/shared";
+import { DtoListSubscriptionPausesResponse } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: DtoListSubscriptionPausesResponse = {};
 ```

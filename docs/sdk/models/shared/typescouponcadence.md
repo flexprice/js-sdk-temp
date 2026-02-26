@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TypesCouponCadence } from "flexprice-ts/sdk/models/shared";
+import { TypesCouponCadence } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: TypesCouponCadence = "repeated";
 ```

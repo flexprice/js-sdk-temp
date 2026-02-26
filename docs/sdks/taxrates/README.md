@@ -18,7 +18,7 @@ Use when defining a new tax rate (e.g. VAT or sales tax) for use in invoices. At
 
 <!-- UsageSnippet language="typescript" operationID="createTaxRate" method="post" path="/taxes/rates" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -42,8 +42,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { taxRatesCreateTaxRate } from "flexprice-ts/funcs/taxRatesCreateTaxRate.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { taxRatesCreateTaxRate } from "flexprice-ts-temp/funcs/taxRatesCreateTaxRate.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -95,7 +95,7 @@ Use when retiring a tax rate (e.g. no longer applicable). Fails if still referen
 
 <!-- UsageSnippet language="typescript" operationID="deleteTaxRate" method="delete" path="/taxes/rates/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -118,8 +118,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { taxRatesDeleteTaxRate } from "flexprice-ts/funcs/taxRatesDeleteTaxRate.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { taxRatesDeleteTaxRate } from "flexprice-ts-temp/funcs/taxRatesDeleteTaxRate.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -170,7 +170,7 @@ Use when you need to load a single tax rate (e.g. for display or when creating a
 
 <!-- UsageSnippet language="typescript" operationID="getTaxRate" method="get" path="/taxes/rates/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -193,8 +193,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { taxRatesGetTaxRate } from "flexprice-ts/funcs/taxRatesGetTaxRate.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { taxRatesGetTaxRate } from "flexprice-ts-temp/funcs/taxRatesGetTaxRate.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -245,7 +245,7 @@ Use when listing tax rates (e.g. tax config UI). Returns tax rates with optional
 
 <!-- UsageSnippet language="typescript" operationID="getTaxRates" method="get" path="/taxes/rates" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -266,8 +266,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { taxRatesGetTaxRates } from "flexprice-ts/funcs/taxRatesGetTaxRates.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { taxRatesGetTaxRates } from "flexprice-ts-temp/funcs/taxRatesGetTaxRates.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -316,7 +316,7 @@ Use when changing a tax rate (e.g. rate value or name). Request body contains th
 
 <!-- UsageSnippet language="typescript" operationID="updateTaxRate" method="put" path="/taxes/rates/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -340,8 +340,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { taxRatesUpdateTaxRate } from "flexprice-ts/funcs/taxRatesUpdateTaxRate.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { taxRatesUpdateTaxRate } from "flexprice-ts-temp/funcs/taxRatesUpdateTaxRate.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

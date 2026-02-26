@@ -5,7 +5,7 @@ Integration entity mapping for external provider systems
 ## Example Usage
 
 ```typescript
-import { DtoIntegrationEntityMapping } from "flexprice-ts/sdk/models/shared";
+import { DtoIntegrationEntityMapping } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: DtoIntegrationEntityMapping = {
   id: "<id>",

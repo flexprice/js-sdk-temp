@@ -16,7 +16,7 @@ Use when showing the current tenant's billing usage (e.g. admin billing page or 
 
 <!-- UsageSnippet language="typescript" operationID="getTenantBillingUsage" method="get" path="/tenant/billing" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -37,8 +37,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { tenantsGetTenantBillingUsage } from "flexprice-ts/funcs/tenantsGetTenantBillingUsage.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { tenantsGetTenantBillingUsage } from "flexprice-ts-temp/funcs/tenantsGetTenantBillingUsage.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -86,7 +86,7 @@ Get tenant by ID
 
 <!-- UsageSnippet language="typescript" operationID="getTenantById" method="get" path="/tenants/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -109,8 +109,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { tenantsGetTenantById } from "flexprice-ts/funcs/tenantsGetTenantById.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { tenantsGetTenantById } from "flexprice-ts-temp/funcs/tenantsGetTenantById.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -161,7 +161,7 @@ Use when changing tenant details (e.g. name or billing info). Request body conta
 
 <!-- UsageSnippet language="typescript" operationID="updateTenant" method="put" path="/tenants/update" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -182,8 +182,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { tenantsUpdateTenant } from "flexprice-ts/funcs/tenantsUpdateTenant.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { tenantsUpdateTenant } from "flexprice-ts-temp/funcs/tenantsUpdateTenant.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

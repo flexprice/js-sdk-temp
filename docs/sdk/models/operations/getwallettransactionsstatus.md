@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetWalletTransactionsStatus } from "flexprice-ts/sdk/models/operations";
+import { GetWalletTransactionsStatus } from "flexprice-ts-temp/sdk/models/operations";
 
 let value: GetWalletTransactionsStatus = "published";
 ```

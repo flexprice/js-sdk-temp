@@ -17,7 +17,7 @@ Use when organizing entities into a group (e.g. for filtering prices or plans by
 
 <!-- UsageSnippet language="typescript" operationID="createGroup" method="post" path="/groups" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -42,8 +42,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { groupsCreateGroup } from "flexprice-ts/funcs/groupsCreateGroup.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { groupsCreateGroup } from "flexprice-ts-temp/funcs/groupsCreateGroup.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -96,7 +96,7 @@ Use when removing a group and clearing its entity associations (e.g. retiring a 
 
 <!-- UsageSnippet language="typescript" operationID="deleteGroup" method="delete" path="/groups/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -119,8 +119,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { groupsDeleteGroup } from "flexprice-ts/funcs/groupsDeleteGroup.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { groupsDeleteGroup } from "flexprice-ts-temp/funcs/groupsDeleteGroup.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -171,7 +171,7 @@ Use when you need to load a single group (e.g. for display or to assign entities
 
 <!-- UsageSnippet language="typescript" operationID="getGroup" method="get" path="/groups/{id}" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -194,8 +194,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { groupsGetGroup } from "flexprice-ts/funcs/groupsGetGroup.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { groupsGetGroup } from "flexprice-ts-temp/funcs/groupsGetGroup.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -246,7 +246,7 @@ Use when listing or searching groups (e.g. admin catalog). Returns a paginated l
 
 <!-- UsageSnippet language="typescript" operationID="queryGroup" method="post" path="/groups/search" -->
 ```typescript
-import { Flexprice } from "flexprice-ts";
+import { Flexprice } from "flexprice-ts-temp";
 
 const flexprice = new Flexprice({
   serverURL: "https://api.example.com",
@@ -267,8 +267,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { FlexpriceCore } from "flexprice-ts/core.js";
-import { groupsQueryGroup } from "flexprice-ts/funcs/groupsQueryGroup.js";
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { groupsQueryGroup } from "flexprice-ts-temp/funcs/groupsQueryGroup.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

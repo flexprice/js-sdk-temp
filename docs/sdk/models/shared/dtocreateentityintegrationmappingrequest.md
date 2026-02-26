@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DtoCreateEntityIntegrationMappingRequest } from "flexprice-ts/sdk/models/shared";
+import { DtoCreateEntityIntegrationMappingRequest } from "flexprice-ts-temp/sdk/models/shared";
 
 let value: DtoCreateEntityIntegrationMappingRequest = {
   entityId: "<id>",
