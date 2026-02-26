@@ -27,8 +27,6 @@ const flexprice = new Flexprice({
 
 async function run() {
   const result = await flexprice.taxAssociations.createTaxAssociation({
-    entityId: "<id>",
-    entityType: "customer",
     taxRateCode: "<value>",
   });
 
@@ -55,8 +53,6 @@ const flexprice = new FlexpriceCore({
 
 async function run() {
   const res = await taxAssociationsCreateTaxAssociation(flexprice, {
-    entityId: "<id>",
-    entityType: "customer",
     taxRateCode: "<value>",
   });
   if (res.ok) {

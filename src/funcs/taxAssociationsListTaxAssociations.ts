@@ -93,6 +93,7 @@ async function $do(
   const query = encodeFormQuery({
     "entity_id": payload?.entity_id,
     "entity_type": payload?.entity_type,
+    "external_customer_id": payload?.external_customer_id,
     "tax_rate_id": payload?.tax_rate_id,
   });
 

@@ -19,6 +19,10 @@ export type ListTaxAssociationsRequest = {
    */
   entityId?: string | undefined;
   /**
+   * External Customer ID
+   */
+  externalCustomerId?: string | undefined;
+  /**
    * Tax Rate ID
    */
   taxRateId?: string | undefined;
@@ -32,6 +36,7 @@ export type ListTaxAssociationsResponse =
 export type ListTaxAssociationsRequest$Outbound = {
   entity_type?: string | undefined;
   entity_id?: string | undefined;
+  external_customer_id?: string | undefined;
   tax_rate_id?: string | undefined;
 };
 
@@ -43,11 +48,13 @@ export const ListTaxAssociationsRequest$outboundSchema: z.ZodType<
 > = z.object({
   entityType: z.string().optional(),
   entityId: z.string().optional(),
+  externalCustomerId: z.string().optional(),
   taxRateId: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     entityType: "entity_type",
     entityId: "entity_id",
+    externalCustomerId: "external_customer_id",
     taxRateId: "tax_rate_id",
   });
 });

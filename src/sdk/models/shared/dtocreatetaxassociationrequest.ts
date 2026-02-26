@@ -12,8 +12,9 @@ import {
 export type DtoCreateTaxAssociationRequest = {
   autoApply?: boolean | undefined;
   currency?: string | undefined;
-  entityId: string;
-  entityType: TypesTaxRateEntityType;
+  entityId?: string | undefined;
+  entityType?: TypesTaxRateEntityType | undefined;
+  externalCustomerId?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
   priority?: number | undefined;
   taxRateCode: string;
@@ -23,8 +24,9 @@ export type DtoCreateTaxAssociationRequest = {
 export type DtoCreateTaxAssociationRequest$Outbound = {
   auto_apply?: boolean | undefined;
   currency?: string | undefined;
-  entity_id: string;
-  entity_type: string;
+  entity_id?: string | undefined;
+  entity_type?: string | undefined;
+  external_customer_id?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
   priority?: number | undefined;
   tax_rate_code: string;
@@ -38,8 +40,9 @@ export const DtoCreateTaxAssociationRequest$outboundSchema: z.ZodType<
 > = z.object({
   autoApply: z.boolean().optional(),
   currency: z.string().optional(),
-  entityId: z.string(),
-  entityType: TypesTaxRateEntityType$outboundSchema,
+  entityId: z.string().optional(),
+  entityType: TypesTaxRateEntityType$outboundSchema.optional(),
+  externalCustomerId: z.string().optional(),
   metadata: z.record(z.string()).optional(),
   priority: z.number().int().optional(),
   taxRateCode: z.string(),
@@ -48,6 +51,7 @@ export const DtoCreateTaxAssociationRequest$outboundSchema: z.ZodType<
     autoApply: "auto_apply",
     entityId: "entity_id",
     entityType: "entity_type",
+    externalCustomerId: "external_customer_id",
     taxRateCode: "tax_rate_code",
   });
 });
