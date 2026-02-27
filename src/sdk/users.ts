@@ -50,7 +50,7 @@ export class Users extends ClientSDK {
    * Use when listing or searching service accounts in an admin UI, or when auditing who has API access and which roles they have.
    */
   async queryUser(
-    request: shared.TypesUserFilter,
+    request: shared.UserFilter,
     options?: RequestOptions,
   ): Promise<operations.QueryUserResponse> {
     return unwrapAsync(usersQueryUser(

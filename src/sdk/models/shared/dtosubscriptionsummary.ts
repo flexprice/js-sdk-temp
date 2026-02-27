@@ -8,9 +8,9 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  TypesSubscriptionStatus,
-  TypesSubscriptionStatus$inboundSchema,
-} from "./typessubscriptionstatus.js";
+  SubscriptionStatus,
+  SubscriptionStatus$inboundSchema,
+} from "./subscriptionstatus.js";
 
 export type DtoSubscriptionSummary = {
   /**
@@ -41,7 +41,7 @@ export type DtoSubscriptionSummary = {
    * plan_id of the subscription
    */
   planId?: string | undefined;
-  status?: TypesSubscriptionStatus | undefined;
+  status?: SubscriptionStatus | undefined;
 };
 
 /** @internal */
@@ -57,7 +57,7 @@ export const DtoSubscriptionSummary$inboundSchema: z.ZodType<
   current_period_start: z.string().optional(),
   id: z.string().optional(),
   plan_id: z.string().optional(),
-  status: TypesSubscriptionStatus$inboundSchema.optional(),
+  status: SubscriptionStatus$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "archived_at": "archivedAt",

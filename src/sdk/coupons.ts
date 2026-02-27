@@ -31,16 +31,16 @@ export class Coupons extends ClientSDK {
   }
 
   /**
-   * Delete coupon
+   * Query coupons
    *
    * @remarks
-   * Use when retiring a coupon (e.g. campaign ended). Returns 200 with success message.
+   * Use when listing or searching coupons (e.g. promo management). Returns a paginated list; supports filtering and sorting.
    */
-  async deleteCoupon(
-    request: operations.DeleteCouponRequest,
+  async queryCoupon(
+    request: shared.CouponFilter,
     options?: RequestOptions,
-  ): Promise<operations.DeleteCouponResponse> {
-    return unwrapAsync(couponsDeleteCoupon(
+  ): Promise<operations.QueryCouponResponse> {
+    return unwrapAsync(couponsQueryCoupon(
       this,
       request,
       options,
@@ -65,23 +65,6 @@ export class Coupons extends ClientSDK {
   }
 
   /**
-   * Query coupons
-   *
-   * @remarks
-   * Use when listing or searching coupons (e.g. promo management). Returns a paginated list; supports filtering and sorting.
-   */
-  async queryCoupon(
-    request: shared.TypesCouponFilter,
-    options?: RequestOptions,
-  ): Promise<operations.QueryCouponResponse> {
-    return unwrapAsync(couponsQueryCoupon(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Update coupon
    *
    * @remarks
@@ -92,6 +75,23 @@ export class Coupons extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.UpdateCouponResponse> {
     return unwrapAsync(couponsUpdateCoupon(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete coupon
+   *
+   * @remarks
+   * Use when retiring a coupon (e.g. campaign ended). Returns 200 with success message.
+   */
+  async deleteCoupon(
+    request: operations.DeleteCouponRequest,
+    options?: RequestOptions,
+  ): Promise<operations.DeleteCouponResponse> {
+    return unwrapAsync(couponsDeleteCoupon(
       this,
       request,
       options,

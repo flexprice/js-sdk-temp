@@ -5,25 +5,25 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
-  TypesAlertSettings,
-  TypesAlertSettings$Outbound,
-  TypesAlertSettings$outboundSchema,
-} from "./typesalertsettings.js";
+  AlertSettings,
+  AlertSettings$Outbound,
+  AlertSettings$outboundSchema,
+} from "./alertsettings.js";
 import {
-  TypesAutoTopup,
-  TypesAutoTopup$Outbound,
-  TypesAutoTopup$outboundSchema,
-} from "./typesautotopup.js";
+  AutoTopup,
+  AutoTopup$Outbound,
+  AutoTopup$outboundSchema,
+} from "./autotopup.js";
 import {
-  TypesWalletConfig,
-  TypesWalletConfig$Outbound,
-  TypesWalletConfig$outboundSchema,
-} from "./typeswalletconfig.js";
+  WalletConfig,
+  WalletConfig$Outbound,
+  WalletConfig$outboundSchema,
+} from "./walletconfig.js";
 
 export type DtoUpdateWalletRequest = {
-  alertSettings?: TypesAlertSettings | undefined;
-  autoTopup?: TypesAutoTopup | undefined;
-  config?: TypesWalletConfig | undefined;
+  alertSettings?: AlertSettings | undefined;
+  autoTopup?: AutoTopup | undefined;
+  config?: WalletConfig | undefined;
   description?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
   name?: string | undefined;
@@ -31,9 +31,9 @@ export type DtoUpdateWalletRequest = {
 
 /** @internal */
 export type DtoUpdateWalletRequest$Outbound = {
-  alert_settings?: TypesAlertSettings$Outbound | undefined;
-  auto_topup?: TypesAutoTopup$Outbound | undefined;
-  config?: TypesWalletConfig$Outbound | undefined;
+  alert_settings?: AlertSettings$Outbound | undefined;
+  auto_topup?: AutoTopup$Outbound | undefined;
+  config?: WalletConfig$Outbound | undefined;
   description?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
   name?: string | undefined;
@@ -45,9 +45,9 @@ export const DtoUpdateWalletRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DtoUpdateWalletRequest
 > = z.object({
-  alertSettings: TypesAlertSettings$outboundSchema.optional(),
-  autoTopup: TypesAutoTopup$outboundSchema.optional(),
-  config: TypesWalletConfig$outboundSchema.optional(),
+  alertSettings: AlertSettings$outboundSchema.optional(),
+  autoTopup: AutoTopup$outboundSchema.optional(),
+  config: WalletConfig$outboundSchema.optional(),
   description: z.string().optional(),
   metadata: z.record(z.string()).optional(),
   name: z.string().optional(),

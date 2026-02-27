@@ -10,7 +10,7 @@ import {
   DtoTenantResponse,
   DtoTenantResponse$inboundSchema,
 } from "./dtotenantresponse.js";
-import { TypesUserType, TypesUserType$inboundSchema } from "./typesusertype.js";
+import { UserType, UserType$inboundSchema } from "./usertype.js";
 
 export type DtoUserResponse = {
   /**
@@ -20,7 +20,7 @@ export type DtoUserResponse = {
   id?: string | undefined;
   roles?: Array<string> | undefined;
   tenant?: DtoTenantResponse | undefined;
-  type?: TypesUserType | undefined;
+  type?: UserType | undefined;
 };
 
 /** @internal */
@@ -33,7 +33,7 @@ export const DtoUserResponse$inboundSchema: z.ZodType<
   id: z.string().optional(),
   roles: z.array(z.string()).optional(),
   tenant: DtoTenantResponse$inboundSchema.optional(),
-  type: TypesUserType$inboundSchema.optional(),
+  type: UserType$inboundSchema.optional(),
 });
 
 export function dtoUserResponseFromJSON(

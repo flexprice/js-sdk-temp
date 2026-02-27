@@ -14,6 +14,23 @@ import { unwrapAsync } from "./types/fp.js";
 
 export class TaxRates extends ClientSDK {
   /**
+   * Get tax rates
+   *
+   * @remarks
+   * Use when listing tax rates (e.g. tax config UI). Returns tax rates with optional filters.
+   */
+  async getTaxRates(
+    request?: operations.GetTaxRatesRequest | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.GetTaxRatesResponse> {
+    return unwrapAsync(taxRatesGetTaxRates(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Create a tax rate
    *
    * @remarks
@@ -24,23 +41,6 @@ export class TaxRates extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.CreateTaxRateResponse> {
     return unwrapAsync(taxRatesCreateTaxRate(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Delete a tax rate
-   *
-   * @remarks
-   * Use when retiring a tax rate (e.g. no longer applicable). Fails if still referenced by associations.
-   */
-  async deleteTaxRate(
-    request: operations.DeleteTaxRateRequest,
-    options?: RequestOptions,
-  ): Promise<shared.ErrorsErrorResponse | undefined> {
-    return unwrapAsync(taxRatesDeleteTaxRate(
       this,
       request,
       options,
@@ -65,23 +65,6 @@ export class TaxRates extends ClientSDK {
   }
 
   /**
-   * Get tax rates
-   *
-   * @remarks
-   * Use when listing tax rates (e.g. tax config UI). Returns tax rates with optional filters.
-   */
-  async getTaxRates(
-    request?: operations.GetTaxRatesRequest | undefined,
-    options?: RequestOptions,
-  ): Promise<operations.GetTaxRatesResponse> {
-    return unwrapAsync(taxRatesGetTaxRates(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Update a tax rate
    *
    * @remarks
@@ -92,6 +75,23 @@ export class TaxRates extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.UpdateTaxRateResponse> {
     return unwrapAsync(taxRatesUpdateTaxRate(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete a tax rate
+   *
+   * @remarks
+   * Use when retiring a tax rate (e.g. no longer applicable). Fails if still referenced by associations.
+   */
+  async deleteTaxRate(
+    request: operations.DeleteTaxRateRequest,
+    options?: RequestOptions,
+  ): Promise<shared.ErrorsErrorResponse | undefined> {
+    return unwrapAsync(taxRatesDeleteTaxRate(
       this,
       request,
       options,

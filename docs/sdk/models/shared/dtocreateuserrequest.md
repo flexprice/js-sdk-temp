@@ -17,7 +17,7 @@ let value: DtoCreateUserRequest = {
 
 ## Fields
 
-| Field                                                               | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `roles`                                                             | *string*[]                                                          | :heavy_check_mark:                                                  | Roles are required                                                  |
-| `type`                                                              | [shared.TypesUserType](../../../sdk/models/shared/typesusertype.md) | :heavy_check_mark:                                                  | N/A                                                                 |
+| Field                                                     | Type                                                      | Required                                                  | Description                                               |
+| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
+| `roles`                                                   | *string*[]                                                | :heavy_check_mark:                                        | Roles are required                                        |
+| `type`                                                    | [shared.UserType](../../../sdk/models/shared/usertype.md) | :heavy_check_mark:                                        | N/A                                                       |

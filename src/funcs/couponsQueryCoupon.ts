@@ -33,7 +33,7 @@ import { Result } from "../sdk/types/fp.js";
  */
 export function couponsQueryCoupon(
   client: FlexpriceCore,
-  request: shared.TypesCouponFilter,
+  request: shared.CouponFilter,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -57,7 +57,7 @@ export function couponsQueryCoupon(
 
 async function $do(
   client: FlexpriceCore,
-  request: shared.TypesCouponFilter,
+  request: shared.CouponFilter,
   options?: RequestOptions,
 ): Promise<
   [
@@ -77,7 +77,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => shared.TypesCouponFilter$outboundSchema.parse(value),
+    (value) => shared.CouponFilter$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {

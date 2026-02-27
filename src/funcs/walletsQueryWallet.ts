@@ -33,7 +33,7 @@ import { Result } from "../sdk/types/fp.js";
  */
 export function walletsQueryWallet(
   client: FlexpriceCore,
-  request: shared.TypesWalletFilter,
+  request: shared.WalletFilter,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -57,7 +57,7 @@ export function walletsQueryWallet(
 
 async function $do(
   client: FlexpriceCore,
-  request: shared.TypesWalletFilter,
+  request: shared.WalletFilter,
   options?: RequestOptions,
 ): Promise<
   [
@@ -77,7 +77,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => shared.TypesWalletFilter$outboundSchema.parse(value),
+    (value) => shared.WalletFilter$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {

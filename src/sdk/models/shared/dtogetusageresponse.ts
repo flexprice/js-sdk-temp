@@ -8,18 +8,18 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  AggregationType,
+  AggregationType$inboundSchema,
+} from "./aggregationtype.js";
+import {
   DtoUsageResult,
   DtoUsageResult$inboundSchema,
 } from "./dtousageresult.js";
-import {
-  TypesAggregationType,
-  TypesAggregationType$inboundSchema,
-} from "./typesaggregationtype.js";
 
 export type DtoGetUsageResponse = {
   eventName?: string | undefined;
   results?: Array<DtoUsageResult> | undefined;
-  type?: TypesAggregationType | undefined;
+  type?: AggregationType | undefined;
   value?: number | undefined;
 };
 
@@ -31,7 +31,7 @@ export const DtoGetUsageResponse$inboundSchema: z.ZodType<
 > = z.object({
   event_name: z.string().optional(),
   results: z.array(DtoUsageResult$inboundSchema).optional(),
-  type: TypesAggregationType$inboundSchema.optional(),
+  type: AggregationType$inboundSchema.optional(),
   value: z.number().optional(),
 }).transform((v) => {
   return remap$(v, {

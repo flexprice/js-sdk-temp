@@ -12,11 +12,8 @@ import {
   MeterAggregation$inboundSchema,
 } from "./meteraggregation.js";
 import { MeterFilter, MeterFilter$inboundSchema } from "./meterfilter.js";
-import {
-  TypesResetUsage,
-  TypesResetUsage$inboundSchema,
-} from "./typesresetusage.js";
-import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
+import { ResetUsage, ResetUsage$inboundSchema } from "./resetusage.js";
+import { Status, Status$inboundSchema } from "./status.js";
 
 export type MeterMeter = {
   aggregation?: MeterAggregation | undefined;
@@ -49,8 +46,8 @@ export type MeterMeter = {
    * Name is the display name of the meter
    */
   name?: string | undefined;
-  resetUsage?: TypesResetUsage | undefined;
-  status?: TypesStatus | undefined;
+  resetUsage?: ResetUsage | undefined;
+  status?: Status | undefined;
   tenantId?: string | undefined;
   updatedAt?: string | undefined;
   updatedBy?: string | undefined;
@@ -70,8 +67,8 @@ export const MeterMeter$inboundSchema: z.ZodType<
   filters: z.array(MeterFilter$inboundSchema).optional(),
   id: z.string().optional(),
   name: z.string().optional(),
-  reset_usage: TypesResetUsage$inboundSchema.optional(),
-  status: TypesStatus$inboundSchema.optional(),
+  reset_usage: ResetUsage$inboundSchema.optional(),
+  status: Status$inboundSchema.optional(),
   tenant_id: z.string().optional(),
   updated_at: z.string().optional(),
   updated_by: z.string().optional(),

@@ -8,25 +8,25 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  TypesStatus,
-  TypesStatus$inboundSchema,
-  TypesStatus$outboundSchema,
-} from "./typesstatus.js";
+  Status,
+  Status$inboundSchema,
+  Status$outboundSchema,
+} from "./status.js";
 import {
-  TypesTaxRateScope,
-  TypesTaxRateScope$inboundSchema,
-  TypesTaxRateScope$outboundSchema,
-} from "./typestaxratescope.js";
+  TaxRateScope,
+  TaxRateScope$inboundSchema,
+  TaxRateScope$outboundSchema,
+} from "./taxratescope.js";
 import {
-  TypesTaxRateStatus,
-  TypesTaxRateStatus$inboundSchema,
-  TypesTaxRateStatus$outboundSchema,
-} from "./typestaxratestatus.js";
+  TaxRateStatus,
+  TaxRateStatus$inboundSchema,
+  TaxRateStatus$outboundSchema,
+} from "./taxratestatus.js";
 import {
-  TypesTaxRateType,
-  TypesTaxRateType$inboundSchema,
-  TypesTaxRateType$outboundSchema,
-} from "./typestaxratetype.js";
+  TaxRateType,
+  TaxRateType$inboundSchema,
+  TaxRateType$outboundSchema,
+} from "./taxratetype.js";
 
 export type DtoTaxRateResponse = {
   code?: string | undefined;
@@ -39,10 +39,10 @@ export type DtoTaxRateResponse = {
   metadata?: { [k: string]: string } | undefined;
   name?: string | undefined;
   percentageValue?: string | undefined;
-  scope?: TypesTaxRateScope | undefined;
-  status?: TypesStatus | undefined;
-  taxRateStatus?: TypesTaxRateStatus | undefined;
-  taxRateType?: TypesTaxRateType | undefined;
+  scope?: TaxRateScope | undefined;
+  status?: Status | undefined;
+  taxRateStatus?: TaxRateStatus | undefined;
+  taxRateType?: TaxRateType | undefined;
   tenantId?: string | undefined;
   updatedAt?: string | undefined;
   updatedBy?: string | undefined;
@@ -64,10 +64,10 @@ export const DtoTaxRateResponse$inboundSchema: z.ZodType<
   metadata: z.record(z.string()).optional(),
   name: z.string().optional(),
   percentage_value: z.string().optional(),
-  scope: TypesTaxRateScope$inboundSchema.optional(),
-  status: TypesStatus$inboundSchema.optional(),
-  tax_rate_status: TypesTaxRateStatus$inboundSchema.optional(),
-  tax_rate_type: TypesTaxRateType$inboundSchema.optional(),
+  scope: TaxRateScope$inboundSchema.optional(),
+  status: Status$inboundSchema.optional(),
+  tax_rate_status: TaxRateStatus$inboundSchema.optional(),
+  tax_rate_type: TaxRateType$inboundSchema.optional(),
   tenant_id: z.string().optional(),
   updated_at: z.string().optional(),
   updated_by: z.string().optional(),
@@ -122,10 +122,10 @@ export const DtoTaxRateResponse$outboundSchema: z.ZodType<
   metadata: z.record(z.string()).optional(),
   name: z.string().optional(),
   percentageValue: z.string().optional(),
-  scope: TypesTaxRateScope$outboundSchema.optional(),
-  status: TypesStatus$outboundSchema.optional(),
-  taxRateStatus: TypesTaxRateStatus$outboundSchema.optional(),
-  taxRateType: TypesTaxRateType$outboundSchema.optional(),
+  scope: TaxRateScope$outboundSchema.optional(),
+  status: Status$outboundSchema.optional(),
+  taxRateStatus: TaxRateStatus$outboundSchema.optional(),
+  taxRateType: TaxRateType$outboundSchema.optional(),
   tenantId: z.string().optional(),
   updatedAt: z.string().optional(),
   updatedBy: z.string().optional(),

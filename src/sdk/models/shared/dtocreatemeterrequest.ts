@@ -14,17 +14,14 @@ import {
   MeterFilter$Outbound,
   MeterFilter$outboundSchema,
 } from "./meterfilter.js";
-import {
-  TypesResetUsage,
-  TypesResetUsage$outboundSchema,
-} from "./typesresetusage.js";
+import { ResetUsage, ResetUsage$outboundSchema } from "./resetusage.js";
 
 export type DtoCreateMeterRequest = {
   aggregation: MeterAggregation;
   eventName: string;
   filters?: Array<MeterFilter> | undefined;
   name: string;
-  resetUsage: TypesResetUsage;
+  resetUsage: ResetUsage;
 };
 
 /** @internal */
@@ -46,7 +43,7 @@ export const DtoCreateMeterRequest$outboundSchema: z.ZodType<
   eventName: z.string(),
   filters: z.array(MeterFilter$outboundSchema).optional(),
   name: z.string(),
-  resetUsage: TypesResetUsage$outboundSchema,
+  resetUsage: ResetUsage$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     eventName: "event_name",

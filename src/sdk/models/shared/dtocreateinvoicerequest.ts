@@ -30,21 +30,18 @@ import {
   DtoTaxRateResponse$outboundSchema,
 } from "./dtotaxrateresponse.js";
 import {
-  TypesInvoiceBillingReason,
-  TypesInvoiceBillingReason$outboundSchema,
-} from "./typesinvoicebillingreason.js";
+  InvoiceBillingReason,
+  InvoiceBillingReason$outboundSchema,
+} from "./invoicebillingreason.js";
 import {
-  TypesInvoiceStatus,
-  TypesInvoiceStatus$outboundSchema,
-} from "./typesinvoicestatus.js";
+  InvoiceStatus,
+  InvoiceStatus$outboundSchema,
+} from "./invoicestatus.js";
+import { InvoiceType, InvoiceType$outboundSchema } from "./invoicetype.js";
 import {
-  TypesInvoiceType,
-  TypesInvoiceType$outboundSchema,
-} from "./typesinvoicetype.js";
-import {
-  TypesPaymentStatus,
-  TypesPaymentStatus$outboundSchema,
-} from "./typespaymentstatus.js";
+  PaymentStatus,
+  PaymentStatus$outboundSchema,
+} from "./paymentstatus.js";
 
 export type DtoCreateInvoiceRequest = {
   /**
@@ -59,7 +56,7 @@ export type DtoCreateInvoiceRequest = {
    * billing_period is the period this invoice covers (e.g., "monthly", "yearly")
    */
   billingPeriod?: string | undefined;
-  billingReason?: TypesInvoiceBillingReason | undefined;
+  billingReason?: InvoiceBillingReason | undefined;
   /**
    * coupons
    */
@@ -96,8 +93,8 @@ export type DtoCreateInvoiceRequest = {
    * invoice_pdf_url is the URL where customers can download the PDF version of this invoice
    */
   invoicePdfUrl?: string | undefined;
-  invoiceStatus?: TypesInvoiceStatus | undefined;
-  invoiceType?: TypesInvoiceType | undefined;
+  invoiceStatus?: InvoiceStatus | undefined;
+  invoiceType?: InvoiceType | undefined;
   /**
    * Invoice Line Item Coupons
    */
@@ -107,7 +104,7 @@ export type DtoCreateInvoiceRequest = {
    */
   lineItems?: Array<DtoCreateInvoiceLineItemRequest> | undefined;
   metadata?: { [k: string]: string } | undefined;
-  paymentStatus?: TypesPaymentStatus | undefined;
+  paymentStatus?: PaymentStatus | undefined;
   /**
    * period_end is the end date of the billing period
    */
@@ -187,7 +184,7 @@ export const DtoCreateInvoiceRequest$outboundSchema: z.ZodType<
   amountDue: z.string(),
   amountPaid: z.string().optional(),
   billingPeriod: z.string().optional(),
-  billingReason: TypesInvoiceBillingReason$outboundSchema.optional(),
+  billingReason: InvoiceBillingReason$outboundSchema.optional(),
   coupons: z.array(z.string()).optional(),
   currency: z.string(),
   customerId: z.string(),
@@ -197,12 +194,12 @@ export const DtoCreateInvoiceRequest$outboundSchema: z.ZodType<
   invoiceCoupons: z.array(DtoInvoiceCoupon$outboundSchema).optional(),
   invoiceNumber: z.string().optional(),
   invoicePdfUrl: z.string().optional(),
-  invoiceStatus: TypesInvoiceStatus$outboundSchema.optional(),
-  invoiceType: TypesInvoiceType$outboundSchema.optional(),
+  invoiceStatus: InvoiceStatus$outboundSchema.optional(),
+  invoiceType: InvoiceType$outboundSchema.optional(),
   lineItemCoupons: z.array(DtoInvoiceLineItemCoupon$outboundSchema).optional(),
   lineItems: z.array(DtoCreateInvoiceLineItemRequest$outboundSchema).optional(),
   metadata: z.record(z.string()).optional(),
-  paymentStatus: TypesPaymentStatus$outboundSchema.optional(),
+  paymentStatus: PaymentStatus$outboundSchema.optional(),
   periodEnd: z.string().optional(),
   periodStart: z.string().optional(),
   preparedTaxRates: z.array(DtoTaxRateResponse$outboundSchema).optional(),

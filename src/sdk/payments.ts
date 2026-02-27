@@ -15,6 +15,23 @@ import { unwrapAsync } from "./types/fp.js";
 
 export class Payments extends ClientSDK {
   /**
+   * List payments
+   *
+   * @remarks
+   * Use when listing or searching payments (e.g. reconciliation UI or customer payment history). Returns a paginated list; supports filtering by customer, invoice, status.
+   */
+  async listPayments(
+    request?: operations.ListPaymentsRequest | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.ListPaymentsResponse> {
+    return unwrapAsync(paymentsListPayments(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Create payment
    *
    * @remarks
@@ -25,23 +42,6 @@ export class Payments extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.CreatePaymentResponse> {
     return unwrapAsync(paymentsCreatePayment(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Delete payment
-   *
-   * @remarks
-   * Use when removing or voiding a payment record (e.g. correcting erroneous entries). Returns 200 with success message.
-   */
-  async deletePayment(
-    request: operations.DeletePaymentRequest,
-    options?: RequestOptions,
-  ): Promise<operations.DeletePaymentResponse> {
-    return unwrapAsync(paymentsDeletePayment(
       this,
       request,
       options,
@@ -66,16 +66,33 @@ export class Payments extends ClientSDK {
   }
 
   /**
-   * List payments
+   * Update payment
    *
    * @remarks
-   * Use when listing or searching payments (e.g. reconciliation UI or customer payment history). Returns a paginated list; supports filtering by customer, invoice, status.
+   * Use when updating payment status or metadata (e.g. after reconciliation or adding a reference).
    */
-  async listPayments(
-    request?: operations.ListPaymentsRequest | undefined,
+  async updatePayment(
+    request: operations.UpdatePaymentRequest,
     options?: RequestOptions,
-  ): Promise<operations.ListPaymentsResponse> {
-    return unwrapAsync(paymentsListPayments(
+  ): Promise<operations.UpdatePaymentResponse> {
+    return unwrapAsync(paymentsUpdatePayment(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete payment
+   *
+   * @remarks
+   * Use when removing or voiding a payment record (e.g. correcting erroneous entries). Returns 200 with success message.
+   */
+  async deletePayment(
+    request: operations.DeletePaymentRequest,
+    options?: RequestOptions,
+  ): Promise<operations.DeletePaymentResponse> {
+    return unwrapAsync(paymentsDeletePayment(
       this,
       request,
       options,
@@ -93,23 +110,6 @@ export class Payments extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.ProcessPaymentResponse> {
     return unwrapAsync(paymentsProcessPayment(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Update payment
-   *
-   * @remarks
-   * Use when updating payment status or metadata (e.g. after reconciliation or adding a reference).
-   */
-  async updatePayment(
-    request: operations.UpdatePaymentRequest,
-    options?: RequestOptions,
-  ): Promise<operations.UpdatePaymentResponse> {
-    return unwrapAsync(paymentsUpdatePayment(
       this,
       request,
       options,

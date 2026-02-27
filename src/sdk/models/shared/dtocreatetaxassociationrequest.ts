@@ -5,15 +5,15 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
-  TypesTaxRateEntityType,
-  TypesTaxRateEntityType$outboundSchema,
-} from "./typestaxrateentitytype.js";
+  TaxRateEntityType,
+  TaxRateEntityType$outboundSchema,
+} from "./taxrateentitytype.js";
 
 export type DtoCreateTaxAssociationRequest = {
   autoApply?: boolean | undefined;
   currency?: string | undefined;
   entityId?: string | undefined;
-  entityType?: TypesTaxRateEntityType | undefined;
+  entityType?: TaxRateEntityType | undefined;
   externalCustomerId?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
   priority?: number | undefined;
@@ -41,7 +41,7 @@ export const DtoCreateTaxAssociationRequest$outboundSchema: z.ZodType<
   autoApply: z.boolean().optional(),
   currency: z.string().optional(),
   entityId: z.string().optional(),
-  entityType: TypesTaxRateEntityType$outboundSchema.optional(),
+  entityType: TaxRateEntityType$outboundSchema.optional(),
   externalCustomerId: z.string().optional(),
   metadata: z.record(z.string()).optional(),
   priority: z.number().int().optional(),

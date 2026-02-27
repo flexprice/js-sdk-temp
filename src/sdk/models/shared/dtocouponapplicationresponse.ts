@@ -7,11 +7,8 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  TypesCouponType,
-  TypesCouponType$inboundSchema,
-} from "./typescoupontype.js";
-import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
+import { CouponType, CouponType$inboundSchema } from "./coupontype.js";
+import { Status, Status$inboundSchema } from "./status.js";
 
 export type DtoCouponApplicationResponse = {
   appliedAt?: string | undefined;
@@ -22,7 +19,7 @@ export type DtoCouponApplicationResponse = {
   createdBy?: string | undefined;
   currency?: string | undefined;
   discountPercentage?: string | undefined;
-  discountType?: TypesCouponType | undefined;
+  discountType?: CouponType | undefined;
   discountedAmount?: string | undefined;
   environmentId?: string | undefined;
   finalPrice?: string | undefined;
@@ -31,7 +28,7 @@ export type DtoCouponApplicationResponse = {
   invoiceLineItemId?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
   originalPrice?: string | undefined;
-  status?: TypesStatus | undefined;
+  status?: Status | undefined;
   subscriptionId?: string | undefined;
   tenantId?: string | undefined;
   updatedAt?: string | undefined;
@@ -52,7 +49,7 @@ export const DtoCouponApplicationResponse$inboundSchema: z.ZodType<
   created_by: z.string().optional(),
   currency: z.string().optional(),
   discount_percentage: z.string().optional(),
-  discount_type: TypesCouponType$inboundSchema.optional(),
+  discount_type: CouponType$inboundSchema.optional(),
   discounted_amount: z.string().optional(),
   environment_id: z.string().optional(),
   final_price: z.string().optional(),
@@ -61,7 +58,7 @@ export const DtoCouponApplicationResponse$inboundSchema: z.ZodType<
   invoice_line_item_id: z.string().optional(),
   metadata: z.record(z.string()).optional(),
   original_price: z.string().optional(),
-  status: TypesStatus$inboundSchema.optional(),
+  status: Status$inboundSchema.optional(),
   subscription_id: z.string().optional(),
   tenant_id: z.string().optional(),
   updated_at: z.string().optional(),

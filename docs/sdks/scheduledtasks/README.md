@@ -4,13 +4,84 @@
 
 ### Available Operations
 
-* [createScheduledTask](#createscheduledtask) - Create scheduled task
-* [deleteScheduledTask](#deletescheduledtask) - Delete a scheduled task
-* [getScheduledTask](#getscheduledtask) - Get scheduled task
 * [listScheduledTasks](#listscheduledtasks) - List scheduled tasks
+* [createScheduledTask](#createscheduledtask) - Create scheduled task
 * [scheduleUpdateBillingPeriod](#scheduleupdatebillingperiod) - Schedule update billing period
-* [triggerScheduledTaskRun](#triggerscheduledtaskrun) - Trigger force run
+* [getScheduledTask](#getscheduledtask) - Get scheduled task
 * [updateScheduledTask](#updatescheduledtask) - Update a scheduled task
+* [deleteScheduledTask](#deletescheduledtask) - Delete a scheduled task
+* [triggerScheduledTaskRun](#triggerscheduledtaskrun) - Trigger force run
+
+## listScheduledTasks
+
+Use when listing or managing scheduled tasks in an admin UI. Returns a list; supports filtering by status, type, and pagination.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="listScheduledTasks" method="get" path="/tasks/scheduled" -->
+```typescript
+import { Flexprice } from "flexprice-ts-temp";
+
+const flexprice = new Flexprice({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const result = await flexprice.scheduledTasks.listScheduledTasks();
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { scheduledTasksListScheduledTasks } from "flexprice-ts-temp/funcs/scheduledTasksListScheduledTasks.js";
+
+// Use `FlexpriceCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const flexprice = new FlexpriceCore({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await scheduledTasksListScheduledTasks(flexprice);
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("scheduledTasksListScheduledTasks failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.ListScheduledTasksRequest](../../sdk/models/operations/listscheduledtasksrequest.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.ListScheduledTasksResponse](../../sdk/models/operations/listscheduledtasksresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## createScheduledTask
 
@@ -93,13 +164,13 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## deleteScheduledTask
+## scheduleUpdateBillingPeriod
 
-Use when removing a scheduled task from the active roster. Archives the task and removes it from the scheduler (soft delete).
+Use when you need to trigger a billing-period update workflow (e.g. to recalculate or sync billing windows).
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="deleteScheduledTask" method="delete" path="/tasks/scheduled/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="scheduleUpdateBillingPeriod" method="post" path="/tasks/scheduled/schedule-update-billing-period" -->
 ```typescript
 import { Flexprice } from "flexprice-ts-temp";
 
@@ -109,9 +180,7 @@ const flexprice = new Flexprice({
 });
 
 async function run() {
-  const result = await flexprice.scheduledTasks.deleteScheduledTask({
-    id: "<id>",
-  });
+  const result = await flexprice.scheduledTasks.scheduleUpdateBillingPeriod({});
 
   console.log(result);
 }
@@ -125,7 +194,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexpriceCore } from "flexprice-ts-temp/core.js";
-import { scheduledTasksDeleteScheduledTask } from "flexprice-ts-temp/funcs/scheduledTasksDeleteScheduledTask.js";
+import { scheduledTasksScheduleUpdateBillingPeriod } from "flexprice-ts-temp/funcs/scheduledTasksScheduleUpdateBillingPeriod.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -135,14 +204,12 @@ const flexprice = new FlexpriceCore({
 });
 
 async function run() {
-  const res = await scheduledTasksDeleteScheduledTask(flexprice, {
-    id: "<id>",
-  });
+  const res = await scheduledTasksScheduleUpdateBillingPeriod(flexprice, {});
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("scheduledTasksDeleteScheduledTask failed:", res.error);
+    console.log("scheduledTasksScheduleUpdateBillingPeriod failed:", res.error);
   }
 }
 
@@ -153,14 +220,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.DeleteScheduledTaskRequest](../../sdk/models/operations/deletescheduledtaskrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.ScheduleUpdateBillingPeriodRequest](../../sdk/models/operations/scheduleupdatebillingperiodrequest.md)                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[shared.ErrorsErrorResponse](../../sdk/models/shared/errorserrorresponse.md)\>**
+**Promise\<[operations.ScheduleUpdateBillingPeriodResponse](../../sdk/models/operations/scheduleupdatebillingperiodresponse.md)\>**
 
 ### Errors
 
@@ -243,13 +310,13 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## listScheduledTasks
+## updateScheduledTask
 
-Use when listing or managing scheduled tasks in an admin UI. Returns a list; supports filtering by status, type, and pagination.
+Use when pausing or resuming a scheduled task. Only the enabled field can be changed.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="listScheduledTasks" method="get" path="/tasks/scheduled" -->
+<!-- UsageSnippet language="typescript" operationID="updateScheduledTask" method="put" path="/tasks/scheduled/{id}" -->
 ```typescript
 import { Flexprice } from "flexprice-ts-temp";
 
@@ -259,7 +326,12 @@ const flexprice = new Flexprice({
 });
 
 async function run() {
-  const result = await flexprice.scheduledTasks.listScheduledTasks();
+  const result = await flexprice.scheduledTasks.updateScheduledTask({
+    id: "<id>",
+    dtoUpdateScheduledTaskRequest: {
+      enabled: false,
+    },
+  });
 
   console.log(result);
 }
@@ -273,7 +345,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexpriceCore } from "flexprice-ts-temp/core.js";
-import { scheduledTasksListScheduledTasks } from "flexprice-ts-temp/funcs/scheduledTasksListScheduledTasks.js";
+import { scheduledTasksUpdateScheduledTask } from "flexprice-ts-temp/funcs/scheduledTasksUpdateScheduledTask.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -283,12 +355,17 @@ const flexprice = new FlexpriceCore({
 });
 
 async function run() {
-  const res = await scheduledTasksListScheduledTasks(flexprice);
+  const res = await scheduledTasksUpdateScheduledTask(flexprice, {
+    id: "<id>",
+    dtoUpdateScheduledTaskRequest: {
+      enabled: false,
+    },
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("scheduledTasksListScheduledTasks failed:", res.error);
+    console.log("scheduledTasksUpdateScheduledTask failed:", res.error);
   }
 }
 
@@ -299,14 +376,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ListScheduledTasksRequest](../../sdk/models/operations/listscheduledtasksrequest.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.UpdateScheduledTaskRequest](../../sdk/models/operations/updatescheduledtaskrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.ListScheduledTasksResponse](../../sdk/models/operations/listscheduledtasksresponse.md)\>**
+**Promise\<[operations.UpdateScheduledTaskResponse](../../sdk/models/operations/updatescheduledtaskresponse.md)\>**
 
 ### Errors
 
@@ -314,13 +391,13 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## scheduleUpdateBillingPeriod
+## deleteScheduledTask
 
-Use when you need to trigger a billing-period update workflow (e.g. to recalculate or sync billing windows).
+Use when removing a scheduled task from the active roster. Archives the task and removes it from the scheduler (soft delete).
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="scheduleUpdateBillingPeriod" method="post" path="/tasks/scheduled/schedule-update-billing-period" -->
+<!-- UsageSnippet language="typescript" operationID="deleteScheduledTask" method="delete" path="/tasks/scheduled/{id}" -->
 ```typescript
 import { Flexprice } from "flexprice-ts-temp";
 
@@ -330,7 +407,9 @@ const flexprice = new Flexprice({
 });
 
 async function run() {
-  const result = await flexprice.scheduledTasks.scheduleUpdateBillingPeriod({});
+  const result = await flexprice.scheduledTasks.deleteScheduledTask({
+    id: "<id>",
+  });
 
   console.log(result);
 }
@@ -344,7 +423,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexpriceCore } from "flexprice-ts-temp/core.js";
-import { scheduledTasksScheduleUpdateBillingPeriod } from "flexprice-ts-temp/funcs/scheduledTasksScheduleUpdateBillingPeriod.js";
+import { scheduledTasksDeleteScheduledTask } from "flexprice-ts-temp/funcs/scheduledTasksDeleteScheduledTask.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -354,12 +433,14 @@ const flexprice = new FlexpriceCore({
 });
 
 async function run() {
-  const res = await scheduledTasksScheduleUpdateBillingPeriod(flexprice, {});
+  const res = await scheduledTasksDeleteScheduledTask(flexprice, {
+    id: "<id>",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("scheduledTasksScheduleUpdateBillingPeriod failed:", res.error);
+    console.log("scheduledTasksDeleteScheduledTask failed:", res.error);
   }
 }
 
@@ -370,14 +451,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ScheduleUpdateBillingPeriodRequest](../../sdk/models/operations/scheduleupdatebillingperiodrequest.md)                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.DeleteScheduledTaskRequest](../../sdk/models/operations/deletescheduledtaskrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.ScheduleUpdateBillingPeriodResponse](../../sdk/models/operations/scheduleupdatebillingperiodresponse.md)\>**
+**Promise\<[shared.ErrorsErrorResponse](../../sdk/models/shared/errorserrorresponse.md)\>**
 
 ### Errors
 
@@ -453,87 +534,6 @@ run();
 ### Response
 
 **Promise\<[operations.TriggerScheduledTaskRunResponse](../../sdk/models/operations/triggerscheduledtaskrunresponse.md)\>**
-
-### Errors
-
-| Error Type      | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4XX, 5XX        | \*/\*           |
-
-## updateScheduledTask
-
-Use when pausing or resuming a scheduled task. Only the enabled field can be changed.
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="updateScheduledTask" method="put" path="/tasks/scheduled/{id}" -->
-```typescript
-import { Flexprice } from "flexprice-ts-temp";
-
-const flexprice = new Flexprice({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const result = await flexprice.scheduledTasks.updateScheduledTask({
-    id: "<id>",
-    dtoUpdateScheduledTaskRequest: {
-      enabled: false,
-    },
-  });
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FlexpriceCore } from "flexprice-ts-temp/core.js";
-import { scheduledTasksUpdateScheduledTask } from "flexprice-ts-temp/funcs/scheduledTasksUpdateScheduledTask.js";
-
-// Use `FlexpriceCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const flexprice = new FlexpriceCore({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const res = await scheduledTasksUpdateScheduledTask(flexprice, {
-    id: "<id>",
-    dtoUpdateScheduledTaskRequest: {
-      enabled: false,
-    },
-  });
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("scheduledTasksUpdateScheduledTask failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.UpdateScheduledTaskRequest](../../sdk/models/operations/updatescheduledtaskrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[operations.UpdateScheduledTaskResponse](../../sdk/models/operations/updatescheduledtaskresponse.md)\>**
 
 ### Errors
 

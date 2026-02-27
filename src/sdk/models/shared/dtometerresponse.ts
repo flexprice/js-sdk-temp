@@ -12,10 +12,7 @@ import {
   MeterAggregation$inboundSchema,
 } from "./meteraggregation.js";
 import { MeterFilter, MeterFilter$inboundSchema } from "./meterfilter.js";
-import {
-  TypesResetUsage,
-  TypesResetUsage$inboundSchema,
-} from "./typesresetusage.js";
+import { ResetUsage, ResetUsage$inboundSchema } from "./resetusage.js";
 
 export type DtoMeterResponse = {
   aggregation?: MeterAggregation | undefined;
@@ -24,7 +21,7 @@ export type DtoMeterResponse = {
   filters?: Array<MeterFilter> | undefined;
   id?: string | undefined;
   name?: string | undefined;
-  resetUsage?: TypesResetUsage | undefined;
+  resetUsage?: ResetUsage | undefined;
   status?: string | undefined;
   tenantId?: string | undefined;
   updatedAt?: string | undefined;
@@ -42,7 +39,7 @@ export const DtoMeterResponse$inboundSchema: z.ZodType<
   filters: z.array(MeterFilter$inboundSchema).optional(),
   id: z.string().optional(),
   name: z.string().optional(),
-  reset_usage: TypesResetUsage$inboundSchema.optional(),
+  reset_usage: ResetUsage$inboundSchema.optional(),
   status: z.string().optional(),
   tenant_id: z.string().optional(),
   updated_at: z.string().optional(),

@@ -5,25 +5,25 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
-  TypesS3JobConfig,
-  TypesS3JobConfig$Outbound,
-  TypesS3JobConfig$outboundSchema,
-} from "./typess3jobconfig.js";
+  S3JobConfig,
+  S3JobConfig$Outbound,
+  S3JobConfig$outboundSchema,
+} from "./s3jobconfig.js";
 import {
-  TypesScheduledTaskEntityType,
-  TypesScheduledTaskEntityType$outboundSchema,
-} from "./typesscheduledtaskentitytype.js";
+  ScheduledTaskEntityType,
+  ScheduledTaskEntityType$outboundSchema,
+} from "./scheduledtaskentitytype.js";
 import {
-  TypesScheduledTaskInterval,
-  TypesScheduledTaskInterval$outboundSchema,
-} from "./typesscheduledtaskinterval.js";
+  ScheduledTaskInterval,
+  ScheduledTaskInterval$outboundSchema,
+} from "./scheduledtaskinterval.js";
 
 export type DtoCreateScheduledTaskRequest = {
   connectionId: string;
   enabled?: boolean | undefined;
-  entityType: TypesScheduledTaskEntityType;
-  interval: TypesScheduledTaskInterval;
-  jobConfig: TypesS3JobConfig;
+  entityType: ScheduledTaskEntityType;
+  interval: ScheduledTaskInterval;
+  jobConfig: S3JobConfig;
 };
 
 /** @internal */
@@ -32,7 +32,7 @@ export type DtoCreateScheduledTaskRequest$Outbound = {
   enabled?: boolean | undefined;
   entity_type: string;
   interval: string;
-  job_config: TypesS3JobConfig$Outbound;
+  job_config: S3JobConfig$Outbound;
 };
 
 /** @internal */
@@ -43,9 +43,9 @@ export const DtoCreateScheduledTaskRequest$outboundSchema: z.ZodType<
 > = z.object({
   connectionId: z.string(),
   enabled: z.boolean().optional(),
-  entityType: TypesScheduledTaskEntityType$outboundSchema,
-  interval: TypesScheduledTaskInterval$outboundSchema,
-  jobConfig: TypesS3JobConfig$outboundSchema,
+  entityType: ScheduledTaskEntityType$outboundSchema,
+  interval: ScheduledTaskInterval$outboundSchema,
+  jobConfig: S3JobConfig$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     connectionId: "connection_id",

@@ -7,39 +7,33 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  TypesEntityType,
-  TypesEntityType$inboundSchema,
-} from "./typesentitytype.js";
-import { TypesFileType, TypesFileType$inboundSchema } from "./typesfiletype.js";
-import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
-import {
-  TypesTaskStatus,
-  TypesTaskStatus$inboundSchema,
-} from "./typestaskstatus.js";
-import { TypesTaskType, TypesTaskType$inboundSchema } from "./typestasktype.js";
+import { EntityType, EntityType$inboundSchema } from "./entitytype.js";
+import { FileType, FileType$inboundSchema } from "./filetype.js";
+import { Status, Status$inboundSchema } from "./status.js";
+import { TaskStatus, TaskStatus$inboundSchema } from "./taskstatus.js";
+import { TaskType, TaskType$inboundSchema } from "./tasktype.js";
 
 export type DtoTaskResponse = {
   completedAt?: string | undefined;
   createdAt?: string | undefined;
   createdBy?: string | undefined;
-  entityType?: TypesEntityType | undefined;
+  entityType?: EntityType | undefined;
   environmentId?: string | undefined;
   errorSummary?: string | undefined;
   failedAt?: string | undefined;
   failedRecords?: number | undefined;
   fileName?: string | undefined;
-  fileType?: TypesFileType | undefined;
+  fileType?: FileType | undefined;
   fileUrl?: string | undefined;
   id?: string | undefined;
   metadata?: { [k: string]: any } | undefined;
   processedRecords?: number | undefined;
   scheduledTaskId?: string | undefined;
   startedAt?: string | undefined;
-  status?: TypesStatus | undefined;
+  status?: Status | undefined;
   successfulRecords?: number | undefined;
-  taskStatus?: TypesTaskStatus | undefined;
-  taskType?: TypesTaskType | undefined;
+  taskStatus?: TaskStatus | undefined;
+  taskType?: TaskType | undefined;
   tenantId?: string | undefined;
   totalRecords?: number | undefined;
   updatedAt?: string | undefined;
@@ -56,23 +50,23 @@ export const DtoTaskResponse$inboundSchema: z.ZodType<
   completed_at: z.string().optional(),
   created_at: z.string().optional(),
   created_by: z.string().optional(),
-  entity_type: TypesEntityType$inboundSchema.optional(),
+  entity_type: EntityType$inboundSchema.optional(),
   environment_id: z.string().optional(),
   error_summary: z.string().optional(),
   failed_at: z.string().optional(),
   failed_records: z.number().int().optional(),
   file_name: z.string().optional(),
-  file_type: TypesFileType$inboundSchema.optional(),
+  file_type: FileType$inboundSchema.optional(),
   file_url: z.string().optional(),
   id: z.string().optional(),
   metadata: z.record(z.any()).optional(),
   processed_records: z.number().int().optional(),
   scheduled_task_id: z.string().optional(),
   started_at: z.string().optional(),
-  status: TypesStatus$inboundSchema.optional(),
+  status: Status$inboundSchema.optional(),
   successful_records: z.number().int().optional(),
-  task_status: TypesTaskStatus$inboundSchema.optional(),
-  task_type: TypesTaskType$inboundSchema.optional(),
+  task_status: TaskStatus$inboundSchema.optional(),
+  task_type: TaskType$inboundSchema.optional(),
   tenant_id: z.string().optional(),
   total_records: z.number().int().optional(),
   updated_at: z.string().optional(),

@@ -11,16 +11,16 @@ import {
   DtoCustomerResponse$inboundSchema,
 } from "./dtocustomerresponse.js";
 import {
-  TypesPaginationResponse,
-  TypesPaginationResponse$inboundSchema,
-} from "./typespaginationresponse.js";
+  PaginationResponse,
+  PaginationResponse$inboundSchema,
+} from "./paginationresponse.js";
 
 /**
  * Response object for listing customers with pagination
  */
 export type DtoListCustomersResponse = {
   items?: Array<DtoCustomerResponse> | undefined;
-  pagination?: TypesPaginationResponse | undefined;
+  pagination?: PaginationResponse | undefined;
 };
 
 /** @internal */
@@ -30,7 +30,7 @@ export const DtoListCustomersResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   items: z.array(DtoCustomerResponse$inboundSchema).optional(),
-  pagination: TypesPaginationResponse$inboundSchema.optional(),
+  pagination: PaginationResponse$inboundSchema.optional(),
 });
 
 export function dtoListCustomersResponseFromJSON(

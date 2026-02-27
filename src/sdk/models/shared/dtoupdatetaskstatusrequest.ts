@@ -4,13 +4,10 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import {
-  TypesTaskStatus,
-  TypesTaskStatus$outboundSchema,
-} from "./typestaskstatus.js";
+import { TaskStatus, TaskStatus$outboundSchema } from "./taskstatus.js";
 
 export type DtoUpdateTaskStatusRequest = {
-  taskStatus: TypesTaskStatus;
+  taskStatus: TaskStatus;
 };
 
 /** @internal */
@@ -24,7 +21,7 @@ export const DtoUpdateTaskStatusRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DtoUpdateTaskStatusRequest
 > = z.object({
-  taskStatus: TypesTaskStatus$outboundSchema,
+  taskStatus: TaskStatus$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     taskStatus: "task_status",

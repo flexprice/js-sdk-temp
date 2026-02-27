@@ -5,17 +5,14 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
-  TypesCouponCadence,
-  TypesCouponCadence$outboundSchema,
-} from "./typescouponcadence.js";
-import {
-  TypesCouponType,
-  TypesCouponType$outboundSchema,
-} from "./typescoupontype.js";
+  CouponCadence,
+  CouponCadence$outboundSchema,
+} from "./couponcadence.js";
+import { CouponType, CouponType$outboundSchema } from "./coupontype.js";
 
 export type DtoCreateCouponRequest = {
   amountOff?: string | undefined;
-  cadence: TypesCouponCadence;
+  cadence: CouponCadence;
   currency?: string | undefined;
   durationInPeriods?: number | undefined;
   maxRedemptions?: number | undefined;
@@ -25,7 +22,7 @@ export type DtoCreateCouponRequest = {
   redeemAfter?: string | undefined;
   redeemBefore?: string | undefined;
   rules?: { [k: string]: any } | undefined;
-  type: TypesCouponType;
+  type: CouponType;
 };
 
 /** @internal */
@@ -51,7 +48,7 @@ export const DtoCreateCouponRequest$outboundSchema: z.ZodType<
   DtoCreateCouponRequest
 > = z.object({
   amountOff: z.string().optional(),
-  cadence: TypesCouponCadence$outboundSchema,
+  cadence: CouponCadence$outboundSchema,
   currency: z.string().optional(),
   durationInPeriods: z.number().int().optional(),
   maxRedemptions: z.number().int().optional(),
@@ -61,7 +58,7 @@ export const DtoCreateCouponRequest$outboundSchema: z.ZodType<
   redeemAfter: z.string().optional(),
   redeemBefore: z.string().optional(),
   rules: z.record(z.any()).optional(),
-  type: TypesCouponType$outboundSchema,
+  type: CouponType$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     amountOff: "amount_off",

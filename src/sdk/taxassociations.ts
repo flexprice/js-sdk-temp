@@ -14,6 +14,23 @@ import { unwrapAsync } from "./types/fp.js";
 
 export class TaxAssociations extends ClientSDK {
   /**
+   * List tax associations
+   *
+   * @remarks
+   * Use when listing tax associations (e.g. tax config or audit). Returns list with optional filtering.
+   */
+  async listTaxAssociations(
+    request?: operations.ListTaxAssociationsRequest | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.ListTaxAssociationsResponse> {
+    return unwrapAsync(taxAssociationsListTaxAssociations(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Create Tax Association
    *
    * @remarks
@@ -24,23 +41,6 @@ export class TaxAssociations extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.CreateTaxAssociationResponse> {
     return unwrapAsync(taxAssociationsCreateTaxAssociation(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Delete tax association
-   *
-   * @remarks
-   * Use when removing a tax association (e.g. entity no longer subject to that rate).
-   */
-  async deleteTaxAssociation(
-    request: operations.DeleteTaxAssociationRequest,
-    options?: RequestOptions,
-  ): Promise<operations.DeleteTaxAssociationResponse> {
-    return unwrapAsync(taxAssociationsDeleteTaxAssociation(
       this,
       request,
       options,
@@ -65,23 +65,6 @@ export class TaxAssociations extends ClientSDK {
   }
 
   /**
-   * List tax associations
-   *
-   * @remarks
-   * Use when listing tax associations (e.g. tax config or audit). Returns list with optional filtering.
-   */
-  async listTaxAssociations(
-    request?: operations.ListTaxAssociationsRequest | undefined,
-    options?: RequestOptions,
-  ): Promise<operations.ListTaxAssociationsResponse> {
-    return unwrapAsync(taxAssociationsListTaxAssociations(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Update tax association
    *
    * @remarks
@@ -92,6 +75,23 @@ export class TaxAssociations extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.UpdateTaxAssociationResponse> {
     return unwrapAsync(taxAssociationsUpdateTaxAssociation(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete tax association
+   *
+   * @remarks
+   * Use when removing a tax association (e.g. entity no longer subject to that rate).
+   */
+  async deleteTaxAssociation(
+    request: operations.DeleteTaxAssociationRequest,
+    options?: RequestOptions,
+  ): Promise<operations.DeleteTaxAssociationResponse> {
+    return unwrapAsync(taxAssociationsDeleteTaxAssociation(
       this,
       request,
       options,

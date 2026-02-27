@@ -20,23 +20,6 @@ import { unwrapAsync } from "./types/fp.js";
 
 export class Wallets extends ClientSDK {
   /**
-   * Create a new wallet
-   *
-   * @remarks
-   * Use when giving a customer a prepaid or credit balance (e.g. prepaid plans or promotional credits).
-   */
-  async createWallet(
-    request: shared.DtoCreateWalletRequest,
-    options?: RequestOptions,
-  ): Promise<operations.CreateWalletResponse> {
-    return unwrapAsync(walletsCreateWallet(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Get Customer Wallets
    *
    * @remarks
@@ -47,57 +30,6 @@ export class Wallets extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.GetCustomerWalletsResponse> {
     return unwrapAsync(walletsGetCustomerWallets(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Get wallet
-   *
-   * @remarks
-   * Use when you need to load a single wallet (e.g. for a balance or settings view).
-   */
-  async getWallet(
-    request: operations.GetWalletRequest,
-    options?: RequestOptions,
-  ): Promise<operations.GetWalletResponse> {
-    return unwrapAsync(walletsGetWallet(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Get wallet balance
-   *
-   * @remarks
-   * Use when displaying or checking current wallet balance (e.g. before charging or in a portal). Supports optional expand for credits breakdown and from_cache.
-   */
-  async getWalletBalance(
-    request: operations.GetWalletBalanceRequest,
-    options?: RequestOptions,
-  ): Promise<operations.GetWalletBalanceResponse> {
-    return unwrapAsync(walletsGetWalletBalance(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Get wallet transactions
-   *
-   * @remarks
-   * Use when showing transaction history for a wallet (e.g. credit/debit log or audit). Returns a paginated list; supports limit, offset, and filters.
-   */
-  async getWalletTransactions(
-    request: operations.GetWalletTransactionsRequest,
-    options?: RequestOptions,
-  ): Promise<operations.GetWalletTransactionsResponse> {
-    return unwrapAsync(walletsGetWalletTransactions(
       this,
       request,
       options,
@@ -122,13 +54,30 @@ export class Wallets extends ClientSDK {
   }
 
   /**
+   * Create a new wallet
+   *
+   * @remarks
+   * Use when giving a customer a prepaid or credit balance (e.g. prepaid plans or promotional credits).
+   */
+  async createWallet(
+    request: shared.DtoCreateWalletRequest,
+    options?: RequestOptions,
+  ): Promise<operations.CreateWalletResponse> {
+    return unwrapAsync(walletsCreateWallet(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Query wallets
    *
    * @remarks
    * Use when listing or searching wallets (e.g. admin view or reporting). Returns a paginated list; supports filtering by customer and status.
    */
   async queryWallet(
-    request: shared.TypesWalletFilter,
+    request: shared.WalletFilter,
     options?: RequestOptions,
   ): Promise<operations.QueryWalletResponse> {
     return unwrapAsync(walletsQueryWallet(
@@ -145,10 +94,61 @@ export class Wallets extends ClientSDK {
    * Use when searching or reporting on wallet transactions (e.g. cross-wallet history or reconciliation). Returns a paginated list; supports filtering by wallet, customer, type, date range.
    */
   async queryWalletTransaction(
-    request: shared.TypesWalletTransactionFilter,
+    request: shared.WalletTransactionFilter,
     options?: RequestOptions,
   ): Promise<operations.QueryWalletTransactionResponse> {
     return unwrapAsync(walletsQueryWalletTransaction(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get wallet
+   *
+   * @remarks
+   * Use when you need to load a single wallet (e.g. for a balance or settings view).
+   */
+  async getWallet(
+    request: operations.GetWalletRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetWalletResponse> {
+    return unwrapAsync(walletsGetWallet(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update a wallet
+   *
+   * @remarks
+   * Use when changing wallet settings (e.g. enabling or updating auto top-up thresholds).
+   */
+  async updateWallet(
+    request: operations.UpdateWalletRequest,
+    options?: RequestOptions,
+  ): Promise<operations.UpdateWalletResponse> {
+    return unwrapAsync(walletsUpdateWallet(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get wallet balance
+   *
+   * @remarks
+   * Use when displaying or checking current wallet balance (e.g. before charging or in a portal). Supports optional expand for credits breakdown and from_cache.
+   */
+  async getWalletBalance(
+    request: operations.GetWalletBalanceRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetWalletBalanceResponse> {
+    return unwrapAsync(walletsGetWalletBalance(
       this,
       request,
       options,
@@ -190,16 +190,16 @@ export class Wallets extends ClientSDK {
   }
 
   /**
-   * Update a wallet
+   * Get wallet transactions
    *
    * @remarks
-   * Use when changing wallet settings (e.g. enabling or updating auto top-up thresholds).
+   * Use when showing transaction history for a wallet (e.g. credit/debit log or audit). Returns a paginated list; supports limit, offset, and filters.
    */
-  async updateWallet(
-    request: operations.UpdateWalletRequest,
+  async getWalletTransactions(
+    request: operations.GetWalletTransactionsRequest,
     options?: RequestOptions,
-  ): Promise<operations.UpdateWalletResponse> {
-    return unwrapAsync(walletsUpdateWallet(
+  ): Promise<operations.GetWalletTransactionsResponse> {
+    return unwrapAsync(walletsGetWalletTransactions(
       this,
       request,
       options,

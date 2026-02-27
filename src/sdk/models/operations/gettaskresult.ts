@@ -17,8 +17,8 @@ export type GetTaskResultRequest = {
 };
 
 export type GetTaskResultResponse =
-  | shared.ErrorsErrorResponse
-  | shared.ModelsTemporalWorkflowResult;
+  | shared.ModelsTemporalWorkflowResult
+  | shared.ErrorsErrorResponse;
 
 /** @internal */
 export type GetTaskResultRequest$Outbound = {
@@ -52,8 +52,8 @@ export const GetTaskResultResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  shared.ErrorsErrorResponse$inboundSchema,
   shared.ModelsTemporalWorkflowResult$inboundSchema,
+  shared.ErrorsErrorResponse$inboundSchema,
 ]);
 
 export function getTaskResultResponseFromJSON(

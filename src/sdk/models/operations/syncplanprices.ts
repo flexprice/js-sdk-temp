@@ -16,8 +16,8 @@ export type SyncPlanPricesRequest = {
 };
 
 export type SyncPlanPricesResponse =
-  | shared.ErrorsErrorResponse
-  | shared.ModelsTemporalWorkflowResult;
+  | shared.ModelsTemporalWorkflowResult
+  | shared.ErrorsErrorResponse;
 
 /** @internal */
 export type SyncPlanPricesRequest$Outbound = {
@@ -47,8 +47,8 @@ export const SyncPlanPricesResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  shared.ErrorsErrorResponse$inboundSchema,
   shared.ModelsTemporalWorkflowResult$inboundSchema,
+  shared.ErrorsErrorResponse$inboundSchema,
 ]);
 
 export function syncPlanPricesResponseFromJSON(

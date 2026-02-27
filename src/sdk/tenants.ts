@@ -27,23 +27,6 @@ export class Tenants extends ClientSDK {
   }
 
   /**
-   * Get tenant by ID
-   *
-   * @remarks
-   * Get tenant by ID
-   */
-  async getTenantById(
-    request: operations.GetTenantByIdRequest,
-    options?: RequestOptions,
-  ): Promise<operations.GetTenantByIdResponse> {
-    return unwrapAsync(tenantsGetTenantById(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Update a tenant
    *
    * @remarks
@@ -54,6 +37,23 @@ export class Tenants extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.UpdateTenantResponse> {
     return unwrapAsync(tenantsUpdateTenant(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get tenant by ID
+   *
+   * @remarks
+   * Get tenant by ID
+   */
+  async getTenantById(
+    request: operations.GetTenantByIdRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetTenantByIdResponse> {
+    return unwrapAsync(tenantsGetTenantById(
       this,
       request,
       options,

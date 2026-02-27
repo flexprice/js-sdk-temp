@@ -5,43 +5,37 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
-  TypesBillingCadence,
-  TypesBillingCadence$outboundSchema,
-} from "./typesbillingcadence.js";
+  BillingCadence,
+  BillingCadence$outboundSchema,
+} from "./billingcadence.js";
+import { BillingCycle, BillingCycle$outboundSchema } from "./billingcycle.js";
 import {
-  TypesBillingCycle,
-  TypesBillingCycle$outboundSchema,
-} from "./typesbillingcycle.js";
+  BillingPeriod,
+  BillingPeriod$outboundSchema,
+} from "./billingperiod.js";
 import {
-  TypesBillingPeriod,
-  TypesBillingPeriod$outboundSchema,
-} from "./typesbillingperiod.js";
-import {
-  TypesProrationBehavior,
-  TypesProrationBehavior$outboundSchema,
-} from "./typesprorationbehavior.js";
-import {
-  TypesScheduleType,
-  TypesScheduleType$outboundSchema,
-} from "./typesscheduletype.js";
+  ProrationBehavior,
+  ProrationBehavior$outboundSchema,
+} from "./prorationbehavior.js";
+import { ScheduleType, ScheduleType$outboundSchema } from "./scheduletype.js";
 
 /**
  * Request object for changing a subscription plan (upgrade/downgrade)
  */
 export type DtoSubscriptionChangeRequest = {
-  billingCadence: TypesBillingCadence;
-  billingCycle: TypesBillingCycle;
-  billingPeriod: TypesBillingPeriod;
+  billingCadence: BillingCadence;
+  billingCycle: BillingCycle;
+  billingPeriod: BillingPeriod;
   /**
    * billing_period_count is the billing period count for the new subscription
    */
   billingPeriodCount?: number | undefined;
-  changeAt?: TypesScheduleType | undefined;
+  changeAt?: ScheduleType | undefined;
   /**
    * metadata contains additional key-value pairs for storing extra information
    */
   metadata?: { [k: string]: string } | undefined;
-  prorationBehavior: TypesProrationBehavior;
+  prorationBehavior: ProrationBehavior;
   /**
    * target_plan_id is the ID of the new plan to change to (required)
    */
@@ -66,13 +60,13 @@ export const DtoSubscriptionChangeRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DtoSubscriptionChangeRequest
 > = z.object({
-  billingCadence: TypesBillingCadence$outboundSchema,
-  billingCycle: TypesBillingCycle$outboundSchema,
-  billingPeriod: TypesBillingPeriod$outboundSchema,
+  billingCadence: BillingCadence$outboundSchema,
+  billingCycle: BillingCycle$outboundSchema,
+  billingPeriod: BillingPeriod$outboundSchema,
   billingPeriodCount: z.number().int().optional(),
-  changeAt: TypesScheduleType$outboundSchema.optional(),
+  changeAt: ScheduleType$outboundSchema.optional(),
   metadata: z.record(z.string()).optional(),
-  prorationBehavior: TypesProrationBehavior$outboundSchema,
+  prorationBehavior: ProrationBehavior$outboundSchema,
   targetPlanId: z.string(),
 }).transform((v) => {
   return remap$(v, {

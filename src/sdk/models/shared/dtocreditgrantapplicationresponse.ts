@@ -8,22 +8,22 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  TypesApplicationStatus,
-  TypesApplicationStatus$inboundSchema,
-} from "./typesapplicationstatus.js";
+  ApplicationStatus,
+  ApplicationStatus$inboundSchema,
+} from "./applicationstatus.js";
 import {
-  TypesCreditGrantApplicationReason,
-  TypesCreditGrantApplicationReason$inboundSchema,
-} from "./typescreditgrantapplicationreason.js";
-import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
+  CreditGrantApplicationReason,
+  CreditGrantApplicationReason$inboundSchema,
+} from "./creditgrantapplicationreason.js";
+import { Status, Status$inboundSchema } from "./status.js";
 import {
-  TypesSubscriptionStatus,
-  TypesSubscriptionStatus$inboundSchema,
-} from "./typessubscriptionstatus.js";
+  SubscriptionStatus,
+  SubscriptionStatus$inboundSchema,
+} from "./subscriptionstatus.js";
 
 export type DtoCreditGrantApplicationResponse = {
-  applicationReason?: TypesCreditGrantApplicationReason | undefined;
-  applicationStatus?: TypesApplicationStatus | undefined;
+  applicationReason?: CreditGrantApplicationReason | undefined;
+  applicationStatus?: ApplicationStatus | undefined;
   appliedAt?: string | undefined;
   createdAt?: string | undefined;
   createdBy?: string | undefined;
@@ -38,9 +38,9 @@ export type DtoCreditGrantApplicationResponse = {
   periodStart?: string | undefined;
   retryCount?: number | undefined;
   scheduledFor?: string | undefined;
-  status?: TypesStatus | undefined;
+  status?: Status | undefined;
   subscriptionId?: string | undefined;
-  subscriptionStatusAtApplication?: TypesSubscriptionStatus | undefined;
+  subscriptionStatusAtApplication?: SubscriptionStatus | undefined;
   tenantId?: string | undefined;
   updatedAt?: string | undefined;
   updatedBy?: string | undefined;
@@ -52,9 +52,8 @@ export const DtoCreditGrantApplicationResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  application_reason: TypesCreditGrantApplicationReason$inboundSchema
-    .optional(),
-  application_status: TypesApplicationStatus$inboundSchema.optional(),
+  application_reason: CreditGrantApplicationReason$inboundSchema.optional(),
+  application_status: ApplicationStatus$inboundSchema.optional(),
   applied_at: z.string().optional(),
   created_at: z.string().optional(),
   created_by: z.string().optional(),
@@ -69,9 +68,9 @@ export const DtoCreditGrantApplicationResponse$inboundSchema: z.ZodType<
   period_start: z.string().optional(),
   retry_count: z.number().int().optional(),
   scheduled_for: z.string().optional(),
-  status: TypesStatus$inboundSchema.optional(),
+  status: Status$inboundSchema.optional(),
   subscription_id: z.string().optional(),
-  subscription_status_at_application: TypesSubscriptionStatus$inboundSchema
+  subscription_status_at_application: SubscriptionStatus$inboundSchema
     .optional(),
   tenant_id: z.string().optional(),
   updated_at: z.string().optional(),

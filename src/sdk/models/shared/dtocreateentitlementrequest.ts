@@ -5,24 +5,21 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
-  TypesEntitlementEntityType,
-  TypesEntitlementEntityType$outboundSchema,
-} from "./typesentitlemententitytype.js";
+  EntitlementEntityType,
+  EntitlementEntityType$outboundSchema,
+} from "./entitlemententitytype.js";
 import {
-  TypesEntitlementUsageResetPeriod,
-  TypesEntitlementUsageResetPeriod$outboundSchema,
-} from "./typesentitlementusageresetperiod.js";
-import {
-  TypesFeatureType,
-  TypesFeatureType$outboundSchema,
-} from "./typesfeaturetype.js";
+  EntitlementUsageResetPeriod,
+  EntitlementUsageResetPeriod$outboundSchema,
+} from "./entitlementusageresetperiod.js";
+import { FeatureType, FeatureType$outboundSchema } from "./featuretype.js";
 
 export type DtoCreateEntitlementRequest = {
   endDate?: string | undefined;
   entityId?: string | undefined;
-  entityType?: TypesEntitlementEntityType | undefined;
+  entityType?: EntitlementEntityType | undefined;
   featureId: string;
-  featureType: TypesFeatureType;
+  featureType: FeatureType;
   isEnabled?: boolean | undefined;
   isSoftLimit?: boolean | undefined;
   parentEntitlementId?: string | undefined;
@@ -30,7 +27,7 @@ export type DtoCreateEntitlementRequest = {
   startDate?: string | undefined;
   staticValue?: string | undefined;
   usageLimit?: number | undefined;
-  usageResetPeriod?: TypesEntitlementUsageResetPeriod | undefined;
+  usageResetPeriod?: EntitlementUsageResetPeriod | undefined;
 };
 
 /** @internal */
@@ -58,9 +55,9 @@ export const DtoCreateEntitlementRequest$outboundSchema: z.ZodType<
 > = z.object({
   endDate: z.string().optional(),
   entityId: z.string().optional(),
-  entityType: TypesEntitlementEntityType$outboundSchema.optional(),
+  entityType: EntitlementEntityType$outboundSchema.optional(),
   featureId: z.string(),
-  featureType: TypesFeatureType$outboundSchema,
+  featureType: FeatureType$outboundSchema,
   isEnabled: z.boolean().optional(),
   isSoftLimit: z.boolean().optional(),
   parentEntitlementId: z.string().optional(),
@@ -68,7 +65,7 @@ export const DtoCreateEntitlementRequest$outboundSchema: z.ZodType<
   startDate: z.string().optional(),
   staticValue: z.string().optional(),
   usageLimit: z.number().int().optional(),
-  usageResetPeriod: TypesEntitlementUsageResetPeriod$outboundSchema.optional(),
+  usageResetPeriod: EntitlementUsageResetPeriod$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     endDate: "end_date",

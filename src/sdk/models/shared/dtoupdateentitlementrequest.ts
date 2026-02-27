@@ -5,16 +5,16 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
-  TypesEntitlementUsageResetPeriod,
-  TypesEntitlementUsageResetPeriod$outboundSchema,
-} from "./typesentitlementusageresetperiod.js";
+  EntitlementUsageResetPeriod,
+  EntitlementUsageResetPeriod$outboundSchema,
+} from "./entitlementusageresetperiod.js";
 
 export type DtoUpdateEntitlementRequest = {
   isEnabled?: boolean | undefined;
   isSoftLimit?: boolean | undefined;
   staticValue?: string | undefined;
   usageLimit?: number | undefined;
-  usageResetPeriod?: TypesEntitlementUsageResetPeriod | undefined;
+  usageResetPeriod?: EntitlementUsageResetPeriod | undefined;
 };
 
 /** @internal */
@@ -36,7 +36,7 @@ export const DtoUpdateEntitlementRequest$outboundSchema: z.ZodType<
   isSoftLimit: z.boolean().optional(),
   staticValue: z.string().optional(),
   usageLimit: z.number().int().optional(),
-  usageResetPeriod: TypesEntitlementUsageResetPeriod$outboundSchema.optional(),
+  usageResetPeriod: EntitlementUsageResetPeriod$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     isEnabled: "is_enabled",

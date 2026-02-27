@@ -31,23 +31,6 @@ export class CreditGrants extends ClientSDK {
   }
 
   /**
-   * Delete credit grant
-   *
-   * @remarks
-   * Use when removing or ending a credit grant (e.g. revoke promo or close prepaid). Plan-scoped grants are archived; subscription-scoped supports optional effective_date in body.
-   */
-  async deleteCreditGrant(
-    request: operations.DeleteCreditGrantRequest,
-    options?: RequestOptions,
-  ): Promise<operations.DeleteCreditGrantResponse> {
-    return unwrapAsync(creditGrantsDeleteCreditGrant(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Get credit grant
    *
    * @remarks
@@ -65,23 +48,6 @@ export class CreditGrants extends ClientSDK {
   }
 
   /**
-   * Get plan credit grants
-   *
-   * @remarks
-   * Use when listing credits attached to a plan (e.g. included prepaid or promo credits).
-   */
-  async getPlanCreditGrants(
-    request: operations.GetPlanCreditGrantsRequest,
-    options?: RequestOptions,
-  ): Promise<operations.GetPlanCreditGrantsResponse> {
-    return unwrapAsync(creditGrantsGetPlanCreditGrants(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Update credit grant
    *
    * @remarks
@@ -92,6 +58,40 @@ export class CreditGrants extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.UpdateCreditGrantResponse> {
     return unwrapAsync(creditGrantsUpdateCreditGrant(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete credit grant
+   *
+   * @remarks
+   * Use when removing or ending a credit grant (e.g. revoke promo or close prepaid). Plan-scoped grants are archived; subscription-scoped supports optional effective_date in body.
+   */
+  async deleteCreditGrant(
+    request: operations.DeleteCreditGrantRequest,
+    options?: RequestOptions,
+  ): Promise<operations.DeleteCreditGrantResponse> {
+    return unwrapAsync(creditGrantsDeleteCreditGrant(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get plan credit grants
+   *
+   * @remarks
+   * Use when listing credits attached to a plan (e.g. included prepaid or promo credits).
+   */
+  async getPlanCreditGrants(
+    request: operations.GetPlanCreditGrantsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetPlanCreditGrantsResponse> {
+    return unwrapAsync(creditGrantsGetPlanCreditGrants(
       this,
       request,
       options,

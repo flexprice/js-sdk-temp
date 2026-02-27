@@ -33,7 +33,7 @@ import { Result } from "../sdk/types/fp.js";
  */
 export function invoicesQueryInvoice(
   client: FlexpriceCore,
-  request: shared.TypesInvoiceFilter,
+  request: shared.InvoiceFilter,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -57,7 +57,7 @@ export function invoicesQueryInvoice(
 
 async function $do(
   client: FlexpriceCore,
-  request: shared.TypesInvoiceFilter,
+  request: shared.InvoiceFilter,
   options?: RequestOptions,
 ): Promise<
   [
@@ -77,7 +77,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => shared.TypesInvoiceFilter$outboundSchema.parse(value),
+    (value) => shared.InvoiceFilter$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {

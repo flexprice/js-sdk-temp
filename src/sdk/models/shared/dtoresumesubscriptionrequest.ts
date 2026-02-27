@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import {
-  TypesResumeMode,
-  TypesResumeMode$outboundSchema,
-} from "./typesresumemode.js";
+import { ResumeMode, ResumeMode$outboundSchema } from "./resumemode.js";
 
 /**
  * Request object for resuming a paused subscription
@@ -29,7 +26,7 @@ export type DtoResumeSubscriptionRequest = {
    * @Example {"resumed_by": "admin", "reason": "issue_resolved"}
    */
   metadata?: { [k: string]: string } | undefined;
-  resumeMode: TypesResumeMode;
+  resumeMode: ResumeMode;
 };
 
 /** @internal */
@@ -47,7 +44,7 @@ export const DtoResumeSubscriptionRequest$outboundSchema: z.ZodType<
 > = z.object({
   dryRun: z.boolean().optional(),
   metadata: z.record(z.string()).optional(),
-  resumeMode: TypesResumeMode$outboundSchema,
+  resumeMode: ResumeMode$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     dryRun: "dry_run",

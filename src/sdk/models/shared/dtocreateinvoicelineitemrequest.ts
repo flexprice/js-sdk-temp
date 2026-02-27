@@ -5,17 +5,17 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
-  TypesCommitmentInfo,
-  TypesCommitmentInfo$Outbound,
-  TypesCommitmentInfo$outboundSchema,
-} from "./typescommitmentinfo.js";
+  CommitmentInfo,
+  CommitmentInfo$Outbound,
+  CommitmentInfo$outboundSchema,
+} from "./commitmentinfo.js";
 
 export type DtoCreateInvoiceLineItemRequest = {
   /**
    * amount is the monetary amount for this line item
    */
   amount: string;
-  commitmentInfo?: TypesCommitmentInfo | undefined;
+  commitmentInfo?: CommitmentInfo | undefined;
   /**
    * display_name is the optional human-readable name for this line item
    */
@@ -93,7 +93,7 @@ export type DtoCreateInvoiceLineItemRequest = {
 /** @internal */
 export type DtoCreateInvoiceLineItemRequest$Outbound = {
   amount: string;
-  commitment_info?: TypesCommitmentInfo$Outbound | undefined;
+  commitment_info?: CommitmentInfo$Outbound | undefined;
   display_name?: string | undefined;
   entity_id?: string | undefined;
   entity_type?: string | undefined;
@@ -121,7 +121,7 @@ export const DtoCreateInvoiceLineItemRequest$outboundSchema: z.ZodType<
   DtoCreateInvoiceLineItemRequest
 > = z.object({
   amount: z.string(),
-  commitmentInfo: TypesCommitmentInfo$outboundSchema.optional(),
+  commitmentInfo: CommitmentInfo$outboundSchema.optional(),
   displayName: z.string().optional(),
   entityId: z.string().optional(),
   entityType: z.string().optional(),

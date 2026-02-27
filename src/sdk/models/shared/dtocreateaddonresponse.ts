@@ -7,6 +7,7 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { AddonType, AddonType$inboundSchema } from "./addontype.js";
 import {
   DtoEntitlementResponse,
   DtoEntitlementResponse$inboundSchema,
@@ -15,11 +16,7 @@ import {
   DtoPriceResponse,
   DtoPriceResponse$inboundSchema,
 } from "./dtopriceresponse.js";
-import {
-  TypesAddonType,
-  TypesAddonType$inboundSchema,
-} from "./typesaddontype.js";
-import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
+import { Status, Status$inboundSchema } from "./status.js";
 
 export type DtoCreateAddonResponse = {
   createdAt?: string | undefined;
@@ -35,9 +32,9 @@ export type DtoCreateAddonResponse = {
    * Optional expanded fields
    */
   prices?: Array<DtoPriceResponse> | undefined;
-  status?: TypesStatus | undefined;
+  status?: Status | undefined;
   tenantId?: string | undefined;
-  type?: TypesAddonType | undefined;
+  type?: AddonType | undefined;
   updatedAt?: string | undefined;
   updatedBy?: string | undefined;
 };
@@ -58,9 +55,9 @@ export const DtoCreateAddonResponse$inboundSchema: z.ZodType<
   metadata: z.record(z.any()).optional(),
   name: z.string().optional(),
   prices: z.array(DtoPriceResponse$inboundSchema).optional(),
-  status: TypesStatus$inboundSchema.optional(),
+  status: Status$inboundSchema.optional(),
   tenant_id: z.string().optional(),
-  type: TypesAddonType$inboundSchema.optional(),
+  type: AddonType$inboundSchema.optional(),
   updated_at: z.string().optional(),
   updated_by: z.string().optional(),
 }).transform((v) => {

@@ -5,25 +5,25 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
-  TypesBillingPeriod,
-  TypesBillingPeriod$outboundSchema,
-} from "./typesbillingperiod.js";
+  BillingPeriod,
+  BillingPeriod$outboundSchema,
+} from "./billingperiod.js";
 import {
-  TypesCommitmentType,
-  TypesCommitmentType$outboundSchema,
-} from "./typescommitmenttype.js";
+  CommitmentType,
+  CommitmentType$outboundSchema,
+} from "./commitmenttype.js";
 
 export type DtoLineItemCommitmentConfig = {
   /**
    * CommitmentAmount is the minimum amount committed for this line item
    */
   commitmentAmount?: number | undefined;
-  commitmentDuration?: TypesBillingPeriod | undefined;
+  commitmentDuration?: BillingPeriod | undefined;
   /**
    * CommitmentQuantity is the minimum quantity committed for this line item
    */
   commitmentQuantity?: number | undefined;
-  commitmentType?: TypesCommitmentType | undefined;
+  commitmentType?: CommitmentType | undefined;
   /**
    * EnableTrueUp determines if true-up fee should be applied when usage is below commitment
    */
@@ -56,9 +56,9 @@ export const DtoLineItemCommitmentConfig$outboundSchema: z.ZodType<
   DtoLineItemCommitmentConfig
 > = z.object({
   commitmentAmount: z.number().optional(),
-  commitmentDuration: TypesBillingPeriod$outboundSchema.optional(),
+  commitmentDuration: BillingPeriod$outboundSchema.optional(),
   commitmentQuantity: z.number().optional(),
-  commitmentType: TypesCommitmentType$outboundSchema.optional(),
+  commitmentType: CommitmentType$outboundSchema.optional(),
   enableTrueUp: z.boolean().optional(),
   isWindowCommitment: z.boolean().optional(),
   overageFactor: z.number().optional(),

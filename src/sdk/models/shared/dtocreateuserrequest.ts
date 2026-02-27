@@ -3,17 +3,14 @@
  */
 
 import * as z from "zod/v3";
-import {
-  TypesUserType,
-  TypesUserType$outboundSchema,
-} from "./typesusertype.js";
+import { UserType, UserType$outboundSchema } from "./usertype.js";
 
 export type DtoCreateUserRequest = {
   /**
    * Roles are required
    */
   roles: Array<string>;
-  type: TypesUserType;
+  type: UserType;
 };
 
 /** @internal */
@@ -29,7 +26,7 @@ export const DtoCreateUserRequest$outboundSchema: z.ZodType<
   DtoCreateUserRequest
 > = z.object({
   roles: z.array(z.string()),
-  type: TypesUserType$outboundSchema,
+  type: UserType$outboundSchema,
 });
 
 export function dtoCreateUserRequestToJSON(

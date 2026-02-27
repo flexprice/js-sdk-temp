@@ -8,6 +8,11 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  AddonAssociationEntityType,
+  AddonAssociationEntityType$inboundSchema,
+} from "./addonassociationentitytype.js";
+import { AddonStatus, AddonStatus$inboundSchema } from "./addonstatus.js";
+import {
   DtoAddonResponse,
   DtoAddonResponse$inboundSchema,
 } from "./dtoaddonresponse.js";
@@ -15,32 +20,24 @@ import {
   DtoSubscriptionResponse,
   DtoSubscriptionResponse$inboundSchema,
 } from "./dtosubscriptionresponse.js";
-import {
-  TypesAddonAssociationEntityType,
-  TypesAddonAssociationEntityType$inboundSchema,
-} from "./typesaddonassociationentitytype.js";
-import {
-  TypesAddonStatus,
-  TypesAddonStatus$inboundSchema,
-} from "./typesaddonstatus.js";
-import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
+import { Status, Status$inboundSchema } from "./status.js";
 
 export type DtoAddonAssociationResponse = {
   addon?: DtoAddonResponse | undefined;
   addonId?: string | undefined;
-  addonStatus?: TypesAddonStatus | undefined;
+  addonStatus?: AddonStatus | undefined;
   cancellationReason?: string | undefined;
   cancelledAt?: string | undefined;
   createdAt?: string | undefined;
   createdBy?: string | undefined;
   endDate?: string | undefined;
   entityId?: string | undefined;
-  entityType?: TypesAddonAssociationEntityType | undefined;
+  entityType?: AddonAssociationEntityType | undefined;
   environmentId?: string | undefined;
   id?: string | undefined;
   metadata?: { [k: string]: any } | undefined;
   startDate?: string | undefined;
-  status?: TypesStatus | undefined;
+  status?: Status | undefined;
   subscription?: DtoSubscriptionResponse | undefined;
   tenantId?: string | undefined;
   updatedAt?: string | undefined;
@@ -55,19 +52,19 @@ export const DtoAddonAssociationResponse$inboundSchema: z.ZodType<
 > = z.object({
   addon: DtoAddonResponse$inboundSchema.optional(),
   addon_id: z.string().optional(),
-  addon_status: TypesAddonStatus$inboundSchema.optional(),
+  addon_status: AddonStatus$inboundSchema.optional(),
   cancellation_reason: z.string().optional(),
   cancelled_at: z.string().optional(),
   created_at: z.string().optional(),
   created_by: z.string().optional(),
   end_date: z.string().optional(),
   entity_id: z.string().optional(),
-  entity_type: TypesAddonAssociationEntityType$inboundSchema.optional(),
+  entity_type: AddonAssociationEntityType$inboundSchema.optional(),
   environment_id: z.string().optional(),
   id: z.string().optional(),
   metadata: z.record(z.any()).optional(),
   start_date: z.string().optional(),
-  status: TypesStatus$inboundSchema.optional(),
+  status: Status$inboundSchema.optional(),
   subscription: DtoSubscriptionResponse$inboundSchema.optional(),
   tenant_id: z.string().optional(),
   updated_at: z.string().optional(),

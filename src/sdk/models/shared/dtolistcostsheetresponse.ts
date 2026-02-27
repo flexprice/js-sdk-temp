@@ -11,13 +11,13 @@ import {
   DtoCostsheetResponse$inboundSchema,
 } from "./dtocostsheetresponse.js";
 import {
-  TypesPaginationResponse,
-  TypesPaginationResponse$inboundSchema,
-} from "./typespaginationresponse.js";
+  PaginationResponse,
+  PaginationResponse$inboundSchema,
+} from "./paginationresponse.js";
 
 export type DtoListCostsheetResponse = {
   items?: Array<DtoCostsheetResponse> | undefined;
-  pagination?: TypesPaginationResponse | undefined;
+  pagination?: PaginationResponse | undefined;
 };
 
 /** @internal */
@@ -27,7 +27,7 @@ export const DtoListCostsheetResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   items: z.array(DtoCostsheetResponse$inboundSchema).optional(),
-  pagination: TypesPaginationResponse$inboundSchema.optional(),
+  pagination: PaginationResponse$inboundSchema.optional(),
 });
 
 export function dtoListCostsheetResponseFromJSON(

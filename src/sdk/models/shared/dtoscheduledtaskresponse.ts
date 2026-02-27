@@ -7,28 +7,25 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { S3JobConfig, S3JobConfig$inboundSchema } from "./s3jobconfig.js";
 import {
-  TypesS3JobConfig,
-  TypesS3JobConfig$inboundSchema,
-} from "./typess3jobconfig.js";
+  ScheduledTaskEntityType,
+  ScheduledTaskEntityType$inboundSchema,
+} from "./scheduledtaskentitytype.js";
 import {
-  TypesScheduledTaskEntityType,
-  TypesScheduledTaskEntityType$inboundSchema,
-} from "./typesscheduledtaskentitytype.js";
-import {
-  TypesScheduledTaskInterval,
-  TypesScheduledTaskInterval$inboundSchema,
-} from "./typesscheduledtaskinterval.js";
+  ScheduledTaskInterval,
+  ScheduledTaskInterval$inboundSchema,
+} from "./scheduledtaskinterval.js";
 
 export type DtoScheduledTaskResponse = {
   connectionId?: string | undefined;
   createdAt?: string | undefined;
   enabled?: boolean | undefined;
-  entityType?: TypesScheduledTaskEntityType | undefined;
+  entityType?: ScheduledTaskEntityType | undefined;
   environmentId?: string | undefined;
   id?: string | undefined;
-  interval?: TypesScheduledTaskInterval | undefined;
-  jobConfig?: TypesS3JobConfig | undefined;
+  interval?: ScheduledTaskInterval | undefined;
+  jobConfig?: S3JobConfig | undefined;
   status?: string | undefined;
   tenantId?: string | undefined;
   updatedAt?: string | undefined;
@@ -43,11 +40,11 @@ export const DtoScheduledTaskResponse$inboundSchema: z.ZodType<
   connection_id: z.string().optional(),
   created_at: z.string().optional(),
   enabled: z.boolean().optional(),
-  entity_type: TypesScheduledTaskEntityType$inboundSchema.optional(),
+  entity_type: ScheduledTaskEntityType$inboundSchema.optional(),
   environment_id: z.string().optional(),
   id: z.string().optional(),
-  interval: TypesScheduledTaskInterval$inboundSchema.optional(),
-  job_config: TypesS3JobConfig$inboundSchema.optional(),
+  interval: ScheduledTaskInterval$inboundSchema.optional(),
+  job_config: S3JobConfig$inboundSchema.optional(),
   status: z.string().optional(),
   tenant_id: z.string().optional(),
   updated_at: z.string().optional(),

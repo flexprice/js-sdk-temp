@@ -10,6 +10,21 @@ import { unwrapAsync } from "./types/fp.js";
 
 export class Rbac extends ClientSDK {
   /**
+   * List all RBAC roles
+   *
+   * @remarks
+   * Use when building role pickers or permission UIs. Returns all roles with permissions and descriptions.
+   */
+  async listRbacRoles(
+    options?: RequestOptions,
+  ): Promise<operations.ListRbacRolesResponse> {
+    return unwrapAsync(rbacListRBACRoles(
+      this,
+      options,
+    ));
+  }
+
+  /**
    * Get a specific RBAC role
    *
    * @remarks
@@ -22,21 +37,6 @@ export class Rbac extends ClientSDK {
     return unwrapAsync(rbacGetRBACRole(
       this,
       request,
-      options,
-    ));
-  }
-
-  /**
-   * List all RBAC roles
-   *
-   * @remarks
-   * Use when building role pickers or permission UIs. Returns all roles with permissions and descriptions.
-   */
-  async listRbacRoles(
-    options?: RequestOptions,
-  ): Promise<operations.ListRbacRolesResponse> {
-    return unwrapAsync(rbacListRBACRoles(
-      this,
       options,
     ));
   }

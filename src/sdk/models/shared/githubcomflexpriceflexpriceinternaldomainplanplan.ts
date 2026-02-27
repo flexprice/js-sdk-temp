@@ -7,7 +7,7 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
+import { Status, Status$inboundSchema } from "./status.js";
 
 export type GithubComFlexpriceFlexpriceInternalDomainPlanPlan = {
   createdAt?: string | undefined;
@@ -19,7 +19,7 @@ export type GithubComFlexpriceFlexpriceInternalDomainPlanPlan = {
   lookupKey?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
   name?: string | undefined;
-  status?: TypesStatus | undefined;
+  status?: Status | undefined;
   tenantId?: string | undefined;
   updatedAt?: string | undefined;
   updatedBy?: string | undefined;
@@ -41,7 +41,7 @@ export const GithubComFlexpriceFlexpriceInternalDomainPlanPlan$inboundSchema:
     lookup_key: z.string().optional(),
     metadata: z.record(z.string()).optional(),
     name: z.string().optional(),
-    status: TypesStatus$inboundSchema.optional(),
+    status: Status$inboundSchema.optional(),
     tenant_id: z.string().optional(),
     updated_at: z.string().optional(),
     updated_by: z.string().optional(),

@@ -4,6 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { BillingModel, BillingModel$outboundSchema } from "./billingmodel.js";
+import { BillingTier, BillingTier$outboundSchema } from "./billingtier.js";
 import {
   DtoCreatePriceTier,
   DtoCreatePriceTier$Outbound,
@@ -14,21 +16,13 @@ import {
   PriceTransformQuantity$Outbound,
   PriceTransformQuantity$outboundSchema,
 } from "./pricetransformquantity.js";
-import {
-  TypesBillingModel,
-  TypesBillingModel$outboundSchema,
-} from "./typesbillingmodel.js";
-import {
-  TypesBillingTier,
-  TypesBillingTier$outboundSchema,
-} from "./typesbillingtier.js";
 
 export type DtoUpdatePriceRequest = {
   /**
    * Amount is the new price amount that overrides the original price (optional)
    */
   amount?: string | undefined;
-  billingModel?: TypesBillingModel | undefined;
+  billingModel?: BillingModel | undefined;
   description?: string | undefined;
   displayName?: string | undefined;
   effectiveFrom?: string | undefined;
@@ -52,7 +46,7 @@ export type DtoUpdatePriceRequest = {
    * PriceUnitTiers are the price unit tiers (for CUSTOM price unit type, TIERED billing model)
    */
   priceUnitTiers?: Array<DtoCreatePriceTier> | undefined;
-  tierMode?: TypesBillingTier | undefined;
+  tierMode?: BillingTier | undefined;
   /**
    * Tiers determines the pricing tiers for this line item
    */
@@ -84,7 +78,7 @@ export const DtoUpdatePriceRequest$outboundSchema: z.ZodType<
   DtoUpdatePriceRequest
 > = z.object({
   amount: z.string().optional(),
-  billingModel: TypesBillingModel$outboundSchema.optional(),
+  billingModel: BillingModel$outboundSchema.optional(),
   description: z.string().optional(),
   displayName: z.string().optional(),
   effectiveFrom: z.string().optional(),
@@ -93,7 +87,7 @@ export const DtoUpdatePriceRequest$outboundSchema: z.ZodType<
   metadata: z.record(z.string()).optional(),
   priceUnitAmount: z.string().optional(),
   priceUnitTiers: z.array(DtoCreatePriceTier$outboundSchema).optional(),
-  tierMode: TypesBillingTier$outboundSchema.optional(),
+  tierMode: BillingTier$outboundSchema.optional(),
   tiers: z.array(DtoCreatePriceTier$outboundSchema).optional(),
   transformQuantity: PriceTransformQuantity$outboundSchema.optional(),
 }).transform((v) => {

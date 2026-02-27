@@ -4,16 +4,13 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import {
-  TypesSecretType,
-  TypesSecretType$outboundSchema,
-} from "./typessecrettype.js";
+import { SecretType, SecretType$outboundSchema } from "./secrettype.js";
 
 export type DtoCreateAPIKeyRequest = {
   expiresAt?: string | undefined;
   name: string;
   serviceAccountId?: string | undefined;
-  type: TypesSecretType;
+  type: SecretType;
 };
 
 /** @internal */
@@ -33,7 +30,7 @@ export const DtoCreateAPIKeyRequest$outboundSchema: z.ZodType<
   expiresAt: z.string().optional(),
   name: z.string(),
   serviceAccountId: z.string().optional(),
-  type: TypesSecretType$outboundSchema,
+  type: SecretType$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     expiresAt: "expires_at",

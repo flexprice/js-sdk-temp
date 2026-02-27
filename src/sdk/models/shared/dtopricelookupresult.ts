@@ -8,6 +8,10 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  DebugTrackerStatus,
+  DebugTrackerStatus$inboundSchema,
+} from "./debugtrackerstatus.js";
+import {
   DtoMatchedPrice,
   DtoMatchedPrice$inboundSchema,
 } from "./dtomatchedprice.js";
@@ -15,15 +19,11 @@ import {
   ErrorsErrorResponse,
   ErrorsErrorResponse$inboundSchema,
 } from "./errorserrorresponse.js";
-import {
-  TypesDebugTrackerStatus,
-  TypesDebugTrackerStatus$inboundSchema,
-} from "./typesdebugtrackerstatus.js";
 
 export type DtoPriceLookupResult = {
   error?: ErrorsErrorResponse | undefined;
   matchedPrices?: Array<DtoMatchedPrice> | undefined;
-  status?: TypesDebugTrackerStatus | undefined;
+  status?: DebugTrackerStatus | undefined;
 };
 
 /** @internal */
@@ -34,7 +34,7 @@ export const DtoPriceLookupResult$inboundSchema: z.ZodType<
 > = z.object({
   error: ErrorsErrorResponse$inboundSchema.optional(),
   matched_prices: z.array(DtoMatchedPrice$inboundSchema).optional(),
-  status: TypesDebugTrackerStatus$inboundSchema.optional(),
+  status: DebugTrackerStatus$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "matched_prices": "matchedPrices",

@@ -8,6 +8,12 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  BillingCadence,
+  BillingCadence$inboundSchema,
+} from "./billingcadence.js";
+import { BillingCycle, BillingCycle$inboundSchema } from "./billingcycle.js";
+import { BillingPeriod, BillingPeriod$inboundSchema } from "./billingperiod.js";
+import {
   DtoCouponAssociationResponse,
   DtoCouponAssociationResponse$inboundSchema,
 } from "./dtocouponassociationresponse.js";
@@ -31,39 +37,21 @@ import {
   DtoSubscriptionPhaseResponse,
   DtoSubscriptionPhaseResponse$inboundSchema,
 } from "./dtosubscriptionphaseresponse.js";
+import { PauseStatus, PauseStatus$inboundSchema } from "./pausestatus.js";
+import { PaymentTerms, PaymentTerms$inboundSchema } from "./paymentterms.js";
+import {
+  ProrationBehavior,
+  ProrationBehavior$inboundSchema,
+} from "./prorationbehavior.js";
+import { Status, Status$inboundSchema } from "./status.js";
+import {
+  SubscriptionStatus,
+  SubscriptionStatus$inboundSchema,
+} from "./subscriptionstatus.js";
 import {
   SubscriptionSubscriptionPause,
   SubscriptionSubscriptionPause$inboundSchema,
 } from "./subscriptionsubscriptionpause.js";
-import {
-  TypesBillingCadence,
-  TypesBillingCadence$inboundSchema,
-} from "./typesbillingcadence.js";
-import {
-  TypesBillingCycle,
-  TypesBillingCycle$inboundSchema,
-} from "./typesbillingcycle.js";
-import {
-  TypesBillingPeriod,
-  TypesBillingPeriod$inboundSchema,
-} from "./typesbillingperiod.js";
-import {
-  TypesPauseStatus,
-  TypesPauseStatus$inboundSchema,
-} from "./typespausestatus.js";
-import {
-  TypesPaymentTerms,
-  TypesPaymentTerms$inboundSchema,
-} from "./typespaymentterms.js";
-import {
-  TypesProrationBehavior,
-  TypesProrationBehavior$inboundSchema,
-} from "./typesprorationbehavior.js";
-import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
-import {
-  TypesSubscriptionStatus,
-  TypesSubscriptionStatus$inboundSchema,
-} from "./typessubscriptionstatus.js";
 
 export type DtoSubscriptionResponseV2 = {
   /**
@@ -81,9 +69,9 @@ export type DtoSubscriptionResponseV2 = {
    * and the month of year for year intervals. The timestamp is in UTC format.
    */
   billingAnchor?: string | undefined;
-  billingCadence?: TypesBillingCadence | undefined;
-  billingCycle?: TypesBillingCycle | undefined;
-  billingPeriod?: TypesBillingPeriod | undefined;
+  billingCadence?: BillingCadence | undefined;
+  billingCycle?: BillingCycle | undefined;
+  billingPeriod?: BillingPeriod | undefined;
   /**
    * BillingPeriodCount is the total number units of the billing period.
    */
@@ -108,7 +96,7 @@ export type DtoSubscriptionResponseV2 = {
    * CommitmentAmount is the minimum amount a customer commits to paying for a billing period
    */
   commitmentAmount?: string | undefined;
-  commitmentDuration?: TypesBillingPeriod | undefined;
+  commitmentDuration?: BillingPeriod | undefined;
   /**
    * CouponAssociations are included when "coupon_associations" is in expand parameter
    */
@@ -190,7 +178,7 @@ export type DtoSubscriptionResponseV2 = {
    * ParentSubscriptionID is the parent subscription ID for hierarchy (e.g. child subscription under a parent)
    */
   parentSubscriptionId?: string | undefined;
-  pauseStatus?: TypesPauseStatus | undefined;
+  pauseStatus?: PauseStatus | undefined;
   /**
    * Pauses are included when subscription has pause status
    */
@@ -199,7 +187,7 @@ export type DtoSubscriptionResponseV2 = {
    * PaymentBehavior determines how subscription payments are handled
    */
   paymentBehavior?: string | undefined;
-  paymentTerms?: TypesPaymentTerms | undefined;
+  paymentTerms?: PaymentTerms | undefined;
   /**
    * Phases are included when "phases" is in expand parameter
    */
@@ -209,13 +197,13 @@ export type DtoSubscriptionResponseV2 = {
    * PlanID is the identifier for the plan in our system
    */
   planId?: string | undefined;
-  prorationBehavior?: TypesProrationBehavior | undefined;
+  prorationBehavior?: ProrationBehavior | undefined;
   /**
    * StartDate is the start date of the subscription
    */
   startDate?: string | undefined;
-  status?: TypesStatus | undefined;
-  subscriptionStatus?: TypesSubscriptionStatus | undefined;
+  status?: Status | undefined;
+  subscriptionStatus?: SubscriptionStatus | undefined;
   tenantId?: string | undefined;
   /**
    * TrialEnd is the end date of the trial period
@@ -241,16 +229,16 @@ export const DtoSubscriptionResponseV2$inboundSchema: z.ZodType<
 > = z.object({
   active_pause_id: z.string().optional(),
   billing_anchor: z.string().optional(),
-  billing_cadence: TypesBillingCadence$inboundSchema.optional(),
-  billing_cycle: TypesBillingCycle$inboundSchema.optional(),
-  billing_period: TypesBillingPeriod$inboundSchema.optional(),
+  billing_cadence: BillingCadence$inboundSchema.optional(),
+  billing_cycle: BillingCycle$inboundSchema.optional(),
+  billing_period: BillingPeriod$inboundSchema.optional(),
   billing_period_count: z.number().int().optional(),
   cancel_at: z.string().optional(),
   cancel_at_period_end: z.boolean().optional(),
   cancelled_at: z.string().optional(),
   collection_method: z.string().optional(),
   commitment_amount: z.string().optional(),
-  commitment_duration: TypesBillingPeriod$inboundSchema.optional(),
+  commitment_duration: BillingPeriod$inboundSchema.optional(),
   coupon_associations: z.array(DtoCouponAssociationResponse$inboundSchema)
     .optional(),
   created_at: z.string().optional(),
@@ -273,17 +261,17 @@ export const DtoSubscriptionResponseV2$inboundSchema: z.ZodType<
   metadata: z.record(z.string()).optional(),
   overage_factor: z.string().optional(),
   parent_subscription_id: z.string().optional(),
-  pause_status: TypesPauseStatus$inboundSchema.optional(),
+  pause_status: PauseStatus$inboundSchema.optional(),
   pauses: z.array(SubscriptionSubscriptionPause$inboundSchema).optional(),
   payment_behavior: z.string().optional(),
-  payment_terms: TypesPaymentTerms$inboundSchema.optional(),
+  payment_terms: PaymentTerms$inboundSchema.optional(),
   phases: z.array(DtoSubscriptionPhaseResponse$inboundSchema).optional(),
   plan: DtoPlanResponse$inboundSchema.optional(),
   plan_id: z.string().optional(),
-  proration_behavior: TypesProrationBehavior$inboundSchema.optional(),
+  proration_behavior: ProrationBehavior$inboundSchema.optional(),
   start_date: z.string().optional(),
-  status: TypesStatus$inboundSchema.optional(),
-  subscription_status: TypesSubscriptionStatus$inboundSchema.optional(),
+  status: Status$inboundSchema.optional(),
+  subscription_status: SubscriptionStatus$inboundSchema.optional(),
   tenant_id: z.string().optional(),
   trial_end: z.string().optional(),
   trial_start: z.string().optional(),

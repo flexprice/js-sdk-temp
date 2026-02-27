@@ -22,57 +22,6 @@ import { unwrapAsync } from "./types/fp.js";
 
 export class Invoices extends ClientSDK {
   /**
-   * Attempt invoice payment
-   *
-   * @remarks
-   * Use when paying an invoice with the customer's wallet balance (e.g. prepaid credits or balance applied at checkout).
-   */
-  async attemptInvoicePayment(
-    request: operations.AttemptInvoicePaymentRequest,
-    options?: RequestOptions,
-  ): Promise<operations.AttemptInvoicePaymentResponse> {
-    return unwrapAsync(invoicesAttemptInvoicePayment(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Create one-off invoice
-   *
-   * @remarks
-   * Use when creating a manual or one-off invoice (e.g. custom charge or non-recurring billing). Invoice is created in draft; finalize when ready.
-   */
-  async createInvoice(
-    request: shared.DtoCreateInvoiceRequest,
-    options?: RequestOptions,
-  ): Promise<operations.CreateInvoiceResponse> {
-    return unwrapAsync(invoicesCreateInvoice(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Finalize invoice
-   *
-   * @remarks
-   * Use when locking an invoice for payment (e.g. after review). Once finalized, line items are locked; invoice can be paid or voided.
-   */
-  async finalizeInvoice(
-    request: operations.FinalizeInvoiceRequest,
-    options?: RequestOptions,
-  ): Promise<operations.FinalizeInvoiceResponse> {
-    return unwrapAsync(invoicesFinalizeInvoice(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Get customer invoice summary
    *
    * @remarks
@@ -90,33 +39,16 @@ export class Invoices extends ClientSDK {
   }
 
   /**
-   * Get invoice
+   * Create one-off invoice
    *
    * @remarks
-   * Use when loading an invoice for display or editing (e.g. portal or reconciliation). Supports group_by for usage breakdown and force_runtime_recalculation.
+   * Use when creating a manual or one-off invoice (e.g. custom charge or non-recurring billing). Invoice is created in draft; finalize when ready.
    */
-  async getInvoice(
-    request: operations.GetInvoiceRequest,
+  async createInvoice(
+    request: shared.DtoCreateInvoiceRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetInvoiceResponse> {
-    return unwrapAsync(invoicesGetInvoice(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Get invoice PDF
-   *
-   * @remarks
-   * Use when delivering an invoice PDF to the customer (e.g. email attachment or download). Use url=true for a presigned URL instead of binary.
-   */
-  async getInvoicePdf(
-    request: operations.GetInvoicePdfRequest,
-    options?: RequestOptions,
-  ): Promise<operations.GetInvoicePdfResponse> {
-    return unwrapAsync(invoicesGetInvoicePdf(
+  ): Promise<operations.CreateInvoiceResponse> {
+    return unwrapAsync(invoicesCreateInvoice(
       this,
       request,
       options,
@@ -147,7 +79,7 @@ export class Invoices extends ClientSDK {
    * Use when listing or searching invoices (e.g. admin view or customer history). Returns a paginated list; supports filtering by customer, status, date range.
    */
   async queryInvoice(
-    request: shared.TypesInvoiceFilter,
+    request: shared.InvoiceFilter,
     options?: RequestOptions,
   ): Promise<operations.QueryInvoiceResponse> {
     return unwrapAsync(invoicesQueryInvoice(
@@ -158,33 +90,16 @@ export class Invoices extends ClientSDK {
   }
 
   /**
-   * Recalculate invoice
+   * Get invoice
    *
    * @remarks
-   * Use when subscription or usage data changed and you need to refresh a draft invoice before finalizing. Optional finalize=true to lock after recalc.
+   * Use when loading an invoice for display or editing (e.g. portal or reconciliation). Supports group_by for usage breakdown and force_runtime_recalculation.
    */
-  async recalculateInvoice(
-    request: operations.RecalculateInvoiceRequest,
+  async getInvoice(
+    request: operations.GetInvoiceRequest,
     options?: RequestOptions,
-  ): Promise<operations.RecalculateInvoiceResponse> {
-    return unwrapAsync(invoicesRecalculateInvoice(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Trigger invoice communication webhook
-   *
-   * @remarks
-   * Use when sending an invoice to the customer (e.g. trigger email or Slack). Payload includes full invoice details for your integration.
-   */
-  async triggerInvoiceCommsWebhook(
-    request: operations.TriggerInvoiceCommsWebhookRequest,
-    options?: RequestOptions,
-  ): Promise<operations.TriggerInvoiceCommsWebhookResponse> {
-    return unwrapAsync(invoicesTriggerInvoiceCommsWebhook(
+  ): Promise<operations.GetInvoiceResponse> {
+    return unwrapAsync(invoicesGetInvoice(
       this,
       request,
       options,
@@ -209,6 +124,40 @@ export class Invoices extends ClientSDK {
   }
 
   /**
+   * Trigger invoice communication webhook
+   *
+   * @remarks
+   * Use when sending an invoice to the customer (e.g. trigger email or Slack). Payload includes full invoice details for your integration.
+   */
+  async triggerInvoiceCommsWebhook(
+    request: operations.TriggerInvoiceCommsWebhookRequest,
+    options?: RequestOptions,
+  ): Promise<operations.TriggerInvoiceCommsWebhookResponse> {
+    return unwrapAsync(invoicesTriggerInvoiceCommsWebhook(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Finalize invoice
+   *
+   * @remarks
+   * Use when locking an invoice for payment (e.g. after review). Once finalized, line items are locked; invoice can be paid or voided.
+   */
+  async finalizeInvoice(
+    request: operations.FinalizeInvoiceRequest,
+    options?: RequestOptions,
+  ): Promise<operations.FinalizeInvoiceResponse> {
+    return unwrapAsync(invoicesFinalizeInvoice(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Update invoice payment status
    *
    * @remarks
@@ -219,6 +168,57 @@ export class Invoices extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.UpdateInvoicePaymentStatusResponse> {
     return unwrapAsync(invoicesUpdateInvoicePaymentStatus(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Attempt invoice payment
+   *
+   * @remarks
+   * Use when paying an invoice with the customer's wallet balance (e.g. prepaid credits or balance applied at checkout).
+   */
+  async attemptInvoicePayment(
+    request: operations.AttemptInvoicePaymentRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AttemptInvoicePaymentResponse> {
+    return unwrapAsync(invoicesAttemptInvoicePayment(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get invoice PDF
+   *
+   * @remarks
+   * Use when delivering an invoice PDF to the customer (e.g. email attachment or download). Use url=true for a presigned URL instead of binary.
+   */
+  async getInvoicePdf(
+    request: operations.GetInvoicePdfRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetInvoicePdfResponse> {
+    return unwrapAsync(invoicesGetInvoicePdf(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Recalculate invoice
+   *
+   * @remarks
+   * Use when subscription or usage data changed and you need to refresh a draft invoice before finalizing. Optional finalize=true to lock after recalc.
+   */
+  async recalculateInvoice(
+    request: operations.RecalculateInvoiceRequest,
+    options?: RequestOptions,
+  ): Promise<operations.RecalculateInvoiceResponse> {
+    return unwrapAsync(invoicesRecalculateInvoice(
       this,
       request,
       options,

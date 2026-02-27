@@ -5,9 +5,9 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
-  TypesSubscriptionScheduleChangeType,
-  TypesSubscriptionScheduleChangeType$outboundSchema,
-} from "./typessubscriptionschedulechangetype.js";
+  SubscriptionScheduleChangeType,
+  SubscriptionScheduleChangeType$outboundSchema,
+} from "./subscriptionschedulechangetype.js";
 
 /**
  * Request to cancel a subscription schedule (supports two modes)
@@ -17,7 +17,7 @@ export type DtoCancelScheduleRequest = {
    * schedule_id is the ID of the schedule to cancel (optional if subscription_id and schedule_type are provided)
    */
   scheduleId?: string | undefined;
-  scheduleType?: TypesSubscriptionScheduleChangeType | undefined;
+  scheduleType?: SubscriptionScheduleChangeType | undefined;
   /**
    * subscription_id is the ID of the subscription (required if schedule_id is not provided)
    */
@@ -38,7 +38,7 @@ export const DtoCancelScheduleRequest$outboundSchema: z.ZodType<
   DtoCancelScheduleRequest
 > = z.object({
   scheduleId: z.string().optional(),
-  scheduleType: TypesSubscriptionScheduleChangeType$outboundSchema.optional(),
+  scheduleType: SubscriptionScheduleChangeType$outboundSchema.optional(),
   subscriptionId: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {

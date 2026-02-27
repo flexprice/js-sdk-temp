@@ -5,13 +5,13 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
-  TypesIntegrationEntityType,
-  TypesIntegrationEntityType$outboundSchema,
-} from "./typesintegrationentitytype.js";
+  IntegrationEntityType,
+  IntegrationEntityType$outboundSchema,
+} from "./integrationentitytype.js";
 
 export type DtoCreateEntityIntegrationMappingRequest = {
   entityId: string;
-  entityType: TypesIntegrationEntityType;
+  entityType: IntegrationEntityType;
   metadata?: { [k: string]: any } | undefined;
   providerEntityId: string;
   providerType: string;
@@ -33,7 +33,7 @@ export const DtoCreateEntityIntegrationMappingRequest$outboundSchema: z.ZodType<
   DtoCreateEntityIntegrationMappingRequest
 > = z.object({
   entityId: z.string(),
-  entityType: TypesIntegrationEntityType$outboundSchema,
+  entityType: IntegrationEntityType$outboundSchema,
   metadata: z.record(z.any()).optional(),
   providerEntityId: z.string(),
   providerType: z.string(),

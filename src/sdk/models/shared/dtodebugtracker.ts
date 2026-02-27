@@ -23,14 +23,11 @@ import {
   DtoSubscriptionLineItemLookupResult,
   DtoSubscriptionLineItemLookupResult$inboundSchema,
 } from "./dtosubscriptionlineitemlookupresult.js";
-import {
-  TypesFailurePoint,
-  TypesFailurePoint$inboundSchema,
-} from "./typesfailurepoint.js";
+import { FailurePoint, FailurePoint$inboundSchema } from "./failurepoint.js";
 
 export type DtoDebugTracker = {
   customerLookup?: DtoCustomerLookupResult | undefined;
-  failurePoint?: TypesFailurePoint | undefined;
+  failurePoint?: FailurePoint | undefined;
   meterMatching?: DtoMeterMatchingResult | undefined;
   priceLookup?: DtoPriceLookupResult | undefined;
   subscriptionLineItemLookup?: DtoSubscriptionLineItemLookupResult | undefined;
@@ -43,7 +40,7 @@ export const DtoDebugTracker$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   customer_lookup: DtoCustomerLookupResult$inboundSchema.optional(),
-  failure_point: TypesFailurePoint$inboundSchema.optional(),
+  failure_point: FailurePoint$inboundSchema.optional(),
   meter_matching: DtoMeterMatchingResult$inboundSchema.optional(),
   price_lookup: DtoPriceLookupResult$inboundSchema.optional(),
   subscription_line_item_lookup:

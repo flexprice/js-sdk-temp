@@ -7,7 +7,7 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
+import { Status, Status$inboundSchema } from "./status.js";
 
 export type CreditnoteCreditNoteLineItem = {
   amount?: string | undefined;
@@ -20,7 +20,7 @@ export type CreditnoteCreditNoteLineItem = {
   id?: string | undefined;
   invoiceLineItemId?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
-  status?: TypesStatus | undefined;
+  status?: Status | undefined;
   tenantId?: string | undefined;
   updatedAt?: string | undefined;
   updatedBy?: string | undefined;
@@ -42,7 +42,7 @@ export const CreditnoteCreditNoteLineItem$inboundSchema: z.ZodType<
   id: z.string().optional(),
   invoice_line_item_id: z.string().optional(),
   metadata: z.record(z.string()).optional(),
-  status: TypesStatus$inboundSchema.optional(),
+  status: Status$inboundSchema.optional(),
   tenant_id: z.string().optional(),
   updated_at: z.string().optional(),
   updated_by: z.string().optional(),

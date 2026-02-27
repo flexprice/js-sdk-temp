@@ -33,7 +33,7 @@ import { Result } from "../sdk/types/fp.js";
  */
 export function alertsQueryAlertLog(
   client: FlexpriceCore,
-  request: shared.TypesAlertLogFilter,
+  request: shared.AlertLogFilter,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -57,7 +57,7 @@ export function alertsQueryAlertLog(
 
 async function $do(
   client: FlexpriceCore,
-  request: shared.TypesAlertLogFilter,
+  request: shared.AlertLogFilter,
   options?: RequestOptions,
 ): Promise<
   [
@@ -77,7 +77,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => shared.TypesAlertLogFilter$outboundSchema.parse(value),
+    (value) => shared.AlertLogFilter$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {

@@ -12,6 +12,18 @@ import {
   CreditnoteCreditNoteLineItem$inboundSchema,
 } from "./creditnotecreditnotelineitem.js";
 import {
+  CreditNoteReason,
+  CreditNoteReason$inboundSchema,
+} from "./creditnotereason.js";
+import {
+  CreditNoteStatus,
+  CreditNoteStatus$inboundSchema,
+} from "./creditnotestatus.js";
+import {
+  CreditNoteType,
+  CreditNoteType$inboundSchema,
+} from "./creditnotetype.js";
+import {
   DtoInvoiceResponse,
   DtoInvoiceResponse$inboundSchema,
 } from "./dtoinvoiceresponse.js";
@@ -23,23 +35,8 @@ import {
   GithubComFlexpriceFlexpriceInternalDomainCustomerCustomer,
   GithubComFlexpriceFlexpriceInternalDomainCustomerCustomer$inboundSchema,
 } from "./githubcomflexpriceflexpriceinternaldomaincustomercustomer.js";
-import {
-  TypesCreditNoteReason,
-  TypesCreditNoteReason$inboundSchema,
-} from "./typescreditnotereason.js";
-import {
-  TypesCreditNoteStatus,
-  TypesCreditNoteStatus$inboundSchema,
-} from "./typescreditnotestatus.js";
-import {
-  TypesCreditNoteType,
-  TypesCreditNoteType$inboundSchema,
-} from "./typescreditnotetype.js";
-import {
-  TypesPaymentStatus,
-  TypesPaymentStatus$inboundSchema,
-} from "./typespaymentstatus.js";
-import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
+import { PaymentStatus, PaymentStatus$inboundSchema } from "./paymentstatus.js";
+import { Status, Status$inboundSchema } from "./status.js";
 
 export type DtoCreditNoteResponse = {
   createdAt?: string | undefined;
@@ -48,8 +45,8 @@ export type DtoCreditNoteResponse = {
    * credit_note_number is the unique identifier for credit notes
    */
   creditNoteNumber?: string | undefined;
-  creditNoteStatus?: TypesCreditNoteStatus | undefined;
-  creditNoteType?: TypesCreditNoteType | undefined;
+  creditNoteStatus?: CreditNoteStatus | undefined;
+  creditNoteType?: CreditNoteType | undefined;
   /**
    * currency is the three-letter ISO currency code (e.g., USD, EUR) for the credit note
    */
@@ -91,9 +88,9 @@ export type DtoCreditNoteResponse = {
    */
   memo?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
-  reason?: TypesCreditNoteReason | undefined;
-  refundStatus?: TypesPaymentStatus | undefined;
-  status?: TypesStatus | undefined;
+  reason?: CreditNoteReason | undefined;
+  refundStatus?: PaymentStatus | undefined;
+  status?: Status | undefined;
   subscription?: DtoSubscriptionResponse | undefined;
   /**
    * subscription_id is the optional unique identifier of the subscription related to this credit note
@@ -121,8 +118,8 @@ export const DtoCreditNoteResponse$inboundSchema: z.ZodType<
   created_at: z.string().optional(),
   created_by: z.string().optional(),
   credit_note_number: z.string().optional(),
-  credit_note_status: TypesCreditNoteStatus$inboundSchema.optional(),
-  credit_note_type: TypesCreditNoteType$inboundSchema.optional(),
+  credit_note_status: CreditNoteStatus$inboundSchema.optional(),
+  credit_note_type: CreditNoteType$inboundSchema.optional(),
   currency: z.string().optional(),
   customer:
     GithubComFlexpriceFlexpriceInternalDomainCustomerCustomer$inboundSchema
@@ -137,9 +134,9 @@ export const DtoCreditNoteResponse$inboundSchema: z.ZodType<
   line_items: z.array(CreditnoteCreditNoteLineItem$inboundSchema).optional(),
   memo: z.string().optional(),
   metadata: z.record(z.string()).optional(),
-  reason: TypesCreditNoteReason$inboundSchema.optional(),
-  refund_status: TypesPaymentStatus$inboundSchema.optional(),
-  status: TypesStatus$inboundSchema.optional(),
+  reason: CreditNoteReason$inboundSchema.optional(),
+  refund_status: PaymentStatus$inboundSchema.optional(),
+  status: Status$inboundSchema.optional(),
   subscription: DtoSubscriptionResponse$inboundSchema.optional(),
   subscription_id: z.string().optional(),
   tenant_id: z.string().optional(),

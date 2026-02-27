@@ -11,7 +11,7 @@ import {
   DtoPriceResponse,
   DtoPriceResponse$inboundSchema,
 } from "./dtopriceresponse.js";
-import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
+import { Status, Status$inboundSchema } from "./status.js";
 
 export type DtoCostsheetResponse = {
   createdAt?: string | undefined;
@@ -26,7 +26,7 @@ export type DtoCostsheetResponse = {
    * Associated prices
    */
   prices?: Array<DtoPriceResponse> | undefined;
-  status?: TypesStatus | undefined;
+  status?: Status | undefined;
   tenantId?: string | undefined;
   updatedAt?: string | undefined;
   updatedBy?: string | undefined;
@@ -47,7 +47,7 @@ export const DtoCostsheetResponse$inboundSchema: z.ZodType<
   metadata: z.record(z.string()).optional(),
   name: z.string().optional(),
   prices: z.array(DtoPriceResponse$inboundSchema).optional(),
-  status: TypesStatus$inboundSchema.optional(),
+  status: Status$inboundSchema.optional(),
   tenant_id: z.string().optional(),
   updated_at: z.string().optional(),
   updated_by: z.string().optional(),

@@ -8,13 +8,13 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  TypesScheduleStatus,
-  TypesScheduleStatus$inboundSchema,
-} from "./typesschedulestatus.js";
+  ScheduleStatus,
+  ScheduleStatus$inboundSchema,
+} from "./schedulestatus.js";
 import {
-  TypesSubscriptionScheduleChangeType,
-  TypesSubscriptionScheduleChangeType$inboundSchema,
-} from "./typessubscriptionschedulechangetype.js";
+  SubscriptionScheduleChangeType,
+  SubscriptionScheduleChangeType$inboundSchema,
+} from "./subscriptionschedulechangetype.js";
 
 /**
  * configuration contains type-specific configuration (e.g., target_plan_id for plan changes)
@@ -70,12 +70,12 @@ export type DtoSubscriptionScheduleResponse = {
    * metadata from the schedule
    */
   metadata?: { [k: string]: string } | undefined;
-  scheduleType?: TypesSubscriptionScheduleChangeType | undefined;
+  scheduleType?: SubscriptionScheduleChangeType | undefined;
   /**
    * scheduled_at is when the schedule will execute
    */
   scheduledAt?: string | undefined;
-  status?: TypesScheduleStatus | undefined;
+  status?: ScheduleStatus | undefined;
   /**
    * subscription_id is the ID of the subscription
    */
@@ -136,9 +136,9 @@ export const DtoSubscriptionScheduleResponse$inboundSchema: z.ZodType<
   execution_result: z.lazy(() => ExecutionResult$inboundSchema).optional(),
   id: z.string().optional(),
   metadata: z.record(z.string()).optional(),
-  schedule_type: TypesSubscriptionScheduleChangeType$inboundSchema.optional(),
+  schedule_type: SubscriptionScheduleChangeType$inboundSchema.optional(),
   scheduled_at: z.string().optional(),
-  status: TypesScheduleStatus$inboundSchema.optional(),
+  status: ScheduleStatus$inboundSchema.optional(),
   subscription_id: z.string().optional(),
   updated_at: z.string().optional(),
 }).transform((v) => {

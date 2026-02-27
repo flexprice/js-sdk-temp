@@ -50,16 +50,33 @@ export class Prices extends ClientSDK {
   }
 
   /**
-   * Delete price
+   * Get price by lookup key
    *
    * @remarks
-   * Use when retiring a price (e.g. end-of-life or replacement). Optional effective date or cascade for subscriptions.
+   * Use when resolving a price by external id (e.g. from your catalog or CMS). Ideal for integrations.
    */
-  async deletePrice(
-    request: operations.DeletePriceRequest,
+  async getPriceByLookupKey(
+    request: operations.GetPriceByLookupKeyRequest,
     options?: RequestOptions,
-  ): Promise<operations.DeletePriceResponse> {
-    return unwrapAsync(pricesDeletePrice(
+  ): Promise<operations.GetPriceByLookupKeyResponse> {
+    return unwrapAsync(pricesGetPriceByLookupKey(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Query prices
+   *
+   * @remarks
+   * Use when listing or searching prices (e.g. plan builder or catalog). Returns a paginated list; supports filtering and sorting.
+   */
+  async queryPrice(
+    request: shared.PriceFilter,
+    options?: RequestOptions,
+  ): Promise<operations.QueryPriceResponse> {
+    return unwrapAsync(pricesQueryPrice(
       this,
       request,
       options,
@@ -84,40 +101,6 @@ export class Prices extends ClientSDK {
   }
 
   /**
-   * Get price by lookup key
-   *
-   * @remarks
-   * Use when resolving a price by external id (e.g. from your catalog or CMS). Ideal for integrations.
-   */
-  async getPriceByLookupKey(
-    request: operations.GetPriceByLookupKeyRequest,
-    options?: RequestOptions,
-  ): Promise<operations.GetPriceByLookupKeyResponse> {
-    return unwrapAsync(pricesGetPriceByLookupKey(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Query prices
-   *
-   * @remarks
-   * Use when listing or searching prices (e.g. plan builder or catalog). Returns a paginated list; supports filtering and sorting.
-   */
-  async queryPrice(
-    request: shared.TypesPriceFilter,
-    options?: RequestOptions,
-  ): Promise<operations.QueryPriceResponse> {
-    return unwrapAsync(pricesQueryPrice(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Update price
    *
    * @remarks
@@ -128,6 +111,23 @@ export class Prices extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.UpdatePriceResponse> {
     return unwrapAsync(pricesUpdatePrice(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete price
+   *
+   * @remarks
+   * Use when retiring a price (e.g. end-of-life or replacement). Optional effective date or cascade for subscriptions.
+   */
+  async deletePrice(
+    request: operations.DeletePriceRequest,
+    options?: RequestOptions,
+  ): Promise<operations.DeletePriceResponse> {
+    return unwrapAsync(pricesDeletePrice(
       this,
       request,
       options,

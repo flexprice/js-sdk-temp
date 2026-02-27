@@ -5,28 +5,28 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
-  TypesCreditGrantCadence,
-  TypesCreditGrantCadence$outboundSchema,
-} from "./typescreditgrantcadence.js";
+  CreditGrantCadence,
+  CreditGrantCadence$outboundSchema,
+} from "./creditgrantcadence.js";
 import {
-  TypesCreditGrantExpiryDurationUnit,
-  TypesCreditGrantExpiryDurationUnit$outboundSchema,
-} from "./typescreditgrantexpirydurationunit.js";
+  CreditGrantExpiryDurationUnit,
+  CreditGrantExpiryDurationUnit$outboundSchema,
+} from "./creditgrantexpirydurationunit.js";
 import {
-  TypesCreditGrantExpiryType,
-  TypesCreditGrantExpiryType$outboundSchema,
-} from "./typescreditgrantexpirytype.js";
+  CreditGrantExpiryType,
+  CreditGrantExpiryType$outboundSchema,
+} from "./creditgrantexpirytype.js";
 import {
-  TypesCreditGrantPeriod,
-  TypesCreditGrantPeriod$outboundSchema,
-} from "./typescreditgrantperiod.js";
+  CreditGrantPeriod,
+  CreditGrantPeriod$outboundSchema,
+} from "./creditgrantperiod.js";
 import {
-  TypesCreditGrantScope,
-  TypesCreditGrantScope$outboundSchema,
-} from "./typescreditgrantscope.js";
+  CreditGrantScope,
+  CreditGrantScope$outboundSchema,
+} from "./creditgrantscope.js";
 
 export type DtoCreateCreditGrantRequest = {
-  cadence: TypesCreditGrantCadence;
+  cadence: CreditGrantCadence;
   /**
    * amount in the currency =  number of credits * conversion_rate
    *
@@ -39,15 +39,15 @@ export type DtoCreateCreditGrantRequest = {
   credits: string;
   endDate?: string | undefined;
   expirationDuration?: number | undefined;
-  expirationDurationUnit?: TypesCreditGrantExpiryDurationUnit | undefined;
-  expirationType?: TypesCreditGrantExpiryType | undefined;
+  expirationDurationUnit?: CreditGrantExpiryDurationUnit | undefined;
+  expirationType?: CreditGrantExpiryType | undefined;
   metadata?: { [k: string]: string } | undefined;
   name: string;
-  period?: TypesCreditGrantPeriod | undefined;
+  period?: CreditGrantPeriod | undefined;
   periodCount?: number | undefined;
   planId?: string | undefined;
   priority?: number | undefined;
-  scope: TypesCreditGrantScope;
+  scope: CreditGrantScope;
   startDate?: string | undefined;
   subscriptionId?: string | undefined;
   /**
@@ -88,21 +88,21 @@ export const DtoCreateCreditGrantRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DtoCreateCreditGrantRequest
 > = z.object({
-  cadence: TypesCreditGrantCadence$outboundSchema,
+  cadence: CreditGrantCadence$outboundSchema,
   conversionRate: z.string().optional(),
   credits: z.string(),
   endDate: z.string().optional(),
   expirationDuration: z.number().int().optional(),
-  expirationDurationUnit: TypesCreditGrantExpiryDurationUnit$outboundSchema
+  expirationDurationUnit: CreditGrantExpiryDurationUnit$outboundSchema
     .optional(),
-  expirationType: TypesCreditGrantExpiryType$outboundSchema.optional(),
+  expirationType: CreditGrantExpiryType$outboundSchema.optional(),
   metadata: z.record(z.string()).optional(),
   name: z.string(),
-  period: TypesCreditGrantPeriod$outboundSchema.optional(),
+  period: CreditGrantPeriod$outboundSchema.optional(),
   periodCount: z.number().int().optional(),
   planId: z.string().optional(),
   priority: z.number().int().optional(),
-  scope: TypesCreditGrantScope$outboundSchema,
+  scope: CreditGrantScope$outboundSchema,
   startDate: z.string().optional(),
   subscriptionId: z.string().optional(),
   topupConversionRate: z.string().optional(),

@@ -9,8 +9,8 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type QueryWalletResponse =
-  | shared.ErrorsErrorResponse
-  | shared.TypesListResponseDtoWalletResponse;
+  | shared.ListResponseDtoWalletResponse
+  | shared.ErrorsErrorResponse;
 
 /** @internal */
 export const QueryWalletResponse$inboundSchema: z.ZodType<
@@ -18,8 +18,8 @@ export const QueryWalletResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
+  shared.ListResponseDtoWalletResponse$inboundSchema,
   shared.ErrorsErrorResponse$inboundSchema,
-  shared.TypesListResponseDtoWalletResponse$inboundSchema,
 ]);
 
 export function queryWalletResponseFromJSON(

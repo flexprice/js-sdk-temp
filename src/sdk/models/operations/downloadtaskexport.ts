@@ -15,9 +15,9 @@ export type DownloadTaskExportRequest = {
   id: string;
 };
 
-export type DownloadTaskExportResponse = shared.ErrorsErrorResponse | {
-  [k: string]: string;
-};
+export type DownloadTaskExportResponse =
+  | { [k: string]: string }
+  | shared.ErrorsErrorResponse;
 
 /** @internal */
 export type DownloadTaskExportRequest$Outbound = {
@@ -46,7 +46,7 @@ export const DownloadTaskExportResponse$inboundSchema: z.ZodType<
   DownloadTaskExportResponse,
   z.ZodTypeDef,
   unknown
-> = z.union([shared.ErrorsErrorResponse$inboundSchema, z.record(z.string())]);
+> = z.union([z.record(z.string()), shared.ErrorsErrorResponse$inboundSchema]);
 
 export function downloadTaskExportResponseFromJSON(
   jsonString: string,

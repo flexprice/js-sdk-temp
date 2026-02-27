@@ -4,26 +4,26 @@
 
 import * as z from "zod/v3";
 import {
-  TypesFilterCondition,
-  TypesFilterCondition$Outbound,
-  TypesFilterCondition$outboundSchema,
-} from "./typesfiltercondition.js";
+  FilterCondition,
+  FilterCondition$Outbound,
+  FilterCondition$outboundSchema,
+} from "./filtercondition.js";
 import {
-  TypesQueryFilter,
-  TypesQueryFilter$Outbound,
-  TypesQueryFilter$outboundSchema,
-} from "./typesqueryfilter.js";
+  QueryFilter,
+  QueryFilter$Outbound,
+  QueryFilter$outboundSchema,
+} from "./queryfilter.js";
 import {
-  TypesSortCondition,
-  TypesSortCondition$Outbound,
-  TypesSortCondition$outboundSchema,
-} from "./typessortcondition.js";
-import { TypesStatus, TypesStatus$outboundSchema } from "./typesstatus.js";
+  SortCondition,
+  SortCondition$Outbound,
+  SortCondition$outboundSchema,
+} from "./sortcondition.js";
+import { Status, Status$outboundSchema } from "./status.js";
 import {
-  TypesTimeRangeFilter,
-  TypesTimeRangeFilter$Outbound,
-  TypesTimeRangeFilter$outboundSchema,
-} from "./typestimerangefilter.js";
+  TimeRangeFilter,
+  TimeRangeFilter$Outbound,
+  TimeRangeFilter$outboundSchema,
+} from "./timerangefilter.js";
 
 export type CostsheetFilter = {
   /**
@@ -37,7 +37,7 @@ export type CostsheetFilter = {
   /**
    * Filters contains custom filtering conditions
    */
-  filters?: Array<TypesFilterCondition> | undefined;
+  filters?: Array<FilterCondition> | undefined;
   /**
    * LookupKey filters by lookup key
    */
@@ -46,31 +46,31 @@ export type CostsheetFilter = {
    * Name filters by costsheet name
    */
   name?: string | undefined;
-  queryFilter?: TypesQueryFilter | undefined;
+  queryFilter?: QueryFilter | undefined;
   /**
    * Sort specifies result ordering preferences
    */
-  sort?: Array<TypesSortCondition> | undefined;
-  status?: TypesStatus | undefined;
+  sort?: Array<SortCondition> | undefined;
+  status?: Status | undefined;
   /**
    * TenantID filters by specific tenant ID
    */
   tenantID?: string | undefined;
-  timeRangeFilter?: TypesTimeRangeFilter | undefined;
+  timeRangeFilter?: TimeRangeFilter | undefined;
 };
 
 /** @internal */
 export type CostsheetFilter$Outbound = {
   costsheetIDs?: Array<string> | undefined;
   environmentID?: string | undefined;
-  filters?: Array<TypesFilterCondition$Outbound> | undefined;
+  filters?: Array<FilterCondition$Outbound> | undefined;
   lookupKey?: string | undefined;
   name?: string | undefined;
-  queryFilter?: TypesQueryFilter$Outbound | undefined;
-  sort?: Array<TypesSortCondition$Outbound> | undefined;
+  queryFilter?: QueryFilter$Outbound | undefined;
+  sort?: Array<SortCondition$Outbound> | undefined;
   status?: string | undefined;
   tenantID?: string | undefined;
-  timeRangeFilter?: TypesTimeRangeFilter$Outbound | undefined;
+  timeRangeFilter?: TimeRangeFilter$Outbound | undefined;
 };
 
 /** @internal */
@@ -81,14 +81,14 @@ export const CostsheetFilter$outboundSchema: z.ZodType<
 > = z.object({
   costsheetIDs: z.array(z.string()).optional(),
   environmentID: z.string().optional(),
-  filters: z.array(TypesFilterCondition$outboundSchema).optional(),
+  filters: z.array(FilterCondition$outboundSchema).optional(),
   lookupKey: z.string().optional(),
   name: z.string().optional(),
-  queryFilter: TypesQueryFilter$outboundSchema.optional(),
-  sort: z.array(TypesSortCondition$outboundSchema).optional(),
-  status: TypesStatus$outboundSchema.optional(),
+  queryFilter: QueryFilter$outboundSchema.optional(),
+  sort: z.array(SortCondition$outboundSchema).optional(),
+  status: Status$outboundSchema.optional(),
   tenantID: z.string().optional(),
-  timeRangeFilter: TypesTimeRangeFilter$outboundSchema.optional(),
+  timeRangeFilter: TimeRangeFilter$outboundSchema.optional(),
 });
 
 export function costsheetFilterToJSON(

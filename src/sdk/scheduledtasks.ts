@@ -16,57 +16,6 @@ import { unwrapAsync } from "./types/fp.js";
 
 export class ScheduledTasks extends ClientSDK {
   /**
-   * Create scheduled task
-   *
-   * @remarks
-   * Use when setting up recurring data exports or other scheduled jobs. Ideal for report generation or syncing data on a schedule.
-   */
-  async createScheduledTask(
-    request: shared.DtoCreateScheduledTaskRequest,
-    options?: RequestOptions,
-  ): Promise<operations.CreateScheduledTaskResponse> {
-    return unwrapAsync(scheduledTasksCreateScheduledTask(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Delete a scheduled task
-   *
-   * @remarks
-   * Use when removing a scheduled task from the active roster. Archives the task and removes it from the scheduler (soft delete).
-   */
-  async deleteScheduledTask(
-    request: operations.DeleteScheduledTaskRequest,
-    options?: RequestOptions,
-  ): Promise<shared.ErrorsErrorResponse | undefined> {
-    return unwrapAsync(scheduledTasksDeleteScheduledTask(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Get scheduled task
-   *
-   * @remarks
-   * Use when you need to load a single scheduled task (e.g. to show details in a UI or check its configuration).
-   */
-  async getScheduledTask(
-    request: operations.GetScheduledTaskRequest,
-    options?: RequestOptions,
-  ): Promise<operations.GetScheduledTaskResponse> {
-    return unwrapAsync(scheduledTasksGetScheduledTask(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * List scheduled tasks
    *
    * @remarks
@@ -77,6 +26,23 @@ export class ScheduledTasks extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.ListScheduledTasksResponse> {
     return unwrapAsync(scheduledTasksListScheduledTasks(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Create scheduled task
+   *
+   * @remarks
+   * Use when setting up recurring data exports or other scheduled jobs. Ideal for report generation or syncing data on a schedule.
+   */
+  async createScheduledTask(
+    request: shared.DtoCreateScheduledTaskRequest,
+    options?: RequestOptions,
+  ): Promise<operations.CreateScheduledTaskResponse> {
+    return unwrapAsync(scheduledTasksCreateScheduledTask(
       this,
       request,
       options,
@@ -101,16 +67,16 @@ export class ScheduledTasks extends ClientSDK {
   }
 
   /**
-   * Trigger force run
+   * Get scheduled task
    *
    * @remarks
-   * Use when you need to run a scheduled export immediately (e.g. on-demand report or catch-up). Supports optional custom time range.
+   * Use when you need to load a single scheduled task (e.g. to show details in a UI or check its configuration).
    */
-  async triggerScheduledTaskRun(
-    request: operations.TriggerScheduledTaskRunRequest,
+  async getScheduledTask(
+    request: operations.GetScheduledTaskRequest,
     options?: RequestOptions,
-  ): Promise<operations.TriggerScheduledTaskRunResponse> {
-    return unwrapAsync(scheduledTasksTriggerScheduledTaskRun(
+  ): Promise<operations.GetScheduledTaskResponse> {
+    return unwrapAsync(scheduledTasksGetScheduledTask(
       this,
       request,
       options,
@@ -128,6 +94,40 @@ export class ScheduledTasks extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.UpdateScheduledTaskResponse> {
     return unwrapAsync(scheduledTasksUpdateScheduledTask(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete a scheduled task
+   *
+   * @remarks
+   * Use when removing a scheduled task from the active roster. Archives the task and removes it from the scheduler (soft delete).
+   */
+  async deleteScheduledTask(
+    request: operations.DeleteScheduledTaskRequest,
+    options?: RequestOptions,
+  ): Promise<shared.ErrorsErrorResponse | undefined> {
+    return unwrapAsync(scheduledTasksDeleteScheduledTask(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Trigger force run
+   *
+   * @remarks
+   * Use when you need to run a scheduled export immediately (e.g. on-demand report or catch-up). Supports optional custom time range.
+   */
+  async triggerScheduledTaskRun(
+    request: operations.TriggerScheduledTaskRunRequest,
+    options?: RequestOptions,
+  ): Promise<operations.TriggerScheduledTaskRunResponse> {
+    return unwrapAsync(scheduledTasksTriggerScheduledTaskRun(
       this,
       request,
       options,

@@ -17,15 +17,15 @@ import {
   DtoFeatureUsageInfo$inboundSchema,
 } from "./dtofeatureusageinfo.js";
 import {
-  TypesEventProcessingStatusType,
-  TypesEventProcessingStatusType$inboundSchema,
-} from "./typeseventprocessingstatustype.js";
+  EventProcessingStatusType,
+  EventProcessingStatusType$inboundSchema,
+} from "./eventprocessingstatustype.js";
 
 export type DtoGetEventByIDResponse = {
   debugTracker?: DtoDebugTracker | undefined;
   event?: DtoEvent | undefined;
   processedEvents?: Array<DtoFeatureUsageInfo> | undefined;
-  status?: TypesEventProcessingStatusType | undefined;
+  status?: EventProcessingStatusType | undefined;
 };
 
 /** @internal */
@@ -37,7 +37,7 @@ export const DtoGetEventByIDResponse$inboundSchema: z.ZodType<
   debug_tracker: DtoDebugTracker$inboundSchema.optional(),
   event: DtoEvent$inboundSchema.optional(),
   processed_events: z.array(DtoFeatureUsageInfo$inboundSchema).optional(),
-  status: TypesEventProcessingStatusType$inboundSchema.optional(),
+  status: EventProcessingStatusType$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "debug_tracker": "debugTracker",

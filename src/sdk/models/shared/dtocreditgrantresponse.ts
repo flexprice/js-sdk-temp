@@ -8,29 +8,29 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  TypesCreditGrantCadence,
-  TypesCreditGrantCadence$inboundSchema,
-} from "./typescreditgrantcadence.js";
+  CreditGrantCadence,
+  CreditGrantCadence$inboundSchema,
+} from "./creditgrantcadence.js";
 import {
-  TypesCreditGrantExpiryDurationUnit,
-  TypesCreditGrantExpiryDurationUnit$inboundSchema,
-} from "./typescreditgrantexpirydurationunit.js";
+  CreditGrantExpiryDurationUnit,
+  CreditGrantExpiryDurationUnit$inboundSchema,
+} from "./creditgrantexpirydurationunit.js";
 import {
-  TypesCreditGrantExpiryType,
-  TypesCreditGrantExpiryType$inboundSchema,
-} from "./typescreditgrantexpirytype.js";
+  CreditGrantExpiryType,
+  CreditGrantExpiryType$inboundSchema,
+} from "./creditgrantexpirytype.js";
 import {
-  TypesCreditGrantPeriod,
-  TypesCreditGrantPeriod$inboundSchema,
-} from "./typescreditgrantperiod.js";
+  CreditGrantPeriod,
+  CreditGrantPeriod$inboundSchema,
+} from "./creditgrantperiod.js";
 import {
-  TypesCreditGrantScope,
-  TypesCreditGrantScope$inboundSchema,
-} from "./typescreditgrantscope.js";
-import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
+  CreditGrantScope,
+  CreditGrantScope$inboundSchema,
+} from "./creditgrantscope.js";
+import { Status, Status$inboundSchema } from "./status.js";
 
 export type DtoCreditGrantResponse = {
-  cadence?: TypesCreditGrantCadence | undefined;
+  cadence?: CreditGrantCadence | undefined;
   /**
    * amount in the currency =  number of credits * conversion_rate
    *
@@ -47,18 +47,18 @@ export type DtoCreditGrantResponse = {
   endDate?: string | undefined;
   environmentId?: string | undefined;
   expirationDuration?: number | undefined;
-  expirationDurationUnit?: TypesCreditGrantExpiryDurationUnit | undefined;
-  expirationType?: TypesCreditGrantExpiryType | undefined;
+  expirationDurationUnit?: CreditGrantExpiryDurationUnit | undefined;
+  expirationType?: CreditGrantExpiryType | undefined;
   id?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
   name?: string | undefined;
-  period?: TypesCreditGrantPeriod | undefined;
+  period?: CreditGrantPeriod | undefined;
   periodCount?: number | undefined;
   planId?: string | undefined;
   priority?: number | undefined;
-  scope?: TypesCreditGrantScope | undefined;
+  scope?: CreditGrantScope | undefined;
   startDate?: string | undefined;
-  status?: TypesStatus | undefined;
+  status?: Status | undefined;
   subscriptionId?: string | undefined;
   tenantId?: string | undefined;
   /**
@@ -80,7 +80,7 @@ export const DtoCreditGrantResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  cadence: TypesCreditGrantCadence$inboundSchema.optional(),
+  cadence: CreditGrantCadence$inboundSchema.optional(),
   conversion_rate: z.string().optional(),
   created_at: z.string().optional(),
   created_by: z.string().optional(),
@@ -89,19 +89,19 @@ export const DtoCreditGrantResponse$inboundSchema: z.ZodType<
   end_date: z.string().optional(),
   environment_id: z.string().optional(),
   expiration_duration: z.number().int().optional(),
-  expiration_duration_unit: TypesCreditGrantExpiryDurationUnit$inboundSchema
+  expiration_duration_unit: CreditGrantExpiryDurationUnit$inboundSchema
     .optional(),
-  expiration_type: TypesCreditGrantExpiryType$inboundSchema.optional(),
+  expiration_type: CreditGrantExpiryType$inboundSchema.optional(),
   id: z.string().optional(),
   metadata: z.record(z.string()).optional(),
   name: z.string().optional(),
-  period: TypesCreditGrantPeriod$inboundSchema.optional(),
+  period: CreditGrantPeriod$inboundSchema.optional(),
   period_count: z.number().int().optional(),
   plan_id: z.string().optional(),
   priority: z.number().int().optional(),
-  scope: TypesCreditGrantScope$inboundSchema.optional(),
+  scope: CreditGrantScope$inboundSchema.optional(),
   start_date: z.string().optional(),
-  status: TypesStatus$inboundSchema.optional(),
+  status: Status$inboundSchema.optional(),
   subscription_id: z.string().optional(),
   tenant_id: z.string().optional(),
   topup_conversion_rate: z.string().optional(),

@@ -7,17 +7,14 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  TypesRoundType,
-  TypesRoundType$inboundSchema,
-} from "./typesroundtype.js";
+import { RoundType, RoundType$inboundSchema } from "./roundtype.js";
 
 export type PriceJSONBTransformQuantity = {
   /**
    * Divide quantity by this number
    */
   divideBy?: number | undefined;
-  round?: TypesRoundType | undefined;
+  round?: RoundType | undefined;
 };
 
 /** @internal */
@@ -27,7 +24,7 @@ export const PriceJSONBTransformQuantity$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   divide_by: z.number().int().optional(),
-  round: TypesRoundType$inboundSchema.optional(),
+  round: RoundType$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "divide_by": "divideBy",

@@ -30,30 +30,13 @@ export class Features extends ClientSDK {
   }
 
   /**
-   * Delete feature
-   *
-   * @remarks
-   * Use when retiring a feature (e.g. deprecated capability). Returns 200 with success message.
-   */
-  async deleteFeature(
-    request: operations.DeleteFeatureRequest,
-    options?: RequestOptions,
-  ): Promise<operations.DeleteFeatureResponse> {
-    return unwrapAsync(featuresDeleteFeature(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Query features
    *
    * @remarks
    * Use when listing or searching features (e.g. catalog or entitlement setup). Returns a paginated list; supports filtering and sorting.
    */
   async queryFeature(
-    request: shared.TypesFeatureFilter,
+    request: shared.FeatureFilter,
     options?: RequestOptions,
   ): Promise<operations.QueryFeatureResponse> {
     return unwrapAsync(featuresQueryFeature(
@@ -74,6 +57,23 @@ export class Features extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.UpdateFeatureResponse> {
     return unwrapAsync(featuresUpdateFeature(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete feature
+   *
+   * @remarks
+   * Use when retiring a feature (e.g. deprecated capability). Returns 200 with success message.
+   */
+  async deleteFeature(
+    request: operations.DeleteFeatureRequest,
+    options?: RequestOptions,
+  ): Promise<operations.DeleteFeatureResponse> {
+    return unwrapAsync(featuresDeleteFeature(
       this,
       request,
       options,

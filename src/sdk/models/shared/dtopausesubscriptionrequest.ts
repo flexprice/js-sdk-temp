@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import {
-  TypesPauseMode,
-  TypesPauseMode$outboundSchema,
-} from "./typespausemode.js";
+import { PauseMode, PauseMode$outboundSchema } from "./pausemode.js";
 
 /**
  * Request object for pausing an active subscription with various pause modes and options
@@ -45,7 +42,7 @@ export type DtoPauseSubscriptionRequest = {
    * @Example "2024-02-15T00:00:00Z"
    */
   pauseEnd?: string | undefined;
-  pauseMode: TypesPauseMode;
+  pauseMode: PauseMode;
   /**
    * Start date for the subscription pause
    *
@@ -85,7 +82,7 @@ export const DtoPauseSubscriptionRequest$outboundSchema: z.ZodType<
   metadata: z.record(z.string()).optional(),
   pauseDays: z.number().int().optional(),
   pauseEnd: z.string().optional(),
-  pauseMode: TypesPauseMode$outboundSchema,
+  pauseMode: PauseMode$outboundSchema,
   pauseStart: z.string().optional(),
   reason: z.string().optional(),
 }).transform((v) => {

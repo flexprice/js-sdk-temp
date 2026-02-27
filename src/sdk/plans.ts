@@ -33,16 +33,16 @@ export class Plans extends ClientSDK {
   }
 
   /**
-   * Delete plan
+   * Query plans
    *
    * @remarks
-   * Use when retiring a plan (e.g. end-of-life). Existing subscriptions may be affected. Returns 200 with success message.
+   * Use when listing or searching plans (e.g. plan picker or admin catalog). Returns a paginated list; supports filtering and sorting.
    */
-  async deletePlan(
-    request: operations.DeletePlanRequest,
+  async queryPlan(
+    request: shared.PlanFilter,
     options?: RequestOptions,
-  ): Promise<operations.DeletePlanResponse> {
-    return unwrapAsync(plansDeletePlan(
+  ): Promise<operations.QueryPlanResponse> {
+    return unwrapAsync(plansQueryPlan(
       this,
       request,
       options,
@@ -67,6 +67,40 @@ export class Plans extends ClientSDK {
   }
 
   /**
+   * Update plan
+   *
+   * @remarks
+   * Use when changing plan details (e.g. name, interval, or metadata). Partial update supported.
+   */
+  async updatePlan(
+    request: operations.UpdatePlanRequest,
+    options?: RequestOptions,
+  ): Promise<operations.UpdatePlanResponse> {
+    return unwrapAsync(plansUpdatePlan(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete plan
+   *
+   * @remarks
+   * Use when retiring a plan (e.g. end-of-life). Existing subscriptions may be affected. Returns 200 with success message.
+   */
+  async deletePlan(
+    request: operations.DeletePlanRequest,
+    options?: RequestOptions,
+  ): Promise<operations.DeletePlanResponse> {
+    return unwrapAsync(plansDeletePlan(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Clone a plan
    *
    * @remarks
@@ -84,23 +118,6 @@ export class Plans extends ClientSDK {
   }
 
   /**
-   * Query plans
-   *
-   * @remarks
-   * Use when listing or searching plans (e.g. plan picker or admin catalog). Returns a paginated list; supports filtering and sorting.
-   */
-  async queryPlan(
-    request: shared.TypesPlanFilter,
-    options?: RequestOptions,
-  ): Promise<operations.QueryPlanResponse> {
-    return unwrapAsync(plansQueryPlan(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Synchronize plan prices
    *
    * @remarks
@@ -111,23 +128,6 @@ export class Plans extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.SyncPlanPricesResponse> {
     return unwrapAsync(plansSyncPlanPrices(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Update plan
-   *
-   * @remarks
-   * Use when changing plan details (e.g. name, interval, or metadata). Partial update supported.
-   */
-  async updatePlan(
-    request: operations.UpdatePlanRequest,
-    options?: RequestOptions,
-  ): Promise<operations.UpdatePlanResponse> {
-    return unwrapAsync(plansUpdatePlan(
       this,
       request,
       options,

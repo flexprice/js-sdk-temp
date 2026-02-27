@@ -5,36 +5,33 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
+  AlertSettings,
+  AlertSettings$Outbound,
+  AlertSettings$outboundSchema,
+} from "./alertsettings.js";
+import {
   DtoCreateMeterRequest,
   DtoCreateMeterRequest$Outbound,
   DtoCreateMeterRequest$outboundSchema,
 } from "./dtocreatemeterrequest.js";
-import {
-  TypesAlertSettings,
-  TypesAlertSettings$Outbound,
-  TypesAlertSettings$outboundSchema,
-} from "./typesalertsettings.js";
-import {
-  TypesFeatureType,
-  TypesFeatureType$outboundSchema,
-} from "./typesfeaturetype.js";
+import { FeatureType, FeatureType$outboundSchema } from "./featuretype.js";
 
 export type DtoCreateFeatureRequest = {
-  alertSettings?: TypesAlertSettings | undefined;
+  alertSettings?: AlertSettings | undefined;
   description?: string | undefined;
   lookupKey?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
   meter?: DtoCreateMeterRequest | undefined;
   meterId?: string | undefined;
   name: string;
-  type: TypesFeatureType;
+  type: FeatureType;
   unitPlural?: string | undefined;
   unitSingular?: string | undefined;
 };
 
 /** @internal */
 export type DtoCreateFeatureRequest$Outbound = {
-  alert_settings?: TypesAlertSettings$Outbound | undefined;
+  alert_settings?: AlertSettings$Outbound | undefined;
   description?: string | undefined;
   lookup_key?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
@@ -52,14 +49,14 @@ export const DtoCreateFeatureRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DtoCreateFeatureRequest
 > = z.object({
-  alertSettings: TypesAlertSettings$outboundSchema.optional(),
+  alertSettings: AlertSettings$outboundSchema.optional(),
   description: z.string().optional(),
   lookupKey: z.string().optional(),
   metadata: z.record(z.string()).optional(),
   meter: DtoCreateMeterRequest$outboundSchema.optional(),
   meterId: z.string().optional(),
   name: z.string(),
-  type: TypesFeatureType$outboundSchema,
+  type: FeatureType$outboundSchema,
   unitPlural: z.string().optional(),
   unitSingular: z.string().optional(),
 }).transform((v) => {

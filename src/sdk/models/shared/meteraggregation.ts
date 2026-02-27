@@ -8,18 +8,18 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  TypesAggregationType,
-  TypesAggregationType$inboundSchema,
-  TypesAggregationType$outboundSchema,
-} from "./typesaggregationtype.js";
+  AggregationType,
+  AggregationType$inboundSchema,
+  AggregationType$outboundSchema,
+} from "./aggregationtype.js";
 import {
-  TypesWindowSize,
-  TypesWindowSize$inboundSchema,
-  TypesWindowSize$outboundSchema,
-} from "./typeswindowsize.js";
+  WindowSize,
+  WindowSize$inboundSchema,
+  WindowSize$outboundSchema,
+} from "./windowsize.js";
 
 export type MeterAggregation = {
-  bucketSize?: TypesWindowSize | undefined;
+  bucketSize?: WindowSize | undefined;
   /**
    * Field is the key in $event.properties on which the aggregation is to be applied
    *
@@ -44,7 +44,7 @@ export type MeterAggregation = {
    * to scale up by a factor of 1000. If not provided, it will be null.
    */
   multiplier?: string | undefined;
-  type?: TypesAggregationType | undefined;
+  type?: AggregationType | undefined;
 };
 
 /** @internal */
@@ -53,11 +53,11 @@ export const MeterAggregation$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  bucket_size: TypesWindowSize$inboundSchema.optional(),
+  bucket_size: WindowSize$inboundSchema.optional(),
   field: z.string().optional(),
   group_by: z.string().optional(),
   multiplier: z.string().optional(),
-  type: TypesAggregationType$inboundSchema.optional(),
+  type: AggregationType$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "bucket_size": "bucketSize",
@@ -79,11 +79,11 @@ export const MeterAggregation$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   MeterAggregation
 > = z.object({
-  bucketSize: TypesWindowSize$outboundSchema.optional(),
+  bucketSize: WindowSize$outboundSchema.optional(),
   field: z.string().optional(),
   groupBy: z.string().optional(),
   multiplier: z.string().optional(),
-  type: TypesAggregationType$outboundSchema.optional(),
+  type: AggregationType$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     bucketSize: "bucket_size",

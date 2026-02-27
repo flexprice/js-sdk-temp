@@ -5,14 +5,14 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
+  CreditNoteReason,
+  CreditNoteReason$outboundSchema,
+} from "./creditnotereason.js";
+import {
   DtoCreateCreditNoteLineItemRequest,
   DtoCreateCreditNoteLineItemRequest$Outbound,
   DtoCreateCreditNoteLineItemRequest$outboundSchema,
 } from "./dtocreatecreditnotelineitemrequest.js";
-import {
-  TypesCreditNoteReason,
-  TypesCreditNoteReason$outboundSchema,
-} from "./typescreditnotereason.js";
 
 export type DtoCreateCreditNoteRequest = {
   /**
@@ -40,7 +40,7 @@ export type DtoCreateCreditNoteRequest = {
    * process_credit_note is a flag to process the credit note after creation
    */
   processCreditNote?: boolean | undefined;
-  reason: TypesCreditNoteReason;
+  reason: CreditNoteReason;
 };
 
 /** @internal */
@@ -69,7 +69,7 @@ export const DtoCreateCreditNoteRequest$outboundSchema: z.ZodType<
   memo: z.string().optional(),
   metadata: z.record(z.string()).optional(),
   processCreditNote: z.boolean().default(true),
-  reason: TypesCreditNoteReason$outboundSchema,
+  reason: CreditNoteReason$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     creditNoteNumber: "credit_note_number",

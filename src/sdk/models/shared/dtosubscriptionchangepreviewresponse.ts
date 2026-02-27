@@ -24,15 +24,15 @@ import {
   DtoProrationDetails$inboundSchema,
 } from "./dtoprorationdetails.js";
 import {
-  TypesSubscriptionChangeType,
-  TypesSubscriptionChangeType$inboundSchema,
-} from "./typessubscriptionchangetype.js";
+  SubscriptionChangeType,
+  SubscriptionChangeType$inboundSchema,
+} from "./subscriptionchangetype.js";
 
 /**
  * Response showing the financial impact of a subscription plan change
  */
 export type DtoSubscriptionChangePreviewResponse = {
-  changeType?: TypesSubscriptionChangeType | undefined;
+  changeType?: SubscriptionChangeType | undefined;
   currentPlan?: DtoPlanSummary | undefined;
   /**
    * effective_date is when the change would take effect
@@ -62,7 +62,7 @@ export const DtoSubscriptionChangePreviewResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  change_type: TypesSubscriptionChangeType$inboundSchema.optional(),
+  change_type: SubscriptionChangeType$inboundSchema.optional(),
   current_plan: DtoPlanSummary$inboundSchema.optional(),
   effective_date: z.string().optional(),
   metadata: z.record(z.string()).optional(),

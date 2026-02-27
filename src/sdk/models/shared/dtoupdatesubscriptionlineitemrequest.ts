@@ -4,6 +4,16 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { BillingModel, BillingModel$outboundSchema } from "./billingmodel.js";
+import {
+  BillingPeriod,
+  BillingPeriod$outboundSchema,
+} from "./billingperiod.js";
+import { BillingTier, BillingTier$outboundSchema } from "./billingtier.js";
+import {
+  CommitmentType,
+  CommitmentType$outboundSchema,
+} from "./commitmenttype.js";
 import {
   DtoCreatePriceTier,
   DtoCreatePriceTier$Outbound,
@@ -14,38 +24,22 @@ import {
   PriceTransformQuantity$Outbound,
   PriceTransformQuantity$outboundSchema,
 } from "./pricetransformquantity.js";
-import {
-  TypesBillingModel,
-  TypesBillingModel$outboundSchema,
-} from "./typesbillingmodel.js";
-import {
-  TypesBillingPeriod,
-  TypesBillingPeriod$outboundSchema,
-} from "./typesbillingperiod.js";
-import {
-  TypesBillingTier,
-  TypesBillingTier$outboundSchema,
-} from "./typesbillingtier.js";
-import {
-  TypesCommitmentType,
-  TypesCommitmentType$outboundSchema,
-} from "./typescommitmenttype.js";
 
 export type DtoUpdateSubscriptionLineItemRequest = {
   /**
    * Amount is the new price amount that overrides the original price
    */
   amount?: string | undefined;
-  billingModel?: TypesBillingModel | undefined;
+  billingModel?: BillingModel | undefined;
   /**
    * Commitment fields
    */
   commitmentAmount?: number | undefined;
-  commitmentDuration?: TypesBillingPeriod | undefined;
+  commitmentDuration?: BillingPeriod | undefined;
   commitmentOverageFactor?: number | undefined;
   commitmentQuantity?: number | undefined;
   commitmentTrueUpEnabled?: boolean | undefined;
-  commitmentType?: TypesCommitmentType | undefined;
+  commitmentType?: CommitmentType | undefined;
   commitmentWindowed?: boolean | undefined;
   /**
    * EffectiveFrom for the existing line item (if not provided, defaults to now)
@@ -55,7 +49,7 @@ export type DtoUpdateSubscriptionLineItemRequest = {
    * Metadata for the new line item
    */
   metadata?: { [k: string]: string } | undefined;
-  tierMode?: TypesBillingTier | undefined;
+  tierMode?: BillingTier | undefined;
   /**
    * Tiers determines the pricing tiers for this line item
    */
@@ -88,17 +82,17 @@ export const DtoUpdateSubscriptionLineItemRequest$outboundSchema: z.ZodType<
   DtoUpdateSubscriptionLineItemRequest
 > = z.object({
   amount: z.string().optional(),
-  billingModel: TypesBillingModel$outboundSchema.optional(),
+  billingModel: BillingModel$outboundSchema.optional(),
   commitmentAmount: z.number().optional(),
-  commitmentDuration: TypesBillingPeriod$outboundSchema.optional(),
+  commitmentDuration: BillingPeriod$outboundSchema.optional(),
   commitmentOverageFactor: z.number().optional(),
   commitmentQuantity: z.number().optional(),
   commitmentTrueUpEnabled: z.boolean().optional(),
-  commitmentType: TypesCommitmentType$outboundSchema.optional(),
+  commitmentType: CommitmentType$outboundSchema.optional(),
   commitmentWindowed: z.boolean().optional(),
   effectiveFrom: z.string().optional(),
   metadata: z.record(z.string()).optional(),
-  tierMode: TypesBillingTier$outboundSchema.optional(),
+  tierMode: BillingTier$outboundSchema.optional(),
   tiers: z.array(DtoCreatePriceTier$outboundSchema).optional(),
   transformQuantity: PriceTransformQuantity$outboundSchema.optional(),
 }).transform((v) => {

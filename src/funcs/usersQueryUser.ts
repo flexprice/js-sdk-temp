@@ -33,7 +33,7 @@ import { Result } from "../sdk/types/fp.js";
  */
 export function usersQueryUser(
   client: FlexpriceCore,
-  request: shared.TypesUserFilter,
+  request: shared.UserFilter,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -57,7 +57,7 @@ export function usersQueryUser(
 
 async function $do(
   client: FlexpriceCore,
-  request: shared.TypesUserFilter,
+  request: shared.UserFilter,
   options?: RequestOptions,
 ): Promise<
   [
@@ -77,7 +77,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => shared.TypesUserFilter$outboundSchema.parse(value),
+    (value) => shared.UserFilter$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {

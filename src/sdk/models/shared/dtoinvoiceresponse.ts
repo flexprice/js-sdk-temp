@@ -27,19 +27,10 @@ import {
   DtoTaxAppliedResponse,
   DtoTaxAppliedResponse$inboundSchema,
 } from "./dtotaxappliedresponse.js";
-import {
-  TypesInvoiceStatus,
-  TypesInvoiceStatus$inboundSchema,
-} from "./typesinvoicestatus.js";
-import {
-  TypesInvoiceType,
-  TypesInvoiceType$inboundSchema,
-} from "./typesinvoicetype.js";
-import {
-  TypesPaymentStatus,
-  TypesPaymentStatus$inboundSchema,
-} from "./typespaymentstatus.js";
-import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
+import { InvoiceStatus, InvoiceStatus$inboundSchema } from "./invoicestatus.js";
+import { InvoiceType, InvoiceType$inboundSchema } from "./invoicetype.js";
+import { PaymentStatus, PaymentStatus$inboundSchema } from "./paymentstatus.js";
+import { Status, Status$inboundSchema } from "./status.js";
 
 export type DtoInvoiceResponse = {
   /**
@@ -123,8 +114,8 @@ export type DtoInvoiceResponse = {
    * invoice_pdf_url is the URL where customers can download the PDF version of this invoice
    */
   invoicePdfUrl?: string | undefined;
-  invoiceStatus?: TypesInvoiceStatus | undefined;
-  invoiceType?: TypesInvoiceType | undefined;
+  invoiceStatus?: InvoiceStatus | undefined;
+  invoiceType?: InvoiceType | undefined;
   /**
    * line_items contains the individual items that make up this invoice (overrides embedded field)
    */
@@ -138,7 +129,7 @@ export type DtoInvoiceResponse = {
    * paid_at is the timestamp when this invoice was fully paid
    */
   paidAt?: string | undefined;
-  paymentStatus?: TypesPaymentStatus | undefined;
+  paymentStatus?: PaymentStatus | undefined;
   /**
    * period_end is the end date of the billing period covered by this invoice
    */
@@ -154,7 +145,7 @@ export type DtoInvoiceResponse = {
    * These are actual refunds issued to the customer.
    */
   refundedAmount?: string | undefined;
-  status?: TypesStatus | undefined;
+  status?: Status | undefined;
   subscription?: DtoSubscriptionResponse | undefined;
   /**
    * subscription_id is the ID of the subscription this invoice is associated with (only present for subscription-based invoices)
@@ -225,17 +216,17 @@ export const DtoInvoiceResponse$inboundSchema: z.ZodType<
   idempotency_key: z.string().optional(),
   invoice_number: z.string().optional(),
   invoice_pdf_url: z.string().optional(),
-  invoice_status: TypesInvoiceStatus$inboundSchema.optional(),
-  invoice_type: TypesInvoiceType$inboundSchema.optional(),
+  invoice_status: InvoiceStatus$inboundSchema.optional(),
+  invoice_type: InvoiceType$inboundSchema.optional(),
   line_items: z.array(DtoInvoiceLineItemResponse$inboundSchema).optional(),
   metadata: z.record(z.string()).optional(),
   overpaid_amount: z.string().optional(),
   paid_at: z.string().optional(),
-  payment_status: TypesPaymentStatus$inboundSchema.optional(),
+  payment_status: PaymentStatus$inboundSchema.optional(),
   period_end: z.string().optional(),
   period_start: z.string().optional(),
   refunded_amount: z.string().optional(),
-  status: TypesStatus$inboundSchema.optional(),
+  status: Status$inboundSchema.optional(),
   subscription: z.lazy(() => DtoSubscriptionResponse$inboundSchema).optional(),
   subscription_id: z.string().optional(),
   subtotal: z.string().optional(),

@@ -32,16 +32,33 @@ export class Addons extends ClientSDK {
   }
 
   /**
-   * Delete addon
+   * Get addon by lookup key
    *
    * @remarks
-   * Use when retiring an addon (e.g. end-of-life). Returns 200 with success message.
+   * Use when resolving an addon by external id (e.g. from your product catalog). Ideal for integrations.
    */
-  async deleteAddon(
-    request: operations.DeleteAddonRequest,
+  async getAddonByLookupKey(
+    request: operations.GetAddonByLookupKeyRequest,
     options?: RequestOptions,
-  ): Promise<operations.DeleteAddonResponse> {
-    return unwrapAsync(addonsDeleteAddon(
+  ): Promise<operations.GetAddonByLookupKeyResponse> {
+    return unwrapAsync(addonsGetAddonByLookupKey(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Query addons
+   *
+   * @remarks
+   * Use when listing or searching addons (e.g. catalog or subscription builder). Returns a paginated list; supports filtering and sorting.
+   */
+  async queryAddon(
+    request: shared.AddonFilter,
+    options?: RequestOptions,
+  ): Promise<operations.QueryAddonResponse> {
+    return unwrapAsync(addonsQueryAddon(
       this,
       request,
       options,
@@ -66,40 +83,6 @@ export class Addons extends ClientSDK {
   }
 
   /**
-   * Get addon by lookup key
-   *
-   * @remarks
-   * Use when resolving an addon by external id (e.g. from your product catalog). Ideal for integrations.
-   */
-  async getAddonByLookupKey(
-    request: operations.GetAddonByLookupKeyRequest,
-    options?: RequestOptions,
-  ): Promise<operations.GetAddonByLookupKeyResponse> {
-    return unwrapAsync(addonsGetAddonByLookupKey(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Query addons
-   *
-   * @remarks
-   * Use when listing or searching addons (e.g. catalog or subscription builder). Returns a paginated list; supports filtering and sorting.
-   */
-  async queryAddon(
-    request: shared.TypesAddonFilter,
-    options?: RequestOptions,
-  ): Promise<operations.QueryAddonResponse> {
-    return unwrapAsync(addonsQueryAddon(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Update addon
    *
    * @remarks
@@ -110,6 +93,23 @@ export class Addons extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.UpdateAddonResponse> {
     return unwrapAsync(addonsUpdateAddon(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete addon
+   *
+   * @remarks
+   * Use when retiring an addon (e.g. end-of-life). Returns 200 with success message.
+   */
+  async deleteAddon(
+    request: operations.DeleteAddonRequest,
+    options?: RequestOptions,
+  ): Promise<operations.DeleteAddonResponse> {
+    return unwrapAsync(addonsDeleteAddon(
       this,
       request,
       options,

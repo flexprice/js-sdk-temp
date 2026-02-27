@@ -5,16 +5,16 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
-  TypesPaymentStatus,
-  TypesPaymentStatus$outboundSchema,
-} from "./typespaymentstatus.js";
+  PaymentStatus,
+  PaymentStatus$outboundSchema,
+} from "./paymentstatus.js";
 
 export type DtoUpdatePaymentStatusRequest = {
   /**
    * amount is the optional payment amount to record
    */
   amount?: string | undefined;
-  paymentStatus: TypesPaymentStatus;
+  paymentStatus: PaymentStatus;
 };
 
 /** @internal */
@@ -30,7 +30,7 @@ export const DtoUpdatePaymentStatusRequest$outboundSchema: z.ZodType<
   DtoUpdatePaymentStatusRequest
 > = z.object({
   amount: z.string().optional(),
-  paymentStatus: TypesPaymentStatus$outboundSchema,
+  paymentStatus: PaymentStatus$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     paymentStatus: "payment_status",

@@ -5,18 +5,18 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
+  AlertSettings,
+  AlertSettings$Outbound,
+  AlertSettings$outboundSchema,
+} from "./alertsettings.js";
+import {
   MeterFilter,
   MeterFilter$Outbound,
   MeterFilter$outboundSchema,
 } from "./meterfilter.js";
-import {
-  TypesAlertSettings,
-  TypesAlertSettings$Outbound,
-  TypesAlertSettings$outboundSchema,
-} from "./typesalertsettings.js";
 
 export type DtoUpdateFeatureRequest = {
-  alertSettings?: TypesAlertSettings | undefined;
+  alertSettings?: AlertSettings | undefined;
   description?: string | undefined;
   filters?: Array<MeterFilter> | undefined;
   metadata?: { [k: string]: string } | undefined;
@@ -27,7 +27,7 @@ export type DtoUpdateFeatureRequest = {
 
 /** @internal */
 export type DtoUpdateFeatureRequest$Outbound = {
-  alert_settings?: TypesAlertSettings$Outbound | undefined;
+  alert_settings?: AlertSettings$Outbound | undefined;
   description?: string | undefined;
   filters?: Array<MeterFilter$Outbound> | undefined;
   metadata?: { [k: string]: string } | undefined;
@@ -42,7 +42,7 @@ export const DtoUpdateFeatureRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DtoUpdateFeatureRequest
 > = z.object({
-  alertSettings: TypesAlertSettings$outboundSchema.optional(),
+  alertSettings: AlertSettings$outboundSchema.optional(),
   description: z.string().optional(),
   filters: z.array(MeterFilter$outboundSchema).optional(),
   metadata: z.record(z.string()).optional(),

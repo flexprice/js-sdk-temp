@@ -11,13 +11,13 @@ import {
   DtoScheduledTaskResponse$inboundSchema,
 } from "./dtoscheduledtaskresponse.js";
 import {
-  TypesPaginationResponse,
-  TypesPaginationResponse$inboundSchema,
-} from "./typespaginationresponse.js";
+  PaginationResponse,
+  PaginationResponse$inboundSchema,
+} from "./paginationresponse.js";
 
 export type DtoListScheduledTasksResponse = {
   items?: Array<DtoScheduledTaskResponse> | undefined;
-  pagination?: TypesPaginationResponse | undefined;
+  pagination?: PaginationResponse | undefined;
 };
 
 /** @internal */
@@ -27,7 +27,7 @@ export const DtoListScheduledTasksResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   items: z.array(DtoScheduledTaskResponse$inboundSchema).optional(),
-  pagination: TypesPaginationResponse$inboundSchema.optional(),
+  pagination: PaginationResponse$inboundSchema.optional(),
 });
 
 export function dtoListScheduledTasksResponseFromJSON(

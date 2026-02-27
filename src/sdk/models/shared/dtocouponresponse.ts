@@ -7,19 +7,13 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  TypesCouponCadence,
-  TypesCouponCadence$inboundSchema,
-} from "./typescouponcadence.js";
-import {
-  TypesCouponType,
-  TypesCouponType$inboundSchema,
-} from "./typescoupontype.js";
-import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
+import { CouponCadence, CouponCadence$inboundSchema } from "./couponcadence.js";
+import { CouponType, CouponType$inboundSchema } from "./coupontype.js";
+import { Status, Status$inboundSchema } from "./status.js";
 
 export type DtoCouponResponse = {
   amountOff?: string | undefined;
-  cadence?: TypesCouponCadence | undefined;
+  cadence?: CouponCadence | undefined;
   createdAt?: string | undefined;
   createdBy?: string | undefined;
   currency?: string | undefined;
@@ -33,10 +27,10 @@ export type DtoCouponResponse = {
   redeemAfter?: string | undefined;
   redeemBefore?: string | undefined;
   rules?: { [k: string]: any } | undefined;
-  status?: TypesStatus | undefined;
+  status?: Status | undefined;
   tenantId?: string | undefined;
   totalRedemptions?: number | undefined;
-  type?: TypesCouponType | undefined;
+  type?: CouponType | undefined;
   updatedAt?: string | undefined;
   updatedBy?: string | undefined;
 };
@@ -48,7 +42,7 @@ export const DtoCouponResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   amount_off: z.string().optional(),
-  cadence: TypesCouponCadence$inboundSchema.optional(),
+  cadence: CouponCadence$inboundSchema.optional(),
   created_at: z.string().optional(),
   created_by: z.string().optional(),
   currency: z.string().optional(),
@@ -62,10 +56,10 @@ export const DtoCouponResponse$inboundSchema: z.ZodType<
   redeem_after: z.string().optional(),
   redeem_before: z.string().optional(),
   rules: z.record(z.any()).optional(),
-  status: TypesStatus$inboundSchema.optional(),
+  status: Status$inboundSchema.optional(),
   tenant_id: z.string().optional(),
   total_redemptions: z.number().int().optional(),
-  type: TypesCouponType$inboundSchema.optional(),
+  type: CouponType$inboundSchema.optional(),
   updated_at: z.string().optional(),
   updated_by: z.string().optional(),
 }).transform((v) => {

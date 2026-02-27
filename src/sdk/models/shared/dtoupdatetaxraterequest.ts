@@ -5,9 +5,9 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
-  TypesTaxRateStatus,
-  TypesTaxRateStatus$outboundSchema,
-} from "./typestaxratestatus.js";
+  TaxRateStatus,
+  TaxRateStatus$outboundSchema,
+} from "./taxratestatus.js";
 
 export type DtoUpdateTaxRateRequest = {
   /**
@@ -26,7 +26,7 @@ export type DtoUpdateTaxRateRequest = {
    * name is the updated human-readable name for the tax rate
    */
   name?: string | undefined;
-  taxRateStatus?: TypesTaxRateStatus | undefined;
+  taxRateStatus?: TaxRateStatus | undefined;
 };
 
 /** @internal */
@@ -48,7 +48,7 @@ export const DtoUpdateTaxRateRequest$outboundSchema: z.ZodType<
   description: z.string().optional(),
   metadata: z.record(z.string()).optional(),
   name: z.string().optional(),
-  taxRateStatus: TypesTaxRateStatus$outboundSchema.optional(),
+  taxRateStatus: TaxRateStatus$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     taxRateStatus: "tax_rate_status",

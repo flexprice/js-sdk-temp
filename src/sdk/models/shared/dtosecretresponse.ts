@@ -8,15 +8,12 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  TypesSecretProvider,
-  TypesSecretProvider$inboundSchema,
-} from "./typessecretprovider.js";
-import {
-  TypesSecretType,
-  TypesSecretType$inboundSchema,
-} from "./typessecrettype.js";
-import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
-import { TypesUserType, TypesUserType$inboundSchema } from "./typesusertype.js";
+  SecretProvider,
+  SecretProvider$inboundSchema,
+} from "./secretprovider.js";
+import { SecretType, SecretType$inboundSchema } from "./secrettype.js";
+import { Status, Status$inboundSchema } from "./status.js";
+import { UserType, UserType$inboundSchema } from "./usertype.js";
 
 export type DtoSecretResponse = {
   createdAt?: string | undefined;
@@ -25,15 +22,15 @@ export type DtoSecretResponse = {
   id?: string | undefined;
   lastUsedAt?: string | undefined;
   name?: string | undefined;
-  provider?: TypesSecretProvider | undefined;
+  provider?: SecretProvider | undefined;
   /**
    * RBAC roles
    */
   roles?: Array<string> | undefined;
-  status?: TypesStatus | undefined;
-  type?: TypesSecretType | undefined;
+  status?: Status | undefined;
+  type?: SecretType | undefined;
   updatedAt?: string | undefined;
-  userType?: TypesUserType | undefined;
+  userType?: UserType | undefined;
 };
 
 /** @internal */
@@ -48,12 +45,12 @@ export const DtoSecretResponse$inboundSchema: z.ZodType<
   id: z.string().optional(),
   last_used_at: z.string().optional(),
   name: z.string().optional(),
-  provider: TypesSecretProvider$inboundSchema.optional(),
+  provider: SecretProvider$inboundSchema.optional(),
   roles: z.array(z.string()).optional(),
-  status: TypesStatus$inboundSchema.optional(),
-  type: TypesSecretType$inboundSchema.optional(),
+  status: Status$inboundSchema.optional(),
+  type: SecretType$inboundSchema.optional(),
   updated_at: z.string().optional(),
-  user_type: TypesUserType$inboundSchema.optional(),
+  user_type: UserType$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "created_at": "createdAt",

@@ -7,6 +7,10 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  DebugTrackerStatus,
+  DebugTrackerStatus$inboundSchema,
+} from "./debugtrackerstatus.js";
+import {
   ErrorsErrorResponse,
   ErrorsErrorResponse$inboundSchema,
 } from "./errorserrorresponse.js";
@@ -14,17 +18,13 @@ import {
   GithubComFlexpriceFlexpriceInternalDomainCustomerCustomer,
   GithubComFlexpriceFlexpriceInternalDomainCustomerCustomer$inboundSchema,
 } from "./githubcomflexpriceflexpriceinternaldomaincustomercustomer.js";
-import {
-  TypesDebugTrackerStatus,
-  TypesDebugTrackerStatus$inboundSchema,
-} from "./typesdebugtrackerstatus.js";
 
 export type DtoCustomerLookupResult = {
   customer?:
     | GithubComFlexpriceFlexpriceInternalDomainCustomerCustomer
     | undefined;
   error?: ErrorsErrorResponse | undefined;
-  status?: TypesDebugTrackerStatus | undefined;
+  status?: DebugTrackerStatus | undefined;
 };
 
 /** @internal */
@@ -37,7 +37,7 @@ export const DtoCustomerLookupResult$inboundSchema: z.ZodType<
     GithubComFlexpriceFlexpriceInternalDomainCustomerCustomer$inboundSchema
       .optional(),
   error: ErrorsErrorResponse$inboundSchema.optional(),
-  status: TypesDebugTrackerStatus$inboundSchema.optional(),
+  status: DebugTrackerStatus$inboundSchema.optional(),
 });
 
 export function dtoCustomerLookupResultFromJSON(

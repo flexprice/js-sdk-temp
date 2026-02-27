@@ -24,15 +24,15 @@ import {
   DtoSubscriptionSummary$inboundSchema,
 } from "./dtosubscriptionsummary.js";
 import {
-  TypesSubscriptionChangeType,
-  TypesSubscriptionChangeType$inboundSchema,
-} from "./typessubscriptionchangetype.js";
+  SubscriptionChangeType,
+  SubscriptionChangeType$inboundSchema,
+} from "./subscriptionchangetype.js";
 
 /**
  * Response after successfully executing a subscription plan change
  */
 export type DtoSubscriptionChangeExecuteResponse = {
-  changeType?: TypesSubscriptionChangeType | undefined;
+  changeType?: SubscriptionChangeType | undefined;
   /**
    * credit_grants contains any credit grants created for proration credits
    */
@@ -69,7 +69,7 @@ export const DtoSubscriptionChangeExecuteResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  change_type: TypesSubscriptionChangeType$inboundSchema.optional(),
+  change_type: SubscriptionChangeType$inboundSchema.optional(),
   credit_grants: z.array(DtoCreditGrantResponse$inboundSchema).optional(),
   effective_date: z.string().optional(),
   invoice: DtoInvoiceResponse$inboundSchema.optional(),

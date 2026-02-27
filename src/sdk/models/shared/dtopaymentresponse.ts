@@ -12,17 +12,14 @@ import {
   DtoPaymentAttemptResponse$inboundSchema,
 } from "./dtopaymentattemptresponse.js";
 import {
-  TypesPaymentDestinationType,
-  TypesPaymentDestinationType$inboundSchema,
-} from "./typespaymentdestinationtype.js";
+  PaymentDestinationType,
+  PaymentDestinationType$inboundSchema,
+} from "./paymentdestinationtype.js";
 import {
-  TypesPaymentMethodType,
-  TypesPaymentMethodType$inboundSchema,
-} from "./typespaymentmethodtype.js";
-import {
-  TypesPaymentStatus,
-  TypesPaymentStatus$inboundSchema,
-} from "./typespaymentstatus.js";
+  PaymentMethodType,
+  PaymentMethodType$inboundSchema,
+} from "./paymentmethodtype.js";
+import { PaymentStatus, PaymentStatus$inboundSchema } from "./paymentstatus.js";
 
 export type DtoPaymentResponse = {
   amount?: string | undefined;
@@ -31,7 +28,7 @@ export type DtoPaymentResponse = {
   createdBy?: string | undefined;
   currency?: string | undefined;
   destinationId?: string | undefined;
-  destinationType?: TypesPaymentDestinationType | undefined;
+  destinationType?: PaymentDestinationType | undefined;
   errorMessage?: string | undefined;
   failedAt?: string | undefined;
   gatewayMetadata?: { [k: string]: string } | undefined;
@@ -43,8 +40,8 @@ export type DtoPaymentResponse = {
   metadata?: { [k: string]: string } | undefined;
   paymentGateway?: string | undefined;
   paymentMethodId?: string | undefined;
-  paymentMethodType?: TypesPaymentMethodType | undefined;
-  paymentStatus?: TypesPaymentStatus | undefined;
+  paymentMethodType?: PaymentMethodType | undefined;
+  paymentStatus?: PaymentStatus | undefined;
   paymentUrl?: string | undefined;
   refundedAt?: string | undefined;
   saveCardAndMakeDefault?: boolean | undefined;
@@ -67,7 +64,7 @@ export const DtoPaymentResponse$inboundSchema: z.ZodType<
   created_by: z.string().optional(),
   currency: z.string().optional(),
   destination_id: z.string().optional(),
-  destination_type: TypesPaymentDestinationType$inboundSchema.optional(),
+  destination_type: PaymentDestinationType$inboundSchema.optional(),
   error_message: z.string().optional(),
   failed_at: z.string().optional(),
   gateway_metadata: z.record(z.string()).optional(),
@@ -79,8 +76,8 @@ export const DtoPaymentResponse$inboundSchema: z.ZodType<
   metadata: z.record(z.string()).optional(),
   payment_gateway: z.string().optional(),
   payment_method_id: z.string().optional(),
-  payment_method_type: TypesPaymentMethodType$inboundSchema.optional(),
-  payment_status: TypesPaymentStatus$inboundSchema.optional(),
+  payment_method_type: PaymentMethodType$inboundSchema.optional(),
+  payment_status: PaymentStatus$inboundSchema.optional(),
   payment_url: z.string().optional(),
   refunded_at: z.string().optional(),
   save_card_and_make_default: z.boolean().optional(),

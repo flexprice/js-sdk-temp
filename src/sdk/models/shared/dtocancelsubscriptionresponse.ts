@@ -8,6 +8,10 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  CancellationType,
+  CancellationType$inboundSchema,
+} from "./cancellationtype.js";
+import {
   DtoInvoiceResponse,
   DtoInvoiceResponse$inboundSchema,
 } from "./dtoinvoiceresponse.js";
@@ -16,16 +20,12 @@ import {
   DtoProrationDetail$inboundSchema,
 } from "./dtoprorationdetail.js";
 import {
-  TypesCancellationType,
-  TypesCancellationType$inboundSchema,
-} from "./typescancellationtype.js";
-import {
-  TypesSubscriptionStatus,
-  TypesSubscriptionStatus$inboundSchema,
-} from "./typessubscriptionstatus.js";
+  SubscriptionStatus,
+  SubscriptionStatus$inboundSchema,
+} from "./subscriptionstatus.js";
 
 export type DtoCancelSubscriptionResponse = {
-  cancellationType?: TypesCancellationType | undefined;
+  cancellationType?: CancellationType | undefined;
   effectiveDate?: string | undefined;
   /**
    * Response metadata
@@ -35,7 +35,7 @@ export type DtoCancelSubscriptionResponse = {
   prorationDetails?: Array<DtoProrationDetail> | undefined;
   prorationInvoice?: DtoInvoiceResponse | undefined;
   reason?: string | undefined;
-  status?: TypesSubscriptionStatus | undefined;
+  status?: SubscriptionStatus | undefined;
   /**
    * Basic cancellation info
    */
@@ -49,14 +49,14 @@ export const DtoCancelSubscriptionResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  cancellation_type: TypesCancellationType$inboundSchema.optional(),
+  cancellation_type: CancellationType$inboundSchema.optional(),
   effective_date: z.string().optional(),
   message: z.string().optional(),
   processed_at: z.string().optional(),
   proration_details: z.array(DtoProrationDetail$inboundSchema).optional(),
   proration_invoice: DtoInvoiceResponse$inboundSchema.optional(),
   reason: z.string().optional(),
-  status: TypesSubscriptionStatus$inboundSchema.optional(),
+  status: SubscriptionStatus$inboundSchema.optional(),
   subscription_id: z.string().optional(),
   total_credit_amount: z.string().optional(),
 }).transform((v) => {

@@ -8,16 +8,16 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
-export type IngestEventsBulkResponse = shared.ErrorsErrorResponse | {
-  [k: string]: string;
-};
+export type IngestEventsBulkResponse =
+  | { [k: string]: string }
+  | shared.ErrorsErrorResponse;
 
 /** @internal */
 export const IngestEventsBulkResponse$inboundSchema: z.ZodType<
   IngestEventsBulkResponse,
   z.ZodTypeDef,
   unknown
-> = z.union([shared.ErrorsErrorResponse$inboundSchema, z.record(z.string())]);
+> = z.union([z.record(z.string()), shared.ErrorsErrorResponse$inboundSchema]);
 
 export function ingestEventsBulkResponseFromJSON(
   jsonString: string,

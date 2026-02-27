@@ -8,6 +8,14 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  AggregationType,
+  AggregationType$inboundSchema,
+} from "./aggregationtype.js";
+import {
+  CommitmentInfo,
+  CommitmentInfo$inboundSchema,
+} from "./commitmentinfo.js";
+import {
   DtoPriceResponse,
   DtoPriceResponse$inboundSchema,
 } from "./dtopriceresponse.js";
@@ -32,24 +40,13 @@ import {
   SubscriptionSubscriptionLineItem,
   SubscriptionSubscriptionLineItem$inboundSchema,
 } from "./subscriptionsubscriptionlineitem.js";
-import {
-  TypesAggregationType,
-  TypesAggregationType$inboundSchema,
-} from "./typesaggregationtype.js";
-import {
-  TypesCommitmentInfo,
-  TypesCommitmentInfo$inboundSchema,
-} from "./typescommitmentinfo.js";
-import {
-  TypesWindowSize,
-  TypesWindowSize$inboundSchema,
-} from "./typeswindowsize.js";
+import { WindowSize, WindowSize$inboundSchema } from "./windowsize.js";
 
 export type DtoUsageAnalyticItem = {
   addOnId?: string | undefined;
   addon?: GithubComFlexpriceFlexpriceInternalDomainAddonAddon | undefined;
-  aggregationType?: TypesAggregationType | undefined;
-  commitmentInfo?: TypesCommitmentInfo | undefined;
+  aggregationType?: AggregationType | undefined;
+  commitmentInfo?: CommitmentInfo | undefined;
   currency?: string | undefined;
   /**
    * Number of events that contributed to this aggregation
@@ -94,7 +91,7 @@ export type DtoUsageAnalyticItem = {
   totalUsage?: string | undefined;
   unit?: string | undefined;
   unitPlural?: string | undefined;
-  windowSize?: TypesWindowSize | undefined;
+  windowSize?: WindowSize | undefined;
 };
 
 /** @internal */
@@ -106,8 +103,8 @@ export const DtoUsageAnalyticItem$inboundSchema: z.ZodType<
   add_on_id: z.string().optional(),
   addon: GithubComFlexpriceFlexpriceInternalDomainAddonAddon$inboundSchema
     .optional(),
-  aggregation_type: TypesAggregationType$inboundSchema.optional(),
-  commitment_info: TypesCommitmentInfo$inboundSchema.optional(),
+  aggregation_type: AggregationType$inboundSchema.optional(),
+  commitment_info: CommitmentInfo$inboundSchema.optional(),
   currency: z.string().optional(),
   event_count: z.number().int().optional(),
   event_name: z.string().optional(),
@@ -134,7 +131,7 @@ export const DtoUsageAnalyticItem$inboundSchema: z.ZodType<
   total_usage: z.string().optional(),
   unit: z.string().optional(),
   unit_plural: z.string().optional(),
-  window_size: TypesWindowSize$inboundSchema.optional(),
+  window_size: WindowSize$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "add_on_id": "addOnId",

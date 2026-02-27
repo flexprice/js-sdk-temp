@@ -33,7 +33,7 @@ import { Result } from "../sdk/types/fp.js";
  */
 export function entitlementsQueryEntitlement(
   client: FlexpriceCore,
-  request: shared.TypesEntitlementFilter,
+  request: shared.EntitlementFilter,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -57,7 +57,7 @@ export function entitlementsQueryEntitlement(
 
 async function $do(
   client: FlexpriceCore,
-  request: shared.TypesEntitlementFilter,
+  request: shared.EntitlementFilter,
   options?: RequestOptions,
 ): Promise<
   [
@@ -77,7 +77,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => shared.TypesEntitlementFilter$outboundSchema.parse(value),
+    (value) => shared.EntitlementFilter$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {

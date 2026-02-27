@@ -8,6 +8,10 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  DebugTrackerStatus,
+  DebugTrackerStatus$inboundSchema,
+} from "./debugtrackerstatus.js";
+import {
   DtoMatchedMeter,
   DtoMatchedMeter$inboundSchema,
 } from "./dtomatchedmeter.js";
@@ -15,15 +19,11 @@ import {
   ErrorsErrorResponse,
   ErrorsErrorResponse$inboundSchema,
 } from "./errorserrorresponse.js";
-import {
-  TypesDebugTrackerStatus,
-  TypesDebugTrackerStatus$inboundSchema,
-} from "./typesdebugtrackerstatus.js";
 
 export type DtoMeterMatchingResult = {
   error?: ErrorsErrorResponse | undefined;
   matchedMeters?: Array<DtoMatchedMeter> | undefined;
-  status?: TypesDebugTrackerStatus | undefined;
+  status?: DebugTrackerStatus | undefined;
 };
 
 /** @internal */
@@ -34,7 +34,7 @@ export const DtoMeterMatchingResult$inboundSchema: z.ZodType<
 > = z.object({
   error: ErrorsErrorResponse$inboundSchema.optional(),
   matched_meters: z.array(DtoMatchedMeter$inboundSchema).optional(),
-  status: TypesDebugTrackerStatus$inboundSchema.optional(),
+  status: DebugTrackerStatus$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "matched_meters": "matchedMeters",

@@ -4,26 +4,17 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import {
-  TypesEntityType,
-  TypesEntityType$outboundSchema,
-} from "./typesentitytype.js";
-import {
-  TypesFileType,
-  TypesFileType$outboundSchema,
-} from "./typesfiletype.js";
-import {
-  TypesTaskType,
-  TypesTaskType$outboundSchema,
-} from "./typestasktype.js";
+import { EntityType, EntityType$outboundSchema } from "./entitytype.js";
+import { FileType, FileType$outboundSchema } from "./filetype.js";
+import { TaskType, TaskType$outboundSchema } from "./tasktype.js";
 
 export type DtoCreateTaskRequest = {
-  entityType: TypesEntityType;
+  entityType: EntityType;
   fileName?: string | undefined;
-  fileType: TypesFileType;
+  fileType: FileType;
   fileUrl: string;
   metadata?: { [k: string]: any } | undefined;
-  taskType: TypesTaskType;
+  taskType: TaskType;
 };
 
 /** @internal */
@@ -42,12 +33,12 @@ export const DtoCreateTaskRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DtoCreateTaskRequest
 > = z.object({
-  entityType: TypesEntityType$outboundSchema,
+  entityType: EntityType$outboundSchema,
   fileName: z.string().optional(),
-  fileType: TypesFileType$outboundSchema,
+  fileType: FileType$outboundSchema,
   fileUrl: z.string(),
   metadata: z.record(z.any()).optional(),
-  taskType: TypesTaskType$outboundSchema,
+  taskType: TaskType$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     entityType: "entity_type",

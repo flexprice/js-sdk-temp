@@ -4,14 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import {
-  TypesTaxRateScope,
-  TypesTaxRateScope$outboundSchema,
-} from "./typestaxratescope.js";
-import {
-  TypesTaxRateType,
-  TypesTaxRateType$outboundSchema,
-} from "./typestaxratetype.js";
+import { TaxRateScope, TaxRateScope$outboundSchema } from "./taxratescope.js";
+import { TaxRateType, TaxRateType$outboundSchema } from "./taxratetype.js";
 
 export type DtoCreateTaxRateRequest = {
   /**
@@ -38,8 +32,8 @@ export type DtoCreateTaxRateRequest = {
    * percentage_value is the percentage value (0-100) when tax_rate_type is "percentage"
    */
   percentageValue?: string | undefined;
-  scope?: TypesTaxRateScope | undefined;
-  taxRateType?: TypesTaxRateType | undefined;
+  scope?: TaxRateScope | undefined;
+  taxRateType?: TaxRateType | undefined;
 };
 
 /** @internal */
@@ -66,8 +60,8 @@ export const DtoCreateTaxRateRequest$outboundSchema: z.ZodType<
   metadata: z.record(z.string()).optional(),
   name: z.string(),
   percentageValue: z.string().optional(),
-  scope: TypesTaxRateScope$outboundSchema.optional(),
-  taxRateType: TypesTaxRateType$outboundSchema.optional(),
+  scope: TaxRateScope$outboundSchema.optional(),
+  taxRateType: TaxRateType$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     fixedValue: "fixed_value",

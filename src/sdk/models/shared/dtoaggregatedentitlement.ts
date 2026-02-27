@@ -8,9 +8,9 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  TypesEntitlementUsageResetPeriod,
-  TypesEntitlementUsageResetPeriod$inboundSchema,
-} from "./typesentitlementusageresetperiod.js";
+  EntitlementUsageResetPeriod,
+  EntitlementUsageResetPeriod$inboundSchema,
+} from "./entitlementusageresetperiod.js";
 
 export type DtoAggregatedEntitlement = {
   isEnabled?: boolean | undefined;
@@ -20,7 +20,7 @@ export type DtoAggregatedEntitlement = {
    */
   staticValues?: Array<string> | undefined;
   usageLimit?: number | undefined;
-  usageResetPeriod?: TypesEntitlementUsageResetPeriod | undefined;
+  usageResetPeriod?: EntitlementUsageResetPeriod | undefined;
 };
 
 /** @internal */
@@ -33,7 +33,7 @@ export const DtoAggregatedEntitlement$inboundSchema: z.ZodType<
   is_soft_limit: z.boolean().optional(),
   static_values: z.array(z.string()).optional(),
   usage_limit: z.number().int().optional(),
-  usage_reset_period: TypesEntitlementUsageResetPeriod$inboundSchema.optional(),
+  usage_reset_period: EntitlementUsageResetPeriod$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "is_enabled": "isEnabled",

@@ -16,14 +16,14 @@ import {
   DtoFeatureUsageSummary$inboundSchema,
 } from "./dtofeatureusagesummary.js";
 import {
-  TypesPaginationResponse,
-  TypesPaginationResponse$inboundSchema,
-} from "./typespaginationresponse.js";
+  PaginationResponse,
+  PaginationResponse$inboundSchema,
+} from "./paginationresponse.js";
 
 export type DtoCustomerUsageSummaryResponse = {
   customerId?: string | undefined;
   features?: Array<DtoFeatureUsageSummary> | undefined;
-  pagination?: TypesPaginationResponse | undefined;
+  pagination?: PaginationResponse | undefined;
   period?: DtoBillingPeriodInfo | undefined;
 };
 
@@ -35,7 +35,7 @@ export const DtoCustomerUsageSummaryResponse$inboundSchema: z.ZodType<
 > = z.object({
   customer_id: z.string().optional(),
   features: z.array(DtoFeatureUsageSummary$inboundSchema).optional(),
-  pagination: TypesPaginationResponse$inboundSchema.optional(),
+  pagination: PaginationResponse$inboundSchema.optional(),
   period: DtoBillingPeriodInfo$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {

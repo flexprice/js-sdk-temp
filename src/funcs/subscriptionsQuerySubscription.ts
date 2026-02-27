@@ -33,7 +33,7 @@ import { Result } from "../sdk/types/fp.js";
  */
 export function subscriptionsQuerySubscription(
   client: FlexpriceCore,
-  request: shared.TypesSubscriptionFilter,
+  request: shared.SubscriptionFilter,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -57,7 +57,7 @@ export function subscriptionsQuerySubscription(
 
 async function $do(
   client: FlexpriceCore,
-  request: shared.TypesSubscriptionFilter,
+  request: shared.SubscriptionFilter,
   options?: RequestOptions,
 ): Promise<
   [
@@ -77,7 +77,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => shared.TypesSubscriptionFilter$outboundSchema.parse(value),
+    (value) => shared.SubscriptionFilter$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {

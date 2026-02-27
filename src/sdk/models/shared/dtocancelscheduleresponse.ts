@@ -7,9 +7,9 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  TypesScheduleStatus,
-  TypesScheduleStatus$inboundSchema,
-} from "./typesschedulestatus.js";
+  ScheduleStatus,
+  ScheduleStatus$inboundSchema,
+} from "./schedulestatus.js";
 
 /**
  * Confirmation of schedule cancellation
@@ -19,7 +19,7 @@ export type DtoCancelScheduleResponse = {
    * message is a confirmation message
    */
   message?: string | undefined;
-  status?: TypesScheduleStatus | undefined;
+  status?: ScheduleStatus | undefined;
 };
 
 /** @internal */
@@ -29,7 +29,7 @@ export const DtoCancelScheduleResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   message: z.string().optional(),
-  status: TypesScheduleStatus$inboundSchema.optional(),
+  status: ScheduleStatus$inboundSchema.optional(),
 });
 
 export function dtoCancelScheduleResponseFromJSON(

@@ -5,10 +5,10 @@
 ### Available Operations
 
 * [createCoupon](#createcoupon) - Create coupon
-* [deleteCoupon](#deletecoupon) - Delete coupon
-* [getCoupon](#getcoupon) - Get coupon
 * [queryCoupon](#querycoupon) - Query coupons
+* [getCoupon](#getcoupon) - Get coupon
 * [updateCoupon](#updatecoupon) - Update coupon
+* [deleteCoupon](#deletecoupon) - Delete coupon
 
 ## createCoupon
 
@@ -89,13 +89,13 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## deleteCoupon
+## queryCoupon
 
-Use when retiring a coupon (e.g. campaign ended). Returns 200 with success message.
+Use when listing or searching coupons (e.g. promo management). Returns a paginated list; supports filtering and sorting.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="deleteCoupon" method="delete" path="/coupons/{id}" -->
+<!-- UsageSnippet language="typescript" operationID="queryCoupon" method="post" path="/coupons/search" -->
 ```typescript
 import { Flexprice } from "flexprice-ts-temp";
 
@@ -105,9 +105,7 @@ const flexprice = new Flexprice({
 });
 
 async function run() {
-  const result = await flexprice.coupons.deleteCoupon({
-    id: "<id>",
-  });
+  const result = await flexprice.coupons.queryCoupon({});
 
   console.log(result);
 }
@@ -121,7 +119,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexpriceCore } from "flexprice-ts-temp/core.js";
-import { couponsDeleteCoupon } from "flexprice-ts-temp/funcs/couponsDeleteCoupon.js";
+import { couponsQueryCoupon } from "flexprice-ts-temp/funcs/couponsQueryCoupon.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -131,14 +129,12 @@ const flexprice = new FlexpriceCore({
 });
 
 async function run() {
-  const res = await couponsDeleteCoupon(flexprice, {
-    id: "<id>",
-  });
+  const res = await couponsQueryCoupon(flexprice, {});
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("couponsDeleteCoupon failed:", res.error);
+    console.log("couponsQueryCoupon failed:", res.error);
   }
 }
 
@@ -149,14 +145,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.DeleteCouponRequest](../../sdk/models/operations/deletecouponrequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [shared.CouponFilter](../../sdk/models/shared/couponfilter.md)                                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.DeleteCouponResponse](../../sdk/models/operations/deletecouponresponse.md)\>**
+**Promise\<[operations.QueryCouponResponse](../../sdk/models/operations/querycouponresponse.md)\>**
 
 ### Errors
 
@@ -239,77 +235,6 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## queryCoupon
-
-Use when listing or searching coupons (e.g. promo management). Returns a paginated list; supports filtering and sorting.
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="queryCoupon" method="post" path="/coupons/search" -->
-```typescript
-import { Flexprice } from "flexprice-ts-temp";
-
-const flexprice = new Flexprice({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const result = await flexprice.coupons.queryCoupon({});
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FlexpriceCore } from "flexprice-ts-temp/core.js";
-import { couponsQueryCoupon } from "flexprice-ts-temp/funcs/couponsQueryCoupon.js";
-
-// Use `FlexpriceCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const flexprice = new FlexpriceCore({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const res = await couponsQueryCoupon(flexprice, {});
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("couponsQueryCoupon failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [shared.TypesCouponFilter](../../sdk/models/shared/typescouponfilter.md)                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[operations.QueryCouponResponse](../../sdk/models/operations/querycouponresponse.md)\>**
-
-### Errors
-
-| Error Type      | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4XX, 5XX        | \*/\*           |
-
 ## updateCoupon
 
 Use when changing coupon config (e.g. value, validity, or usage limits).
@@ -380,6 +305,81 @@ run();
 ### Response
 
 **Promise\<[operations.UpdateCouponResponse](../../sdk/models/operations/updatecouponresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## deleteCoupon
+
+Use when retiring a coupon (e.g. campaign ended). Returns 200 with success message.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="deleteCoupon" method="delete" path="/coupons/{id}" -->
+```typescript
+import { Flexprice } from "flexprice-ts-temp";
+
+const flexprice = new Flexprice({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const result = await flexprice.coupons.deleteCoupon({
+    id: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { couponsDeleteCoupon } from "flexprice-ts-temp/funcs/couponsDeleteCoupon.js";
+
+// Use `FlexpriceCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const flexprice = new FlexpriceCore({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await couponsDeleteCoupon(flexprice, {
+    id: "<id>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("couponsDeleteCoupon failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.DeleteCouponRequest](../../sdk/models/operations/deletecouponrequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.DeleteCouponResponse](../../sdk/models/operations/deletecouponresponse.md)\>**
 
 ### Errors
 

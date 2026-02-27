@@ -7,22 +7,16 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { AlertSettings, AlertSettings$inboundSchema } from "./alertsettings.js";
 import {
   DtoMeterResponse,
   DtoMeterResponse$inboundSchema,
 } from "./dtometerresponse.js";
-import {
-  TypesAlertSettings,
-  TypesAlertSettings$inboundSchema,
-} from "./typesalertsettings.js";
-import {
-  TypesFeatureType,
-  TypesFeatureType$inboundSchema,
-} from "./typesfeaturetype.js";
-import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
+import { FeatureType, FeatureType$inboundSchema } from "./featuretype.js";
+import { Status, Status$inboundSchema } from "./status.js";
 
 export type DtoFeatureResponse = {
-  alertSettings?: TypesAlertSettings | undefined;
+  alertSettings?: AlertSettings | undefined;
   createdAt?: string | undefined;
   createdBy?: string | undefined;
   description?: string | undefined;
@@ -33,9 +27,9 @@ export type DtoFeatureResponse = {
   meter?: DtoMeterResponse | undefined;
   meterId?: string | undefined;
   name?: string | undefined;
-  status?: TypesStatus | undefined;
+  status?: Status | undefined;
   tenantId?: string | undefined;
-  type?: TypesFeatureType | undefined;
+  type?: FeatureType | undefined;
   unitPlural?: string | undefined;
   unitSingular?: string | undefined;
   updatedAt?: string | undefined;
@@ -48,7 +42,7 @@ export const DtoFeatureResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  alert_settings: TypesAlertSettings$inboundSchema.optional(),
+  alert_settings: AlertSettings$inboundSchema.optional(),
   created_at: z.string().optional(),
   created_by: z.string().optional(),
   description: z.string().optional(),
@@ -59,9 +53,9 @@ export const DtoFeatureResponse$inboundSchema: z.ZodType<
   meter: DtoMeterResponse$inboundSchema.optional(),
   meter_id: z.string().optional(),
   name: z.string().optional(),
-  status: TypesStatus$inboundSchema.optional(),
+  status: Status$inboundSchema.optional(),
   tenant_id: z.string().optional(),
-  type: TypesFeatureType$inboundSchema.optional(),
+  type: FeatureType$inboundSchema.optional(),
   unit_plural: z.string().optional(),
   unit_singular: z.string().optional(),
   updated_at: z.string().optional(),

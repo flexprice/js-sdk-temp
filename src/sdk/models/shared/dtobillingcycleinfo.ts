@@ -8,21 +8,18 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  TypesBillingCadence,
-  TypesBillingCadence$inboundSchema,
-} from "./typesbillingcadence.js";
-import {
-  TypesBillingPeriod,
-  TypesBillingPeriod$inboundSchema,
-} from "./typesbillingperiod.js";
+  BillingCadence,
+  BillingCadence$inboundSchema,
+} from "./billingcadence.js";
+import { BillingPeriod, BillingPeriod$inboundSchema } from "./billingperiod.js";
 
 export type DtoBillingCycleInfo = {
   /**
    * billing_anchor is the new billing anchor
    */
   billingAnchor?: string | undefined;
-  billingCadence?: TypesBillingCadence | undefined;
-  billingPeriod?: TypesBillingPeriod | undefined;
+  billingCadence?: BillingCadence | undefined;
+  billingPeriod?: BillingPeriod | undefined;
   /**
    * billing_period_count is the billing period count
    */
@@ -44,8 +41,8 @@ export const DtoBillingCycleInfo$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   billing_anchor: z.string().optional(),
-  billing_cadence: TypesBillingCadence$inboundSchema.optional(),
-  billing_period: TypesBillingPeriod$inboundSchema.optional(),
+  billing_cadence: BillingCadence$inboundSchema.optional(),
+  billing_period: BillingPeriod$inboundSchema.optional(),
   billing_period_count: z.number().int().optional(),
   period_end: z.string().optional(),
   period_start: z.string().optional(),

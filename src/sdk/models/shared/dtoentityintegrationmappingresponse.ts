@@ -8,21 +8,21 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  TypesIntegrationEntityType,
-  TypesIntegrationEntityType$inboundSchema,
-} from "./typesintegrationentitytype.js";
-import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
+  IntegrationEntityType,
+  IntegrationEntityType$inboundSchema,
+} from "./integrationentitytype.js";
+import { Status, Status$inboundSchema } from "./status.js";
 
 export type DtoEntityIntegrationMappingResponse = {
   createdAt?: string | undefined;
   createdBy?: string | undefined;
   entityId?: string | undefined;
-  entityType?: TypesIntegrationEntityType | undefined;
+  entityType?: IntegrationEntityType | undefined;
   environmentId?: string | undefined;
   id?: string | undefined;
   providerEntityId?: string | undefined;
   providerType?: string | undefined;
-  status?: TypesStatus | undefined;
+  status?: Status | undefined;
   tenantId?: string | undefined;
   updatedAt?: string | undefined;
   updatedBy?: string | undefined;
@@ -37,12 +37,12 @@ export const DtoEntityIntegrationMappingResponse$inboundSchema: z.ZodType<
   created_at: z.string().optional(),
   created_by: z.string().optional(),
   entity_id: z.string().optional(),
-  entity_type: TypesIntegrationEntityType$inboundSchema.optional(),
+  entity_type: IntegrationEntityType$inboundSchema.optional(),
   environment_id: z.string().optional(),
   id: z.string().optional(),
   provider_entity_id: z.string().optional(),
   provider_type: z.string().optional(),
-  status: TypesStatus$inboundSchema.optional(),
+  status: Status$inboundSchema.optional(),
   tenant_id: z.string().optional(),
   updated_at: z.string().optional(),
   updated_by: z.string().optional(),

@@ -4,17 +4,14 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import {
-  TypesRoundType,
-  TypesRoundType$outboundSchema,
-} from "./typesroundtype.js";
+import { RoundType, RoundType$outboundSchema } from "./roundtype.js";
 
 export type PriceTransformQuantity = {
   /**
    * Divide quantity by this number
    */
   divideBy?: number | undefined;
-  round?: TypesRoundType | undefined;
+  round?: RoundType | undefined;
 };
 
 /** @internal */
@@ -30,7 +27,7 @@ export const PriceTransformQuantity$outboundSchema: z.ZodType<
   PriceTransformQuantity
 > = z.object({
   divideBy: z.number().int().optional(),
-  round: TypesRoundType$outboundSchema.optional(),
+  round: RoundType$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     divideBy: "divide_by",

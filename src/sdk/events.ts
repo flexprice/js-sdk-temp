@@ -17,33 +17,18 @@ import { unwrapAsync } from "./types/fp.js";
 
 export class Events extends ClientSDK {
   /**
-   * Get event
+   * Ingest event
    *
    * @remarks
-   * Use when debugging a specific event (e.g. why it failed or how it was aggregated). Includes processing status and debug info.
+   * Use when sending a single usage event from your app (e.g. one API call or one GB stored). Events are processed asynchronously; returns 202 with event_id.
    */
-  async getEvent(
-    request: operations.GetEventRequest,
+  async ingestEvent(
+    request: shared.DtoIngestEventRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetEventResponse> {
-    return unwrapAsync(eventsGetEvent(
+  ): Promise<operations.IngestEventResponse> {
+    return unwrapAsync(eventsIngestEvent(
       this,
       request,
-      options,
-    ));
-  }
-
-  /**
-   * Get Hugging Face inference data
-   *
-   * @remarks
-   * Use when fetching Hugging Face inference usage or billing data (e.g. for HF-specific reporting or reconciliation).
-   */
-  async getHuggingfaceInferenceData(
-    options?: RequestOptions,
-  ): Promise<operations.GetHuggingfaceInferenceDataResponse> {
-    return unwrapAsync(eventsGetHuggingfaceInferenceData(
-      this,
       options,
     ));
   }
@@ -59,57 +44,6 @@ export class Events extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.GetUsageAnalyticsResponse> {
     return unwrapAsync(eventsGetUsageAnalytics(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Get usage by meter
-   *
-   * @remarks
-   * Use when showing usage for a specific meter (e.g. dashboard or overage check). Supports time range, filters, and grouping by customer or subscription.
-   */
-  async getUsageByMeter(
-    request: shared.DtoGetUsageByMeterRequest,
-    options?: RequestOptions,
-  ): Promise<operations.GetUsageByMeterResponse> {
-    return unwrapAsync(eventsGetUsageByMeter(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Get usage statistics
-   *
-   * @remarks
-   * Use when building usage reports or dashboards across events. Supports filters and grouping; defaults to last 7 days if no range provided.
-   */
-  async getUsageStatistics(
-    request: shared.DtoGetUsageRequest,
-    options?: RequestOptions,
-  ): Promise<operations.GetUsageStatisticsResponse> {
-    return unwrapAsync(eventsGetUsageStatistics(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Ingest event
-   *
-   * @remarks
-   * Use when sending a single usage event from your app (e.g. one API call or one GB stored). Events are processed asynchronously; returns 202 with event_id.
-   */
-  async ingestEvent(
-    request: shared.DtoIngestEventRequest,
-    options?: RequestOptions,
-  ): Promise<operations.IngestEventResponse> {
-    return unwrapAsync(eventsIngestEvent(
       this,
       request,
       options,
@@ -134,6 +68,21 @@ export class Events extends ClientSDK {
   }
 
   /**
+   * Get Hugging Face inference data
+   *
+   * @remarks
+   * Use when fetching Hugging Face inference usage or billing data (e.g. for HF-specific reporting or reconciliation).
+   */
+  async getHuggingfaceInferenceData(
+    options?: RequestOptions,
+  ): Promise<operations.GetHuggingfaceInferenceDataResponse> {
+    return unwrapAsync(eventsGetHuggingfaceInferenceData(
+      this,
+      options,
+    ));
+  }
+
+  /**
    * List raw events
    *
    * @remarks
@@ -144,6 +93,57 @@ export class Events extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.ListRawEventsResponse> {
     return unwrapAsync(eventsListRawEvents(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get usage statistics
+   *
+   * @remarks
+   * Use when building usage reports or dashboards across events. Supports filters and grouping; defaults to last 7 days if no range provided.
+   */
+  async getUsageStatistics(
+    request: shared.DtoGetUsageRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetUsageStatisticsResponse> {
+    return unwrapAsync(eventsGetUsageStatistics(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get usage by meter
+   *
+   * @remarks
+   * Use when showing usage for a specific meter (e.g. dashboard or overage check). Supports time range, filters, and grouping by customer or subscription.
+   */
+  async getUsageByMeter(
+    request: shared.DtoGetUsageByMeterRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetUsageByMeterResponse> {
+    return unwrapAsync(eventsGetUsageByMeter(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get event
+   *
+   * @remarks
+   * Use when debugging a specific event (e.g. why it failed or how it was aggregated). Includes processing status and debug info.
+   */
+  async getEvent(
+    request: operations.GetEventRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetEventResponse> {
+    return unwrapAsync(eventsGetEvent(
       this,
       request,
       options,

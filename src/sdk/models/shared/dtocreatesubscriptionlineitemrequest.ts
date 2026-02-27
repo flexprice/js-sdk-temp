@@ -5,29 +5,29 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
+  BillingPeriod,
+  BillingPeriod$outboundSchema,
+} from "./billingperiod.js";
+import {
+  CommitmentType,
+  CommitmentType$outboundSchema,
+} from "./commitmenttype.js";
+import {
   DtoSubscriptionPriceCreateRequest,
   DtoSubscriptionPriceCreateRequest$Outbound,
   DtoSubscriptionPriceCreateRequest$outboundSchema,
 } from "./dtosubscriptionpricecreaterequest.js";
-import {
-  TypesBillingPeriod,
-  TypesBillingPeriod$outboundSchema,
-} from "./typesbillingperiod.js";
-import {
-  TypesCommitmentType,
-  TypesCommitmentType$outboundSchema,
-} from "./typescommitmenttype.js";
 
 export type DtoCreateSubscriptionLineItemRequest = {
   /**
    * Commitment fields
    */
   commitmentAmount?: number | undefined;
-  commitmentDuration?: TypesBillingPeriod | undefined;
+  commitmentDuration?: BillingPeriod | undefined;
   commitmentOverageFactor?: number | undefined;
   commitmentQuantity?: number | undefined;
   commitmentTrueUpEnabled?: boolean | undefined;
-  commitmentType?: TypesCommitmentType | undefined;
+  commitmentType?: CommitmentType | undefined;
   commitmentWindowed?: boolean | undefined;
   displayName?: string | undefined;
   endDate?: string | undefined;
@@ -68,11 +68,11 @@ export const DtoCreateSubscriptionLineItemRequest$outboundSchema: z.ZodType<
   DtoCreateSubscriptionLineItemRequest
 > = z.object({
   commitmentAmount: z.number().optional(),
-  commitmentDuration: TypesBillingPeriod$outboundSchema.optional(),
+  commitmentDuration: BillingPeriod$outboundSchema.optional(),
   commitmentOverageFactor: z.number().optional(),
   commitmentQuantity: z.number().optional(),
   commitmentTrueUpEnabled: z.boolean().optional(),
-  commitmentType: TypesCommitmentType$outboundSchema.optional(),
+  commitmentType: CommitmentType$outboundSchema.optional(),
   commitmentWindowed: z.boolean().optional(),
   displayName: z.string().optional(),
   endDate: z.string().optional(),

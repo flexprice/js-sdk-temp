@@ -4,17 +4,14 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import {
-  TypesAddonType,
-  TypesAddonType$outboundSchema,
-} from "./typesaddontype.js";
+import { AddonType, AddonType$outboundSchema } from "./addontype.js";
 
 export type DtoCreateAddonRequest = {
   description?: string | undefined;
   lookupKey: string;
   metadata?: { [k: string]: any } | undefined;
   name: string;
-  type: TypesAddonType;
+  type: AddonType;
 };
 
 /** @internal */
@@ -36,7 +33,7 @@ export const DtoCreateAddonRequest$outboundSchema: z.ZodType<
   lookupKey: z.string(),
   metadata: z.record(z.any()).optional(),
   name: z.string(),
-  type: TypesAddonType$outboundSchema,
+  type: AddonType$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     lookupKey: "lookup_key",

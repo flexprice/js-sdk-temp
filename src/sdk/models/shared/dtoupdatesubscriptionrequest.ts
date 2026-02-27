@@ -5,9 +5,9 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
-  TypesSubscriptionStatus,
-  TypesSubscriptionStatus$outboundSchema,
-} from "./typessubscriptionstatus.js";
+  SubscriptionStatus,
+  SubscriptionStatus$outboundSchema,
+} from "./subscriptionstatus.js";
 
 export type DtoUpdateSubscriptionRequest = {
   cancelAt?: string | undefined;
@@ -16,7 +16,7 @@ export type DtoUpdateSubscriptionRequest = {
    * ParentSubscriptionID sets or clears the parent subscription. Omit to leave unchanged; send "" to clear.
    */
   parentSubscriptionId?: string | undefined;
-  status?: TypesSubscriptionStatus | undefined;
+  status?: SubscriptionStatus | undefined;
 };
 
 /** @internal */
@@ -36,7 +36,7 @@ export const DtoUpdateSubscriptionRequest$outboundSchema: z.ZodType<
   cancelAt: z.string().optional(),
   cancelAtPeriodEnd: z.boolean().optional(),
   parentSubscriptionId: z.string().optional(),
-  status: TypesSubscriptionStatus$outboundSchema.optional(),
+  status: SubscriptionStatus$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     cancelAt: "cancel_at",

@@ -11,11 +11,11 @@ import {
   DtoTaxRateResponse,
   DtoTaxRateResponse$inboundSchema,
 } from "./dtotaxrateresponse.js";
-import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
+import { Status, Status$inboundSchema } from "./status.js";
 import {
-  TypesTaxRateEntityType,
-  TypesTaxRateEntityType$inboundSchema,
-} from "./typestaxrateentitytype.js";
+  TaxRateEntityType,
+  TaxRateEntityType$inboundSchema,
+} from "./taxrateentitytype.js";
 
 export type DtoTaxAppliedResponse = {
   appliedAt?: string | undefined;
@@ -23,12 +23,12 @@ export type DtoTaxAppliedResponse = {
   createdBy?: string | undefined;
   currency?: string | undefined;
   entityId?: string | undefined;
-  entityType?: TypesTaxRateEntityType | undefined;
+  entityType?: TaxRateEntityType | undefined;
   environmentId?: string | undefined;
   id?: string | undefined;
   idempotencyKey?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
-  status?: TypesStatus | undefined;
+  status?: Status | undefined;
   taxAmount?: string | undefined;
   taxAssociationId?: string | undefined;
   taxRate?: DtoTaxRateResponse | undefined;
@@ -50,12 +50,12 @@ export const DtoTaxAppliedResponse$inboundSchema: z.ZodType<
   created_by: z.string().optional(),
   currency: z.string().optional(),
   entity_id: z.string().optional(),
-  entity_type: TypesTaxRateEntityType$inboundSchema.optional(),
+  entity_type: TaxRateEntityType$inboundSchema.optional(),
   environment_id: z.string().optional(),
   id: z.string().optional(),
   idempotency_key: z.string().optional(),
   metadata: z.record(z.string()).optional(),
-  status: TypesStatus$inboundSchema.optional(),
+  status: Status$inboundSchema.optional(),
   tax_amount: z.string().optional(),
   tax_association_id: z.string().optional(),
   tax_rate: DtoTaxRateResponse$inboundSchema.optional(),

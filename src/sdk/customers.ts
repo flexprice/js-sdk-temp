@@ -18,6 +18,23 @@ import { unwrapAsync } from "./types/fp.js";
 
 export class Customers extends ClientSDK {
   /**
+   * Update customer
+   *
+   * @remarks
+   * Use when updating customer details (e.g. name, email, or metadata). Identify by id or external_customer_id.
+   */
+  async updateCustomer(
+    request: operations.UpdateCustomerRequest,
+    options?: RequestOptions,
+  ): Promise<operations.UpdateCustomerResponse> {
+    return unwrapAsync(customersUpdateCustomer(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Create customer
    *
    * @remarks
@@ -35,16 +52,50 @@ export class Customers extends ClientSDK {
   }
 
   /**
-   * Delete customer
+   * Get customer by external ID
    *
    * @remarks
-   * Use when removing a customer (e.g. GDPR or churn). Returns 204 No Content on success.
+   * Use when resolving a customer by your app's id (e.g. from your user table). Ideal for integrations that key by external id.
    */
-  async deleteCustomer(
-    request: operations.DeleteCustomerRequest,
+  async getCustomerByExternalId(
+    request: operations.GetCustomerByExternalIdRequest,
     options?: RequestOptions,
-  ): Promise<shared.ErrorsErrorResponse | undefined> {
-    return unwrapAsync(customersDeleteCustomer(
+  ): Promise<operations.GetCustomerByExternalIdResponse> {
+    return unwrapAsync(customersGetCustomerByExternalId(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Query customers
+   *
+   * @remarks
+   * Use when listing or searching customers (e.g. admin CRM or reporting). Returns a paginated list; supports filtering and sorting.
+   */
+  async queryCustomer(
+    request: shared.CustomerFilter,
+    options?: RequestOptions,
+  ): Promise<operations.QueryCustomerResponse> {
+    return unwrapAsync(customersQueryCustomer(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get customer usage summary
+   *
+   * @remarks
+   * Use when showing a customer's usage (e.g. portal or overage alerts). Identify by customer_id or customer_lookup_key; supports filters.
+   */
+  async getCustomerUsageSummary(
+    request?: operations.GetCustomerUsageSummaryRequest | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.GetCustomerUsageSummaryResponse> {
+    return unwrapAsync(customersGetCustomerUsageSummary(
       this,
       request,
       options,
@@ -69,16 +120,16 @@ export class Customers extends ClientSDK {
   }
 
   /**
-   * Get customer by external ID
+   * Delete customer
    *
    * @remarks
-   * Use when resolving a customer by your app's id (e.g. from your user table). Ideal for integrations that key by external id.
+   * Use when removing a customer (e.g. GDPR or churn). Returns 204 No Content on success.
    */
-  async getCustomerByExternalId(
-    request: operations.GetCustomerByExternalIdRequest,
+  async deleteCustomer(
+    request: operations.DeleteCustomerRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetCustomerByExternalIdResponse> {
-    return unwrapAsync(customersGetCustomerByExternalId(
+  ): Promise<shared.ErrorsErrorResponse | undefined> {
+    return unwrapAsync(customersDeleteCustomer(
       this,
       request,
       options,
@@ -113,57 +164,6 @@ export class Customers extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.GetCustomerUpcomingGrantsResponse> {
     return unwrapAsync(customersGetCustomerUpcomingGrants(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Get customer usage summary
-   *
-   * @remarks
-   * Use when showing a customer's usage (e.g. portal or overage alerts). Identify by customer_id or customer_lookup_key; supports filters.
-   */
-  async getCustomerUsageSummary(
-    request?: operations.GetCustomerUsageSummaryRequest | undefined,
-    options?: RequestOptions,
-  ): Promise<operations.GetCustomerUsageSummaryResponse> {
-    return unwrapAsync(customersGetCustomerUsageSummary(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Query customers
-   *
-   * @remarks
-   * Use when listing or searching customers (e.g. admin CRM or reporting). Returns a paginated list; supports filtering and sorting.
-   */
-  async queryCustomer(
-    request: shared.TypesCustomerFilter,
-    options?: RequestOptions,
-  ): Promise<operations.QueryCustomerResponse> {
-    return unwrapAsync(customersQueryCustomer(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Update customer
-   *
-   * @remarks
-   * Use when updating customer details (e.g. name, email, or metadata). Identify by id or external_customer_id.
-   */
-  async updateCustomer(
-    request: operations.UpdateCustomerRequest,
-    options?: RequestOptions,
-  ): Promise<operations.UpdateCustomerResponse> {
-    return unwrapAsync(customersUpdateCustomer(
       this,
       request,
       options,

@@ -4,14 +4,14 @@
 
 import * as z from "zod/v3";
 import {
-  TypesSecretProvider,
-  TypesSecretProvider$outboundSchema,
-} from "./typessecretprovider.js";
+  SecretProvider,
+  SecretProvider$outboundSchema,
+} from "./secretprovider.js";
 
 export type DtoCreateIntegrationRequest = {
   credentials: { [k: string]: string };
   name: string;
-  provider: TypesSecretProvider;
+  provider: SecretProvider;
 };
 
 /** @internal */
@@ -29,7 +29,7 @@ export const DtoCreateIntegrationRequest$outboundSchema: z.ZodType<
 > = z.object({
   credentials: z.record(z.string()),
   name: z.string(),
-  provider: TypesSecretProvider$outboundSchema,
+  provider: SecretProvider$outboundSchema,
 });
 
 export function dtoCreateIntegrationRequestToJSON(

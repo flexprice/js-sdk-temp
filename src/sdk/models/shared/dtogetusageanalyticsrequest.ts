@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import {
-  TypesWindowSize,
-  TypesWindowSize$outboundSchema,
-} from "./typeswindowsize.js";
+import { WindowSize, WindowSize$outboundSchema } from "./windowsize.js";
 
 export type DtoGetUsageAnalyticsRequest = {
   endTime?: string | undefined;
@@ -27,7 +24,7 @@ export type DtoGetUsageAnalyticsRequest = {
   propertyFilters?: { [k: string]: Array<string> } | undefined;
   sources?: Array<string> | undefined;
   startTime?: string | undefined;
-  windowSize?: TypesWindowSize | undefined;
+  windowSize?: WindowSize | undefined;
 };
 
 /** @internal */
@@ -57,7 +54,7 @@ export const DtoGetUsageAnalyticsRequest$outboundSchema: z.ZodType<
   propertyFilters: z.record(z.array(z.string())).optional(),
   sources: z.array(z.string()).optional(),
   startTime: z.string().optional(),
-  windowSize: TypesWindowSize$outboundSchema.optional(),
+  windowSize: WindowSize$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     endTime: "end_time",

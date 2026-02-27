@@ -33,7 +33,7 @@ import { Result } from "../sdk/types/fp.js";
  */
 export function priceUnitsQueryPriceUnit(
   client: FlexpriceCore,
-  request: shared.TypesPriceUnitFilter,
+  request: shared.PriceUnitFilter,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -57,7 +57,7 @@ export function priceUnitsQueryPriceUnit(
 
 async function $do(
   client: FlexpriceCore,
-  request: shared.TypesPriceUnitFilter,
+  request: shared.PriceUnitFilter,
   options?: RequestOptions,
 ): Promise<
   [
@@ -77,7 +77,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => shared.TypesPriceUnitFilter$outboundSchema.parse(value),
+    (value) => shared.PriceUnitFilter$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {

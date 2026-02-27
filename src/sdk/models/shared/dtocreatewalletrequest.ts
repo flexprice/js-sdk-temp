@@ -5,23 +5,20 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
-  TypesAlertSettings,
-  TypesAlertSettings$Outbound,
-  TypesAlertSettings$outboundSchema,
-} from "./typesalertsettings.js";
+  AlertSettings,
+  AlertSettings$Outbound,
+  AlertSettings$outboundSchema,
+} from "./alertsettings.js";
 import {
-  TypesAutoTopup,
-  TypesAutoTopup$Outbound,
-  TypesAutoTopup$outboundSchema,
-} from "./typesautotopup.js";
-import {
-  TypesWalletType,
-  TypesWalletType$outboundSchema,
-} from "./typeswallettype.js";
+  AutoTopup,
+  AutoTopup$Outbound,
+  AutoTopup$outboundSchema,
+} from "./autotopup.js";
+import { WalletType, WalletType$outboundSchema } from "./wallettype.js";
 
 export type DtoCreateWalletRequest = {
-  alertSettings?: TypesAlertSettings | undefined;
-  autoTopup?: TypesAutoTopup | undefined;
+  alertSettings?: AlertSettings | undefined;
+  autoTopup?: AutoTopup | undefined;
   /**
    * amount in the currency =  number of credits * conversion_rate
    *
@@ -80,13 +77,13 @@ export type DtoCreateWalletRequest = {
    * ex if topup_conversion_rate is 0.5, then 1 USD = 2 credits
    */
   topupConversionRate?: string | undefined;
-  walletType?: TypesWalletType | undefined;
+  walletType?: WalletType | undefined;
 };
 
 /** @internal */
 export type DtoCreateWalletRequest$Outbound = {
-  alert_settings?: TypesAlertSettings$Outbound | undefined;
-  auto_topup?: TypesAutoTopup$Outbound | undefined;
+  alert_settings?: AlertSettings$Outbound | undefined;
+  auto_topup?: AutoTopup$Outbound | undefined;
   conversion_rate: string;
   currency: string;
   customer_id?: string | undefined;
@@ -107,8 +104,8 @@ export const DtoCreateWalletRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DtoCreateWalletRequest
 > = z.object({
-  alertSettings: TypesAlertSettings$outboundSchema.optional(),
-  autoTopup: TypesAutoTopup$outboundSchema.optional(),
+  alertSettings: AlertSettings$outboundSchema.optional(),
+  autoTopup: AutoTopup$outboundSchema.optional(),
   conversionRate: z.string().default("1"),
   currency: z.string(),
   customerId: z.string().optional(),
@@ -120,7 +117,7 @@ export const DtoCreateWalletRequest$outboundSchema: z.ZodType<
   metadata: z.record(z.string()).optional(),
   priceUnit: z.string().optional(),
   topupConversionRate: z.string().optional(),
-  walletType: TypesWalletType$outboundSchema.optional(),
+  walletType: WalletType$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     alertSettings: "alert_settings",

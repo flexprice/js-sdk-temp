@@ -7,19 +7,10 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  TypesPauseMode,
-  TypesPauseMode$inboundSchema,
-} from "./typespausemode.js";
-import {
-  TypesPauseStatus,
-  TypesPauseStatus$inboundSchema,
-} from "./typespausestatus.js";
-import {
-  TypesResumeMode,
-  TypesResumeMode$inboundSchema,
-} from "./typesresumemode.js";
-import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
+import { PauseMode, PauseMode$inboundSchema } from "./pausemode.js";
+import { PauseStatus, PauseStatus$inboundSchema } from "./pausestatus.js";
+import { ResumeMode, ResumeMode$inboundSchema } from "./resumemode.js";
+import { Status, Status$inboundSchema } from "./status.js";
 
 export type SubscriptionSubscriptionPause = {
   createdAt?: string | undefined;
@@ -45,22 +36,22 @@ export type SubscriptionSubscriptionPause = {
    * PauseEnd is when the pause will end (null for indefinite)
    */
   pauseEnd?: string | undefined;
-  pauseMode?: TypesPauseMode | undefined;
+  pauseMode?: PauseMode | undefined;
   /**
    * PauseStart is when the pause actually started
    */
   pauseStart?: string | undefined;
-  pauseStatus?: TypesPauseStatus | undefined;
+  pauseStatus?: PauseStatus | undefined;
   /**
    * Reason is the reason for pausing
    */
   reason?: string | undefined;
-  resumeMode?: TypesResumeMode | undefined;
+  resumeMode?: ResumeMode | undefined;
   /**
    * ResumedAt is when the pause was actually ended (if manually resumed)
    */
   resumedAt?: string | undefined;
-  status?: TypesStatus | undefined;
+  status?: Status | undefined;
   /**
    * SubscriptionID is the identifier for the subscription
    */
@@ -84,13 +75,13 @@ export const SubscriptionSubscriptionPause$inboundSchema: z.ZodType<
   original_period_end: z.string().optional(),
   original_period_start: z.string().optional(),
   pause_end: z.string().optional(),
-  pause_mode: TypesPauseMode$inboundSchema.optional(),
+  pause_mode: PauseMode$inboundSchema.optional(),
   pause_start: z.string().optional(),
-  pause_status: TypesPauseStatus$inboundSchema.optional(),
+  pause_status: PauseStatus$inboundSchema.optional(),
   reason: z.string().optional(),
-  resume_mode: TypesResumeMode$inboundSchema.optional(),
+  resume_mode: ResumeMode$inboundSchema.optional(),
   resumed_at: z.string().optional(),
-  status: TypesStatus$inboundSchema.optional(),
+  status: Status$inboundSchema.optional(),
   subscription_id: z.string().optional(),
   tenant_id: z.string().optional(),
   updated_at: z.string().optional(),

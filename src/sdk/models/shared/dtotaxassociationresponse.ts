@@ -11,11 +11,11 @@ import {
   DtoTaxRateResponse,
   DtoTaxRateResponse$inboundSchema,
 } from "./dtotaxrateresponse.js";
-import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
+import { Status, Status$inboundSchema } from "./status.js";
 import {
-  TypesTaxRateEntityType,
-  TypesTaxRateEntityType$inboundSchema,
-} from "./typestaxrateentitytype.js";
+  TaxRateEntityType,
+  TaxRateEntityType$inboundSchema,
+} from "./taxrateentitytype.js";
 
 export type DtoTaxAssociationResponse = {
   /**
@@ -32,7 +32,7 @@ export type DtoTaxAssociationResponse = {
    * ID of the entity this tax rate applies to
    */
   entityId?: string | undefined;
-  entityType?: TypesTaxRateEntityType | undefined;
+  entityType?: TaxRateEntityType | undefined;
   /**
    * EnvironmentID is the ID of the environment this tax rate config belongs to
    */
@@ -49,7 +49,7 @@ export type DtoTaxAssociationResponse = {
    * Priority for tax resolution (lower number = higher priority)
    */
   priority?: number | undefined;
-  status?: TypesStatus | undefined;
+  status?: Status | undefined;
   taxRate?: DtoTaxRateResponse | undefined;
   /**
    * Reference to the TaxRate entity
@@ -71,12 +71,12 @@ export const DtoTaxAssociationResponse$inboundSchema: z.ZodType<
   created_by: z.string().optional(),
   currency: z.string().optional(),
   entity_id: z.string().optional(),
-  entity_type: TypesTaxRateEntityType$inboundSchema.optional(),
+  entity_type: TaxRateEntityType$inboundSchema.optional(),
   environment_id: z.string().optional(),
   id: z.string().optional(),
   metadata: z.record(z.string()).optional(),
   priority: z.number().int().optional(),
-  status: TypesStatus$inboundSchema.optional(),
+  status: Status$inboundSchema.optional(),
   tax_rate: DtoTaxRateResponse$inboundSchema.optional(),
   tax_rate_id: z.string().optional(),
   tenant_id: z.string().optional(),

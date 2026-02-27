@@ -34,23 +34,6 @@ export class Costs extends ClientSDK {
   }
 
   /**
-   * Delete costsheet
-   *
-   * @remarks
-   * Use when retiring a costsheet (e.g. end-of-life product). Soft-deletes; status set to deleted.
-   */
-  async deleteCostsheet(
-    request: operations.DeleteCostsheetRequest,
-    options?: RequestOptions,
-  ): Promise<operations.DeleteCostsheetResponse> {
-    return unwrapAsync(costsDeleteCostsheet(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Get active costsheet
    *
    * @remarks
@@ -61,23 +44,6 @@ export class Costs extends ClientSDK {
   ): Promise<operations.GetActiveCostsheetResponse> {
     return unwrapAsync(costsGetActiveCostsheet(
       this,
-      options,
-    ));
-  }
-
-  /**
-   * Get costsheet
-   *
-   * @remarks
-   * Use when you need to load a single costsheet (e.g. for editing or display). Supports optional expand for related prices.
-   */
-  async getCostsheet(
-    request: operations.GetCostsheetRequest,
-    options?: RequestOptions,
-  ): Promise<operations.GetCostsheetResponse> {
-    return unwrapAsync(costsGetCostsheet(
-      this,
-      request,
       options,
     ));
   }
@@ -134,6 +100,23 @@ export class Costs extends ClientSDK {
   }
 
   /**
+   * Get costsheet
+   *
+   * @remarks
+   * Use when you need to load a single costsheet (e.g. for editing or display). Supports optional expand for related prices.
+   */
+  async getCostsheet(
+    request: operations.GetCostsheetRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetCostsheetResponse> {
+    return unwrapAsync(costsGetCostsheet(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Update costsheet
    *
    * @remarks
@@ -144,6 +127,23 @@ export class Costs extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.UpdateCostsheetResponse> {
     return unwrapAsync(costsUpdateCostsheet(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete costsheet
+   *
+   * @remarks
+   * Use when retiring a costsheet (e.g. end-of-life product). Soft-deletes; status set to deleted.
+   */
+  async deleteCostsheet(
+    request: operations.DeleteCostsheetRequest,
+    options?: RequestOptions,
+  ): Promise<operations.DeleteCostsheetResponse> {
+    return unwrapAsync(costsDeleteCostsheet(
       this,
       request,
       options,

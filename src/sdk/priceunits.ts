@@ -16,6 +16,23 @@ import { unwrapAsync } from "./types/fp.js";
 
 export class PriceUnits extends ClientSDK {
   /**
+   * List price units
+   *
+   * @remarks
+   * Use when listing price units (e.g. in a catalog or when creating prices). Returns a paginated list; supports status, sort, and pagination.
+   */
+  async listPriceUnits(
+    request?: operations.ListPriceUnitsRequest | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.ListPriceUnitsResponse> {
+    return unwrapAsync(priceUnitsListPriceUnits(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Create price unit
    *
    * @remarks
@@ -26,40 +43,6 @@ export class PriceUnits extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.CreatePriceUnitResponse> {
     return unwrapAsync(priceUnitsCreatePriceUnit(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Delete price unit
-   *
-   * @remarks
-   * Use when removing a price unit that is no longer needed. Fails if any price references this unit.
-   */
-  async deletePriceUnit(
-    request: operations.DeletePriceUnitRequest,
-    options?: RequestOptions,
-  ): Promise<operations.DeletePriceUnitResponse> {
-    return unwrapAsync(priceUnitsDeletePriceUnit(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Get price unit
-   *
-   * @remarks
-   * Use when you need to load a single price unit (e.g. for display or when creating a price).
-   */
-  async getPriceUnit(
-    request: operations.GetPriceUnitRequest,
-    options?: RequestOptions,
-  ): Promise<operations.GetPriceUnitResponse> {
-    return unwrapAsync(priceUnitsGetPriceUnit(
       this,
       request,
       options,
@@ -84,16 +67,16 @@ export class PriceUnits extends ClientSDK {
   }
 
   /**
-   * List price units
+   * Query price units
    *
    * @remarks
-   * Use when listing price units (e.g. in a catalog or when creating prices). Returns a paginated list; supports status, sort, and pagination.
+   * Use when searching or listing price units (e.g. admin catalog). Returns a paginated list; supports filtering and sorting.
    */
-  async listPriceUnits(
-    request?: operations.ListPriceUnitsRequest | undefined,
+  async queryPriceUnit(
+    request: shared.PriceUnitFilter,
     options?: RequestOptions,
-  ): Promise<operations.ListPriceUnitsResponse> {
-    return unwrapAsync(priceUnitsListPriceUnits(
+  ): Promise<operations.QueryPriceUnitResponse> {
+    return unwrapAsync(priceUnitsQueryPriceUnit(
       this,
       request,
       options,
@@ -101,16 +84,16 @@ export class PriceUnits extends ClientSDK {
   }
 
   /**
-   * Query price units
+   * Get price unit
    *
    * @remarks
-   * Use when searching or listing price units (e.g. admin catalog). Returns a paginated list; supports filtering and sorting.
+   * Use when you need to load a single price unit (e.g. for display or when creating a price).
    */
-  async queryPriceUnit(
-    request: shared.TypesPriceUnitFilter,
+  async getPriceUnit(
+    request: operations.GetPriceUnitRequest,
     options?: RequestOptions,
-  ): Promise<operations.QueryPriceUnitResponse> {
-    return unwrapAsync(priceUnitsQueryPriceUnit(
+  ): Promise<operations.GetPriceUnitResponse> {
+    return unwrapAsync(priceUnitsGetPriceUnit(
       this,
       request,
       options,
@@ -128,6 +111,23 @@ export class PriceUnits extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.UpdatePriceUnitResponse> {
     return unwrapAsync(priceUnitsUpdatePriceUnit(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete price unit
+   *
+   * @remarks
+   * Use when removing a price unit that is no longer needed. Fails if any price references this unit.
+   */
+  async deletePriceUnit(
+    request: operations.DeletePriceUnitRequest,
+    options?: RequestOptions,
+  ): Promise<operations.DeletePriceUnitResponse> {
+    return unwrapAsync(priceUnitsDeletePriceUnit(
       this,
       request,
       options,

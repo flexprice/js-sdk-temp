@@ -8,6 +8,10 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  CommitmentInfo,
+  CommitmentInfo$inboundSchema,
+} from "./commitmentinfo.js";
+import {
   DtoSourceUsageItem,
   DtoSourceUsageItem$inboundSchema,
 } from "./dtosourceusageitem.js";
@@ -15,15 +19,11 @@ import {
   DtoUsageBreakdownItem,
   DtoUsageBreakdownItem$inboundSchema,
 } from "./dtousagebreakdownitem.js";
-import {
-  TypesCommitmentInfo,
-  TypesCommitmentInfo$inboundSchema,
-} from "./typescommitmentinfo.js";
-import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
+import { Status, Status$inboundSchema } from "./status.js";
 
 export type DtoInvoiceLineItemResponse = {
   amount?: string | undefined;
-  commitmentInfo?: TypesCommitmentInfo | undefined;
+  commitmentInfo?: CommitmentInfo | undefined;
   createdAt?: string | undefined;
   createdBy?: string | undefined;
   currency?: string | undefined;
@@ -58,7 +58,7 @@ export type DtoInvoiceLineItemResponse = {
   priceUnitAmount?: string | undefined;
   priceUnitId?: string | undefined;
   quantity?: string | undefined;
-  status?: TypesStatus | undefined;
+  status?: Status | undefined;
   subscriptionId?: string | undefined;
   tenantId?: string | undefined;
   updatedAt?: string | undefined;
@@ -80,7 +80,7 @@ export const DtoInvoiceLineItemResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   amount: z.string().optional(),
-  commitment_info: TypesCommitmentInfo$inboundSchema.optional(),
+  commitment_info: CommitmentInfo$inboundSchema.optional(),
   created_at: z.string().optional(),
   created_by: z.string().optional(),
   currency: z.string().optional(),
@@ -106,7 +106,7 @@ export const DtoInvoiceLineItemResponse$inboundSchema: z.ZodType<
   price_unit_amount: z.string().optional(),
   price_unit_id: z.string().optional(),
   quantity: z.string().optional(),
-  status: TypesStatus$inboundSchema.optional(),
+  status: Status$inboundSchema.optional(),
   subscription_id: z.string().optional(),
   tenant_id: z.string().optional(),
   updated_at: z.string().optional(),

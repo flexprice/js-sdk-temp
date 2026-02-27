@@ -5,6 +5,16 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
+  BillingCadence,
+  BillingCadence$outboundSchema,
+} from "./billingcadence.js";
+import { BillingModel, BillingModel$outboundSchema } from "./billingmodel.js";
+import {
+  BillingPeriod,
+  BillingPeriod$outboundSchema,
+} from "./billingperiod.js";
+import { BillingTier, BillingTier$outboundSchema } from "./billingtier.js";
+import {
   DtoCreatePriceTier,
   DtoCreatePriceTier$Outbound,
   DtoCreatePriceTier$outboundSchema,
@@ -15,61 +25,42 @@ import {
   DtoPriceUnitConfig$outboundSchema,
 } from "./dtopriceunitconfig.js";
 import {
+  InvoiceCadence,
+  InvoiceCadence$outboundSchema,
+} from "./invoicecadence.js";
+import {
+  PriceEntityType,
+  PriceEntityType$outboundSchema,
+} from "./priceentitytype.js";
+import {
   PriceTransformQuantity,
   PriceTransformQuantity$Outbound,
   PriceTransformQuantity$outboundSchema,
 } from "./pricetransformquantity.js";
+import { PriceType, PriceType$outboundSchema } from "./pricetype.js";
 import {
-  TypesBillingCadence,
-  TypesBillingCadence$outboundSchema,
-} from "./typesbillingcadence.js";
-import {
-  TypesBillingModel,
-  TypesBillingModel$outboundSchema,
-} from "./typesbillingmodel.js";
-import {
-  TypesBillingPeriod,
-  TypesBillingPeriod$outboundSchema,
-} from "./typesbillingperiod.js";
-import {
-  TypesBillingTier,
-  TypesBillingTier$outboundSchema,
-} from "./typesbillingtier.js";
-import {
-  TypesInvoiceCadence,
-  TypesInvoiceCadence$outboundSchema,
-} from "./typesinvoicecadence.js";
-import {
-  TypesPriceEntityType,
-  TypesPriceEntityType$outboundSchema,
-} from "./typespriceentitytype.js";
-import {
-  TypesPriceType,
-  TypesPriceType$outboundSchema,
-} from "./typespricetype.js";
-import {
-  TypesPriceUnitType,
-  TypesPriceUnitType$outboundSchema,
-} from "./typespriceunittype.js";
+  PriceUnitType,
+  PriceUnitType$outboundSchema,
+} from "./priceunittype.js";
 
 export type DtoCreatePriceRequest = {
   amount?: string | undefined;
-  billingCadence: TypesBillingCadence;
-  billingModel: TypesBillingModel;
-  billingPeriod: TypesBillingPeriod;
+  billingCadence: BillingCadence;
+  billingModel: BillingModel;
+  billingPeriod: BillingPeriod;
   billingPeriodCount?: number | undefined;
   currency: string;
   description?: string | undefined;
   displayName?: string | undefined;
   endDate?: string | undefined;
   entityId: string;
-  entityType: TypesPriceEntityType;
+  entityType: PriceEntityType;
   filterValues?: { [k: string]: Array<string> } | undefined;
   /**
    * GroupID is the id of the group to add the price to
    */
   groupId?: string | undefined;
-  invoiceCadence: TypesInvoiceCadence;
+  invoiceCadence: InvoiceCadence;
   lookupKey?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
   meterId?: string | undefined;
@@ -78,13 +69,13 @@ export type DtoCreatePriceRequest = {
    */
   minQuantity?: number | undefined;
   priceUnitConfig?: DtoPriceUnitConfig | undefined;
-  priceUnitType: TypesPriceUnitType;
+  priceUnitType: PriceUnitType;
   startDate?: string | undefined;
-  tierMode?: TypesBillingTier | undefined;
+  tierMode?: BillingTier | undefined;
   tiers?: Array<DtoCreatePriceTier> | undefined;
   transformQuantity?: PriceTransformQuantity | undefined;
   trialPeriod?: number | undefined;
-  type: TypesPriceType;
+  type: PriceType;
 };
 
 /** @internal */
@@ -124,31 +115,31 @@ export const DtoCreatePriceRequest$outboundSchema: z.ZodType<
   DtoCreatePriceRequest
 > = z.object({
   amount: z.string().optional(),
-  billingCadence: TypesBillingCadence$outboundSchema,
-  billingModel: TypesBillingModel$outboundSchema,
-  billingPeriod: TypesBillingPeriod$outboundSchema,
+  billingCadence: BillingCadence$outboundSchema,
+  billingModel: BillingModel$outboundSchema,
+  billingPeriod: BillingPeriod$outboundSchema,
   billingPeriodCount: z.number().int().optional(),
   currency: z.string(),
   description: z.string().optional(),
   displayName: z.string().optional(),
   endDate: z.string().optional(),
   entityId: z.string(),
-  entityType: TypesPriceEntityType$outboundSchema,
+  entityType: PriceEntityType$outboundSchema,
   filterValues: z.record(z.array(z.string())).optional(),
   groupId: z.string().optional(),
-  invoiceCadence: TypesInvoiceCadence$outboundSchema,
+  invoiceCadence: InvoiceCadence$outboundSchema,
   lookupKey: z.string().optional(),
   metadata: z.record(z.string()).optional(),
   meterId: z.string().optional(),
   minQuantity: z.number().int().optional(),
   priceUnitConfig: DtoPriceUnitConfig$outboundSchema.optional(),
-  priceUnitType: TypesPriceUnitType$outboundSchema,
+  priceUnitType: PriceUnitType$outboundSchema,
   startDate: z.string().optional(),
-  tierMode: TypesBillingTier$outboundSchema.optional(),
+  tierMode: BillingTier$outboundSchema.optional(),
   tiers: z.array(DtoCreatePriceTier$outboundSchema).optional(),
   transformQuantity: PriceTransformQuantity$outboundSchema.optional(),
   trialPeriod: z.number().int().optional(),
-  type: TypesPriceType$outboundSchema,
+  type: PriceType$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     billingCadence: "billing_cadence",

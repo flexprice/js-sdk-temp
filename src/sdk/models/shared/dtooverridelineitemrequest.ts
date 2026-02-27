@@ -4,6 +4,8 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { BillingModel, BillingModel$outboundSchema } from "./billingmodel.js";
+import { BillingTier, BillingTier$outboundSchema } from "./billingtier.js";
 import {
   DtoCreatePriceTier,
   DtoCreatePriceTier$Outbound,
@@ -14,21 +16,13 @@ import {
   PriceTransformQuantity$Outbound,
   PriceTransformQuantity$outboundSchema,
 } from "./pricetransformquantity.js";
-import {
-  TypesBillingModel,
-  TypesBillingModel$outboundSchema,
-} from "./typesbillingmodel.js";
-import {
-  TypesBillingTier,
-  TypesBillingTier$outboundSchema,
-} from "./typesbillingtier.js";
 
 export type DtoOverrideLineItemRequest = {
   /**
    * Amount is the new price amount that overrides the original price (optional)
    */
   amount?: string | undefined;
-  billingModel?: TypesBillingModel | undefined;
+  billingModel?: BillingModel | undefined;
   /**
    * PriceID references the plan price to override
    */
@@ -45,7 +39,7 @@ export type DtoOverrideLineItemRequest = {
    * Quantity for this line item (optional)
    */
   quantity?: string | undefined;
-  tierMode?: TypesBillingTier | undefined;
+  tierMode?: BillingTier | undefined;
   /**
    * Tiers determines the pricing tiers for this line item
    */
@@ -73,12 +67,12 @@ export const DtoOverrideLineItemRequest$outboundSchema: z.ZodType<
   DtoOverrideLineItemRequest
 > = z.object({
   amount: z.string().optional(),
-  billingModel: TypesBillingModel$outboundSchema.optional(),
+  billingModel: BillingModel$outboundSchema.optional(),
   priceId: z.string(),
   priceUnitAmount: z.string().optional(),
   priceUnitTiers: z.array(DtoCreatePriceTier$outboundSchema).optional(),
   quantity: z.string().optional(),
-  tierMode: TypesBillingTier$outboundSchema.optional(),
+  tierMode: BillingTier$outboundSchema.optional(),
   tiers: z.array(DtoCreatePriceTier$outboundSchema).optional(),
   transformQuantity: PriceTransformQuantity$outboundSchema.optional(),
 }).transform((v) => {

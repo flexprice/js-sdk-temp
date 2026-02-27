@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import {
-  TypesWindowSize,
-  TypesWindowSize$outboundSchema,
-} from "./typeswindowsize.js";
+import { WindowSize, WindowSize$outboundSchema } from "./windowsize.js";
 
 export type DtoGetUsageByMeterRequest = {
   /**
@@ -31,14 +28,14 @@ export type DtoGetUsageByMeterRequest = {
    *   - April period: 2024-04-05 14:30:45 to 2024-05-05 14:30:45
    */
   billingAnchor?: string | undefined;
-  bucketSize?: TypesWindowSize | undefined;
+  bucketSize?: WindowSize | undefined;
   customerId?: string | undefined;
   endTime?: string | undefined;
   externalCustomerId?: string | undefined;
   filters?: { [k: string]: Array<string> } | undefined;
   meterId: string;
   startTime?: string | undefined;
-  windowSize?: TypesWindowSize | undefined;
+  windowSize?: WindowSize | undefined;
 };
 
 /** @internal */
@@ -61,14 +58,14 @@ export const DtoGetUsageByMeterRequest$outboundSchema: z.ZodType<
   DtoGetUsageByMeterRequest
 > = z.object({
   billingAnchor: z.string().optional(),
-  bucketSize: TypesWindowSize$outboundSchema.optional(),
+  bucketSize: WindowSize$outboundSchema.optional(),
   customerId: z.string().optional(),
   endTime: z.string().optional(),
   externalCustomerId: z.string().optional(),
   filters: z.record(z.array(z.string())).optional(),
   meterId: z.string(),
   startTime: z.string().optional(),
-  windowSize: TypesWindowSize$outboundSchema.optional(),
+  windowSize: WindowSize$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     billingAnchor: "billing_anchor",

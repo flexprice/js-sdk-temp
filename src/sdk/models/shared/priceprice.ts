@@ -8,6 +8,21 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  BillingCadence,
+  BillingCadence$inboundSchema,
+} from "./billingcadence.js";
+import { BillingModel, BillingModel$inboundSchema } from "./billingmodel.js";
+import { BillingPeriod, BillingPeriod$inboundSchema } from "./billingperiod.js";
+import { BillingTier, BillingTier$inboundSchema } from "./billingtier.js";
+import {
+  InvoiceCadence,
+  InvoiceCadence$inboundSchema,
+} from "./invoicecadence.js";
+import {
+  PriceEntityType,
+  PriceEntityType$inboundSchema,
+} from "./priceentitytype.js";
+import {
   PriceJSONBTransformQuantity,
   PriceJSONBTransformQuantity$inboundSchema,
 } from "./pricejsonbtransformquantity.js";
@@ -15,39 +30,9 @@ import {
   PricePriceTier,
   PricePriceTier$inboundSchema,
 } from "./pricepricetier.js";
-import {
-  TypesBillingCadence,
-  TypesBillingCadence$inboundSchema,
-} from "./typesbillingcadence.js";
-import {
-  TypesBillingModel,
-  TypesBillingModel$inboundSchema,
-} from "./typesbillingmodel.js";
-import {
-  TypesBillingPeriod,
-  TypesBillingPeriod$inboundSchema,
-} from "./typesbillingperiod.js";
-import {
-  TypesBillingTier,
-  TypesBillingTier$inboundSchema,
-} from "./typesbillingtier.js";
-import {
-  TypesInvoiceCadence,
-  TypesInvoiceCadence$inboundSchema,
-} from "./typesinvoicecadence.js";
-import {
-  TypesPriceEntityType,
-  TypesPriceEntityType$inboundSchema,
-} from "./typespriceentitytype.js";
-import {
-  TypesPriceType,
-  TypesPriceType$inboundSchema,
-} from "./typespricetype.js";
-import {
-  TypesPriceUnitType,
-  TypesPriceUnitType$inboundSchema,
-} from "./typespriceunittype.js";
-import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
+import { PriceType, PriceType$inboundSchema } from "./pricetype.js";
+import { PriceUnitType, PriceUnitType$inboundSchema } from "./priceunittype.js";
+import { Status, Status$inboundSchema } from "./status.js";
 
 export type PricePrice = {
   /**
@@ -57,9 +42,9 @@ export type PricePrice = {
    * For USD: 12.50 means $12.50
    */
   amount?: string | undefined;
-  billingCadence?: TypesBillingCadence | undefined;
-  billingModel?: TypesBillingModel | undefined;
-  billingPeriod?: TypesBillingPeriod | undefined;
+  billingCadence?: BillingCadence | undefined;
+  billingModel?: BillingModel | undefined;
+  billingPeriod?: BillingPeriod | undefined;
   /**
    * BillingPeriodCount is the count of the billing period ex 1, 3, 6, 12
    */
@@ -101,7 +86,7 @@ export type PricePrice = {
    * EntityID holds the value of the "entity_id" field.
    */
   entityId?: string | undefined;
-  entityType?: TypesPriceEntityType | undefined;
+  entityType?: PriceEntityType | undefined;
   /**
    * EnvironmentID is the environment identifier for the price
    */
@@ -114,7 +99,7 @@ export type PricePrice = {
    * ID uuid identifier for the price
    */
   id?: string | undefined;
-  invoiceCadence?: TypesInvoiceCadence | undefined;
+  invoiceCadence?: InvoiceCadence | undefined;
   /**
    * LookupKey used for looking up the price in the database
    */
@@ -148,14 +133,14 @@ export type PricePrice = {
    * PriceUnitTiers are the tiers for the price unit when BillingModel is TIERED
    */
   priceUnitTiers?: Array<PricePriceTier> | undefined;
-  priceUnitType?: TypesPriceUnitType | undefined;
+  priceUnitType?: PriceUnitType | undefined;
   /**
    * StartDate is the start date of the price
    */
   startDate?: string | undefined;
-  status?: TypesStatus | undefined;
+  status?: Status | undefined;
   tenantId?: string | undefined;
-  tierMode?: TypesBillingTier | undefined;
+  tierMode?: BillingTier | undefined;
   tiers?: Array<PricePriceTier> | undefined;
   transformQuantity?: PriceJSONBTransformQuantity | undefined;
   /**
@@ -165,7 +150,7 @@ export type PricePrice = {
    * Note: This is only applicable for recurring prices (BILLING_CADENCE_RECURRING)
    */
   trialPeriod?: number | undefined;
-  type?: TypesPriceType | undefined;
+  type?: PriceType | undefined;
   updatedAt?: string | undefined;
   updatedBy?: string | undefined;
 };
@@ -177,9 +162,9 @@ export const PricePrice$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   amount: z.string().optional(),
-  billing_cadence: TypesBillingCadence$inboundSchema.optional(),
-  billing_model: TypesBillingModel$inboundSchema.optional(),
-  billing_period: TypesBillingPeriod$inboundSchema.optional(),
+  billing_cadence: BillingCadence$inboundSchema.optional(),
+  billing_model: BillingModel$inboundSchema.optional(),
+  billing_period: BillingPeriod$inboundSchema.optional(),
   billing_period_count: z.number().int().optional(),
   conversion_rate: z.string().optional(),
   created_at: z.string().optional(),
@@ -191,11 +176,11 @@ export const PricePrice$inboundSchema: z.ZodType<
   display_price_unit_amount: z.string().optional(),
   end_date: z.string().optional(),
   entity_id: z.string().optional(),
-  entity_type: TypesPriceEntityType$inboundSchema.optional(),
+  entity_type: PriceEntityType$inboundSchema.optional(),
   environment_id: z.string().optional(),
   group_id: z.string().optional(),
   id: z.string().optional(),
-  invoice_cadence: TypesInvoiceCadence$inboundSchema.optional(),
+  invoice_cadence: InvoiceCadence$inboundSchema.optional(),
   lookup_key: z.string().optional(),
   metadata: z.record(z.string()).optional(),
   meter_id: z.string().optional(),
@@ -205,15 +190,15 @@ export const PricePrice$inboundSchema: z.ZodType<
   price_unit_amount: z.string().optional(),
   price_unit_id: z.string().optional(),
   price_unit_tiers: z.array(PricePriceTier$inboundSchema).optional(),
-  price_unit_type: TypesPriceUnitType$inboundSchema.optional(),
+  price_unit_type: PriceUnitType$inboundSchema.optional(),
   start_date: z.string().optional(),
-  status: TypesStatus$inboundSchema.optional(),
+  status: Status$inboundSchema.optional(),
   tenant_id: z.string().optional(),
-  tier_mode: TypesBillingTier$inboundSchema.optional(),
+  tier_mode: BillingTier$inboundSchema.optional(),
   tiers: z.array(PricePriceTier$inboundSchema).optional(),
   transform_quantity: PriceJSONBTransformQuantity$inboundSchema.optional(),
   trial_period: z.number().int().optional(),
-  type: TypesPriceType$inboundSchema.optional(),
+  type: PriceType$inboundSchema.optional(),
   updated_at: z.string().optional(),
   updated_by: z.string().optional(),
 }).transform((v) => {

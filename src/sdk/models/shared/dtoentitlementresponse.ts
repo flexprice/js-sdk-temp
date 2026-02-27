@@ -20,18 +20,15 @@ import {
   DtoPlanResponse$inboundSchema,
 } from "./dtoplanresponse.js";
 import {
-  TypesEntitlementEntityType,
-  TypesEntitlementEntityType$inboundSchema,
-} from "./typesentitlemententitytype.js";
+  EntitlementEntityType,
+  EntitlementEntityType$inboundSchema,
+} from "./entitlemententitytype.js";
 import {
-  TypesEntitlementUsageResetPeriod,
-  TypesEntitlementUsageResetPeriod$inboundSchema,
-} from "./typesentitlementusageresetperiod.js";
-import {
-  TypesFeatureType,
-  TypesFeatureType$inboundSchema,
-} from "./typesfeaturetype.js";
-import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
+  EntitlementUsageResetPeriod,
+  EntitlementUsageResetPeriod$inboundSchema,
+} from "./entitlementusageresetperiod.js";
+import { FeatureType, FeatureType$inboundSchema } from "./featuretype.js";
+import { Status, Status$inboundSchema } from "./status.js";
 
 export type DtoEntitlementResponse = {
   addon?: DtoAddonResponse | undefined;
@@ -40,11 +37,11 @@ export type DtoEntitlementResponse = {
   displayOrder?: number | undefined;
   endDate?: string | undefined;
   entityId?: string | undefined;
-  entityType?: TypesEntitlementEntityType | undefined;
+  entityType?: EntitlementEntityType | undefined;
   environmentId?: string | undefined;
   feature?: DtoFeatureResponse | undefined;
   featureId?: string | undefined;
-  featureType?: TypesFeatureType | undefined;
+  featureType?: FeatureType | undefined;
   id?: string | undefined;
   isEnabled?: boolean | undefined;
   isSoftLimit?: boolean | undefined;
@@ -56,12 +53,12 @@ export type DtoEntitlementResponse = {
   planId?: string | undefined;
   startDate?: string | undefined;
   staticValue?: string | undefined;
-  status?: TypesStatus | undefined;
+  status?: Status | undefined;
   tenantId?: string | undefined;
   updatedAt?: string | undefined;
   updatedBy?: string | undefined;
   usageLimit?: number | undefined;
-  usageResetPeriod?: TypesEntitlementUsageResetPeriod | undefined;
+  usageResetPeriod?: EntitlementUsageResetPeriod | undefined;
 };
 
 /** @internal */
@@ -76,11 +73,11 @@ export const DtoEntitlementResponse$inboundSchema: z.ZodType<
   display_order: z.number().int().optional(),
   end_date: z.string().optional(),
   entity_id: z.string().optional(),
-  entity_type: TypesEntitlementEntityType$inboundSchema.optional(),
+  entity_type: EntitlementEntityType$inboundSchema.optional(),
   environment_id: z.string().optional(),
   feature: DtoFeatureResponse$inboundSchema.optional(),
   feature_id: z.string().optional(),
-  feature_type: TypesFeatureType$inboundSchema.optional(),
+  feature_type: FeatureType$inboundSchema.optional(),
   id: z.string().optional(),
   is_enabled: z.boolean().optional(),
   is_soft_limit: z.boolean().optional(),
@@ -89,12 +86,12 @@ export const DtoEntitlementResponse$inboundSchema: z.ZodType<
   plan_id: z.string().optional(),
   start_date: z.string().optional(),
   static_value: z.string().optional(),
-  status: TypesStatus$inboundSchema.optional(),
+  status: Status$inboundSchema.optional(),
   tenant_id: z.string().optional(),
   updated_at: z.string().optional(),
   updated_by: z.string().optional(),
   usage_limit: z.number().int().optional(),
-  usage_reset_period: TypesEntitlementUsageResetPeriod$inboundSchema.optional(),
+  usage_reset_period: EntitlementUsageResetPeriod$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "created_at": "createdAt",

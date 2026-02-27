@@ -11,13 +11,13 @@ import {
   DtoPriceUnitResponse$inboundSchema,
 } from "./dtopriceunitresponse.js";
 import {
-  TypesPaginationResponse,
-  TypesPaginationResponse$inboundSchema,
-} from "./typespaginationresponse.js";
+  PaginationResponse,
+  PaginationResponse$inboundSchema,
+} from "./paginationresponse.js";
 
 export type DtoListPriceUnitsResponse = {
   items?: Array<DtoPriceUnitResponse> | undefined;
-  pagination?: TypesPaginationResponse | undefined;
+  pagination?: PaginationResponse | undefined;
 };
 
 /** @internal */
@@ -27,7 +27,7 @@ export const DtoListPriceUnitsResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   items: z.array(DtoPriceUnitResponse$inboundSchema).optional(),
-  pagination: TypesPaginationResponse$inboundSchema.optional(),
+  pagination: PaginationResponse$inboundSchema.optional(),
 });
 
 export function dtoListPriceUnitsResponseFromJSON(

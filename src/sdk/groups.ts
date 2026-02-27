@@ -30,16 +30,16 @@ export class Groups extends ClientSDK {
   }
 
   /**
-   * Delete group
+   * Query groups
    *
    * @remarks
-   * Use when removing a group and clearing its entity associations (e.g. retiring a product line). Returns 204 or 200 on success.
+   * Use when listing or searching groups (e.g. admin catalog). Returns a paginated list; supports filtering and sorting.
    */
-  async deleteGroup(
-    request: operations.DeleteGroupRequest,
+  async queryGroup(
+    request: shared.GroupFilter,
     options?: RequestOptions,
-  ): Promise<shared.ErrorsErrorResponse | undefined> {
-    return unwrapAsync(groupsDeleteGroup(
+  ): Promise<operations.QueryGroupResponse> {
+    return unwrapAsync(groupsQueryGroup(
       this,
       request,
       options,
@@ -64,16 +64,16 @@ export class Groups extends ClientSDK {
   }
 
   /**
-   * Query groups
+   * Delete group
    *
    * @remarks
-   * Use when listing or searching groups (e.g. admin catalog). Returns a paginated list; supports filtering and sorting.
+   * Use when removing a group and clearing its entity associations (e.g. retiring a product line). Returns 204 or 200 on success.
    */
-  async queryGroup(
-    request: shared.TypesGroupFilter,
+  async deleteGroup(
+    request: operations.DeleteGroupRequest,
     options?: RequestOptions,
-  ): Promise<operations.QueryGroupResponse> {
-    return unwrapAsync(groupsQueryGroup(
+  ): Promise<shared.ErrorsErrorResponse | undefined> {
+    return unwrapAsync(groupsDeleteGroup(
       this,
       request,
       options,

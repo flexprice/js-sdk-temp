@@ -11,7 +11,7 @@ import {
   GithubComFlexpriceFlexpriceInternalDomainCouponCoupon,
   GithubComFlexpriceFlexpriceInternalDomainCouponCoupon$inboundSchema,
 } from "./githubcomflexpriceflexpriceinternaldomaincouponcoupon.js";
-import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
+import { Status, Status$inboundSchema } from "./status.js";
 
 export type DtoCouponAssociationResponse = {
   coupon?: GithubComFlexpriceFlexpriceInternalDomainCouponCoupon | undefined;
@@ -26,7 +26,7 @@ export type DtoCouponAssociationResponse = {
   id?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
   startDate?: string | undefined;
-  status?: TypesStatus | undefined;
+  status?: Status | undefined;
   /**
    * Mandatory
    */
@@ -60,7 +60,7 @@ export const DtoCouponAssociationResponse$inboundSchema: z.ZodType<
   id: z.string().optional(),
   metadata: z.record(z.string()).optional(),
   start_date: z.string().optional(),
-  status: TypesStatus$inboundSchema.optional(),
+  status: Status$inboundSchema.optional(),
   subscription_id: z.string().optional(),
   subscription_line_item_id: z.string().optional(),
   subscription_phase_id: z.string().optional(),

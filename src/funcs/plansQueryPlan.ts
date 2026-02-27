@@ -33,7 +33,7 @@ import { Result } from "../sdk/types/fp.js";
  */
 export function plansQueryPlan(
   client: FlexpriceCore,
-  request: shared.TypesPlanFilter,
+  request: shared.PlanFilter,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -57,7 +57,7 @@ export function plansQueryPlan(
 
 async function $do(
   client: FlexpriceCore,
-  request: shared.TypesPlanFilter,
+  request: shared.PlanFilter,
   options?: RequestOptions,
 ): Promise<
   [
@@ -77,7 +77,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => shared.TypesPlanFilter$outboundSchema.parse(value),
+    (value) => shared.PlanFilter$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {

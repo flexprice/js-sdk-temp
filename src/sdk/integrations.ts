@@ -13,40 +13,6 @@ import { unwrapAsync } from "./types/fp.js";
 
 export class Integrations extends ClientSDK {
   /**
-   * Create or update an integration
-   *
-   * @remarks
-   * Use when storing or updating credentials for an external integration (e.g. Stripe, HubSpot). Secrets are encrypted at rest.
-   */
-  async createOrUpdateIntegration(
-    request: operations.CreateOrUpdateIntegrationRequest,
-    options?: RequestOptions,
-  ): Promise<operations.CreateOrUpdateIntegrationResponse> {
-    return unwrapAsync(integrationsCreateOrUpdateIntegration(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Delete an integration
-   *
-   * @remarks
-   * Use when disconnecting an integration (e.g. switching provider or removing OAuth). Deletes stored credentials.
-   */
-  async deleteIntegration(
-    request: operations.DeleteIntegrationRequest,
-    options?: RequestOptions,
-  ): Promise<shared.ErrorsErrorResponse | undefined> {
-    return unwrapAsync(integrationsDeleteIntegration(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Get integration details
    *
    * @remarks
@@ -64,6 +30,23 @@ export class Integrations extends ClientSDK {
   }
 
   /**
+   * Create or update an integration
+   *
+   * @remarks
+   * Use when storing or updating credentials for an external integration (e.g. Stripe, HubSpot). Secrets are encrypted at rest.
+   */
+  async createOrUpdateIntegration(
+    request: operations.CreateOrUpdateIntegrationRequest,
+    options?: RequestOptions,
+  ): Promise<operations.CreateOrUpdateIntegrationResponse> {
+    return unwrapAsync(integrationsCreateOrUpdateIntegration(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * List linked integrations
    *
    * @remarks
@@ -74,6 +57,23 @@ export class Integrations extends ClientSDK {
   ): Promise<operations.ListLinkedIntegrationsResponse> {
     return unwrapAsync(integrationsListLinkedIntegrations(
       this,
+      options,
+    ));
+  }
+
+  /**
+   * Delete an integration
+   *
+   * @remarks
+   * Use when disconnecting an integration (e.g. switching provider or removing OAuth). Deletes stored credentials.
+   */
+  async deleteIntegration(
+    request: operations.DeleteIntegrationRequest,
+    options?: RequestOptions,
+  ): Promise<shared.ErrorsErrorResponse | undefined> {
+    return unwrapAsync(integrationsDeleteIntegration(
+      this,
+      request,
       options,
     ));
   }

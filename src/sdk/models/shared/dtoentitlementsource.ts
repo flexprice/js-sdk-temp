@@ -7,14 +7,11 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { BillingPeriod, BillingPeriod$inboundSchema } from "./billingperiod.js";
 import {
   DtoEntitlementSourceEntityType,
   DtoEntitlementSourceEntityType$inboundSchema,
 } from "./dtoentitlementsourceentitytype.js";
-import {
-  TypesBillingPeriod,
-  TypesBillingPeriod$inboundSchema,
-} from "./typesbillingperiod.js";
 
 export type DtoEntitlementSource = {
   entitlementId?: string | undefined;
@@ -26,7 +23,7 @@ export type DtoEntitlementSource = {
   staticValue?: string | undefined;
   subscriptionId?: string | undefined;
   usageLimit?: number | undefined;
-  usageResetPeriod?: TypesBillingPeriod | undefined;
+  usageResetPeriod?: BillingPeriod | undefined;
 };
 
 /** @internal */
@@ -44,7 +41,7 @@ export const DtoEntitlementSource$inboundSchema: z.ZodType<
   static_value: z.string().optional(),
   subscription_id: z.string().optional(),
   usage_limit: z.number().int().optional(),
-  usage_reset_period: TypesBillingPeriod$inboundSchema.optional(),
+  usage_reset_period: BillingPeriod$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "entitlement_id": "entitlementId",

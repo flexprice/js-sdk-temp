@@ -7,11 +7,8 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import {
-  TypesAddonType,
-  TypesAddonType$inboundSchema,
-} from "./typesaddontype.js";
-import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
+import { AddonType, AddonType$inboundSchema } from "./addontype.js";
+import { Status, Status$inboundSchema } from "./status.js";
 
 export type GithubComFlexpriceFlexpriceInternalDomainAddonAddon = {
   createdAt?: string | undefined;
@@ -22,9 +19,9 @@ export type GithubComFlexpriceFlexpriceInternalDomainAddonAddon = {
   lookupKey?: string | undefined;
   metadata?: { [k: string]: any } | undefined;
   name?: string | undefined;
-  status?: TypesStatus | undefined;
+  status?: Status | undefined;
   tenantId?: string | undefined;
-  type?: TypesAddonType | undefined;
+  type?: AddonType | undefined;
   updatedAt?: string | undefined;
   updatedBy?: string | undefined;
 };
@@ -44,9 +41,9 @@ export const GithubComFlexpriceFlexpriceInternalDomainAddonAddon$inboundSchema:
     lookup_key: z.string().optional(),
     metadata: z.record(z.any()).optional(),
     name: z.string().optional(),
-    status: TypesStatus$inboundSchema.optional(),
+    status: Status$inboundSchema.optional(),
     tenant_id: z.string().optional(),
-    type: TypesAddonType$inboundSchema.optional(),
+    type: AddonType$inboundSchema.optional(),
     updated_at: z.string().optional(),
     updated_by: z.string().optional(),
   }).transform((v) => {

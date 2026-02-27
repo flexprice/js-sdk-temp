@@ -5,16 +5,13 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
-  TypesAggregationType,
-  TypesAggregationType$outboundSchema,
-} from "./typesaggregationtype.js";
-import {
-  TypesWindowSize,
-  TypesWindowSize$outboundSchema,
-} from "./typeswindowsize.js";
+  AggregationType,
+  AggregationType$outboundSchema,
+} from "./aggregationtype.js";
+import { WindowSize, WindowSize$outboundSchema } from "./windowsize.js";
 
 export type DtoGetUsageRequest = {
-  aggregationType: TypesAggregationType;
+  aggregationType: AggregationType;
   /**
    * BillingAnchor enables custom monthly billing periods for usage aggregation.
    *
@@ -35,7 +32,7 @@ export type DtoGetUsageRequest = {
    * - "2024-02-29T12:00:00Z" (29th of each month at noon - handles leap years)
    */
   billingAnchor?: string | undefined;
-  bucketSize?: TypesWindowSize | undefined;
+  bucketSize?: WindowSize | undefined;
   customerId?: string | undefined;
   endTime?: string | undefined;
   eventName: string;
@@ -55,7 +52,7 @@ export type DtoGetUsageRequest = {
    */
   propertyName?: string | undefined;
   startTime?: string | undefined;
-  windowSize?: TypesWindowSize | undefined;
+  windowSize?: WindowSize | undefined;
 };
 
 /** @internal */
@@ -81,9 +78,9 @@ export const DtoGetUsageRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DtoGetUsageRequest
 > = z.object({
-  aggregationType: TypesAggregationType$outboundSchema,
+  aggregationType: AggregationType$outboundSchema,
   billingAnchor: z.string().optional(),
-  bucketSize: TypesWindowSize$outboundSchema.optional(),
+  bucketSize: WindowSize$outboundSchema.optional(),
   customerId: z.string().optional(),
   endTime: z.string().optional(),
   eventName: z.string(),
@@ -93,7 +90,7 @@ export const DtoGetUsageRequest$outboundSchema: z.ZodType<
   multiplier: z.string().optional(),
   propertyName: z.string().optional(),
   startTime: z.string().optional(),
-  windowSize: TypesWindowSize$outboundSchema.optional(),
+  windowSize: WindowSize$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     aggregationType: "aggregation_type",

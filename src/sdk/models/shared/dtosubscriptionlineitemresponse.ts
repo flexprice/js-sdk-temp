@@ -7,34 +7,28 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { BillingPeriod, BillingPeriod$inboundSchema } from "./billingperiod.js";
+import {
+  CommitmentType,
+  CommitmentType$inboundSchema,
+} from "./commitmenttype.js";
 import {
   DtoPriceResponse,
   DtoPriceResponse$inboundSchema,
 } from "./dtopriceresponse.js";
 import {
-  TypesBillingPeriod,
-  TypesBillingPeriod$inboundSchema,
-} from "./typesbillingperiod.js";
+  InvoiceCadence,
+  InvoiceCadence$inboundSchema,
+} from "./invoicecadence.js";
+import { PriceType, PriceType$inboundSchema } from "./pricetype.js";
+import { Status, Status$inboundSchema } from "./status.js";
 import {
-  TypesCommitmentType,
-  TypesCommitmentType$inboundSchema,
-} from "./typescommitmenttype.js";
-import {
-  TypesInvoiceCadence,
-  TypesInvoiceCadence$inboundSchema,
-} from "./typesinvoicecadence.js";
-import {
-  TypesPriceType,
-  TypesPriceType$inboundSchema,
-} from "./typespricetype.js";
-import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
-import {
-  TypesSubscriptionLineItemEntityType,
-  TypesSubscriptionLineItemEntityType$inboundSchema,
-} from "./typessubscriptionlineitementitytype.js";
+  SubscriptionLineItemEntityType,
+  SubscriptionLineItemEntityType$inboundSchema,
+} from "./subscriptionlineitementitytype.js";
 
 export type DtoSubscriptionLineItemResponse = {
-  billingPeriod?: TypesBillingPeriod | undefined;
+  billingPeriod?: BillingPeriod | undefined;
   /**
    * from price at create; default 1
    */
@@ -43,11 +37,11 @@ export type DtoSubscriptionLineItemResponse = {
    * Commitment fields
    */
   commitmentAmount?: string | undefined;
-  commitmentDuration?: TypesBillingPeriod | undefined;
+  commitmentDuration?: BillingPeriod | undefined;
   commitmentOverageFactor?: string | undefined;
   commitmentQuantity?: string | undefined;
   commitmentTrueUpEnabled?: boolean | undefined;
-  commitmentType?: TypesCommitmentType | undefined;
+  commitmentType?: CommitmentType | undefined;
   commitmentWindowed?: boolean | undefined;
   createdAt?: string | undefined;
   createdBy?: string | undefined;
@@ -56,22 +50,22 @@ export type DtoSubscriptionLineItemResponse = {
   displayName?: string | undefined;
   endDate?: string | undefined;
   entityId?: string | undefined;
-  entityType?: TypesSubscriptionLineItemEntityType | undefined;
+  entityType?: SubscriptionLineItemEntityType | undefined;
   environmentId?: string | undefined;
   id?: string | undefined;
-  invoiceCadence?: TypesInvoiceCadence | undefined;
+  invoiceCadence?: InvoiceCadence | undefined;
   metadata?: { [k: string]: string } | undefined;
   meterDisplayName?: string | undefined;
   meterId?: string | undefined;
   planDisplayName?: string | undefined;
   price?: DtoPriceResponse | undefined;
   priceId?: string | undefined;
-  priceType?: TypesPriceType | undefined;
+  priceType?: PriceType | undefined;
   priceUnit?: string | undefined;
   priceUnitId?: string | undefined;
   quantity?: string | undefined;
   startDate?: string | undefined;
-  status?: TypesStatus | undefined;
+  status?: Status | undefined;
   subscriptionId?: string | undefined;
   subscriptionPhaseId?: string | undefined;
   tenantId?: string | undefined;
@@ -86,14 +80,14 @@ export const DtoSubscriptionLineItemResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  billing_period: TypesBillingPeriod$inboundSchema.optional(),
+  billing_period: BillingPeriod$inboundSchema.optional(),
   billing_period_count: z.number().int().optional(),
   commitment_amount: z.string().optional(),
-  commitment_duration: TypesBillingPeriod$inboundSchema.optional(),
+  commitment_duration: BillingPeriod$inboundSchema.optional(),
   commitment_overage_factor: z.string().optional(),
   commitment_quantity: z.string().optional(),
   commitment_true_up_enabled: z.boolean().optional(),
-  commitment_type: TypesCommitmentType$inboundSchema.optional(),
+  commitment_type: CommitmentType$inboundSchema.optional(),
   commitment_windowed: z.boolean().optional(),
   created_at: z.string().optional(),
   created_by: z.string().optional(),
@@ -102,22 +96,22 @@ export const DtoSubscriptionLineItemResponse$inboundSchema: z.ZodType<
   display_name: z.string().optional(),
   end_date: z.string().optional(),
   entity_id: z.string().optional(),
-  entity_type: TypesSubscriptionLineItemEntityType$inboundSchema.optional(),
+  entity_type: SubscriptionLineItemEntityType$inboundSchema.optional(),
   environment_id: z.string().optional(),
   id: z.string().optional(),
-  invoice_cadence: TypesInvoiceCadence$inboundSchema.optional(),
+  invoice_cadence: InvoiceCadence$inboundSchema.optional(),
   metadata: z.record(z.string()).optional(),
   meter_display_name: z.string().optional(),
   meter_id: z.string().optional(),
   plan_display_name: z.string().optional(),
   price: DtoPriceResponse$inboundSchema.optional(),
   price_id: z.string().optional(),
-  price_type: TypesPriceType$inboundSchema.optional(),
+  price_type: PriceType$inboundSchema.optional(),
   price_unit: z.string().optional(),
   price_unit_id: z.string().optional(),
   quantity: z.string().optional(),
   start_date: z.string().optional(),
-  status: TypesStatus$inboundSchema.optional(),
+  status: Status$inboundSchema.optional(),
   subscription_id: z.string().optional(),
   subscription_phase_id: z.string().optional(),
   tenant_id: z.string().optional(),

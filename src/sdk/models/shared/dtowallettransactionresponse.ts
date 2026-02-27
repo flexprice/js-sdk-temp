@@ -19,23 +19,23 @@ import {
   DtoWalletResponse,
   DtoWalletResponse$inboundSchema,
 } from "./dtowalletresponse.js";
-import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
+import { Status, Status$inboundSchema } from "./status.js";
 import {
-  TypesTransactionReason,
-  TypesTransactionReason$inboundSchema,
-} from "./typestransactionreason.js";
+  TransactionReason,
+  TransactionReason$inboundSchema,
+} from "./transactionreason.js";
 import {
-  TypesTransactionStatus,
-  TypesTransactionStatus$inboundSchema,
-} from "./typestransactionstatus.js";
+  TransactionStatus,
+  TransactionStatus$inboundSchema,
+} from "./transactionstatus.js";
 import {
-  TypesTransactionType,
-  TypesTransactionType$inboundSchema,
-} from "./typestransactiontype.js";
+  TransactionType,
+  TransactionType$inboundSchema,
+} from "./transactiontype.js";
 import {
-  TypesWalletTxReferenceType,
-  TypesWalletTxReferenceType$inboundSchema,
-} from "./typeswallettxreferencetype.js";
+  WalletTxReferenceType,
+  WalletTxReferenceType$inboundSchema,
+} from "./wallettxreferencetype.js";
 
 export type DtoWalletTransactionResponse = {
   amount?: string | undefined;
@@ -64,16 +64,16 @@ export type DtoWalletTransactionResponse = {
   metadata?: { [k: string]: string } | undefined;
   priority?: number | undefined;
   referenceId?: string | undefined;
-  referenceType?: TypesWalletTxReferenceType | undefined;
-  status?: TypesStatus | undefined;
+  referenceType?: WalletTxReferenceType | undefined;
+  status?: Status | undefined;
   tenantId?: string | undefined;
   /**
    * topup_conversion_rate is the conversion rate for the topup to the currency
    */
   topupConversionRate?: string | undefined;
-  transactionReason?: TypesTransactionReason | undefined;
-  transactionStatus?: TypesTransactionStatus | undefined;
-  type?: TypesTransactionType | undefined;
+  transactionReason?: TransactionReason | undefined;
+  transactionStatus?: TransactionStatus | undefined;
+  type?: TransactionType | undefined;
   updatedAt?: string | undefined;
   updatedBy?: string | undefined;
   wallet?: DtoWalletResponse | undefined;
@@ -106,13 +106,13 @@ export const DtoWalletTransactionResponse$inboundSchema: z.ZodType<
   metadata: z.record(z.string()).optional(),
   priority: z.number().int().optional(),
   reference_id: z.string().optional(),
-  reference_type: TypesWalletTxReferenceType$inboundSchema.optional(),
-  status: TypesStatus$inboundSchema.optional(),
+  reference_type: WalletTxReferenceType$inboundSchema.optional(),
+  status: Status$inboundSchema.optional(),
   tenant_id: z.string().optional(),
   topup_conversion_rate: z.string().optional(),
-  transaction_reason: TypesTransactionReason$inboundSchema.optional(),
-  transaction_status: TypesTransactionStatus$inboundSchema.optional(),
-  type: TypesTransactionType$inboundSchema.optional(),
+  transaction_reason: TransactionReason$inboundSchema.optional(),
+  transaction_status: TransactionStatus$inboundSchema.optional(),
+  type: TransactionType$inboundSchema.optional(),
   updated_at: z.string().optional(),
   updated_by: z.string().optional(),
   wallet: DtoWalletResponse$inboundSchema.optional(),

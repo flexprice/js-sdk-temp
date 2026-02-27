@@ -7,7 +7,7 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
+import { Status, Status$inboundSchema } from "./status.js";
 
 /**
  * Customer response object containing all customer information
@@ -71,7 +71,7 @@ export type DtoCustomerResponse = {
    * ParentCustomerID is the parent customer identifier for the customer
    */
   parentCustomerId?: string | undefined;
-  status?: TypesStatus | undefined;
+  status?: Status | undefined;
   tenantId?: string | undefined;
   updatedAt?: string | undefined;
   updatedBy?: string | undefined;
@@ -99,7 +99,7 @@ export const DtoCustomerResponse$inboundSchema: z.ZodType<
   name: z.string().optional(),
   parent_customer: z.lazy(() => DtoCustomerResponse$inboundSchema).optional(),
   parent_customer_id: z.string().optional(),
-  status: TypesStatus$inboundSchema.optional(),
+  status: Status$inboundSchema.optional(),
   tenant_id: z.string().optional(),
   updated_at: z.string().optional(),
   updated_by: z.string().optional(),

@@ -4,12 +4,83 @@
 
 ### Available Operations
 
-* [createTask](#createtask) - Create a new task
-* [downloadTaskExport](#downloadtaskexport) - Download task export file
-* [getTask](#gettask) - Get a task
-* [getTaskResult](#gettaskresult) - Get task processing result
 * [listTasks](#listtasks) - List tasks
+* [createTask](#createtask) - Create a new task
+* [getTaskResult](#gettaskresult) - Get task processing result
+* [getTask](#gettask) - Get a task
+* [downloadTaskExport](#downloadtaskexport) - Download task export file
 * [updateTaskStatus](#updatetaskstatus) - Update task status
+
+## listTasks
+
+Use when listing or searching async tasks (e.g. admin queue view). Returns list with optional filtering.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="listTasks" method="get" path="/tasks" -->
+```typescript
+import { Flexprice } from "flexprice-ts-temp";
+
+const flexprice = new Flexprice({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const result = await flexprice.tasks.listTasks();
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { FlexpriceCore } from "flexprice-ts-temp/core.js";
+import { tasksListTasks } from "flexprice-ts-temp/funcs/tasksListTasks.js";
+
+// Use `FlexpriceCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const flexprice = new FlexpriceCore({
+  serverURL: "https://api.example.com",
+  apiKeyAuth: "<YOUR_API_KEY_HERE>",
+});
+
+async function run() {
+  const res = await tasksListTasks(flexprice);
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("tasksListTasks failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.ListTasksRequest](../../sdk/models/operations/listtasksrequest.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.ListTasksResponse](../../sdk/models/operations/listtasksresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## createTask
 
@@ -92,13 +163,13 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## downloadTaskExport
+## getTaskResult
 
-Use when letting a user download an exported file (e.g. report or data export). Returns a presigned URL; supports FlexPrice or customer-owned S3.
+Use when fetching the outcome of a completed task (e.g. export URL or error message). Call after task status is complete.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="downloadTaskExport" method="get" path="/tasks/{id}/download" -->
+<!-- UsageSnippet language="typescript" operationID="getTaskResult" method="get" path="/tasks/result" -->
 ```typescript
 import { Flexprice } from "flexprice-ts-temp";
 
@@ -108,8 +179,8 @@ const flexprice = new Flexprice({
 });
 
 async function run() {
-  const result = await flexprice.tasks.downloadTaskExport({
-    id: "<id>",
+  const result = await flexprice.tasks.getTaskResult({
+    workflowId: "<id>",
   });
 
   console.log(result);
@@ -124,7 +195,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexpriceCore } from "flexprice-ts-temp/core.js";
-import { tasksDownloadTaskExport } from "flexprice-ts-temp/funcs/tasksDownloadTaskExport.js";
+import { tasksGetTaskResult } from "flexprice-ts-temp/funcs/tasksGetTaskResult.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -134,14 +205,14 @@ const flexprice = new FlexpriceCore({
 });
 
 async function run() {
-  const res = await tasksDownloadTaskExport(flexprice, {
-    id: "<id>",
+  const res = await tasksGetTaskResult(flexprice, {
+    workflowId: "<id>",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("tasksDownloadTaskExport failed:", res.error);
+    console.log("tasksGetTaskResult failed:", res.error);
   }
 }
 
@@ -152,14 +223,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.DownloadTaskExportRequest](../../sdk/models/operations/downloadtaskexportrequest.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetTaskResultRequest](../../sdk/models/operations/gettaskresultrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.DownloadTaskExportResponse](../../sdk/models/operations/downloadtaskexportresponse.md)\>**
+**Promise\<[operations.GetTaskResultResponse](../../sdk/models/operations/gettaskresultresponse.md)\>**
 
 ### Errors
 
@@ -242,13 +313,13 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## getTaskResult
+## downloadTaskExport
 
-Use when fetching the outcome of a completed task (e.g. export URL or error message). Call after task status is complete.
+Use when letting a user download an exported file (e.g. report or data export). Returns a presigned URL; supports FlexPrice or customer-owned S3.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="getTaskResult" method="get" path="/tasks/result" -->
+<!-- UsageSnippet language="typescript" operationID="downloadTaskExport" method="get" path="/tasks/{id}/download" -->
 ```typescript
 import { Flexprice } from "flexprice-ts-temp";
 
@@ -258,8 +329,8 @@ const flexprice = new Flexprice({
 });
 
 async function run() {
-  const result = await flexprice.tasks.getTaskResult({
-    workflowId: "<id>",
+  const result = await flexprice.tasks.downloadTaskExport({
+    id: "<id>",
   });
 
   console.log(result);
@@ -274,7 +345,7 @@ The standalone function version of this method:
 
 ```typescript
 import { FlexpriceCore } from "flexprice-ts-temp/core.js";
-import { tasksGetTaskResult } from "flexprice-ts-temp/funcs/tasksGetTaskResult.js";
+import { tasksDownloadTaskExport } from "flexprice-ts-temp/funcs/tasksDownloadTaskExport.js";
 
 // Use `FlexpriceCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -284,14 +355,14 @@ const flexprice = new FlexpriceCore({
 });
 
 async function run() {
-  const res = await tasksGetTaskResult(flexprice, {
-    workflowId: "<id>",
+  const res = await tasksDownloadTaskExport(flexprice, {
+    id: "<id>",
   });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("tasksGetTaskResult failed:", res.error);
+    console.log("tasksDownloadTaskExport failed:", res.error);
   }
 }
 
@@ -302,85 +373,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetTaskResultRequest](../../sdk/models/operations/gettaskresultrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.DownloadTaskExportRequest](../../sdk/models/operations/downloadtaskexportrequest.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.GetTaskResultResponse](../../sdk/models/operations/gettaskresultresponse.md)\>**
-
-### Errors
-
-| Error Type      | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4XX, 5XX        | \*/\*           |
-
-## listTasks
-
-Use when listing or searching async tasks (e.g. admin queue view). Returns list with optional filtering.
-
-### Example Usage
-
-<!-- UsageSnippet language="typescript" operationID="listTasks" method="get" path="/tasks" -->
-```typescript
-import { Flexprice } from "flexprice-ts-temp";
-
-const flexprice = new Flexprice({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const result = await flexprice.tasks.listTasks();
-
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { FlexpriceCore } from "flexprice-ts-temp/core.js";
-import { tasksListTasks } from "flexprice-ts-temp/funcs/tasksListTasks.js";
-
-// Use `FlexpriceCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const flexprice = new FlexpriceCore({
-  serverURL: "https://api.example.com",
-  apiKeyAuth: "<YOUR_API_KEY_HERE>",
-});
-
-async function run() {
-  const res = await tasksListTasks(flexprice);
-  if (res.ok) {
-    const { value: result } = res;
-    console.log(result);
-  } else {
-    console.log("tasksListTasks failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.ListTasksRequest](../../sdk/models/operations/listtasksrequest.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[operations.ListTasksResponse](../../sdk/models/operations/listtasksresponse.md)\>**
+**Promise\<[operations.DownloadTaskExportResponse](../../sdk/models/operations/downloadtaskexportresponse.md)\>**
 
 ### Errors
 

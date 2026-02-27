@@ -5,9 +5,9 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
-  TypesTransactionReason,
-  TypesTransactionReason$outboundSchema,
-} from "./typestransactionreason.js";
+  TransactionReason,
+  TransactionReason$outboundSchema,
+} from "./transactionreason.js";
 
 export type DtoTopUpWalletRequest = {
   /**
@@ -49,7 +49,7 @@ export type DtoTopUpWalletRequest = {
    * default is nil which means no priority at all
    */
   priority?: number | undefined;
-  transactionReason: TypesTransactionReason;
+  transactionReason: TransactionReason;
 };
 
 /** @internal */
@@ -77,7 +77,7 @@ export const DtoTopUpWalletRequest$outboundSchema: z.ZodType<
   idempotencyKey: z.string().optional(),
   metadata: z.record(z.string()).optional(),
   priority: z.number().int().optional(),
-  transactionReason: TypesTransactionReason$outboundSchema,
+  transactionReason: TransactionReason$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     creditsToAdd: "credits_to_add",

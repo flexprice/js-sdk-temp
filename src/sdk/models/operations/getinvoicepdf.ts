@@ -20,9 +20,9 @@ export type GetInvoicePdfRequest = {
 };
 
 export type GetInvoicePdfResponse =
+  | ReadableStream<Uint8Array>
   | Uint8Array
-  | string
-  | ReadableStream<Uint8Array>;
+  | string;
 
 /** @internal */
 export type GetInvoicePdfRequest$Outbound = {
@@ -53,7 +53,7 @@ export const GetInvoicePdfResponse$inboundSchema: z.ZodType<
   GetInvoicePdfResponse,
   z.ZodTypeDef,
   unknown
-> = z.union([b64$.zodInbound, z.instanceof(ReadableStream<Uint8Array>)]);
+> = z.union([z.instanceof(ReadableStream<Uint8Array>), b64$.zodInbound]);
 
 export function getInvoicePdfResponseFromJSON(
   jsonString: string,

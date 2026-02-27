@@ -8,6 +8,13 @@ import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
+  AlertEntityType,
+  AlertEntityType$inboundSchema,
+} from "./alertentitytype.js";
+import { AlertInfo, AlertInfo$inboundSchema } from "./alertinfo.js";
+import { AlertState, AlertState$inboundSchema } from "./alertstate.js";
+import { AlertType, AlertType$inboundSchema } from "./alerttype.js";
+import {
   DtoCustomerResponse,
   DtoCustomerResponse$inboundSchema,
 } from "./dtocustomerresponse.js";
@@ -19,27 +26,11 @@ import {
   DtoWalletResponse,
   DtoWalletResponse$inboundSchema,
 } from "./dtowalletresponse.js";
-import {
-  TypesAlertEntityType,
-  TypesAlertEntityType$inboundSchema,
-} from "./typesalertentitytype.js";
-import {
-  TypesAlertInfo,
-  TypesAlertInfo$inboundSchema,
-} from "./typesalertinfo.js";
-import {
-  TypesAlertState,
-  TypesAlertState$inboundSchema,
-} from "./typesalertstate.js";
-import {
-  TypesAlertType,
-  TypesAlertType$inboundSchema,
-} from "./typesalerttype.js";
 
 export type DtoAlertLogResponse = {
-  alertInfo?: TypesAlertInfo | undefined;
-  alertStatus?: TypesAlertState | undefined;
-  alertType?: TypesAlertType | undefined;
+  alertInfo?: AlertInfo | undefined;
+  alertStatus?: AlertState | undefined;
+  alertType?: AlertType | undefined;
   createdAt?: string | undefined;
   createdBy?: string | undefined;
   /**
@@ -48,7 +39,7 @@ export type DtoAlertLogResponse = {
   customer?: DtoCustomerResponse | undefined;
   customerId?: string | undefined;
   entityId?: string | undefined;
-  entityType?: TypesAlertEntityType | undefined;
+  entityType?: AlertEntityType | undefined;
   environmentId?: string | undefined;
   feature?: DtoFeatureResponse | undefined;
   id?: string | undefined;
@@ -67,15 +58,15 @@ export const DtoAlertLogResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  alert_info: TypesAlertInfo$inboundSchema.optional(),
-  alert_status: TypesAlertState$inboundSchema.optional(),
-  alert_type: TypesAlertType$inboundSchema.optional(),
+  alert_info: AlertInfo$inboundSchema.optional(),
+  alert_status: AlertState$inboundSchema.optional(),
+  alert_type: AlertType$inboundSchema.optional(),
   created_at: z.string().optional(),
   created_by: z.string().optional(),
   customer: DtoCustomerResponse$inboundSchema.optional(),
   customer_id: z.string().optional(),
   entity_id: z.string().optional(),
-  entity_type: TypesAlertEntityType$inboundSchema.optional(),
+  entity_type: AlertEntityType$inboundSchema.optional(),
   environment_id: z.string().optional(),
   feature: DtoFeatureResponse$inboundSchema.optional(),
   id: z.string().optional(),

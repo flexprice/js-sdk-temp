@@ -7,42 +7,24 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import { AlertSettings, AlertSettings$inboundSchema } from "./alertsettings.js";
+import { AlertState, AlertState$inboundSchema } from "./alertstate.js";
+import { AutoTopup, AutoTopup$inboundSchema } from "./autotopup.js";
 import {
-  TypesAlertSettings,
-  TypesAlertSettings$inboundSchema,
-} from "./typesalertsettings.js";
-import {
-  TypesAlertState,
-  TypesAlertState$inboundSchema,
-} from "./typesalertstate.js";
-import {
-  TypesAutoTopup,
-  TypesAutoTopup$inboundSchema,
-} from "./typesautotopup.js";
-import {
-  TypesCreditBreakdown,
-  TypesCreditBreakdown$inboundSchema,
-} from "./typescreditbreakdown.js";
-import { TypesStatus, TypesStatus$inboundSchema } from "./typesstatus.js";
-import {
-  TypesWalletConfig,
-  TypesWalletConfig$inboundSchema,
-} from "./typeswalletconfig.js";
-import {
-  TypesWalletStatus,
-  TypesWalletStatus$inboundSchema,
-} from "./typeswalletstatus.js";
-import {
-  TypesWalletType,
-  TypesWalletType$inboundSchema,
-} from "./typeswallettype.js";
+  CreditBreakdown,
+  CreditBreakdown$inboundSchema,
+} from "./creditbreakdown.js";
+import { Status, Status$inboundSchema } from "./status.js";
+import { WalletConfig, WalletConfig$inboundSchema } from "./walletconfig.js";
+import { WalletStatus, WalletStatus$inboundSchema } from "./walletstatus.js";
+import { WalletType, WalletType$inboundSchema } from "./wallettype.js";
 
 export type DtoWalletResponse = {
-  alertSettings?: TypesAlertSettings | undefined;
-  alertState?: TypesAlertState | undefined;
-  autoTopup?: TypesAutoTopup | undefined;
+  alertSettings?: AlertSettings | undefined;
+  alertState?: AlertState | undefined;
+  autoTopup?: AutoTopup | undefined;
   balance?: string | undefined;
-  config?: TypesWalletConfig | undefined;
+  config?: WalletConfig | undefined;
   /**
    * amount in the currency =  number of credits * conversion_rate
    *
@@ -55,7 +37,7 @@ export type DtoWalletResponse = {
   createdAt?: string | undefined;
   createdBy?: string | undefined;
   creditBalance?: string | undefined;
-  creditsAvailableBreakdown?: TypesCreditBreakdown | undefined;
+  creditsAvailableBreakdown?: CreditBreakdown | undefined;
   currency?: string | undefined;
   customerId?: string | undefined;
   description?: string | undefined;
@@ -63,7 +45,7 @@ export type DtoWalletResponse = {
   id?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
   name?: string | undefined;
-  status?: TypesStatus | undefined;
+  status?: Status | undefined;
   tenantId?: string | undefined;
   /**
    * topup_conversion_rate is the conversion rate for the topup to the currency
@@ -76,8 +58,8 @@ export type DtoWalletResponse = {
   topupConversionRate?: string | undefined;
   updatedAt?: string | undefined;
   updatedBy?: string | undefined;
-  walletStatus?: TypesWalletStatus | undefined;
-  walletType?: TypesWalletType | undefined;
+  walletStatus?: WalletStatus | undefined;
+  walletType?: WalletType | undefined;
 };
 
 /** @internal */
@@ -86,16 +68,16 @@ export const DtoWalletResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  alert_settings: TypesAlertSettings$inboundSchema.optional(),
-  alert_state: TypesAlertState$inboundSchema.optional(),
-  auto_topup: TypesAutoTopup$inboundSchema.optional(),
+  alert_settings: AlertSettings$inboundSchema.optional(),
+  alert_state: AlertState$inboundSchema.optional(),
+  auto_topup: AutoTopup$inboundSchema.optional(),
   balance: z.string().optional(),
-  config: TypesWalletConfig$inboundSchema.optional(),
+  config: WalletConfig$inboundSchema.optional(),
   conversion_rate: z.string().optional(),
   created_at: z.string().optional(),
   created_by: z.string().optional(),
   credit_balance: z.string().optional(),
-  credits_available_breakdown: TypesCreditBreakdown$inboundSchema.optional(),
+  credits_available_breakdown: CreditBreakdown$inboundSchema.optional(),
   currency: z.string().optional(),
   customer_id: z.string().optional(),
   description: z.string().optional(),
@@ -103,13 +85,13 @@ export const DtoWalletResponse$inboundSchema: z.ZodType<
   id: z.string().optional(),
   metadata: z.record(z.string()).optional(),
   name: z.string().optional(),
-  status: TypesStatus$inboundSchema.optional(),
+  status: Status$inboundSchema.optional(),
   tenant_id: z.string().optional(),
   topup_conversion_rate: z.string().optional(),
   updated_at: z.string().optional(),
   updated_by: z.string().optional(),
-  wallet_status: TypesWalletStatus$inboundSchema.optional(),
-  wallet_type: TypesWalletType$inboundSchema.optional(),
+  wallet_status: WalletStatus$inboundSchema.optional(),
+  wallet_type: WalletType$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "alert_settings": "alertSettings",

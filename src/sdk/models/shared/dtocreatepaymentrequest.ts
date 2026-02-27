@@ -5,29 +5,29 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
-  TypesPaymentDestinationType,
-  TypesPaymentDestinationType$outboundSchema,
-} from "./typespaymentdestinationtype.js";
+  PaymentDestinationType,
+  PaymentDestinationType$outboundSchema,
+} from "./paymentdestinationtype.js";
 import {
-  TypesPaymentGatewayType,
-  TypesPaymentGatewayType$outboundSchema,
-} from "./typespaymentgatewaytype.js";
+  PaymentGatewayType,
+  PaymentGatewayType$outboundSchema,
+} from "./paymentgatewaytype.js";
 import {
-  TypesPaymentMethodType,
-  TypesPaymentMethodType$outboundSchema,
-} from "./typespaymentmethodtype.js";
+  PaymentMethodType,
+  PaymentMethodType$outboundSchema,
+} from "./paymentmethodtype.js";
 
 export type DtoCreatePaymentRequest = {
   amount: string;
   cancelUrl?: string | undefined;
   currency: string;
   destinationId: string;
-  destinationType: TypesPaymentDestinationType;
+  destinationType: PaymentDestinationType;
   idempotencyKey?: string | undefined;
   metadata?: { [k: string]: string } | undefined;
-  paymentGateway?: TypesPaymentGatewayType | undefined;
+  paymentGateway?: PaymentGatewayType | undefined;
   paymentMethodId?: string | undefined;
-  paymentMethodType: TypesPaymentMethodType;
+  paymentMethodType: PaymentMethodType;
   processPayment?: boolean | undefined;
   saveCardAndMakeDefault?: boolean | undefined;
   successUrl?: string | undefined;
@@ -60,12 +60,12 @@ export const DtoCreatePaymentRequest$outboundSchema: z.ZodType<
   cancelUrl: z.string().optional(),
   currency: z.string(),
   destinationId: z.string(),
-  destinationType: TypesPaymentDestinationType$outboundSchema,
+  destinationType: PaymentDestinationType$outboundSchema,
   idempotencyKey: z.string().optional(),
   metadata: z.record(z.string()).optional(),
-  paymentGateway: TypesPaymentGatewayType$outboundSchema.optional(),
+  paymentGateway: PaymentGatewayType$outboundSchema.optional(),
   paymentMethodId: z.string().optional(),
-  paymentMethodType: TypesPaymentMethodType$outboundSchema,
+  paymentMethodType: PaymentMethodType$outboundSchema,
   processPayment: z.boolean().default(true),
   saveCardAndMakeDefault: z.boolean().default(false),
   successUrl: z.string().optional(),

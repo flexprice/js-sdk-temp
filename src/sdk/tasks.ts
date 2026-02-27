@@ -15,6 +15,23 @@ import { unwrapAsync } from "./types/fp.js";
 
 export class Tasks extends ClientSDK {
   /**
+   * List tasks
+   *
+   * @remarks
+   * Use when listing or searching async tasks (e.g. admin queue view). Returns list with optional filtering.
+   */
+  async listTasks(
+    request?: operations.ListTasksRequest | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.ListTasksResponse> {
+    return unwrapAsync(tasksListTasks(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Create a new task
    *
    * @remarks
@@ -25,40 +42,6 @@ export class Tasks extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.CreateTaskResponse> {
     return unwrapAsync(tasksCreateTask(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Download task export file
-   *
-   * @remarks
-   * Use when letting a user download an exported file (e.g. report or data export). Returns a presigned URL; supports FlexPrice or customer-owned S3.
-   */
-  async downloadTaskExport(
-    request: operations.DownloadTaskExportRequest,
-    options?: RequestOptions,
-  ): Promise<operations.DownloadTaskExportResponse> {
-    return unwrapAsync(tasksDownloadTaskExport(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Get a task
-   *
-   * @remarks
-   * Use when checking task status or progress (e.g. polling after create). Returns task by ID.
-   */
-  async getTask(
-    request: operations.GetTaskRequest,
-    options?: RequestOptions,
-  ): Promise<operations.GetTaskResponse> {
-    return unwrapAsync(tasksGetTask(
       this,
       request,
       options,
@@ -83,16 +66,33 @@ export class Tasks extends ClientSDK {
   }
 
   /**
-   * List tasks
+   * Get a task
    *
    * @remarks
-   * Use when listing or searching async tasks (e.g. admin queue view). Returns list with optional filtering.
+   * Use when checking task status or progress (e.g. polling after create). Returns task by ID.
    */
-  async listTasks(
-    request?: operations.ListTasksRequest | undefined,
+  async getTask(
+    request: operations.GetTaskRequest,
     options?: RequestOptions,
-  ): Promise<operations.ListTasksResponse> {
-    return unwrapAsync(tasksListTasks(
+  ): Promise<operations.GetTaskResponse> {
+    return unwrapAsync(tasksGetTask(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Download task export file
+   *
+   * @remarks
+   * Use when letting a user download an exported file (e.g. report or data export). Returns a presigned URL; supports FlexPrice or customer-owned S3.
+   */
+  async downloadTaskExport(
+    request: operations.DownloadTaskExportRequest,
+    options?: RequestOptions,
+  ): Promise<operations.DownloadTaskExportResponse> {
+    return unwrapAsync(tasksDownloadTaskExport(
       this,
       request,
       options,

@@ -19,8 +19,8 @@ export type ScheduleUpdateBillingPeriodRequest = {};
 export type ScheduleUpdateBillingPeriodResponseBody = {};
 
 export type ScheduleUpdateBillingPeriodResponse =
-  | shared.ErrorsErrorResponse
-  | ScheduleUpdateBillingPeriodResponseBody;
+  | ScheduleUpdateBillingPeriodResponseBody
+  | shared.ErrorsErrorResponse;
 
 /** @internal */
 export type ScheduleUpdateBillingPeriodRequest$Outbound = {};
@@ -71,8 +71,8 @@ export const ScheduleUpdateBillingPeriodResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  shared.ErrorsErrorResponse$inboundSchema,
   z.lazy(() => ScheduleUpdateBillingPeriodResponseBody$inboundSchema),
+  shared.ErrorsErrorResponse$inboundSchema,
 ]);
 
 export function scheduleUpdateBillingPeriodResponseFromJSON(

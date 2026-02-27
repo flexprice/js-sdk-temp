@@ -5,6 +5,19 @@
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
+  BillingCadence,
+  BillingCadence$outboundSchema,
+} from "./billingcadence.js";
+import { BillingCycle, BillingCycle$outboundSchema } from "./billingcycle.js";
+import {
+  BillingPeriod,
+  BillingPeriod$outboundSchema,
+} from "./billingperiod.js";
+import {
+  CollectionMethod,
+  CollectionMethod$outboundSchema,
+} from "./collectionmethod.js";
+import {
   DtoAddAddonToSubscriptionRequest,
   DtoAddAddonToSubscriptionRequest$Outbound,
   DtoAddAddonToSubscriptionRequest$outboundSchema,
@@ -45,57 +58,38 @@ import {
   DtoTaxRateOverride$outboundSchema,
 } from "./dtotaxrateoverride.js";
 import {
-  TypesBillingCadence,
-  TypesBillingCadence$outboundSchema,
-} from "./typesbillingcadence.js";
+  InvoiceBilling,
+  InvoiceBilling$outboundSchema,
+} from "./invoicebilling.js";
 import {
-  TypesBillingCycle,
-  TypesBillingCycle$outboundSchema,
-} from "./typesbillingcycle.js";
+  PaymentBehavior,
+  PaymentBehavior$outboundSchema,
+} from "./paymentbehavior.js";
+import { PaymentTerms, PaymentTerms$outboundSchema } from "./paymentterms.js";
 import {
-  TypesBillingPeriod,
-  TypesBillingPeriod$outboundSchema,
-} from "./typesbillingperiod.js";
+  ProrationBehavior,
+  ProrationBehavior$outboundSchema,
+} from "./prorationbehavior.js";
 import {
-  TypesCollectionMethod,
-  TypesCollectionMethod$outboundSchema,
-} from "./typescollectionmethod.js";
-import {
-  TypesInvoiceBilling,
-  TypesInvoiceBilling$outboundSchema,
-} from "./typesinvoicebilling.js";
-import {
-  TypesPaymentBehavior,
-  TypesPaymentBehavior$outboundSchema,
-} from "./typespaymentbehavior.js";
-import {
-  TypesPaymentTerms,
-  TypesPaymentTerms$outboundSchema,
-} from "./typespaymentterms.js";
-import {
-  TypesProrationBehavior,
-  TypesProrationBehavior$outboundSchema,
-} from "./typesprorationbehavior.js";
-import {
-  TypesSubscriptionStatus,
-  TypesSubscriptionStatus$outboundSchema,
-} from "./typessubscriptionstatus.js";
+  SubscriptionStatus,
+  SubscriptionStatus$outboundSchema,
+} from "./subscriptionstatus.js";
 
 export type DtoCreateSubscriptionRequest = {
   /**
    * Addons represents addons to be added to the subscription during creation
    */
   addons?: Array<DtoAddAddonToSubscriptionRequest> | undefined;
-  billingCadence: TypesBillingCadence;
-  billingCycle?: TypesBillingCycle | undefined;
-  billingPeriod: TypesBillingPeriod;
+  billingCadence: BillingCadence;
+  billingCycle?: BillingCycle | undefined;
+  billingPeriod: BillingPeriod;
   billingPeriodCount?: number | undefined;
-  collectionMethod?: TypesCollectionMethod | undefined;
+  collectionMethod?: CollectionMethod | undefined;
   /**
    * CommitmentAmount is the minimum amount a customer commits to paying for a billing period
    */
   commitmentAmount?: string | undefined;
-  commitmentDuration?: TypesBillingPeriod | undefined;
+  commitmentDuration?: BillingPeriod | undefined;
   coupons?: Array<string> | undefined;
   /**
    * Credit grants to be applied when subscription is created
@@ -129,7 +123,7 @@ export type DtoCreateSubscriptionRequest = {
    */
   externalCustomerId?: string | undefined;
   gatewayPaymentMethodId?: string | undefined;
-  invoiceBilling?: TypesInvoiceBilling | undefined;
+  invoiceBilling?: InvoiceBilling | undefined;
   /**
    * LineItemCommitments allows setting commitment configuration per line item (keyed by price_id)
    */
@@ -159,16 +153,16 @@ export type DtoCreateSubscriptionRequest = {
    * ParentSubscriptionID is the parent subscription ID for hierarchy (e.g. child subscription under a parent)
    */
   parentSubscriptionId?: string | undefined;
-  paymentBehavior?: TypesPaymentBehavior | undefined;
-  paymentTerms?: TypesPaymentTerms | undefined;
+  paymentBehavior?: PaymentBehavior | undefined;
+  paymentTerms?: PaymentTerms | undefined;
   /**
    * Phases represents subscription phases to be created with the subscription
    */
   phases?: Array<DtoSubscriptionPhaseCreateRequest> | undefined;
   planId: string;
-  prorationBehavior?: TypesProrationBehavior | undefined;
+  prorationBehavior?: ProrationBehavior | undefined;
   startDate?: string | undefined;
-  subscriptionStatus?: TypesSubscriptionStatus | undefined;
+  subscriptionStatus?: SubscriptionStatus | undefined;
   /**
    * tax_rate_overrides is the tax rate overrides	to be applied to the subscription
    */
@@ -229,13 +223,13 @@ export const DtoCreateSubscriptionRequest$outboundSchema: z.ZodType<
   DtoCreateSubscriptionRequest
 > = z.object({
   addons: z.array(DtoAddAddonToSubscriptionRequest$outboundSchema).optional(),
-  billingCadence: TypesBillingCadence$outboundSchema,
-  billingCycle: TypesBillingCycle$outboundSchema.optional(),
-  billingPeriod: TypesBillingPeriod$outboundSchema,
+  billingCadence: BillingCadence$outboundSchema,
+  billingCycle: BillingCycle$outboundSchema.optional(),
+  billingPeriod: BillingPeriod$outboundSchema,
   billingPeriodCount: z.number().int().optional(),
-  collectionMethod: TypesCollectionMethod$outboundSchema.optional(),
+  collectionMethod: CollectionMethod$outboundSchema.optional(),
   commitmentAmount: z.string().optional(),
-  commitmentDuration: TypesBillingPeriod$outboundSchema.optional(),
+  commitmentDuration: BillingPeriod$outboundSchema.optional(),
   coupons: z.array(z.string()).optional(),
   creditGrants: z.array(DtoCreateCreditGrantRequest$outboundSchema).optional(),
   currency: z.string(),
@@ -245,7 +239,7 @@ export const DtoCreateSubscriptionRequest$outboundSchema: z.ZodType<
   endDate: z.string().optional(),
   externalCustomerId: z.string().optional(),
   gatewayPaymentMethodId: z.string().optional(),
-  invoiceBilling: TypesInvoiceBilling$outboundSchema.optional(),
+  invoiceBilling: InvoiceBilling$outboundSchema.optional(),
   lineItemCommitments: z.record(DtoLineItemCommitmentConfig$outboundSchema)
     .optional(),
   lineItemCoupons: z.record(z.array(z.string())).optional(),
@@ -259,13 +253,13 @@ export const DtoCreateSubscriptionRequest$outboundSchema: z.ZodType<
   overrideLineItems: z.array(DtoOverrideLineItemRequest$outboundSchema)
     .optional(),
   parentSubscriptionId: z.string().optional(),
-  paymentBehavior: TypesPaymentBehavior$outboundSchema.optional(),
-  paymentTerms: TypesPaymentTerms$outboundSchema.optional(),
+  paymentBehavior: PaymentBehavior$outboundSchema.optional(),
+  paymentTerms: PaymentTerms$outboundSchema.optional(),
   phases: z.array(DtoSubscriptionPhaseCreateRequest$outboundSchema).optional(),
   planId: z.string(),
-  prorationBehavior: TypesProrationBehavior$outboundSchema.optional(),
+  prorationBehavior: ProrationBehavior$outboundSchema.optional(),
   startDate: z.string().optional(),
-  subscriptionStatus: TypesSubscriptionStatus$outboundSchema.optional(),
+  subscriptionStatus: SubscriptionStatus$outboundSchema.optional(),
   taxRateOverrides: z.array(DtoTaxRateOverride$outboundSchema).optional(),
   trialEnd: z.string().optional(),
   trialStart: z.string().optional(),

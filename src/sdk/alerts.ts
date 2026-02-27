@@ -16,7 +16,7 @@ export class Alerts extends ClientSDK {
    * Use when viewing or searching alert history (e.g. support triage or customer-facing alert log). Returns a paginated list; supports filtering by type, customer, subscription.
    */
   async queryAlertLog(
-    request: shared.TypesAlertLogFilter,
+    request: shared.AlertLogFilter,
     options?: RequestOptions,
   ): Promise<operations.QueryAlertLogResponse> {
     return unwrapAsync(alertsQueryAlertLog(

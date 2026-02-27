@@ -15,9 +15,9 @@ export type DeleteCouponRequest = {
   id: string;
 };
 
-export type DeleteCouponResponse = shared.ErrorsErrorResponse | {
-  [k: string]: string;
-};
+export type DeleteCouponResponse =
+  | { [k: string]: string }
+  | shared.ErrorsErrorResponse;
 
 /** @internal */
 export type DeleteCouponRequest$Outbound = {
@@ -46,7 +46,7 @@ export const DeleteCouponResponse$inboundSchema: z.ZodType<
   DeleteCouponResponse,
   z.ZodTypeDef,
   unknown
-> = z.union([shared.ErrorsErrorResponse$inboundSchema, z.record(z.string())]);
+> = z.union([z.record(z.string()), shared.ErrorsErrorResponse$inboundSchema]);
 
 export function deleteCouponResponseFromJSON(
   jsonString: string,

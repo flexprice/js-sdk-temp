@@ -12,6 +12,23 @@ import { unwrapAsync } from "./types/fp.js";
 
 export class Secrets extends ClientSDK {
   /**
+   * List API keys
+   *
+   * @remarks
+   * Use when listing API keys (e.g. admin view or rotating keys). Returns a paginated list.
+   */
+  async listApiKeys(
+    request?: operations.ListApiKeysRequest | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.ListApiKeysResponse> {
+    return unwrapAsync(secretsListApiKeys(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Create a new API key
    *
    * @remarks
@@ -39,23 +56,6 @@ export class Secrets extends ClientSDK {
     options?: RequestOptions,
   ): Promise<shared.ErrorsErrorResponse | undefined> {
     return unwrapAsync(secretsDeleteApiKey(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * List API keys
-   *
-   * @remarks
-   * Use when listing API keys (e.g. admin view or rotating keys). Returns a paginated list.
-   */
-  async listApiKeys(
-    request?: operations.ListApiKeysRequest | undefined,
-    options?: RequestOptions,
-  ): Promise<operations.ListApiKeysResponse> {
-    return unwrapAsync(secretsListApiKeys(
       this,
       request,
       options,

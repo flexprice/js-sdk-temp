@@ -17,6 +17,23 @@ import { unwrapAsync } from "./types/fp.js";
 
 export class Entitlements extends ClientSDK {
   /**
+   * Get addon entitlements
+   *
+   * @remarks
+   * Use when checking what features or limits an addon grants (e.g. for display or entitlement logic).
+   */
+  async getAddonEntitlements(
+    request: operations.GetAddonEntitlementsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetAddonEntitlementsResponse> {
+    return unwrapAsync(entitlementsGetAddonEntitlements(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Create entitlement
    *
    * @remarks
@@ -51,33 +68,16 @@ export class Entitlements extends ClientSDK {
   }
 
   /**
-   * Delete entitlement
+   * Query entitlements
    *
    * @remarks
-   * Use when removing a feature from a plan or addon (e.g. deprecating a capability). Returns 200 with success message.
+   * Use when listing or searching entitlements (e.g. plan editor or audit). Returns a paginated list; supports filtering by plan, addon, feature.
    */
-  async deleteEntitlement(
-    request: operations.DeleteEntitlementRequest,
+  async queryEntitlement(
+    request: shared.EntitlementFilter,
     options?: RequestOptions,
-  ): Promise<operations.DeleteEntitlementResponse> {
-    return unwrapAsync(entitlementsDeleteEntitlement(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Get addon entitlements
-   *
-   * @remarks
-   * Use when checking what features or limits an addon grants (e.g. for display or entitlement logic).
-   */
-  async getAddonEntitlements(
-    request: operations.GetAddonEntitlementsRequest,
-    options?: RequestOptions,
-  ): Promise<operations.GetAddonEntitlementsResponse> {
-    return unwrapAsync(entitlementsGetAddonEntitlements(
+  ): Promise<operations.QueryEntitlementResponse> {
+    return unwrapAsync(entitlementsQueryEntitlement(
       this,
       request,
       options,
@@ -102,40 +102,6 @@ export class Entitlements extends ClientSDK {
   }
 
   /**
-   * Get plan entitlements
-   *
-   * @remarks
-   * Use when checking what a plan includes (e.g. feature list or limits for display or gating).
-   */
-  async getPlanEntitlements(
-    request: operations.GetPlanEntitlementsRequest,
-    options?: RequestOptions,
-  ): Promise<operations.GetPlanEntitlementsResponse> {
-    return unwrapAsync(entitlementsGetPlanEntitlements(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Query entitlements
-   *
-   * @remarks
-   * Use when listing or searching entitlements (e.g. plan editor or audit). Returns a paginated list; supports filtering by plan, addon, feature.
-   */
-  async queryEntitlement(
-    request: shared.TypesEntitlementFilter,
-    options?: RequestOptions,
-  ): Promise<operations.QueryEntitlementResponse> {
-    return unwrapAsync(entitlementsQueryEntitlement(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Update entitlement
    *
    * @remarks
@@ -146,6 +112,40 @@ export class Entitlements extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.UpdateEntitlementResponse> {
     return unwrapAsync(entitlementsUpdateEntitlement(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete entitlement
+   *
+   * @remarks
+   * Use when removing a feature from a plan or addon (e.g. deprecating a capability). Returns 200 with success message.
+   */
+  async deleteEntitlement(
+    request: operations.DeleteEntitlementRequest,
+    options?: RequestOptions,
+  ): Promise<operations.DeleteEntitlementResponse> {
+    return unwrapAsync(entitlementsDeleteEntitlement(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get plan entitlements
+   *
+   * @remarks
+   * Use when checking what a plan includes (e.g. feature list or limits for display or gating).
+   */
+  async getPlanEntitlements(
+    request: operations.GetPlanEntitlementsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.GetPlanEntitlementsResponse> {
+    return unwrapAsync(entitlementsGetPlanEntitlements(
       this,
       request,
       options,
