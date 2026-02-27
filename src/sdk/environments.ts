@@ -5,9 +5,8 @@
 import { environmentsCreateEnvironment } from "../funcs/environmentsCreateEnvironment.js";
 import { environmentsUpdateEnvironment } from "../funcs/environmentsUpdateEnvironment.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "./models/operations/index.js";
-import * as shared from "./models/shared/index.js";
-import { unwrapAsync } from "./types/fp.js";
+import { unwrapAsync } from "../types/fp.js";
+import * as models from "./models/index.js";
 
 export class Environments extends ClientSDK {
   /**
@@ -17,9 +16,9 @@ export class Environments extends ClientSDK {
    * Use when setting up a new environment (e.g. production, staging) for the tenant. Ideal for separating billing or config per environment.
    */
   async createEnvironment(
-    request: shared.DtoCreateEnvironmentRequest,
+    request: models.DtoCreateEnvironmentRequest,
     options?: RequestOptions,
-  ): Promise<operations.CreateEnvironmentResponse> {
+  ): Promise<models.CreateEnvironmentResponse> {
     return unwrapAsync(environmentsCreateEnvironment(
       this,
       request,
@@ -34,9 +33,9 @@ export class Environments extends ClientSDK {
    * Use when changing environment name or settings (e.g. renaming or updating metadata).
    */
   async updateEnvironment(
-    request: operations.UpdateEnvironmentRequest,
+    request: models.UpdateEnvironmentRequest,
     options?: RequestOptions,
-  ): Promise<operations.UpdateEnvironmentResponse> {
+  ): Promise<models.UpdateEnvironmentResponse> {
     return unwrapAsync(environmentsUpdateEnvironment(
       this,
       request,

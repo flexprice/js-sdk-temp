@@ -7,9 +7,8 @@ import { integrationsDeleteIntegration } from "../funcs/integrationsDeleteIntegr
 import { integrationsGetIntegration } from "../funcs/integrationsGetIntegration.js";
 import { integrationsListLinkedIntegrations } from "../funcs/integrationsListLinkedIntegrations.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "./models/operations/index.js";
-import * as shared from "./models/shared/index.js";
-import { unwrapAsync } from "./types/fp.js";
+import { unwrapAsync } from "../types/fp.js";
+import * as models from "./models/index.js";
 
 export class Integrations extends ClientSDK {
   /**
@@ -19,9 +18,9 @@ export class Integrations extends ClientSDK {
    * Use when you need to check or display integration config (e.g. which provider is linked). Sensitive values may be redacted.
    */
   async getIntegration(
-    request: operations.GetIntegrationRequest,
+    request: models.GetIntegrationRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetIntegrationResponse> {
+  ): Promise<models.GetIntegrationResponse> {
     return unwrapAsync(integrationsGetIntegration(
       this,
       request,
@@ -36,9 +35,9 @@ export class Integrations extends ClientSDK {
    * Use when storing or updating credentials for an external integration (e.g. Stripe, HubSpot). Secrets are encrypted at rest.
    */
   async createOrUpdateIntegration(
-    request: operations.CreateOrUpdateIntegrationRequest,
+    request: models.CreateOrUpdateIntegrationRequest,
     options?: RequestOptions,
-  ): Promise<operations.CreateOrUpdateIntegrationResponse> {
+  ): Promise<models.CreateOrUpdateIntegrationResponse> {
     return unwrapAsync(integrationsCreateOrUpdateIntegration(
       this,
       request,
@@ -54,7 +53,7 @@ export class Integrations extends ClientSDK {
    */
   async listLinkedIntegrations(
     options?: RequestOptions,
-  ): Promise<operations.ListLinkedIntegrationsResponse> {
+  ): Promise<models.ListLinkedIntegrationsResponse> {
     return unwrapAsync(integrationsListLinkedIntegrations(
       this,
       options,
@@ -68,9 +67,9 @@ export class Integrations extends ClientSDK {
    * Use when disconnecting an integration (e.g. switching provider or removing OAuth). Deletes stored credentials.
    */
   async deleteIntegration(
-    request: operations.DeleteIntegrationRequest,
+    request: models.DeleteIntegrationRequest,
     options?: RequestOptions,
-  ): Promise<shared.ErrorsErrorResponse | undefined> {
+  ): Promise<models.ErrorsErrorResponse | undefined> {
     return unwrapAsync(integrationsDeleteIntegration(
       this,
       request,

@@ -10,8 +10,8 @@ import { webhooksHandleQuickbooksWebhook } from "../funcs/webhooksHandleQuickboo
 import { webhooksHandleRazorpayWebhook } from "../funcs/webhooksHandleRazorpayWebhook.js";
 import { webhooksHandleStripeWebhook } from "../funcs/webhooksHandleStripeWebhook.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "./models/operations/index.js";
-import { unwrapAsync } from "./types/fp.js";
+import { unwrapAsync } from "../types/fp.js";
+import * as models from "./models/index.js";
 
 export class Webhooks extends ClientSDK {
   /**
@@ -21,9 +21,9 @@ export class Webhooks extends ClientSDK {
    * Use as the Chargebee webhook endpoint URL. Receives payment and subscription events from Chargebee to sync status into FlexPrice.
    */
   async handleChargebeeWebhook(
-    request: operations.HandleChargebeeWebhookRequest,
+    request: models.HandleChargebeeWebhookRequest,
     options?: RequestOptions,
-  ): Promise<operations.HandleChargebeeWebhookResponse> {
+  ): Promise<models.HandleChargebeeWebhookResponse> {
     return unwrapAsync(webhooksHandleChargebeeWebhook(
       this,
       request,
@@ -38,7 +38,7 @@ export class Webhooks extends ClientSDK {
    * Use as the HubSpot webhook endpoint URL. Receives deal and customer events (e.g. deal closed won) to create or update customers in FlexPrice.
    */
   async handleHubspotWebhook(
-    request: operations.HandleHubspotWebhookRequest,
+    request: models.HandleHubspotWebhookRequest,
     options?: RequestOptions,
   ): Promise<{ [k: string]: any }> {
     return unwrapAsync(webhooksHandleHubspotWebhook(
@@ -55,7 +55,7 @@ export class Webhooks extends ClientSDK {
    * Use as the Moyasar webhook endpoint URL. Receives payment events from Moyasar to update payment status in FlexPrice.
    */
   async handleMoyasarWebhook(
-    request: operations.HandleMoyasarWebhookRequest,
+    request: models.HandleMoyasarWebhookRequest,
     options?: RequestOptions,
   ): Promise<{ [k: string]: any }> {
     return unwrapAsync(webhooksHandleMoyasarWebhook(
@@ -72,9 +72,9 @@ export class Webhooks extends ClientSDK {
    * Use as the Nomod webhook endpoint URL. Receives payment and invoice events from Nomod to keep FlexPrice in sync.
    */
   async handleNomodWebhook(
-    request: operations.HandleNomodWebhookRequest,
+    request: models.HandleNomodWebhookRequest,
     options?: RequestOptions,
-  ): Promise<operations.HandleNomodWebhookResponse> {
+  ): Promise<models.HandleNomodWebhookResponse> {
     return unwrapAsync(webhooksHandleNomodWebhook(
       this,
       request,
@@ -89,9 +89,9 @@ export class Webhooks extends ClientSDK {
    * Use as the QuickBooks webhook endpoint URL. Receives payment events from QuickBooks to sync payment status into FlexPrice.
    */
   async handleQuickbooksWebhook(
-    request: operations.HandleQuickbooksWebhookRequest,
+    request: models.HandleQuickbooksWebhookRequest,
     options?: RequestOptions,
-  ): Promise<operations.HandleQuickbooksWebhookResponse> {
+  ): Promise<models.HandleQuickbooksWebhookResponse> {
     return unwrapAsync(webhooksHandleQuickbooksWebhook(
       this,
       request,
@@ -106,7 +106,7 @@ export class Webhooks extends ClientSDK {
    * Use as the Razorpay webhook endpoint URL. Receives payment capture and failure events to update invoice or payment status in FlexPrice.
    */
   async handleRazorpayWebhook(
-    request: operations.HandleRazorpayWebhookRequest,
+    request: models.HandleRazorpayWebhookRequest,
     options?: RequestOptions,
   ): Promise<{ [k: string]: any }> {
     return unwrapAsync(webhooksHandleRazorpayWebhook(
@@ -123,9 +123,9 @@ export class Webhooks extends ClientSDK {
    * Use as the Stripe webhook endpoint URL. Receives payment and customer events from Stripe to keep FlexPrice in sync (e.g. payment succeeded, customer created).
    */
   async handleStripeWebhook(
-    request: operations.HandleStripeWebhookRequest,
+    request: models.HandleStripeWebhookRequest,
     options?: RequestOptions,
-  ): Promise<operations.HandleStripeWebhookResponse> {
+  ): Promise<models.HandleStripeWebhookResponse> {
     return unwrapAsync(webhooksHandleStripeWebhook(
       this,
       request,

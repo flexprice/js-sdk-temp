@@ -8,9 +8,8 @@ import { taxAssociationsGetTaxAssociation } from "../funcs/taxAssociationsGetTax
 import { taxAssociationsListTaxAssociations } from "../funcs/taxAssociationsListTaxAssociations.js";
 import { taxAssociationsUpdateTaxAssociation } from "../funcs/taxAssociationsUpdateTaxAssociation.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "./models/operations/index.js";
-import * as shared from "./models/shared/index.js";
-import { unwrapAsync } from "./types/fp.js";
+import { unwrapAsync } from "../types/fp.js";
+import * as models from "./models/index.js";
 
 export class TaxAssociations extends ClientSDK {
   /**
@@ -20,9 +19,9 @@ export class TaxAssociations extends ClientSDK {
    * Use when listing tax associations (e.g. tax config or audit). Returns list with optional filtering.
    */
   async listTaxAssociations(
-    request?: operations.ListTaxAssociationsRequest | undefined,
+    request?: models.ListTaxAssociationsRequest | undefined,
     options?: RequestOptions,
-  ): Promise<operations.ListTaxAssociationsResponse> {
+  ): Promise<models.ListTaxAssociationsResponse> {
     return unwrapAsync(taxAssociationsListTaxAssociations(
       this,
       request,
@@ -37,9 +36,9 @@ export class TaxAssociations extends ClientSDK {
    * Use when linking a tax rate to an entity (e.g. customer, product, or region) so that rate applies on invoices.
    */
   async createTaxAssociation(
-    request: shared.DtoCreateTaxAssociationRequest,
+    request: models.DtoCreateTaxAssociationRequest,
     options?: RequestOptions,
-  ): Promise<operations.CreateTaxAssociationResponse> {
+  ): Promise<models.CreateTaxAssociationResponse> {
     return unwrapAsync(taxAssociationsCreateTaxAssociation(
       this,
       request,
@@ -54,9 +53,9 @@ export class TaxAssociations extends ClientSDK {
    * Use when you need to load a single tax association (e.g. for display or editing).
    */
   async getTaxAssociation(
-    request: operations.GetTaxAssociationRequest,
+    request: models.GetTaxAssociationRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetTaxAssociationResponse> {
+  ): Promise<models.GetTaxAssociationResponse> {
     return unwrapAsync(taxAssociationsGetTaxAssociation(
       this,
       request,
@@ -71,9 +70,9 @@ export class TaxAssociations extends ClientSDK {
    * Use when changing a tax association (e.g. switch rate or entity). Request body contains the fields to update.
    */
   async updateTaxAssociation(
-    request: operations.UpdateTaxAssociationRequest,
+    request: models.UpdateTaxAssociationRequest,
     options?: RequestOptions,
-  ): Promise<operations.UpdateTaxAssociationResponse> {
+  ): Promise<models.UpdateTaxAssociationResponse> {
     return unwrapAsync(taxAssociationsUpdateTaxAssociation(
       this,
       request,
@@ -88,9 +87,9 @@ export class TaxAssociations extends ClientSDK {
    * Use when removing a tax association (e.g. entity no longer subject to that rate).
    */
   async deleteTaxAssociation(
-    request: operations.DeleteTaxAssociationRequest,
+    request: models.DeleteTaxAssociationRequest,
     options?: RequestOptions,
-  ): Promise<operations.DeleteTaxAssociationResponse> {
+  ): Promise<models.DeleteTaxAssociationResponse> {
     return unwrapAsync(taxAssociationsDeleteTaxAssociation(
       this,
       request,

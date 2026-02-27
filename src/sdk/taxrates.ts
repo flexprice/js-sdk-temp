@@ -8,9 +8,8 @@ import { taxRatesGetTaxRate } from "../funcs/taxRatesGetTaxRate.js";
 import { taxRatesGetTaxRates } from "../funcs/taxRatesGetTaxRates.js";
 import { taxRatesUpdateTaxRate } from "../funcs/taxRatesUpdateTaxRate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "./models/operations/index.js";
-import * as shared from "./models/shared/index.js";
-import { unwrapAsync } from "./types/fp.js";
+import { unwrapAsync } from "../types/fp.js";
+import * as models from "./models/index.js";
 
 export class TaxRates extends ClientSDK {
   /**
@@ -20,9 +19,9 @@ export class TaxRates extends ClientSDK {
    * Use when listing tax rates (e.g. tax config UI). Returns tax rates with optional filters.
    */
   async getTaxRates(
-    request?: operations.GetTaxRatesRequest | undefined,
+    request?: models.GetTaxRatesRequest | undefined,
     options?: RequestOptions,
-  ): Promise<operations.GetTaxRatesResponse> {
+  ): Promise<models.GetTaxRatesResponse> {
     return unwrapAsync(taxRatesGetTaxRates(
       this,
       request,
@@ -37,9 +36,9 @@ export class TaxRates extends ClientSDK {
    * Use when defining a new tax rate (e.g. VAT or sales tax) for use in invoices. Attach to customers or products via tax associations.
    */
   async createTaxRate(
-    request: shared.DtoCreateTaxRateRequest,
+    request: models.DtoCreateTaxRateRequest,
     options?: RequestOptions,
-  ): Promise<operations.CreateTaxRateResponse> {
+  ): Promise<models.CreateTaxRateResponse> {
     return unwrapAsync(taxRatesCreateTaxRate(
       this,
       request,
@@ -54,9 +53,9 @@ export class TaxRates extends ClientSDK {
    * Use when you need to load a single tax rate (e.g. for display or when creating an association).
    */
   async getTaxRate(
-    request: operations.GetTaxRateRequest,
+    request: models.GetTaxRateRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetTaxRateResponse> {
+  ): Promise<models.GetTaxRateResponse> {
     return unwrapAsync(taxRatesGetTaxRate(
       this,
       request,
@@ -71,9 +70,9 @@ export class TaxRates extends ClientSDK {
    * Use when changing a tax rate (e.g. rate value or name). Request body contains the fields to update.
    */
   async updateTaxRate(
-    request: operations.UpdateTaxRateRequest,
+    request: models.UpdateTaxRateRequest,
     options?: RequestOptions,
-  ): Promise<operations.UpdateTaxRateResponse> {
+  ): Promise<models.UpdateTaxRateResponse> {
     return unwrapAsync(taxRatesUpdateTaxRate(
       this,
       request,
@@ -88,9 +87,9 @@ export class TaxRates extends ClientSDK {
    * Use when retiring a tax rate (e.g. no longer applicable). Fails if still referenced by associations.
    */
   async deleteTaxRate(
-    request: operations.DeleteTaxRateRequest,
+    request: models.DeleteTaxRateRequest,
     options?: RequestOptions,
-  ): Promise<shared.ErrorsErrorResponse | undefined> {
+  ): Promise<models.ErrorsErrorResponse | undefined> {
     return unwrapAsync(taxRatesDeleteTaxRate(
       this,
       request,

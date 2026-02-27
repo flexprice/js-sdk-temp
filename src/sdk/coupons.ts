@@ -8,9 +8,8 @@ import { couponsGetCoupon } from "../funcs/couponsGetCoupon.js";
 import { couponsQueryCoupon } from "../funcs/couponsQueryCoupon.js";
 import { couponsUpdateCoupon } from "../funcs/couponsUpdateCoupon.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "./models/operations/index.js";
-import * as shared from "./models/shared/index.js";
-import { unwrapAsync } from "./types/fp.js";
+import { unwrapAsync } from "../types/fp.js";
+import * as models from "./models/index.js";
 
 export class Coupons extends ClientSDK {
   /**
@@ -20,9 +19,9 @@ export class Coupons extends ClientSDK {
    * Use when creating a discount (e.g. promo code or referral). Ideal for percent or fixed value, with optional validity and usage limits.
    */
   async createCoupon(
-    request: shared.DtoCreateCouponRequest,
+    request: models.DtoCreateCouponRequest,
     options?: RequestOptions,
-  ): Promise<operations.CreateCouponResponse> {
+  ): Promise<models.CreateCouponResponse> {
     return unwrapAsync(couponsCreateCoupon(
       this,
       request,
@@ -37,9 +36,9 @@ export class Coupons extends ClientSDK {
    * Use when listing or searching coupons (e.g. promo management). Returns a paginated list; supports filtering and sorting.
    */
   async queryCoupon(
-    request: shared.CouponFilter,
+    request: models.CouponFilter,
     options?: RequestOptions,
-  ): Promise<operations.QueryCouponResponse> {
+  ): Promise<models.QueryCouponResponse> {
     return unwrapAsync(couponsQueryCoupon(
       this,
       request,
@@ -54,9 +53,9 @@ export class Coupons extends ClientSDK {
    * Use when you need to load a single coupon (e.g. for display or to validate a code).
    */
   async getCoupon(
-    request: operations.GetCouponRequest,
+    request: models.GetCouponRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetCouponResponse> {
+  ): Promise<models.GetCouponResponse> {
     return unwrapAsync(couponsGetCoupon(
       this,
       request,
@@ -71,9 +70,9 @@ export class Coupons extends ClientSDK {
    * Use when changing coupon config (e.g. value, validity, or usage limits).
    */
   async updateCoupon(
-    request: operations.UpdateCouponRequest,
+    request: models.UpdateCouponRequest,
     options?: RequestOptions,
-  ): Promise<operations.UpdateCouponResponse> {
+  ): Promise<models.UpdateCouponResponse> {
     return unwrapAsync(couponsUpdateCoupon(
       this,
       request,
@@ -88,9 +87,9 @@ export class Coupons extends ClientSDK {
    * Use when retiring a coupon (e.g. campaign ended). Returns 200 with success message.
    */
   async deleteCoupon(
-    request: operations.DeleteCouponRequest,
+    request: models.DeleteCouponRequest,
     options?: RequestOptions,
-  ): Promise<operations.DeleteCouponResponse> {
+  ): Promise<models.DeleteCouponResponse> {
     return unwrapAsync(couponsDeleteCoupon(
       this,
       request,

@@ -4,9 +4,8 @@
 
 import { alertsQueryAlertLog } from "../funcs/alertsQueryAlertLog.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "./models/operations/index.js";
-import * as shared from "./models/shared/index.js";
-import { unwrapAsync } from "./types/fp.js";
+import { unwrapAsync } from "../types/fp.js";
+import * as models from "./models/index.js";
 
 export class Alerts extends ClientSDK {
   /**
@@ -16,9 +15,9 @@ export class Alerts extends ClientSDK {
    * Use when viewing or searching alert history (e.g. support triage or customer-facing alert log). Returns a paginated list; supports filtering by type, customer, subscription.
    */
   async queryAlertLog(
-    request: shared.AlertLogFilter,
+    request: models.AlertLogFilter,
     options?: RequestOptions,
-  ): Promise<operations.QueryAlertLogResponse> {
+  ): Promise<models.QueryAlertLogResponse> {
     return unwrapAsync(alertsQueryAlertLog(
       this,
       request,

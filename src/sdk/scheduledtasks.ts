@@ -10,9 +10,8 @@ import { scheduledTasksScheduleUpdateBillingPeriod } from "../funcs/scheduledTas
 import { scheduledTasksTriggerScheduledTaskRun } from "../funcs/scheduledTasksTriggerScheduledTaskRun.js";
 import { scheduledTasksUpdateScheduledTask } from "../funcs/scheduledTasksUpdateScheduledTask.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "./models/operations/index.js";
-import * as shared from "./models/shared/index.js";
-import { unwrapAsync } from "./types/fp.js";
+import { unwrapAsync } from "../types/fp.js";
+import * as models from "./models/index.js";
 
 export class ScheduledTasks extends ClientSDK {
   /**
@@ -22,9 +21,9 @@ export class ScheduledTasks extends ClientSDK {
    * Use when listing or managing scheduled tasks in an admin UI. Returns a list; supports filtering by status, type, and pagination.
    */
   async listScheduledTasks(
-    request?: operations.ListScheduledTasksRequest | undefined,
+    request?: models.ListScheduledTasksRequest | undefined,
     options?: RequestOptions,
-  ): Promise<operations.ListScheduledTasksResponse> {
+  ): Promise<models.ListScheduledTasksResponse> {
     return unwrapAsync(scheduledTasksListScheduledTasks(
       this,
       request,
@@ -39,9 +38,9 @@ export class ScheduledTasks extends ClientSDK {
    * Use when setting up recurring data exports or other scheduled jobs. Ideal for report generation or syncing data on a schedule.
    */
   async createScheduledTask(
-    request: shared.DtoCreateScheduledTaskRequest,
+    request: models.DtoCreateScheduledTaskRequest,
     options?: RequestOptions,
-  ): Promise<operations.CreateScheduledTaskResponse> {
+  ): Promise<models.CreateScheduledTaskResponse> {
     return unwrapAsync(scheduledTasksCreateScheduledTask(
       this,
       request,
@@ -56,9 +55,9 @@ export class ScheduledTasks extends ClientSDK {
    * Use when you need to trigger a billing-period update workflow (e.g. to recalculate or sync billing windows).
    */
   async scheduleUpdateBillingPeriod(
-    request: operations.ScheduleUpdateBillingPeriodRequest,
+    request: models.ScheduleUpdateBillingPeriodRequest,
     options?: RequestOptions,
-  ): Promise<operations.ScheduleUpdateBillingPeriodResponse> {
+  ): Promise<models.ScheduleUpdateBillingPeriodResponse> {
     return unwrapAsync(scheduledTasksScheduleUpdateBillingPeriod(
       this,
       request,
@@ -73,9 +72,9 @@ export class ScheduledTasks extends ClientSDK {
    * Use when you need to load a single scheduled task (e.g. to show details in a UI or check its configuration).
    */
   async getScheduledTask(
-    request: operations.GetScheduledTaskRequest,
+    request: models.GetScheduledTaskRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetScheduledTaskResponse> {
+  ): Promise<models.GetScheduledTaskResponse> {
     return unwrapAsync(scheduledTasksGetScheduledTask(
       this,
       request,
@@ -90,9 +89,9 @@ export class ScheduledTasks extends ClientSDK {
    * Use when pausing or resuming a scheduled task. Only the enabled field can be changed.
    */
   async updateScheduledTask(
-    request: operations.UpdateScheduledTaskRequest,
+    request: models.UpdateScheduledTaskRequest,
     options?: RequestOptions,
-  ): Promise<operations.UpdateScheduledTaskResponse> {
+  ): Promise<models.UpdateScheduledTaskResponse> {
     return unwrapAsync(scheduledTasksUpdateScheduledTask(
       this,
       request,
@@ -107,9 +106,9 @@ export class ScheduledTasks extends ClientSDK {
    * Use when removing a scheduled task from the active roster. Archives the task and removes it from the scheduler (soft delete).
    */
   async deleteScheduledTask(
-    request: operations.DeleteScheduledTaskRequest,
+    request: models.DeleteScheduledTaskRequest,
     options?: RequestOptions,
-  ): Promise<shared.ErrorsErrorResponse | undefined> {
+  ): Promise<models.ErrorsErrorResponse | undefined> {
     return unwrapAsync(scheduledTasksDeleteScheduledTask(
       this,
       request,
@@ -124,9 +123,9 @@ export class ScheduledTasks extends ClientSDK {
    * Use when you need to run a scheduled export immediately (e.g. on-demand report or catch-up). Supports optional custom time range.
    */
   async triggerScheduledTaskRun(
-    request: operations.TriggerScheduledTaskRunRequest,
+    request: models.TriggerScheduledTaskRunRequest,
     options?: RequestOptions,
-  ): Promise<operations.TriggerScheduledTaskRunResponse> {
+  ): Promise<models.TriggerScheduledTaskRunResponse> {
     return unwrapAsync(scheduledTasksTriggerScheduledTaskRun(
       this,
       request,

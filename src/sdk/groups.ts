@@ -7,9 +7,8 @@ import { groupsDeleteGroup } from "../funcs/groupsDeleteGroup.js";
 import { groupsGetGroup } from "../funcs/groupsGetGroup.js";
 import { groupsQueryGroup } from "../funcs/groupsQueryGroup.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "./models/operations/index.js";
-import * as shared from "./models/shared/index.js";
-import { unwrapAsync } from "./types/fp.js";
+import { unwrapAsync } from "../types/fp.js";
+import * as models from "./models/index.js";
 
 export class Groups extends ClientSDK {
   /**
@@ -19,9 +18,9 @@ export class Groups extends ClientSDK {
    * Use when organizing entities into a group (e.g. for filtering prices or plans by product line or region).
    */
   async createGroup(
-    request: shared.DtoCreateGroupRequest,
+    request: models.DtoCreateGroupRequest,
     options?: RequestOptions,
-  ): Promise<operations.CreateGroupResponse> {
+  ): Promise<models.CreateGroupResponse> {
     return unwrapAsync(groupsCreateGroup(
       this,
       request,
@@ -36,9 +35,9 @@ export class Groups extends ClientSDK {
    * Use when listing or searching groups (e.g. admin catalog). Returns a paginated list; supports filtering and sorting.
    */
   async queryGroup(
-    request: shared.GroupFilter,
+    request: models.GroupFilter,
     options?: RequestOptions,
-  ): Promise<operations.QueryGroupResponse> {
+  ): Promise<models.QueryGroupResponse> {
     return unwrapAsync(groupsQueryGroup(
       this,
       request,
@@ -53,9 +52,9 @@ export class Groups extends ClientSDK {
    * Use when you need to load a single group (e.g. for display or to assign entities).
    */
   async getGroup(
-    request: operations.GetGroupRequest,
+    request: models.GetGroupRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetGroupResponse> {
+  ): Promise<models.GetGroupResponse> {
     return unwrapAsync(groupsGetGroup(
       this,
       request,
@@ -70,9 +69,9 @@ export class Groups extends ClientSDK {
    * Use when removing a group and clearing its entity associations (e.g. retiring a product line). Returns 204 or 200 on success.
    */
   async deleteGroup(
-    request: operations.DeleteGroupRequest,
+    request: models.DeleteGroupRequest,
     options?: RequestOptions,
-  ): Promise<shared.ErrorsErrorResponse | undefined> {
+  ): Promise<models.ErrorsErrorResponse | undefined> {
     return unwrapAsync(groupsDeleteGroup(
       this,
       request,

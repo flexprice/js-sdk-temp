@@ -4,9 +4,8 @@
 
 import { workflowsQueryWorkflow } from "../funcs/workflowsQueryWorkflow.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "./models/operations/index.js";
-import * as shared from "./models/shared/index.js";
-import { unwrapAsync } from "./types/fp.js";
+import { unwrapAsync } from "../types/fp.js";
+import * as models from "./models/index.js";
 
 export class Workflows extends ClientSDK {
   /**
@@ -16,9 +15,9 @@ export class Workflows extends ClientSDK {
    * Use when listing or auditing workflow runs (e.g. ops dashboard or debugging). Returns a paginated list; supports filtering by workflow type and status.
    */
   async queryWorkflow(
-    request: shared.WorkflowExecutionFilter,
+    request: models.WorkflowExecutionFilter,
     options?: RequestOptions,
-  ): Promise<operations.QueryWorkflowResponse> {
+  ): Promise<models.QueryWorkflowResponse> {
     return unwrapAsync(workflowsQueryWorkflow(
       this,
       request,

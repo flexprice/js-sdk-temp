@@ -10,20 +10,19 @@ import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
-import { FlexPriceError } from "../sdk/models/errors/flexpriceerror.js";
+import { FlexPriceError } from "../sdk/models/flexpriceerror.js";
 import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
-} from "../sdk/models/errors/httpclienterrors.js";
-import { ResponseValidationError } from "../sdk/models/errors/responsevalidationerror.js";
-import { SDKValidationError } from "../sdk/models/errors/sdkvalidationerror.js";
-import * as operations from "../sdk/models/operations/index.js";
-import * as shared from "../sdk/models/shared/index.js";
-import { APICall, APIPromise } from "../sdk/types/async.js";
-import { Result } from "../sdk/types/fp.js";
+} from "../sdk/models/httpclienterrors.js";
+import * as models from "../sdk/models/index.js";
+import { ResponseValidationError } from "../sdk/models/responsevalidationerror.js";
+import { SDKValidationError } from "../sdk/models/sdkvalidationerror.js";
+import { APICall, APIPromise } from "../types/async.js";
+import { Result } from "../types/fp.js";
 
 /**
  * Query features
@@ -33,11 +32,11 @@ import { Result } from "../sdk/types/fp.js";
  */
 export function featuresQueryFeature(
   client: FlexpriceCore,
-  request: shared.FeatureFilter,
+  request: models.FeatureFilter,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.QueryFeatureResponse,
+    models.QueryFeatureResponse,
     | FlexPriceError
     | ResponseValidationError
     | ConnectionError
@@ -57,12 +56,12 @@ export function featuresQueryFeature(
 
 async function $do(
   client: FlexpriceCore,
-  request: shared.FeatureFilter,
+  request: models.FeatureFilter,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.QueryFeatureResponse,
+      models.QueryFeatureResponse,
       | FlexPriceError
       | ResponseValidationError
       | ConnectionError
@@ -77,7 +76,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => shared.FeatureFilter$outboundSchema.parse(value),
+    (value) => models.FeatureFilter$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -139,7 +138,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.QueryFeatureResponse,
+    models.QueryFeatureResponse,
     | FlexPriceError
     | ResponseValidationError
     | ConnectionError
@@ -149,9 +148,9 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, operations.QueryFeatureResponse$inboundSchema),
-    M.json(400, operations.QueryFeatureResponse$inboundSchema),
-    M.json(500, operations.QueryFeatureResponse$inboundSchema),
+    M.json(200, models.QueryFeatureResponse$inboundSchema),
+    M.json(400, models.QueryFeatureResponse$inboundSchema),
+    M.json(500, models.QueryFeatureResponse$inboundSchema),
   )(response, req);
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];

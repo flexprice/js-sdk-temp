@@ -10,9 +10,8 @@ import { plansQueryPlan } from "../funcs/plansQueryPlan.js";
 import { plansSyncPlanPrices } from "../funcs/plansSyncPlanPrices.js";
 import { plansUpdatePlan } from "../funcs/plansUpdatePlan.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "./models/operations/index.js";
-import * as shared from "./models/shared/index.js";
-import { unwrapAsync } from "./types/fp.js";
+import { unwrapAsync } from "../types/fp.js";
+import * as models from "./models/index.js";
 
 export class Plans extends ClientSDK {
   /**
@@ -22,9 +21,9 @@ export class Plans extends ClientSDK {
    * Use when defining a new pricing plan (e.g. Free, Pro, Enterprise). Attach prices and entitlements; customers subscribe to plans.
    */
   async createPlan(
-    request: shared.DtoCreatePlanRequest,
+    request: models.DtoCreatePlanRequest,
     options?: RequestOptions,
-  ): Promise<operations.CreatePlanResponse> {
+  ): Promise<models.CreatePlanResponse> {
     return unwrapAsync(plansCreatePlan(
       this,
       request,
@@ -39,9 +38,9 @@ export class Plans extends ClientSDK {
    * Use when listing or searching plans (e.g. plan picker or admin catalog). Returns a paginated list; supports filtering and sorting.
    */
   async queryPlan(
-    request: shared.PlanFilter,
+    request: models.PlanFilter,
     options?: RequestOptions,
-  ): Promise<operations.QueryPlanResponse> {
+  ): Promise<models.QueryPlanResponse> {
     return unwrapAsync(plansQueryPlan(
       this,
       request,
@@ -56,9 +55,9 @@ export class Plans extends ClientSDK {
    * Use when you need to load a single plan (e.g. for display or to create a subscription).
    */
   async getPlan(
-    request: operations.GetPlanRequest,
+    request: models.GetPlanRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetPlanResponse> {
+  ): Promise<models.GetPlanResponse> {
     return unwrapAsync(plansGetPlan(
       this,
       request,
@@ -73,9 +72,9 @@ export class Plans extends ClientSDK {
    * Use when changing plan details (e.g. name, interval, or metadata). Partial update supported.
    */
   async updatePlan(
-    request: operations.UpdatePlanRequest,
+    request: models.UpdatePlanRequest,
     options?: RequestOptions,
-  ): Promise<operations.UpdatePlanResponse> {
+  ): Promise<models.UpdatePlanResponse> {
     return unwrapAsync(plansUpdatePlan(
       this,
       request,
@@ -90,9 +89,9 @@ export class Plans extends ClientSDK {
    * Use when retiring a plan (e.g. end-of-life). Existing subscriptions may be affected. Returns 200 with success message.
    */
   async deletePlan(
-    request: operations.DeletePlanRequest,
+    request: models.DeletePlanRequest,
     options?: RequestOptions,
-  ): Promise<operations.DeletePlanResponse> {
+  ): Promise<models.DeletePlanResponse> {
     return unwrapAsync(plansDeletePlan(
       this,
       request,
@@ -107,9 +106,9 @@ export class Plans extends ClientSDK {
    * Clone an existing plan, copying its active prices, published entitlements, and published credit grants
    */
   async postPlansIdClone(
-    request: operations.PostPlansIdCloneRequest,
+    request: models.PostPlansIdCloneRequest,
     options?: RequestOptions,
-  ): Promise<operations.PostPlansIdCloneResponse> {
+  ): Promise<models.PostPlansIdCloneResponse> {
     return unwrapAsync(plansPostPlansIdClone(
       this,
       request,
@@ -124,9 +123,9 @@ export class Plans extends ClientSDK {
    * Use when you have changed plan prices and need to push them to all active subscriptions (e.g. global price update). Returns workflow ID.
    */
   async syncPlanPrices(
-    request: operations.SyncPlanPricesRequest,
+    request: models.SyncPlanPricesRequest,
     options?: RequestOptions,
-  ): Promise<operations.SyncPlanPricesResponse> {
+  ): Promise<models.SyncPlanPricesResponse> {
     return unwrapAsync(plansSyncPlanPrices(
       this,
       request,

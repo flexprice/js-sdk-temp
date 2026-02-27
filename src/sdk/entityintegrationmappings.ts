@@ -5,9 +5,8 @@
 import { entityIntegrationMappingsCreateEntityIntegrationMapping } from "../funcs/entityIntegrationMappingsCreateEntityIntegrationMapping.js";
 import { entityIntegrationMappingsDeleteEntityIntegrationMapping } from "../funcs/entityIntegrationMappingsDeleteEntityIntegrationMapping.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "./models/operations/index.js";
-import * as shared from "./models/shared/index.js";
-import { unwrapAsync } from "./types/fp.js";
+import { unwrapAsync } from "../types/fp.js";
+import * as models from "./models/index.js";
 
 export class EntityIntegrationMappings extends ClientSDK {
   /**
@@ -17,9 +16,9 @@ export class EntityIntegrationMappings extends ClientSDK {
    * Use when linking a FlexPrice entity to an external system (e.g. CRM or payment provider) so you can sync or reconcile by external ID.
    */
   async createEntityIntegrationMapping(
-    request: shared.DtoCreateEntityIntegrationMappingRequest,
+    request: models.DtoCreateEntityIntegrationMappingRequest,
     options?: RequestOptions,
-  ): Promise<operations.CreateEntityIntegrationMappingResponse> {
+  ): Promise<models.CreateEntityIntegrationMappingResponse> {
     return unwrapAsync(entityIntegrationMappingsCreateEntityIntegrationMapping(
       this,
       request,
@@ -34,9 +33,9 @@ export class EntityIntegrationMappings extends ClientSDK {
    * Use when unlinking a FlexPrice entity from an external system or cleaning up stale integration mappings.
    */
   async deleteEntityIntegrationMapping(
-    request: operations.DeleteEntityIntegrationMappingRequest,
+    request: models.DeleteEntityIntegrationMappingRequest,
     options?: RequestOptions,
-  ): Promise<shared.ErrorsErrorResponse | undefined> {
+  ): Promise<models.ErrorsErrorResponse | undefined> {
     return unwrapAsync(entityIntegrationMappingsDeleteEntityIntegrationMapping(
       this,
       request,

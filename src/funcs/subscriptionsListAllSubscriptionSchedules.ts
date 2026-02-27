@@ -10,20 +10,19 @@ import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
-import { FlexPriceError } from "../sdk/models/errors/flexpriceerror.js";
+import { FlexPriceError } from "../sdk/models/flexpriceerror.js";
 import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
-} from "../sdk/models/errors/httpclienterrors.js";
-import { ResponseValidationError } from "../sdk/models/errors/responsevalidationerror.js";
-import { SDKValidationError } from "../sdk/models/errors/sdkvalidationerror.js";
-import * as operations from "../sdk/models/operations/index.js";
-import * as shared from "../sdk/models/shared/index.js";
-import { APICall, APIPromise } from "../sdk/types/async.js";
-import { Result } from "../sdk/types/fp.js";
+} from "../sdk/models/httpclienterrors.js";
+import * as models from "../sdk/models/index.js";
+import { ResponseValidationError } from "../sdk/models/responsevalidationerror.js";
+import { SDKValidationError } from "../sdk/models/sdkvalidationerror.js";
+import { APICall, APIPromise } from "../types/async.js";
+import { Result } from "../types/fp.js";
 
 /**
  * List all subscription schedules
@@ -33,11 +32,11 @@ import { Result } from "../sdk/types/fp.js";
  */
 export function subscriptionsListAllSubscriptionSchedules(
   client: FlexpriceCore,
-  request?: operations.ListAllSubscriptionSchedulesRequest | undefined,
+  request?: models.ListAllSubscriptionSchedulesRequest | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    shared.DtoGetPendingSchedulesResponse,
+    models.DtoGetPendingSchedulesResponse,
     | FlexPriceError
     | ResponseValidationError
     | ConnectionError
@@ -57,12 +56,12 @@ export function subscriptionsListAllSubscriptionSchedules(
 
 async function $do(
   client: FlexpriceCore,
-  request?: operations.ListAllSubscriptionSchedulesRequest | undefined,
+  request?: models.ListAllSubscriptionSchedulesRequest | undefined,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      shared.DtoGetPendingSchedulesResponse,
+      models.DtoGetPendingSchedulesResponse,
       | FlexPriceError
       | ResponseValidationError
       | ConnectionError
@@ -78,7 +77,7 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.ListAllSubscriptionSchedulesRequest$outboundSchema.optional()
+      models.ListAllSubscriptionSchedulesRequest$outboundSchema.optional()
         .parse(value),
     "Input validation failed",
   );
@@ -148,7 +147,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    shared.DtoGetPendingSchedulesResponse,
+    models.DtoGetPendingSchedulesResponse,
     | FlexPriceError
     | ResponseValidationError
     | ConnectionError
@@ -158,7 +157,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, shared.DtoGetPendingSchedulesResponse$inboundSchema),
+    M.json(200, models.DtoGetPendingSchedulesResponse$inboundSchema),
   )(response, req);
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];

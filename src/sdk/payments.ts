@@ -9,9 +9,8 @@ import { paymentsListPayments } from "../funcs/paymentsListPayments.js";
 import { paymentsProcessPayment } from "../funcs/paymentsProcessPayment.js";
 import { paymentsUpdatePayment } from "../funcs/paymentsUpdatePayment.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "./models/operations/index.js";
-import * as shared from "./models/shared/index.js";
-import { unwrapAsync } from "./types/fp.js";
+import { unwrapAsync } from "../types/fp.js";
+import * as models from "./models/index.js";
 
 export class Payments extends ClientSDK {
   /**
@@ -21,9 +20,9 @@ export class Payments extends ClientSDK {
    * Use when listing or searching payments (e.g. reconciliation UI or customer payment history). Returns a paginated list; supports filtering by customer, invoice, status.
    */
   async listPayments(
-    request?: operations.ListPaymentsRequest | undefined,
+    request?: models.ListPaymentsRequest | undefined,
     options?: RequestOptions,
-  ): Promise<operations.ListPaymentsResponse> {
+  ): Promise<models.ListPaymentsResponse> {
     return unwrapAsync(paymentsListPayments(
       this,
       request,
@@ -38,9 +37,9 @@ export class Payments extends ClientSDK {
    * Use when recording a payment against an invoice (e.g. after receiving funds via a gateway or manual entry).
    */
   async createPayment(
-    request: shared.DtoCreatePaymentRequest,
+    request: models.DtoCreatePaymentRequest,
     options?: RequestOptions,
-  ): Promise<operations.CreatePaymentResponse> {
+  ): Promise<models.CreatePaymentResponse> {
     return unwrapAsync(paymentsCreatePayment(
       this,
       request,
@@ -55,9 +54,9 @@ export class Payments extends ClientSDK {
    * Use when you need to load a single payment (e.g. for a receipt view or reconciliation).
    */
   async getPayment(
-    request: operations.GetPaymentRequest,
+    request: models.GetPaymentRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetPaymentResponse> {
+  ): Promise<models.GetPaymentResponse> {
     return unwrapAsync(paymentsGetPayment(
       this,
       request,
@@ -72,9 +71,9 @@ export class Payments extends ClientSDK {
    * Use when updating payment status or metadata (e.g. after reconciliation or adding a reference).
    */
   async updatePayment(
-    request: operations.UpdatePaymentRequest,
+    request: models.UpdatePaymentRequest,
     options?: RequestOptions,
-  ): Promise<operations.UpdatePaymentResponse> {
+  ): Promise<models.UpdatePaymentResponse> {
     return unwrapAsync(paymentsUpdatePayment(
       this,
       request,
@@ -89,9 +88,9 @@ export class Payments extends ClientSDK {
    * Use when removing or voiding a payment record (e.g. correcting erroneous entries). Returns 200 with success message.
    */
   async deletePayment(
-    request: operations.DeletePaymentRequest,
+    request: models.DeletePaymentRequest,
     options?: RequestOptions,
-  ): Promise<operations.DeletePaymentResponse> {
+  ): Promise<models.DeletePaymentResponse> {
     return unwrapAsync(paymentsDeletePayment(
       this,
       request,
@@ -106,9 +105,9 @@ export class Payments extends ClientSDK {
    * Use when you need to charge or process a payment (e.g. trigger the payment provider to capture funds). Returns updated payment with status.
    */
   async processPayment(
-    request: operations.ProcessPaymentRequest,
+    request: models.ProcessPaymentRequest,
     options?: RequestOptions,
-  ): Promise<operations.ProcessPaymentResponse> {
+  ): Promise<models.ProcessPaymentResponse> {
     return unwrapAsync(paymentsProcessPayment(
       this,
       request,

@@ -11,9 +11,8 @@ import { costsGetDetailedCostAnalyticsV2 } from "../funcs/costsGetDetailedCostAn
 import { costsQueryCostsheet } from "../funcs/costsQueryCostsheet.js";
 import { costsUpdateCostsheet } from "../funcs/costsUpdateCostsheet.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "./models/operations/index.js";
-import * as shared from "./models/shared/index.js";
-import { unwrapAsync } from "./types/fp.js";
+import { unwrapAsync } from "../types/fp.js";
+import * as models from "./models/index.js";
 
 export class Costs extends ClientSDK {
   /**
@@ -23,9 +22,9 @@ export class Costs extends ClientSDK {
    * Use when setting up a new pricing configuration (e.g. a new product or region). Costsheets group prices and define the default for the environment.
    */
   async createCostsheet(
-    request: shared.DtoCreateCostsheetRequest,
+    request: models.DtoCreateCostsheetRequest,
     options?: RequestOptions,
-  ): Promise<operations.CreateCostsheetResponse> {
+  ): Promise<models.CreateCostsheetResponse> {
     return unwrapAsync(costsCreateCostsheet(
       this,
       request,
@@ -41,7 +40,7 @@ export class Costs extends ClientSDK {
    */
   async getActiveCostsheet(
     options?: RequestOptions,
-  ): Promise<operations.GetActiveCostsheetResponse> {
+  ): Promise<models.GetActiveCostsheetResponse> {
     return unwrapAsync(costsGetActiveCostsheet(
       this,
       options,
@@ -55,9 +54,9 @@ export class Costs extends ClientSDK {
    * Use when building dashboards or reports that need revenue vs cost, ROI, and margin over a time period (e.g. finance views or executive summaries).
    */
   async getDetailedCostAnalytics(
-    request: shared.DtoGetCostAnalyticsRequest,
+    request: models.DtoGetCostAnalyticsRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetDetailedCostAnalyticsResponse> {
+  ): Promise<models.GetDetailedCostAnalyticsResponse> {
     return unwrapAsync(costsGetDetailedCostAnalytics(
       this,
       request,
@@ -72,9 +71,9 @@ export class Costs extends ClientSDK {
    * Use when you need the same revenue/cost/ROI analytics but computed from the costsheet usage-tracking pipeline (e.g. for consistency with usage-based cost data).
    */
   async getDetailedCostAnalyticsV2(
-    request: shared.DtoGetCostAnalyticsRequest,
+    request: models.DtoGetCostAnalyticsRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetDetailedCostAnalyticsV2Response> {
+  ): Promise<models.GetDetailedCostAnalyticsV2Response> {
     return unwrapAsync(costsGetDetailedCostAnalyticsV2(
       this,
       request,
@@ -89,9 +88,9 @@ export class Costs extends ClientSDK {
    * Use when listing or searching costsheets (e.g. admin catalog). Returns a paginated list; supports filtering and sorting.
    */
   async queryCostsheet(
-    request: shared.CostsheetFilter,
+    request: models.CostsheetFilter,
     options?: RequestOptions,
-  ): Promise<operations.QueryCostsheetResponse> {
+  ): Promise<models.QueryCostsheetResponse> {
     return unwrapAsync(costsQueryCostsheet(
       this,
       request,
@@ -106,9 +105,9 @@ export class Costs extends ClientSDK {
    * Use when you need to load a single costsheet (e.g. for editing or display). Supports optional expand for related prices.
    */
   async getCostsheet(
-    request: operations.GetCostsheetRequest,
+    request: models.GetCostsheetRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetCostsheetResponse> {
+  ): Promise<models.GetCostsheetResponse> {
     return unwrapAsync(costsGetCostsheet(
       this,
       request,
@@ -123,9 +122,9 @@ export class Costs extends ClientSDK {
    * Use when changing costsheet name or metadata.
    */
   async updateCostsheet(
-    request: operations.UpdateCostsheetRequest,
+    request: models.UpdateCostsheetRequest,
     options?: RequestOptions,
-  ): Promise<operations.UpdateCostsheetResponse> {
+  ): Promise<models.UpdateCostsheetResponse> {
     return unwrapAsync(costsUpdateCostsheet(
       this,
       request,
@@ -140,9 +139,9 @@ export class Costs extends ClientSDK {
    * Use when retiring a costsheet (e.g. end-of-life product). Soft-deletes; status set to deleted.
    */
   async deleteCostsheet(
-    request: operations.DeleteCostsheetRequest,
+    request: models.DeleteCostsheetRequest,
     options?: RequestOptions,
-  ): Promise<operations.DeleteCostsheetResponse> {
+  ): Promise<models.DeleteCostsheetResponse> {
     return unwrapAsync(costsDeleteCostsheet(
       this,
       request,

@@ -10,9 +10,8 @@ import { priceUnitsListPriceUnits } from "../funcs/priceUnitsListPriceUnits.js";
 import { priceUnitsQueryPriceUnit } from "../funcs/priceUnitsQueryPriceUnit.js";
 import { priceUnitsUpdatePriceUnit } from "../funcs/priceUnitsUpdatePriceUnit.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "./models/operations/index.js";
-import * as shared from "./models/shared/index.js";
-import { unwrapAsync } from "./types/fp.js";
+import { unwrapAsync } from "../types/fp.js";
+import * as models from "./models/index.js";
 
 export class PriceUnits extends ClientSDK {
   /**
@@ -22,9 +21,9 @@ export class PriceUnits extends ClientSDK {
    * Use when listing price units (e.g. in a catalog or when creating prices). Returns a paginated list; supports status, sort, and pagination.
    */
   async listPriceUnits(
-    request?: operations.ListPriceUnitsRequest | undefined,
+    request?: models.ListPriceUnitsRequest | undefined,
     options?: RequestOptions,
-  ): Promise<operations.ListPriceUnitsResponse> {
+  ): Promise<models.ListPriceUnitsResponse> {
     return unwrapAsync(priceUnitsListPriceUnits(
       this,
       request,
@@ -39,9 +38,9 @@ export class PriceUnits extends ClientSDK {
    * Use when defining a new unit of measure for pricing (e.g. GB, API call, seat). Ideal for metered or usage-based prices.
    */
   async createPriceUnit(
-    request: shared.DtoCreatePriceUnitRequest,
+    request: models.DtoCreatePriceUnitRequest,
     options?: RequestOptions,
-  ): Promise<operations.CreatePriceUnitResponse> {
+  ): Promise<models.CreatePriceUnitResponse> {
     return unwrapAsync(priceUnitsCreatePriceUnit(
       this,
       request,
@@ -56,9 +55,9 @@ export class PriceUnits extends ClientSDK {
    * Use when resolving a price unit by code (e.g. from an external catalog or config). Ideal for integrations.
    */
   async getPriceUnitByCode(
-    request: operations.GetPriceUnitByCodeRequest,
+    request: models.GetPriceUnitByCodeRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetPriceUnitByCodeResponse> {
+  ): Promise<models.GetPriceUnitByCodeResponse> {
     return unwrapAsync(priceUnitsGetPriceUnitByCode(
       this,
       request,
@@ -73,9 +72,9 @@ export class PriceUnits extends ClientSDK {
    * Use when searching or listing price units (e.g. admin catalog). Returns a paginated list; supports filtering and sorting.
    */
   async queryPriceUnit(
-    request: shared.PriceUnitFilter,
+    request: models.PriceUnitFilter,
     options?: RequestOptions,
-  ): Promise<operations.QueryPriceUnitResponse> {
+  ): Promise<models.QueryPriceUnitResponse> {
     return unwrapAsync(priceUnitsQueryPriceUnit(
       this,
       request,
@@ -90,9 +89,9 @@ export class PriceUnits extends ClientSDK {
    * Use when you need to load a single price unit (e.g. for display or when creating a price).
    */
   async getPriceUnit(
-    request: operations.GetPriceUnitRequest,
+    request: models.GetPriceUnitRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetPriceUnitResponse> {
+  ): Promise<models.GetPriceUnitResponse> {
     return unwrapAsync(priceUnitsGetPriceUnit(
       this,
       request,
@@ -107,9 +106,9 @@ export class PriceUnits extends ClientSDK {
    * Use when renaming or updating metadata for a price unit. Code is immutable once created.
    */
   async updatePriceUnit(
-    request: operations.UpdatePriceUnitRequest,
+    request: models.UpdatePriceUnitRequest,
     options?: RequestOptions,
-  ): Promise<operations.UpdatePriceUnitResponse> {
+  ): Promise<models.UpdatePriceUnitResponse> {
     return unwrapAsync(priceUnitsUpdatePriceUnit(
       this,
       request,
@@ -124,9 +123,9 @@ export class PriceUnits extends ClientSDK {
    * Use when removing a price unit that is no longer needed. Fails if any price references this unit.
    */
   async deletePriceUnit(
-    request: operations.DeletePriceUnitRequest,
+    request: models.DeletePriceUnitRequest,
     options?: RequestOptions,
-  ): Promise<operations.DeletePriceUnitResponse> {
+  ): Promise<models.DeletePriceUnitResponse> {
     return unwrapAsync(priceUnitsDeletePriceUnit(
       this,
       request,

@@ -6,9 +6,8 @@ import { tenantsGetTenantBillingUsage } from "../funcs/tenantsGetTenantBillingUs
 import { tenantsGetTenantById } from "../funcs/tenantsGetTenantById.js";
 import { tenantsUpdateTenant } from "../funcs/tenantsUpdateTenant.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "./models/operations/index.js";
-import * as shared from "./models/shared/index.js";
-import { unwrapAsync } from "./types/fp.js";
+import { unwrapAsync } from "../types/fp.js";
+import * as models from "./models/index.js";
 
 export class Tenants extends ClientSDK {
   /**
@@ -19,7 +18,7 @@ export class Tenants extends ClientSDK {
    */
   async getTenantBillingUsage(
     options?: RequestOptions,
-  ): Promise<operations.GetTenantBillingUsageResponse> {
+  ): Promise<models.GetTenantBillingUsageResponse> {
     return unwrapAsync(tenantsGetTenantBillingUsage(
       this,
       options,
@@ -33,9 +32,9 @@ export class Tenants extends ClientSDK {
    * Use when changing tenant details (e.g. name or billing info). Request body contains the fields to update.
    */
   async updateTenant(
-    request: shared.DtoUpdateTenantRequest,
+    request: models.DtoUpdateTenantRequest,
     options?: RequestOptions,
-  ): Promise<operations.UpdateTenantResponse> {
+  ): Promise<models.UpdateTenantResponse> {
     return unwrapAsync(tenantsUpdateTenant(
       this,
       request,
@@ -50,9 +49,9 @@ export class Tenants extends ClientSDK {
    * Get tenant by ID
    */
   async getTenantById(
-    request: operations.GetTenantByIdRequest,
+    request: models.GetTenantByIdRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetTenantByIdResponse> {
+  ): Promise<models.GetTenantByIdResponse> {
     return unwrapAsync(tenantsGetTenantById(
       this,
       request,

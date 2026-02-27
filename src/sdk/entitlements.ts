@@ -11,9 +11,8 @@ import { entitlementsGetPlanEntitlements } from "../funcs/entitlementsGetPlanEnt
 import { entitlementsQueryEntitlement } from "../funcs/entitlementsQueryEntitlement.js";
 import { entitlementsUpdateEntitlement } from "../funcs/entitlementsUpdateEntitlement.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "./models/operations/index.js";
-import * as shared from "./models/shared/index.js";
-import { unwrapAsync } from "./types/fp.js";
+import { unwrapAsync } from "../types/fp.js";
+import * as models from "./models/index.js";
 
 export class Entitlements extends ClientSDK {
   /**
@@ -23,9 +22,9 @@ export class Entitlements extends ClientSDK {
    * Use when checking what features or limits an addon grants (e.g. for display or entitlement logic).
    */
   async getAddonEntitlements(
-    request: operations.GetAddonEntitlementsRequest,
+    request: models.GetAddonEntitlementsRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetAddonEntitlementsResponse> {
+  ): Promise<models.GetAddonEntitlementsResponse> {
     return unwrapAsync(entitlementsGetAddonEntitlements(
       this,
       request,
@@ -40,9 +39,9 @@ export class Entitlements extends ClientSDK {
    * Use when attaching a feature (and its limit) to a plan or addon (e.g. "10 seats" or "1000 API calls"). Defines what the plan/addon includes.
    */
   async createEntitlement(
-    request: shared.DtoCreateEntitlementRequest,
+    request: models.DtoCreateEntitlementRequest,
     options?: RequestOptions,
-  ): Promise<operations.CreateEntitlementResponse> {
+  ): Promise<models.CreateEntitlementResponse> {
     return unwrapAsync(entitlementsCreateEntitlement(
       this,
       request,
@@ -57,9 +56,9 @@ export class Entitlements extends ClientSDK {
    * Use when attaching many features to a plan or addon at once (e.g. initial plan setup or import). Bulk version of create entitlement.
    */
   async createEntitlementsBulk(
-    request: shared.DtoCreateBulkEntitlementRequest,
+    request: models.DtoCreateBulkEntitlementRequest,
     options?: RequestOptions,
-  ): Promise<operations.CreateEntitlementsBulkResponse> {
+  ): Promise<models.CreateEntitlementsBulkResponse> {
     return unwrapAsync(entitlementsCreateEntitlementsBulk(
       this,
       request,
@@ -74,9 +73,9 @@ export class Entitlements extends ClientSDK {
    * Use when listing or searching entitlements (e.g. plan editor or audit). Returns a paginated list; supports filtering by plan, addon, feature.
    */
   async queryEntitlement(
-    request: shared.EntitlementFilter,
+    request: models.EntitlementFilter,
     options?: RequestOptions,
-  ): Promise<operations.QueryEntitlementResponse> {
+  ): Promise<models.QueryEntitlementResponse> {
     return unwrapAsync(entitlementsQueryEntitlement(
       this,
       request,
@@ -91,9 +90,9 @@ export class Entitlements extends ClientSDK {
    * Use when you need to load a single entitlement (e.g. to display or edit a feature limit).
    */
   async getEntitlement(
-    request: operations.GetEntitlementRequest,
+    request: models.GetEntitlementRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetEntitlementResponse> {
+  ): Promise<models.GetEntitlementResponse> {
     return unwrapAsync(entitlementsGetEntitlement(
       this,
       request,
@@ -108,9 +107,9 @@ export class Entitlements extends ClientSDK {
    * Use when changing an entitlement (e.g. increasing or decreasing a limit). Request body contains the fields to update.
    */
   async updateEntitlement(
-    request: operations.UpdateEntitlementRequest,
+    request: models.UpdateEntitlementRequest,
     options?: RequestOptions,
-  ): Promise<operations.UpdateEntitlementResponse> {
+  ): Promise<models.UpdateEntitlementResponse> {
     return unwrapAsync(entitlementsUpdateEntitlement(
       this,
       request,
@@ -125,9 +124,9 @@ export class Entitlements extends ClientSDK {
    * Use when removing a feature from a plan or addon (e.g. deprecating a capability). Returns 200 with success message.
    */
   async deleteEntitlement(
-    request: operations.DeleteEntitlementRequest,
+    request: models.DeleteEntitlementRequest,
     options?: RequestOptions,
-  ): Promise<operations.DeleteEntitlementResponse> {
+  ): Promise<models.DeleteEntitlementResponse> {
     return unwrapAsync(entitlementsDeleteEntitlement(
       this,
       request,
@@ -142,9 +141,9 @@ export class Entitlements extends ClientSDK {
    * Use when checking what a plan includes (e.g. feature list or limits for display or gating).
    */
   async getPlanEntitlements(
-    request: operations.GetPlanEntitlementsRequest,
+    request: models.GetPlanEntitlementsRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetPlanEntitlementsResponse> {
+  ): Promise<models.GetPlanEntitlementsResponse> {
     return unwrapAsync(entitlementsGetPlanEntitlements(
       this,
       request,

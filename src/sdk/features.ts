@@ -7,9 +7,8 @@ import { featuresDeleteFeature } from "../funcs/featuresDeleteFeature.js";
 import { featuresQueryFeature } from "../funcs/featuresQueryFeature.js";
 import { featuresUpdateFeature } from "../funcs/featuresUpdateFeature.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "./models/operations/index.js";
-import * as shared from "./models/shared/index.js";
-import { unwrapAsync } from "./types/fp.js";
+import { unwrapAsync } from "../types/fp.js";
+import * as models from "./models/index.js";
 
 export class Features extends ClientSDK {
   /**
@@ -19,9 +18,9 @@ export class Features extends ClientSDK {
    * Use when defining a new feature or capability to gate or meter (e.g. feature flags or usage-based limits). Ideal for boolean or usage features.
    */
   async createFeature(
-    request: shared.DtoCreateFeatureRequest,
+    request: models.DtoCreateFeatureRequest,
     options?: RequestOptions,
-  ): Promise<operations.CreateFeatureResponse> {
+  ): Promise<models.CreateFeatureResponse> {
     return unwrapAsync(featuresCreateFeature(
       this,
       request,
@@ -36,9 +35,9 @@ export class Features extends ClientSDK {
    * Use when listing or searching features (e.g. catalog or entitlement setup). Returns a paginated list; supports filtering and sorting.
    */
   async queryFeature(
-    request: shared.FeatureFilter,
+    request: models.FeatureFilter,
     options?: RequestOptions,
-  ): Promise<operations.QueryFeatureResponse> {
+  ): Promise<models.QueryFeatureResponse> {
     return unwrapAsync(featuresQueryFeature(
       this,
       request,
@@ -53,9 +52,9 @@ export class Features extends ClientSDK {
    * Use when changing feature definition (e.g. name, type, or meter). Request body contains the fields to update.
    */
   async updateFeature(
-    request: operations.UpdateFeatureRequest,
+    request: models.UpdateFeatureRequest,
     options?: RequestOptions,
-  ): Promise<operations.UpdateFeatureResponse> {
+  ): Promise<models.UpdateFeatureResponse> {
     return unwrapAsync(featuresUpdateFeature(
       this,
       request,
@@ -70,9 +69,9 @@ export class Features extends ClientSDK {
    * Use when retiring a feature (e.g. deprecated capability). Returns 200 with success message.
    */
   async deleteFeature(
-    request: operations.DeleteFeatureRequest,
+    request: models.DeleteFeatureRequest,
     options?: RequestOptions,
-  ): Promise<operations.DeleteFeatureResponse> {
+  ): Promise<models.DeleteFeatureResponse> {
     return unwrapAsync(featuresDeleteFeature(
       this,
       request,

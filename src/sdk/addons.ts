@@ -9,9 +9,8 @@ import { addonsGetAddonByLookupKey } from "../funcs/addonsGetAddonByLookupKey.js
 import { addonsQueryAddon } from "../funcs/addonsQueryAddon.js";
 import { addonsUpdateAddon } from "../funcs/addonsUpdateAddon.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "./models/operations/index.js";
-import * as shared from "./models/shared/index.js";
-import { unwrapAsync } from "./types/fp.js";
+import { unwrapAsync } from "../types/fp.js";
+import * as models from "./models/index.js";
 
 export class Addons extends ClientSDK {
   /**
@@ -21,9 +20,9 @@ export class Addons extends ClientSDK {
    * Use when defining an optional purchasable item (e.g. extra storage or support tier). Ideal for add-ons that customers can attach to a subscription.
    */
   async createAddon(
-    request: shared.DtoCreateAddonRequest,
+    request: models.DtoCreateAddonRequest,
     options?: RequestOptions,
-  ): Promise<operations.CreateAddonResponse> {
+  ): Promise<models.CreateAddonResponse> {
     return unwrapAsync(addonsCreateAddon(
       this,
       request,
@@ -38,9 +37,9 @@ export class Addons extends ClientSDK {
    * Use when resolving an addon by external id (e.g. from your product catalog). Ideal for integrations.
    */
   async getAddonByLookupKey(
-    request: operations.GetAddonByLookupKeyRequest,
+    request: models.GetAddonByLookupKeyRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetAddonByLookupKeyResponse> {
+  ): Promise<models.GetAddonByLookupKeyResponse> {
     return unwrapAsync(addonsGetAddonByLookupKey(
       this,
       request,
@@ -55,9 +54,9 @@ export class Addons extends ClientSDK {
    * Use when listing or searching addons (e.g. catalog or subscription builder). Returns a paginated list; supports filtering and sorting.
    */
   async queryAddon(
-    request: shared.AddonFilter,
+    request: models.AddonFilter,
     options?: RequestOptions,
-  ): Promise<operations.QueryAddonResponse> {
+  ): Promise<models.QueryAddonResponse> {
     return unwrapAsync(addonsQueryAddon(
       this,
       request,
@@ -72,9 +71,9 @@ export class Addons extends ClientSDK {
    * Use when you need to load a single addon (e.g. for display or to attach to a subscription).
    */
   async getAddon(
-    request: operations.GetAddonRequest,
+    request: models.GetAddonRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetAddonResponse> {
+  ): Promise<models.GetAddonResponse> {
     return unwrapAsync(addonsGetAddon(
       this,
       request,
@@ -89,9 +88,9 @@ export class Addons extends ClientSDK {
    * Use when changing addon details (e.g. name, pricing, or metadata).
    */
   async updateAddon(
-    request: operations.UpdateAddonRequest,
+    request: models.UpdateAddonRequest,
     options?: RequestOptions,
-  ): Promise<operations.UpdateAddonResponse> {
+  ): Promise<models.UpdateAddonResponse> {
     return unwrapAsync(addonsUpdateAddon(
       this,
       request,
@@ -106,9 +105,9 @@ export class Addons extends ClientSDK {
    * Use when retiring an addon (e.g. end-of-life). Returns 200 with success message.
    */
   async deleteAddon(
-    request: operations.DeleteAddonRequest,
+    request: models.DeleteAddonRequest,
     options?: RequestOptions,
-  ): Promise<operations.DeleteAddonResponse> {
+  ): Promise<models.DeleteAddonResponse> {
     return unwrapAsync(addonsDeleteAddon(
       this,
       request,

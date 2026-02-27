@@ -6,9 +6,8 @@ import { secretsCreateApiKey } from "../funcs/secretsCreateApiKey.js";
 import { secretsDeleteApiKey } from "../funcs/secretsDeleteApiKey.js";
 import { secretsListApiKeys } from "../funcs/secretsListApiKeys.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "./models/operations/index.js";
-import * as shared from "./models/shared/index.js";
-import { unwrapAsync } from "./types/fp.js";
+import { unwrapAsync } from "../types/fp.js";
+import * as models from "./models/index.js";
 
 export class Secrets extends ClientSDK {
   /**
@@ -18,9 +17,9 @@ export class Secrets extends ClientSDK {
    * Use when listing API keys (e.g. admin view or rotating keys). Returns a paginated list.
    */
   async listApiKeys(
-    request?: operations.ListApiKeysRequest | undefined,
+    request?: models.ListApiKeysRequest | undefined,
     options?: RequestOptions,
-  ): Promise<operations.ListApiKeysResponse> {
+  ): Promise<models.ListApiKeysResponse> {
     return unwrapAsync(secretsListApiKeys(
       this,
       request,
@@ -35,9 +34,9 @@ export class Secrets extends ClientSDK {
    * Use when issuing a new API key (e.g. for a service account or for the current user). Provide service_account_id to create for a service account.
    */
   async createApiKey(
-    request: shared.DtoCreateAPIKeyRequest,
+    request: models.DtoCreateAPIKeyRequest,
     options?: RequestOptions,
-  ): Promise<operations.CreateApiKeyResponse> {
+  ): Promise<models.CreateApiKeyResponse> {
     return unwrapAsync(secretsCreateApiKey(
       this,
       request,
@@ -52,9 +51,9 @@ export class Secrets extends ClientSDK {
    * Use when revoking an API key (e.g. rotation or compromise). Permanently invalidates the key.
    */
   async deleteApiKey(
-    request: operations.DeleteApiKeyRequest,
+    request: models.DeleteApiKeyRequest,
     options?: RequestOptions,
-  ): Promise<shared.ErrorsErrorResponse | undefined> {
+  ): Promise<models.ErrorsErrorResponse | undefined> {
     return unwrapAsync(secretsDeleteApiKey(
       this,
       request,

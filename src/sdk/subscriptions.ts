@@ -28,9 +28,8 @@ import { subscriptionsResumeSubscription } from "../funcs/subscriptionsResumeSub
 import { subscriptionsUpdateSubscription } from "../funcs/subscriptionsUpdateSubscription.js";
 import { subscriptionsUpdateSubscriptionLineItem } from "../funcs/subscriptionsUpdateSubscriptionLineItem.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "./models/operations/index.js";
-import * as shared from "./models/shared/index.js";
-import { unwrapAsync } from "./types/fp.js";
+import { unwrapAsync } from "../types/fp.js";
+import * as models from "./models/index.js";
 
 export class Subscriptions extends ClientSDK {
   /**
@@ -40,9 +39,9 @@ export class Subscriptions extends ClientSDK {
    * Use when onboarding a customer to a plan or starting a new subscription. Ideal for draft subscriptions (activate later) or active from start.
    */
   async createSubscription(
-    request: shared.DtoCreateSubscriptionRequest,
+    request: models.DtoCreateSubscriptionRequest,
     options?: RequestOptions,
-  ): Promise<operations.CreateSubscriptionResponse> {
+  ): Promise<models.CreateSubscriptionResponse> {
     return unwrapAsync(subscriptionsCreateSubscription(
       this,
       request,
@@ -57,9 +56,9 @@ export class Subscriptions extends ClientSDK {
    * Use when adding an optional product or add-on to an existing subscription (e.g. extra storage or support tier).
    */
   async addSubscriptionAddon(
-    request: shared.DtoAddAddonRequest,
+    request: models.DtoAddAddonRequest,
     options?: RequestOptions,
-  ): Promise<operations.AddSubscriptionAddonResponse> {
+  ): Promise<models.AddSubscriptionAddonResponse> {
     return unwrapAsync(subscriptionsAddSubscriptionAddon(
       this,
       request,
@@ -74,9 +73,9 @@ export class Subscriptions extends ClientSDK {
    * Use when removing an add-on from a subscription (e.g. downgrade or opt-out).
    */
   async removeSubscriptionAddon(
-    request: shared.DtoRemoveAddonRequest,
+    request: models.DtoRemoveAddonRequest,
     options?: RequestOptions,
-  ): Promise<operations.RemoveSubscriptionAddonResponse> {
+  ): Promise<models.RemoveSubscriptionAddonResponse> {
     return unwrapAsync(subscriptionsRemoveSubscriptionAddon(
       this,
       request,
@@ -91,9 +90,9 @@ export class Subscriptions extends ClientSDK {
    * Use when changing a subscription line item (e.g. quantity or price). Implemented by ending the current line and creating a new one for clean billing.
    */
   async updateSubscriptionLineItem(
-    request: operations.UpdateSubscriptionLineItemRequest,
+    request: models.UpdateSubscriptionLineItemRequest,
     options?: RequestOptions,
-  ): Promise<operations.UpdateSubscriptionLineItemResponse> {
+  ): Promise<models.UpdateSubscriptionLineItemResponse> {
     return unwrapAsync(subscriptionsUpdateSubscriptionLineItem(
       this,
       request,
@@ -108,9 +107,9 @@ export class Subscriptions extends ClientSDK {
    * Use when removing a charge or seat from a subscription (e.g. downgrade). Line item ends; retained for history but no longer billed.
    */
   async deleteSubscriptionLineItem(
-    request: operations.DeleteSubscriptionLineItemRequest,
+    request: models.DeleteSubscriptionLineItemRequest,
     options?: RequestOptions,
-  ): Promise<operations.DeleteSubscriptionLineItemResponse> {
+  ): Promise<models.DeleteSubscriptionLineItemResponse> {
     return unwrapAsync(subscriptionsDeleteSubscriptionLineItem(
       this,
       request,
@@ -125,9 +124,9 @@ export class Subscriptions extends ClientSDK {
    * Use when listing or searching subscriptions (e.g. admin view or customer subscription list). Returns a paginated list; supports filtering by customer, plan, status.
    */
   async querySubscription(
-    request: shared.SubscriptionFilter,
+    request: models.SubscriptionFilter,
     options?: RequestOptions,
-  ): Promise<operations.QuerySubscriptionResponse> {
+  ): Promise<models.QuerySubscriptionResponse> {
     return unwrapAsync(subscriptionsQuerySubscription(
       this,
       request,
@@ -142,9 +141,9 @@ export class Subscriptions extends ClientSDK {
    * Use when showing usage for a subscription (e.g. in a portal or for overage checks). Supports time range and filters.
    */
   async getSubscriptionUsage(
-    request: shared.DtoGetUsageBySubscriptionRequest,
+    request: models.DtoGetUsageBySubscriptionRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetSubscriptionUsageResponse> {
+  ): Promise<models.GetSubscriptionUsageResponse> {
     return unwrapAsync(subscriptionsGetSubscriptionUsage(
       this,
       request,
@@ -159,9 +158,9 @@ export class Subscriptions extends ClientSDK {
    * Use when you need to load a single subscription (e.g. for a billing portal or to check status).
    */
   async getSubscription(
-    request: operations.GetSubscriptionRequest,
+    request: models.GetSubscriptionRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetSubscriptionResponse> {
+  ): Promise<models.GetSubscriptionResponse> {
     return unwrapAsync(subscriptionsGetSubscription(
       this,
       request,
@@ -176,9 +175,9 @@ export class Subscriptions extends ClientSDK {
    * Use when changing subscription details (e.g. quantity, billing anchor, or parent). Supports partial update; send "" to clear parent_subscription_id.
    */
   async updateSubscription(
-    request: operations.UpdateSubscriptionRequest,
+    request: models.UpdateSubscriptionRequest,
     options?: RequestOptions,
-  ): Promise<operations.UpdateSubscriptionResponse> {
+  ): Promise<models.UpdateSubscriptionResponse> {
     return unwrapAsync(subscriptionsUpdateSubscription(
       this,
       request,
@@ -193,9 +192,9 @@ export class Subscriptions extends ClientSDK {
    * Use when turning a draft subscription live (e.g. after collecting payment or completing setup). Once activated, billing and entitlements apply.
    */
   async activateSubscription(
-    request: operations.ActivateSubscriptionRequest,
+    request: models.ActivateSubscriptionRequest,
     options?: RequestOptions,
-  ): Promise<operations.ActivateSubscriptionResponse> {
+  ): Promise<models.ActivateSubscriptionResponse> {
     return unwrapAsync(subscriptionsActivateSubscription(
       this,
       request,
@@ -210,9 +209,9 @@ export class Subscriptions extends ClientSDK {
    * Use when listing which add-ons are currently attached to a subscription (e.g. for display or editing).
    */
   async getSubscriptionAddonAssociations(
-    request: operations.GetSubscriptionAddonAssociationsRequest,
+    request: models.GetSubscriptionAddonAssociationsRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetSubscriptionAddonAssociationsResponse> {
+  ): Promise<models.GetSubscriptionAddonAssociationsResponse> {
     return unwrapAsync(subscriptionsGetSubscriptionAddonAssociations(
       this,
       request,
@@ -227,9 +226,9 @@ export class Subscriptions extends ClientSDK {
    * Use when a customer churns or downgrades. Supports immediate or end-of-period cancellation and proration. Ideal for self-serve or support-driven cancellations.
    */
   async cancelSubscription(
-    request: operations.CancelSubscriptionRequest,
+    request: models.CancelSubscriptionRequest,
     options?: RequestOptions,
-  ): Promise<operations.CancelSubscriptionResponse> {
+  ): Promise<models.CancelSubscriptionResponse> {
     return unwrapAsync(subscriptionsCancelSubscription(
       this,
       request,
@@ -244,9 +243,9 @@ export class Subscriptions extends ClientSDK {
    * Use when applying a plan change (e.g. upgrade or downgrade). Executes proration and generates invoice or credit as needed.
    */
   async executeSubscriptionChange(
-    request: operations.ExecuteSubscriptionChangeRequest,
+    request: models.ExecuteSubscriptionChangeRequest,
     options?: RequestOptions,
-  ): Promise<operations.ExecuteSubscriptionChangeResponse> {
+  ): Promise<models.ExecuteSubscriptionChangeResponse> {
     return unwrapAsync(subscriptionsExecuteSubscriptionChange(
       this,
       request,
@@ -261,9 +260,9 @@ export class Subscriptions extends ClientSDK {
    * Use when showing a customer the cost of a plan change before they confirm (e.g. upgrade/downgrade preview with proration).
    */
   async previewSubscriptionChange(
-    request: operations.PreviewSubscriptionChangeRequest,
+    request: models.PreviewSubscriptionChangeRequest,
     options?: RequestOptions,
-  ): Promise<operations.PreviewSubscriptionChangeResponse> {
+  ): Promise<models.PreviewSubscriptionChangeResponse> {
     return unwrapAsync(subscriptionsPreviewSubscriptionChange(
       this,
       request,
@@ -278,9 +277,9 @@ export class Subscriptions extends ClientSDK {
    * Use when checking what features or limits a subscription has (e.g. entitlement checks or feature gating). Optional feature_ids to filter.
    */
   async getSubscriptionEntitlements(
-    request: operations.GetSubscriptionEntitlementsRequest,
+    request: models.GetSubscriptionEntitlementsRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetSubscriptionEntitlementsResponse> {
+  ): Promise<models.GetSubscriptionEntitlementsResponse> {
     return unwrapAsync(subscriptionsGetSubscriptionEntitlements(
       this,
       request,
@@ -295,9 +294,9 @@ export class Subscriptions extends ClientSDK {
    * Use when showing upcoming or pending credits for a subscription (e.g. in a portal or for forecasting).
    */
   async getSubscriptionUpcomingGrants(
-    request: operations.GetSubscriptionUpcomingGrantsRequest,
+    request: models.GetSubscriptionUpcomingGrantsRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetSubscriptionUpcomingGrantsResponse> {
+  ): Promise<models.GetSubscriptionUpcomingGrantsResponse> {
     return unwrapAsync(subscriptionsGetSubscriptionUpcomingGrants(
       this,
       request,
@@ -312,9 +311,9 @@ export class Subscriptions extends ClientSDK {
    * Use when adding a new charge or seat to a subscription (e.g. extra seat or one-time add). Supports price_id or inline price.
    */
   async createSubscriptionLineItem(
-    request: operations.CreateSubscriptionLineItemRequest,
+    request: models.CreateSubscriptionLineItemRequest,
     options?: RequestOptions,
-  ): Promise<operations.CreateSubscriptionLineItemResponse> {
+  ): Promise<models.CreateSubscriptionLineItemResponse> {
     return unwrapAsync(subscriptionsCreateSubscriptionLineItem(
       this,
       request,
@@ -329,9 +328,9 @@ export class Subscriptions extends ClientSDK {
    * Use when temporarily stopping a subscription (e.g. customer hold or seasonal pause). Billing and access pause; resume when ready.
    */
   async pauseSubscription(
-    request: operations.PauseSubscriptionRequest,
+    request: models.PauseSubscriptionRequest,
     options?: RequestOptions,
-  ): Promise<operations.PauseSubscriptionResponse> {
+  ): Promise<models.PauseSubscriptionResponse> {
     return unwrapAsync(subscriptionsPauseSubscription(
       this,
       request,
@@ -346,9 +345,9 @@ export class Subscriptions extends ClientSDK {
    * Use when showing pause history for a subscription (e.g. support or audit). Returns all past and future pauses.
    */
   async listSubscriptionPauses(
-    request: operations.ListSubscriptionPausesRequest,
+    request: models.ListSubscriptionPausesRequest,
     options?: RequestOptions,
-  ): Promise<operations.ListSubscriptionPausesResponse> {
+  ): Promise<models.ListSubscriptionPausesResponse> {
     return unwrapAsync(subscriptionsListSubscriptionPauses(
       this,
       request,
@@ -363,9 +362,9 @@ export class Subscriptions extends ClientSDK {
    * Use when reactivating a paused subscription (e.g. end of hold). Billing and access resume from the resume date.
    */
   async resumeSubscription(
-    request: operations.ResumeSubscriptionRequest,
+    request: models.ResumeSubscriptionRequest,
     options?: RequestOptions,
-  ): Promise<operations.ResumeSubscriptionResponse> {
+  ): Promise<models.ResumeSubscriptionResponse> {
     return unwrapAsync(subscriptionsResumeSubscription(
       this,
       request,
@@ -380,9 +379,9 @@ export class Subscriptions extends ClientSDK {
    * Use when you need a subscription with related data (line items, prices, plan). Supports expand for detailed payloads without extra round-trips.
    */
   async getSubscriptionV2(
-    request: operations.GetSubscriptionV2Request,
+    request: models.GetSubscriptionV2Request,
     options?: RequestOptions,
-  ): Promise<operations.GetSubscriptionV2Response> {
+  ): Promise<models.GetSubscriptionV2Response> {
     return unwrapAsync(subscriptionsGetSubscriptionV2(
       this,
       request,
@@ -397,9 +396,9 @@ export class Subscriptions extends ClientSDK {
    * Use when listing or searching scheduled changes across subscriptions (e.g. admin view). Returns schedules with optional filtering.
    */
   async listAllSubscriptionSchedules(
-    request?: operations.ListAllSubscriptionSchedulesRequest | undefined,
+    request?: models.ListAllSubscriptionSchedulesRequest | undefined,
     options?: RequestOptions,
-  ): Promise<shared.DtoGetPendingSchedulesResponse> {
+  ): Promise<models.DtoGetPendingSchedulesResponse> {
     return unwrapAsync(subscriptionsListAllSubscriptionSchedules(
       this,
       request,
@@ -414,9 +413,9 @@ export class Subscriptions extends ClientSDK {
    * Use when you need to load a single scheduled change (e.g. to show when a plan change or renewal takes effect).
    */
   async getSubscriptionSchedule(
-    request: operations.GetSubscriptionScheduleRequest,
+    request: models.GetSubscriptionScheduleRequest,
     options?: RequestOptions,
-  ): Promise<shared.DtoSubscriptionScheduleResponse> {
+  ): Promise<models.DtoSubscriptionScheduleResponse> {
     return unwrapAsync(subscriptionsGetSubscriptionSchedule(
       this,
       request,
@@ -431,9 +430,9 @@ export class Subscriptions extends ClientSDK {
    * Use when cancelling a scheduled change (e.g. customer changed mind). Identify by schedule ID in path or by subscription ID + schedule type in body.
    */
   async cancelSubscriptionSchedule(
-    request: operations.CancelSubscriptionScheduleRequest,
+    request: models.CancelSubscriptionScheduleRequest,
     options?: RequestOptions,
-  ): Promise<shared.DtoCancelScheduleResponse> {
+  ): Promise<models.DtoCancelScheduleResponse> {
     return unwrapAsync(subscriptionsCancelSubscriptionSchedule(
       this,
       request,
@@ -448,9 +447,9 @@ export class Subscriptions extends ClientSDK {
    * Use when listing scheduled changes for a subscription (e.g. upcoming plan change or renewal). Returns all schedules for that subscription.
    */
   async listSubscriptionSchedules(
-    request: operations.ListSubscriptionSchedulesRequest,
+    request: models.ListSubscriptionSchedulesRequest,
     options?: RequestOptions,
-  ): Promise<shared.DtoGetPendingSchedulesResponse> {
+  ): Promise<models.DtoGetPendingSchedulesResponse> {
     return unwrapAsync(subscriptionsListSubscriptionSchedules(
       this,
       request,

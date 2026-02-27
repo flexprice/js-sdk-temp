@@ -10,9 +10,8 @@ import { pricesGetPriceByLookupKey } from "../funcs/pricesGetPriceByLookupKey.js
 import { pricesQueryPrice } from "../funcs/pricesQueryPrice.js";
 import { pricesUpdatePrice } from "../funcs/pricesUpdatePrice.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "./models/operations/index.js";
-import * as shared from "./models/shared/index.js";
-import { unwrapAsync } from "./types/fp.js";
+import { unwrapAsync } from "../types/fp.js";
+import * as models from "./models/index.js";
 
 export class Prices extends ClientSDK {
   /**
@@ -22,9 +21,9 @@ export class Prices extends ClientSDK {
    * Use when adding a new price to a plan or catalog (e.g. per-seat, flat, or metered). Ideal for both simple and usage-based pricing.
    */
   async createPrice(
-    request: shared.DtoCreatePriceRequest,
+    request: models.DtoCreatePriceRequest,
     options?: RequestOptions,
-  ): Promise<operations.CreatePriceResponse> {
+  ): Promise<models.CreatePriceResponse> {
     return unwrapAsync(pricesCreatePrice(
       this,
       request,
@@ -39,9 +38,9 @@ export class Prices extends ClientSDK {
    * Use when creating many prices at once (e.g. importing a catalog or setting up a plan with multiple tiers).
    */
   async createPricesBulk(
-    request: shared.DtoCreateBulkPriceRequest,
+    request: models.DtoCreateBulkPriceRequest,
     options?: RequestOptions,
-  ): Promise<operations.CreatePricesBulkResponse> {
+  ): Promise<models.CreatePricesBulkResponse> {
     return unwrapAsync(pricesCreatePricesBulk(
       this,
       request,
@@ -56,9 +55,9 @@ export class Prices extends ClientSDK {
    * Use when resolving a price by external id (e.g. from your catalog or CMS). Ideal for integrations.
    */
   async getPriceByLookupKey(
-    request: operations.GetPriceByLookupKeyRequest,
+    request: models.GetPriceByLookupKeyRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetPriceByLookupKeyResponse> {
+  ): Promise<models.GetPriceByLookupKeyResponse> {
     return unwrapAsync(pricesGetPriceByLookupKey(
       this,
       request,
@@ -73,9 +72,9 @@ export class Prices extends ClientSDK {
    * Use when listing or searching prices (e.g. plan builder or catalog). Returns a paginated list; supports filtering and sorting.
    */
   async queryPrice(
-    request: shared.PriceFilter,
+    request: models.PriceFilter,
     options?: RequestOptions,
-  ): Promise<operations.QueryPriceResponse> {
+  ): Promise<models.QueryPriceResponse> {
     return unwrapAsync(pricesQueryPrice(
       this,
       request,
@@ -90,9 +89,9 @@ export class Prices extends ClientSDK {
    * Use when you need to load a single price (e.g. for display or editing). Response includes expanded meter and price unit when applicable.
    */
   async getPrice(
-    request: operations.GetPriceRequest,
+    request: models.GetPriceRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetPriceResponse> {
+  ): Promise<models.GetPriceResponse> {
     return unwrapAsync(pricesGetPrice(
       this,
       request,
@@ -107,9 +106,9 @@ export class Prices extends ClientSDK {
    * Use when changing price configuration (e.g. amount, billing scheme, or metadata).
    */
   async updatePrice(
-    request: operations.UpdatePriceRequest,
+    request: models.UpdatePriceRequest,
     options?: RequestOptions,
-  ): Promise<operations.UpdatePriceResponse> {
+  ): Promise<models.UpdatePriceResponse> {
     return unwrapAsync(pricesUpdatePrice(
       this,
       request,
@@ -124,9 +123,9 @@ export class Prices extends ClientSDK {
    * Use when retiring a price (e.g. end-of-life or replacement). Optional effective date or cascade for subscriptions.
    */
   async deletePrice(
-    request: operations.DeletePriceRequest,
+    request: models.DeletePriceRequest,
     options?: RequestOptions,
-  ): Promise<operations.DeletePriceResponse> {
+  ): Promise<models.DeletePriceResponse> {
     return unwrapAsync(pricesDeletePrice(
       this,
       request,

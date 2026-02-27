@@ -5,8 +5,8 @@
 import { rbacGetRBACRole } from "../funcs/rbacGetRBACRole.js";
 import { rbacListRBACRoles } from "../funcs/rbacListRBACRoles.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "./models/operations/index.js";
-import { unwrapAsync } from "./types/fp.js";
+import { unwrapAsync } from "../types/fp.js";
+import * as models from "./models/index.js";
 
 export class Rbac extends ClientSDK {
   /**
@@ -17,7 +17,7 @@ export class Rbac extends ClientSDK {
    */
   async listRbacRoles(
     options?: RequestOptions,
-  ): Promise<operations.ListRbacRolesResponse> {
+  ): Promise<models.ListRbacRolesResponse> {
     return unwrapAsync(rbacListRBACRoles(
       this,
       options,
@@ -31,9 +31,9 @@ export class Rbac extends ClientSDK {
    * Use when you need to show or edit a single role (e.g. role detail page). Includes permissions, name, and description.
    */
   async getRbacRole(
-    request: operations.GetRbacRoleRequest,
+    request: models.GetRbacRoleRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetRbacRoleResponse> {
+  ): Promise<models.GetRbacRoleResponse> {
     return unwrapAsync(rbacGetRBACRole(
       this,
       request,

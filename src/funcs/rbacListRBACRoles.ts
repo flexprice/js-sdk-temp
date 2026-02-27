@@ -8,19 +8,19 @@ import { compactMap } from "../lib/primitives.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
-import { FlexPriceError } from "../sdk/models/errors/flexpriceerror.js";
+import { FlexPriceError } from "../sdk/models/flexpriceerror.js";
 import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
-} from "../sdk/models/errors/httpclienterrors.js";
-import { ResponseValidationError } from "../sdk/models/errors/responsevalidationerror.js";
-import { SDKValidationError } from "../sdk/models/errors/sdkvalidationerror.js";
-import * as operations from "../sdk/models/operations/index.js";
-import { APICall, APIPromise } from "../sdk/types/async.js";
-import { Result } from "../sdk/types/fp.js";
+} from "../sdk/models/httpclienterrors.js";
+import * as models from "../sdk/models/index.js";
+import { ResponseValidationError } from "../sdk/models/responsevalidationerror.js";
+import { SDKValidationError } from "../sdk/models/sdkvalidationerror.js";
+import { APICall, APIPromise } from "../types/async.js";
+import { Result } from "../types/fp.js";
 
 /**
  * List all RBAC roles
@@ -33,7 +33,7 @@ export function rbacListRBACRoles(
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.ListRbacRolesResponse,
+    models.ListRbacRolesResponse,
     | FlexPriceError
     | ResponseValidationError
     | ConnectionError
@@ -56,7 +56,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.ListRbacRolesResponse,
+      models.ListRbacRolesResponse,
       | FlexPriceError
       | ResponseValidationError
       | ConnectionError
@@ -120,7 +120,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.ListRbacRolesResponse,
+    models.ListRbacRolesResponse,
     | FlexPriceError
     | ResponseValidationError
     | ConnectionError
@@ -130,8 +130,8 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, operations.ListRbacRolesResponse$inboundSchema),
-    M.json(500, operations.ListRbacRolesResponse$inboundSchema),
+    M.json(200, models.ListRbacRolesResponse$inboundSchema),
+    M.json(500, models.ListRbacRolesResponse$inboundSchema),
   )(response, req);
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];

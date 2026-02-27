@@ -9,9 +9,8 @@ import { tasksGetTaskResult } from "../funcs/tasksGetTaskResult.js";
 import { tasksListTasks } from "../funcs/tasksListTasks.js";
 import { tasksUpdateTaskStatus } from "../funcs/tasksUpdateTaskStatus.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "./models/operations/index.js";
-import * as shared from "./models/shared/index.js";
-import { unwrapAsync } from "./types/fp.js";
+import { unwrapAsync } from "../types/fp.js";
+import * as models from "./models/index.js";
 
 export class Tasks extends ClientSDK {
   /**
@@ -21,9 +20,9 @@ export class Tasks extends ClientSDK {
    * Use when listing or searching async tasks (e.g. admin queue view). Returns list with optional filtering.
    */
   async listTasks(
-    request?: operations.ListTasksRequest | undefined,
+    request?: models.ListTasksRequest | undefined,
     options?: RequestOptions,
-  ): Promise<operations.ListTasksResponse> {
+  ): Promise<models.ListTasksResponse> {
     return unwrapAsync(tasksListTasks(
       this,
       request,
@@ -38,9 +37,9 @@ export class Tasks extends ClientSDK {
    * Use when submitting a file or job for async processing (e.g. export or import). Returns task ID to poll for status and result.
    */
   async createTask(
-    request: shared.DtoCreateTaskRequest,
+    request: models.DtoCreateTaskRequest,
     options?: RequestOptions,
-  ): Promise<operations.CreateTaskResponse> {
+  ): Promise<models.CreateTaskResponse> {
     return unwrapAsync(tasksCreateTask(
       this,
       request,
@@ -55,9 +54,9 @@ export class Tasks extends ClientSDK {
    * Use when fetching the outcome of a completed task (e.g. export URL or error message). Call after task status is complete.
    */
   async getTaskResult(
-    request: operations.GetTaskResultRequest,
+    request: models.GetTaskResultRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetTaskResultResponse> {
+  ): Promise<models.GetTaskResultResponse> {
     return unwrapAsync(tasksGetTaskResult(
       this,
       request,
@@ -72,9 +71,9 @@ export class Tasks extends ClientSDK {
    * Use when checking task status or progress (e.g. polling after create). Returns task by ID.
    */
   async getTask(
-    request: operations.GetTaskRequest,
+    request: models.GetTaskRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetTaskResponse> {
+  ): Promise<models.GetTaskResponse> {
     return unwrapAsync(tasksGetTask(
       this,
       request,
@@ -89,9 +88,9 @@ export class Tasks extends ClientSDK {
    * Use when letting a user download an exported file (e.g. report or data export). Returns a presigned URL; supports FlexPrice or customer-owned S3.
    */
   async downloadTaskExport(
-    request: operations.DownloadTaskExportRequest,
+    request: models.DownloadTaskExportRequest,
     options?: RequestOptions,
-  ): Promise<operations.DownloadTaskExportResponse> {
+  ): Promise<models.DownloadTaskExportResponse> {
     return unwrapAsync(tasksDownloadTaskExport(
       this,
       request,
@@ -106,9 +105,9 @@ export class Tasks extends ClientSDK {
    * Use when updating task status (e.g. marking complete or failed from a worker). Typically called by backend processors.
    */
   async updateTaskStatus(
-    request: operations.UpdateTaskStatusRequest,
+    request: models.UpdateTaskStatusRequest,
     options?: RequestOptions,
-  ): Promise<operations.UpdateTaskStatusResponse> {
+  ): Promise<models.UpdateTaskStatusResponse> {
     return unwrapAsync(tasksUpdateTaskStatus(
       this,
       request,

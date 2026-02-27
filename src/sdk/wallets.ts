@@ -14,9 +14,8 @@ import { walletsTerminateWallet } from "../funcs/walletsTerminateWallet.js";
 import { walletsTopUpWallet } from "../funcs/walletsTopUpWallet.js";
 import { walletsUpdateWallet } from "../funcs/walletsUpdateWallet.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "./models/operations/index.js";
-import * as shared from "./models/shared/index.js";
-import { unwrapAsync } from "./types/fp.js";
+import { unwrapAsync } from "../types/fp.js";
+import * as models from "./models/index.js";
 
 export class Wallets extends ClientSDK {
   /**
@@ -26,9 +25,9 @@ export class Wallets extends ClientSDK {
    * Use when resolving wallets by external customer id or lookup key (e.g. from your app's user id). Supports optional real-time balance and expand.
    */
   async getCustomerWallets(
-    request?: operations.GetCustomerWalletsRequest | undefined,
+    request?: models.GetCustomerWalletsRequest | undefined,
     options?: RequestOptions,
-  ): Promise<operations.GetCustomerWalletsResponse> {
+  ): Promise<models.GetCustomerWalletsResponse> {
     return unwrapAsync(walletsGetCustomerWallets(
       this,
       request,
@@ -43,9 +42,9 @@ export class Wallets extends ClientSDK {
    * Use when showing a customer's wallets (e.g. balance overview by currency or in a billing portal). Supports optional expand for balance breakdown.
    */
   async getWalletsByCustomerId(
-    request: operations.GetWalletsByCustomerIdRequest,
+    request: models.GetWalletsByCustomerIdRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetWalletsByCustomerIdResponse> {
+  ): Promise<models.GetWalletsByCustomerIdResponse> {
     return unwrapAsync(walletsGetWalletsByCustomerId(
       this,
       request,
@@ -60,9 +59,9 @@ export class Wallets extends ClientSDK {
    * Use when giving a customer a prepaid or credit balance (e.g. prepaid plans or promotional credits).
    */
   async createWallet(
-    request: shared.DtoCreateWalletRequest,
+    request: models.DtoCreateWalletRequest,
     options?: RequestOptions,
-  ): Promise<operations.CreateWalletResponse> {
+  ): Promise<models.CreateWalletResponse> {
     return unwrapAsync(walletsCreateWallet(
       this,
       request,
@@ -77,9 +76,9 @@ export class Wallets extends ClientSDK {
    * Use when listing or searching wallets (e.g. admin view or reporting). Returns a paginated list; supports filtering by customer and status.
    */
   async queryWallet(
-    request: shared.WalletFilter,
+    request: models.WalletFilter,
     options?: RequestOptions,
-  ): Promise<operations.QueryWalletResponse> {
+  ): Promise<models.QueryWalletResponse> {
     return unwrapAsync(walletsQueryWallet(
       this,
       request,
@@ -94,9 +93,9 @@ export class Wallets extends ClientSDK {
    * Use when searching or reporting on wallet transactions (e.g. cross-wallet history or reconciliation). Returns a paginated list; supports filtering by wallet, customer, type, date range.
    */
   async queryWalletTransaction(
-    request: shared.WalletTransactionFilter,
+    request: models.WalletTransactionFilter,
     options?: RequestOptions,
-  ): Promise<operations.QueryWalletTransactionResponse> {
+  ): Promise<models.QueryWalletTransactionResponse> {
     return unwrapAsync(walletsQueryWalletTransaction(
       this,
       request,
@@ -111,9 +110,9 @@ export class Wallets extends ClientSDK {
    * Use when you need to load a single wallet (e.g. for a balance or settings view).
    */
   async getWallet(
-    request: operations.GetWalletRequest,
+    request: models.GetWalletRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetWalletResponse> {
+  ): Promise<models.GetWalletResponse> {
     return unwrapAsync(walletsGetWallet(
       this,
       request,
@@ -128,9 +127,9 @@ export class Wallets extends ClientSDK {
    * Use when changing wallet settings (e.g. enabling or updating auto top-up thresholds).
    */
   async updateWallet(
-    request: operations.UpdateWalletRequest,
+    request: models.UpdateWalletRequest,
     options?: RequestOptions,
-  ): Promise<operations.UpdateWalletResponse> {
+  ): Promise<models.UpdateWalletResponse> {
     return unwrapAsync(walletsUpdateWallet(
       this,
       request,
@@ -145,9 +144,9 @@ export class Wallets extends ClientSDK {
    * Use when displaying or checking current wallet balance (e.g. before charging or in a portal). Supports optional expand for credits breakdown and from_cache.
    */
   async getWalletBalance(
-    request: operations.GetWalletBalanceRequest,
+    request: models.GetWalletBalanceRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetWalletBalanceResponse> {
+  ): Promise<models.GetWalletBalanceResponse> {
     return unwrapAsync(walletsGetWalletBalance(
       this,
       request,
@@ -162,9 +161,9 @@ export class Wallets extends ClientSDK {
    * Use when closing a customer wallet (e.g. churn or migration). Closes the wallet and applies remaining balance per policy (refund or forfeit).
    */
   async terminateWallet(
-    request: operations.TerminateWalletRequest,
+    request: models.TerminateWalletRequest,
     options?: RequestOptions,
-  ): Promise<operations.TerminateWalletResponse> {
+  ): Promise<models.TerminateWalletResponse> {
     return unwrapAsync(walletsTerminateWallet(
       this,
       request,
@@ -179,9 +178,9 @@ export class Wallets extends ClientSDK {
    * Use when adding funds to a wallet (e.g. top-up, refund, or manual credit). Supports optional idempotency via reference.
    */
   async topUpWallet(
-    request: operations.TopUpWalletRequest,
+    request: models.TopUpWalletRequest,
     options?: RequestOptions,
-  ): Promise<operations.TopUpWalletResponse> {
+  ): Promise<models.TopUpWalletResponse> {
     return unwrapAsync(walletsTopUpWallet(
       this,
       request,
@@ -196,9 +195,9 @@ export class Wallets extends ClientSDK {
    * Use when showing transaction history for a wallet (e.g. credit/debit log or audit). Returns a paginated list; supports limit, offset, and filters.
    */
   async getWalletTransactions(
-    request: operations.GetWalletTransactionsRequest,
+    request: models.GetWalletTransactionsRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetWalletTransactionsResponse> {
+  ): Promise<models.GetWalletTransactionsResponse> {
     return unwrapAsync(walletsGetWalletTransactions(
       this,
       request,

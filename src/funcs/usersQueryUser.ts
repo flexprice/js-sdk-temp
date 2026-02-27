@@ -10,20 +10,19 @@ import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
-import { FlexPriceError } from "../sdk/models/errors/flexpriceerror.js";
+import { FlexPriceError } from "../sdk/models/flexpriceerror.js";
 import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
-} from "../sdk/models/errors/httpclienterrors.js";
-import { ResponseValidationError } from "../sdk/models/errors/responsevalidationerror.js";
-import { SDKValidationError } from "../sdk/models/errors/sdkvalidationerror.js";
-import * as operations from "../sdk/models/operations/index.js";
-import * as shared from "../sdk/models/shared/index.js";
-import { APICall, APIPromise } from "../sdk/types/async.js";
-import { Result } from "../sdk/types/fp.js";
+} from "../sdk/models/httpclienterrors.js";
+import * as models from "../sdk/models/index.js";
+import { ResponseValidationError } from "../sdk/models/responsevalidationerror.js";
+import { SDKValidationError } from "../sdk/models/sdkvalidationerror.js";
+import { APICall, APIPromise } from "../types/async.js";
+import { Result } from "../types/fp.js";
 
 /**
  * Query users
@@ -33,11 +32,11 @@ import { Result } from "../sdk/types/fp.js";
  */
 export function usersQueryUser(
   client: FlexpriceCore,
-  request: shared.UserFilter,
+  request: models.UserFilter,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.QueryUserResponse,
+    models.QueryUserResponse,
     | FlexPriceError
     | ResponseValidationError
     | ConnectionError
@@ -57,12 +56,12 @@ export function usersQueryUser(
 
 async function $do(
   client: FlexpriceCore,
-  request: shared.UserFilter,
+  request: models.UserFilter,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.QueryUserResponse,
+      models.QueryUserResponse,
       | FlexPriceError
       | ResponseValidationError
       | ConnectionError
@@ -77,7 +76,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => shared.UserFilter$outboundSchema.parse(value),
+    (value) => models.UserFilter$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -139,7 +138,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.QueryUserResponse,
+    models.QueryUserResponse,
     | FlexPriceError
     | ResponseValidationError
     | ConnectionError
@@ -149,9 +148,9 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, operations.QueryUserResponse$inboundSchema),
-    M.json(400, operations.QueryUserResponse$inboundSchema),
-    M.json(500, operations.QueryUserResponse$inboundSchema),
+    M.json(200, models.QueryUserResponse$inboundSchema),
+    M.json(400, models.QueryUserResponse$inboundSchema),
+    M.json(500, models.QueryUserResponse$inboundSchema),
   )(response, req);
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];
